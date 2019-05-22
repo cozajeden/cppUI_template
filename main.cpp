@@ -17,89 +17,38 @@ LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 
-//SEARCH FOLDER - Searches folder and all sub-folders,
-//reading every file it comes across.
-void SearchFolder( TCHAR * path )
-{
-    //Declare all needed handles
-    WIN32_FIND_DATA FindFileData;
-    HANDLE hFind;
-    TCHAR filename[ MAX_PATH + 256 ];
-    TCHAR pathbak[ MAX_PATH ];
-
-    //Make a backup of the directory the user chose
-    strcpy( pathbak, path );
-
-    //Find the first file in the directory the user chose
-    hFind = FindFirstFile ( "*.*", &FindFileData );
-
-    //Use a do/while so we process whatever FindFirstFile returned
-    do
-    {
-        //Is it valid?
-        if ( hFind != INVALID_HANDLE_VALUE )
-        {
-            //Is it a . or .. directory? If it is, skip, or we'll go forever.
-            if ( ! ( strcmp( FindFileData.cFileName, "." ) ) ||
-                ! ( strcmp( FindFileData.cFileName, ".." ) ) )
-            {
-                continue;
-            }
-            //Restore the original directory chosen by the user
-            strcpy( path, pathbak );
-
-            //Append the file found on to the path of the
-            //directory the user chose
-            sprintf( path, "%s\\%s", path, FindFileData.cFileName );
-
-            //If SetCurrentDirectory Succeeds ( returns 1 ), the
-            //current file is a directory. Pause this function,
-            //and have it call itself. This will begin the whole
-            //process over in a sub directory.
-            if ( ( SetCurrentDirectory( path ) ) )
-            {
-                SearchFolder( path );
-            }
-
-            //Otherwise right here is where you need to insert what you want to do.
-            //As an example, let's add the filename to a list box.
-            //INSERT WHAT YOU WANT DONE BELOW!
-            //SendMessage( m_listbox_hwnd, LB_ADDSTRING, 0, path );
-        }
-    }
-    while ( FindNextFile ( hFind, &FindFileData )
-        && hFind != INVALID_HANDLE_VALUE );
-    FindClose ( hFind );
-}//SEARCH FOLDER
-
-//BROWSE FOLDER - Opens a browse folder dialog.
-void BrowseFolder( void )
+string BrowseFolder(string saved_path)
 {
     TCHAR path[MAX_PATH];
+
+    const char * path_param = saved_path.c_str();
+
     BROWSEINFO bi = { 0 };
-    bi.lpszTitle = ("All Folders Automatically Recursed.");
+    bi.lpszTitle  = ("Browse for folder...");
+    bi.ulFlags    = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+    //bi.lpfn       = BrowseCallbackProc;
+    bi.lParam     = (LPARAM) path_param;
+
     LPITEMIDLIST pidl = SHBrowseForFolder ( &bi );
 
     if ( pidl != 0 )
     {
-        // get the name of the folder and put it in path
+        //get the name of the folder and put it in path
         SHGetPathFromIDList ( pidl, path );
 
-        //Set the current directory to path
-        SetCurrentDirectory ( path );
-
-        //Begin the search
-        SearchFolder( path );
-
-        // free memory used
+        //free memory used
         IMalloc * imalloc = 0;
         if ( SUCCEEDED( SHGetMalloc ( &imalloc )) )
         {
             imalloc->Free ( pidl );
             imalloc->Release ( );
         }
+
+        return path;
     }
-}//BROWSE FOLDER
+
+    return "";
+}
 
 int WINAPI WinMain (HINSTANCE hThisInstance,
                      HINSTANCE hPrevInstance,
@@ -155,9 +104,9 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
         "BUTTON",           //class name
         "beep",    //Text title
         WS_CHILD | WS_VISIBLE/*|BS_CHECKBOX|BS_RADIOBUTTON|BS_GROUPBOX*/,
-        100,
-        100,
-        150,
+        10,
+        10,
+        400,
         30,
         hwnd,               //Main window handle
         (HMENU)BT1_ID,      //control ID
@@ -199,14 +148,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             {
                 case BT1_ID://Control ID
                     //MessageBox( hwnd, "Nacisn¹³eœ przycisk!", "Ha!", MB_ICONINFORMATION );//pop-up window
-                   if(BT1_text_stat){
-                        BrowseFolder();
+                   //if(BT1_text_stat){
+                        SetWindowTextA(hwnd_bt,(LPCSTR) BrowseFolder("c:\\").c_str());
                         //SetWindowTextA(hwnd_bt, "przycisk");
                         //BT1_text_stat = 0;
-                    }else{
+                    //}else{
                         //SetWindowTextA(hwnd_bt, "beep");
                         //BT1_text_stat = 1;
-                    }
+                    //}
                     break;
             }
             break;
