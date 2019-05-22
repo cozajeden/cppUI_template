@@ -1,8 +1,11 @@
 # depslib dependency file v1.0
-1558543720 source:y:\projekty\test\main.cpp
+1558544334 source:y:\projekty\test\main.cpp
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
 	<string>
 	<shlobj.h>
+	"Dialogs.h"
+
+1558544378 y:\projekty\test\dialogs.h
 

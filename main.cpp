@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <string>
 #include <shlobj.h>
+#include "Dialogs.h"
 using namespace std;
 bool BT1_text_stat = 1;
 /*  Declare Windows procedure  */
@@ -17,38 +18,7 @@ LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 
-string BrowseFolder(string saved_path)
-{
-    TCHAR path[MAX_PATH];
 
-    const char * path_param = saved_path.c_str();
-
-    BROWSEINFO bi = { 0 };
-    bi.lpszTitle  = ("Browse for folder...");
-    bi.ulFlags    = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
-    //bi.lpfn       = BrowseCallbackProc;
-    bi.lParam     = (LPARAM) path_param;
-
-    LPITEMIDLIST pidl = SHBrowseForFolder ( &bi );
-
-    if ( pidl != 0 )
-    {
-        //get the name of the folder and put it in path
-        SHGetPathFromIDList ( pidl, path );
-
-        //free memory used
-        IMalloc * imalloc = 0;
-        if ( SUCCEEDED( SHGetMalloc ( &imalloc )) )
-        {
-            imalloc->Free ( pidl );
-            imalloc->Release ( );
-        }
-
-        return path;
-    }
-
-    return "";
-}
 
 int WINAPI WinMain (HINSTANCE hThisInstance,
                      HINSTANCE hPrevInstance,
