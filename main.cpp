@@ -117,9 +117,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             switch(wParam)
             {
                 case BT1_ID://Control ID
+                    //ShellExecute(0, 0, "http://www.facebook.com", 0, 0 , SW_SHOW );
                     //MessageBox( hwnd, "Nacisn¹³eœ przycisk!", "Ha!", MB_ICONINFORMATION );//pop-up window
                    //if(BT1_text_stat){
-                        SetWindowTextA(hwnd_bt,(LPCSTR) BrowseFolder("c:\\").c_str());
                         //SetWindowTextA(hwnd_bt, "przycisk");
                         //BT1_text_stat = 0;
                     //}else{
