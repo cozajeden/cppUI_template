@@ -1,7 +1,6 @@
 #ifndef FILECONTAINER_H
 #define FILECONTAINER_H
 #include <iostream>
-#include <string>
 #include <dirent.h>
 #include <stdio.h>
 #include <fstream>

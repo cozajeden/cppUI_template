@@ -4,6 +4,7 @@
 #include <string>
 #include <stdio.h>
 #include <fstream>
+#include <windows.h>
 
 using namespace std;
 
@@ -16,8 +17,8 @@ class configuration
         string scanDir;
         string backupDir;
         int scanInterval;
-        bool setAutostart;
         bool autoscanOnOff;
+        void initialize(HWND hwnd);
         configuration();
         virtual ~configuration();
 

@@ -12,7 +12,6 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     HWND hwnd;               /* This is the handle for our window */
     MSG messages;            /* Here messages to the application are saved */
     WNDCLASSEX wincl;        /* Data structure for the windowclass */
-
     /* The Window structure */
     wincl.hInstance = hThisInstance;
     wincl.lpszClassName = szClassName;
@@ -52,6 +51,8 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
            hThisInstance,       /* Program Instance handler */
            NULL                 /* No Window Creation data */
            );
+
+    conf.initialize(hwnd);
 
     hwnd_bt = CreateWindowEx(
         0,
@@ -118,7 +119,6 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             {
                 case BT1_ID://Control ID
                     openURL(hwnd_lb);
-                    //MessageBox( hwnd, "Nacisn¹³eœ przycisk!", "Ha!", MB_ICONINFORMATION );//pop-up window
                    if(BT1_text_stat){
                         SetWindowTextA(hwnd_bt, "przycisk");
                         BT1_text_stat = 0;

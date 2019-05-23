@@ -1,4 +1,4 @@
-#include "SearchDir.h"
+#include "../include/SearchDir.h"
 SearchDir::SearchDir(string name, string dot)
 {
     directory = name;

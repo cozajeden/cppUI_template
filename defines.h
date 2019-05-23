@@ -15,4 +15,5 @@ bool BT1_text_stat = 1;
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 HWND hwnd_bt;
 HWND hwnd_lb;
+configuration conf;
 #endif // DEFINES_H_INCLUDED

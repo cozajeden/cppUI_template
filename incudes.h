@@ -8,6 +8,9 @@ using namespace std;
 #include <string>
 #include <shlobj.h>
 #include "Dialogs.h"
+#include "include/configuration.h"
+#include "include/fileContainer.h"
+#include "include/SearchDir.h"
 #include "defines.h"
 
 #endif // INCUDES_H_INCLUDED

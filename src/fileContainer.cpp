@@ -1,4 +1,4 @@
-#include "fileContainer.h"
+#include "../include/fileContainer.h"
 
 fileContainer::fileContainer(){
     pointer = 0;
