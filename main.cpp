@@ -4,6 +4,7 @@
     #define UNICODE
 #endif
 #define BT1_ID 501
+#define LB1_ID 502
 #include <tchar.h>
 #include <windows.h>
 #include <stdio.h>
@@ -15,6 +16,8 @@ bool BT1_text_stat = 1;
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
     HWND hwnd_bt;
+    HWND hwnd_lb;
+    string adressUrl = "http://www.google.com";
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 
@@ -57,7 +60,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     hwnd = CreateWindowEx (
            0,                   /* Extended possibilites for variation */
            szClassName,         /* Classname */
-           _T("Code::Blocks Template Windows App"),       /* Title Text */
+           _T("TEST"),       /* Title Text */
            WS_OVERLAPPEDWINDOW, /* default window */
            CW_USEDEFAULT,       /* Windows decides the position */
            CW_USEDEFAULT,       /* where the window ends up on the screen */
@@ -80,6 +83,20 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
         30,
         hwnd,               //Main window handle
         (HMENU)BT1_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_lb = CreateWindowEx(
+        WS_EX_CLIENTEDGE,
+        "EDIT",           //class name
+        adressUrl.c_str(),    //Text title
+        WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON/*| WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | BS_CHECKBOX | BS_RADIOBUTTON | BS_GROUPBOX*/,
+        10,
+        40,
+        400,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)LB1_ID,      //control ID
         hThisInstance,      //Program instance handler
         NULL );
 
@@ -113,19 +130,24 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
             break;
 
+
         case WM_COMMAND:
+
             switch(wParam)
             {
                 case BT1_ID://Control ID
-                    //ShellExecute(0, 0, "http://www.facebook.com", 0, 0 , SW_SHOW );
+                    DWORD dlugosc = GetWindowTextLength( hwnd_lb );
+                    LPSTR Bufor =( LPSTR ) GlobalAlloc( GPTR, dlugosc + 1 );
+                    GetWindowText( hwnd_lb, Bufor, dlugosc + 1 );
+                    ShellExecute(0, 0, Bufor, 0, 0 , SW_SHOW );
                     //MessageBox( hwnd, "Nacisn¹³eœ przycisk!", "Ha!", MB_ICONINFORMATION );//pop-up window
-                   //if(BT1_text_stat){
-                        //SetWindowTextA(hwnd_bt, "przycisk");
-                        //BT1_text_stat = 0;
-                    //}else{
-                        //SetWindowTextA(hwnd_bt, "beep");
-                        //BT1_text_stat = 1;
-                    //}
+                   if(BT1_text_stat){
+                        SetWindowTextA(hwnd_bt, "przycisk");
+                        BT1_text_stat = 0;
+                    }else{
+                        SetWindowTextA(hwnd_bt, "beep");
+                        BT1_text_stat = 1;
+                    }
                     break;
             }
             break;
