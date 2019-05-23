@@ -38,7 +38,15 @@
 			<Add library="comctl32" />
 		</Linker>
 		<Unit filename="Dialogs.h" />
+		<Unit filename="defines.h" />
+		<Unit filename="include/SearchDir.h" />
+		<Unit filename="include/configuration.h" />
+		<Unit filename="include/fileContainer.h" />
+		<Unit filename="incudes.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/SearchDir.cpp" />
+		<Unit filename="src/configuration.cpp" />
+		<Unit filename="src/fileContainer.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
