@@ -1,8 +1,6 @@
 #include "incudes.h"
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
-    HWND hwnd_bt;
-    HWND hwnd_lb;
 
 
 
@@ -119,10 +117,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             switch(wParam)
             {
                 case BT1_ID://Control ID
-                    DWORD dlugosc = GetWindowTextLength( hwnd_lb );
-                    LPSTR Bufor =( LPSTR ) GlobalAlloc( GPTR, dlugosc + 1 );
-                    GetWindowText( hwnd_lb, Bufor, dlugosc + 1 );
-                    ShellExecute(0, 0, Bufor, 0, 0 , SW_SHOW );
+                    openURL(hwnd_lb);
                     //MessageBox( hwnd, "Nacisn¹³eœ przycisk!", "Ha!", MB_ICONINFORMATION );//pop-up window
                    if(BT1_text_stat){
                         SetWindowTextA(hwnd_bt, "przycisk");

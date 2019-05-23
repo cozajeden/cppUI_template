@@ -13,5 +13,6 @@ string adressUrl = "http://www.google.com";
 bool BT1_text_stat = 1;
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
-
+HWND hwnd_bt;
+HWND hwnd_lb;
 #endif // DEFINES_H_INCLUDED

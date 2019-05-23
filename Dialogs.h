@@ -35,6 +35,15 @@ string BrowseFolder(string saved_path)
 
     return "";
 }
-
-
+bool openURL(HWND hwnd){
+    try{
+    DWORD dlugosc = GetWindowTextLength( hwnd );
+    LPSTR Bufor =( LPSTR ) GlobalAlloc( GPTR, dlugosc + 1 );
+    GetWindowText( hwnd, Bufor, dlugosc + 1 );
+    if((int)ShellExecute(0, 0, Bufor, 0, 0 , SW_SHOW ) < 33)
+    throw "Nie mo¿na za³adowaæ URL";
+    }catch(LPCSTR e){
+        MessageBox( hwnd, e, "Ha!", MB_ICONINFORMATION );//pop-up window
+    }
+}
 #endif // DIALOGS_H_INCLUDED
