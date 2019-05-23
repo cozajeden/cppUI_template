@@ -1,7 +1,0 @@
-#ifndef WINPROCCB_H_INCLUDED
-#define WINPROCCB_H_INCLUDED
-#include "incudes.h"
-LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
-
-
-#endif // WINPROCCB_H_INCLUDED
