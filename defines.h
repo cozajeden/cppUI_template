@@ -16,4 +16,6 @@ TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 HWND hwnd_bt;
 HWND hwnd_lb;
 configuration conf;
+fileContainer fContainer;
+SearchDir sDirectory(".\\check",".nc");
 #endif // DEFINES_H_INCLUDED

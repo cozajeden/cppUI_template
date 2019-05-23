@@ -12,14 +12,14 @@ void fileContainer::saveFile(string path, string name){
     location += "\\" + name;
     ofstream ofile(location.c_str(),ios::out | ios::trunc | ios::binary);
     for(int i = 0; i < pointer; i++)
-        ofile << text[i] << endl;
+        ofile << text[i] << "\r\n";
     ofile.close();
 
 }
 
 void fileContainer::Show(){
         for(int i = 0; i < pointer; i++)
-            cout << text[i] << endl;
+            cout << text[i] << "\r\n";
 }
 
 void fileContainer::fillContainer(){

@@ -118,14 +118,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             switch(wParam)
             {
                 case BT1_ID://Control ID
-                    openURL(hwnd_lb);
+                    /*openURL(hwnd_lb);
                    if(BT1_text_stat){
                         SetWindowTextA(hwnd_bt, "przycisk");
                         BT1_text_stat = 0;
                     }else{
                         SetWindowTextA(hwnd_bt, "beep");
                         BT1_text_stat = 1;
-                    }
+                    }*/
                     break;
             }
             break;
