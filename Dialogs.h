@@ -2,7 +2,7 @@
 #define DIALOGS_H_INCLUDED
 //#include <string>
 //#include <shlobj.h>
-using namespace std;
+//using namespace std;
 string BrowseFolder(string saved_path)
 {
     TCHAR path[MAX_PATH];

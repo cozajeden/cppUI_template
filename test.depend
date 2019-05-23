@@ -9,13 +9,21 @@
 
 1558544378 y:\projekty\test\dialogs.h
 
-1558568866 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
+1558603931 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
+	"incudes.h"
+
+1558602607 c:\users\cozajeden\documents\github\cppui_template\dialogs.h
+
+1558602533 source:c:\users\cozajeden\documents\github\cppui_template\winproccb.cpp
+
+1558602607 c:\users\cozajeden\documents\github\cppui_template\incudes.h
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
 	<string>
 	<shlobj.h>
 	"Dialogs.h"
+	"defines.h"
 
-1558561676 c:\users\cozajeden\documents\github\cppui_template\dialogs.h
+1558603430 c:\users\cozajeden\documents\github\cppui_template\defines.h
 

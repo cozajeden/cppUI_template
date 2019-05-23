@@ -1,12 +1,15 @@
-#include "incudes.h"
-/*  Declare Windows procedure  */
-LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
-    HWND hwnd_bt;
-    HWND hwnd_lb;
+#include "MainLoop.h"
+MainLoop::MainLoop()
+{
+    //ctor
+}
 
+MainLoop::~MainLoop()
+{
+    //dtor
+}
 
-
-int WINAPI WinMain (HINSTANCE hThisInstance,
+int WINAPI MainLoop::WinMain (HINSTANCE hThisInstance,
                      HINSTANCE hPrevInstance,
                      LPSTR lpszArgument,
                      int nCmdShow)
@@ -97,48 +100,4 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
     /* The program return-value is 0 - The value that PostQuitMessage() gave */
     return messages.wParam;
-}
-
-
-/*  This function is called by the Windows function DispatchMessage()  */
-
-LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    switch (message)                  /* handle the messages */
-    {
-        case WM_CREATE:
-            break;
-
-        case WM_DESTROY:
-            PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
-            break;
-
-
-        case WM_COMMAND:
-
-            switch(wParam)
-            {
-                case BT1_ID://Control ID
-                    DWORD dlugosc = GetWindowTextLength( hwnd_lb );
-                    LPSTR Bufor =( LPSTR ) GlobalAlloc( GPTR, dlugosc + 1 );
-                    GetWindowText( hwnd_lb, Bufor, dlugosc + 1 );
-                    ShellExecute(0, 0, Bufor, 0, 0 , SW_SHOW );
-                    //MessageBox( hwnd, "Nacisn¹³eœ przycisk!", "Ha!", MB_ICONINFORMATION );//pop-up window
-                   if(BT1_text_stat){
-                        SetWindowTextA(hwnd_bt, "przycisk");
-                        BT1_text_stat = 0;
-                    }else{
-                        SetWindowTextA(hwnd_bt, "beep");
-                        BT1_text_stat = 1;
-                    }
-                    break;
-            }
-            break;
-
-
-        default:                      /* for messages that we don't deal with */
-            return DefWindowProc (hwnd, message, wParam, lParam);
-    }
-
-    return 0;
 }
