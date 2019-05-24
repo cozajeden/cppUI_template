@@ -82,20 +82,6 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
         hThisInstance,      //Program instance handler
         NULL );
 
-    hwnd_cb = CreateWindowEx(
-              WS_EX_CLIENTEDGE,
-              "COMBOBOX",
-              NULL,
-              WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST ,
-              10,
-              70,
-              150,
-              200,
-              hwnd,
-              (HMENU)CB1_ID,
-              hThisInstance,
-              NULL );
-
     /* Make the window visible on the screen */
     ShowWindow (hwnd, nCmdShow);
 
@@ -120,8 +106,6 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     switch (message)                  /* handle the messages */
     {
         case WM_CREATE:
-
-            sDirectory.Search(sDirectory.directory);
             break;
 
         case WM_DESTROY:
@@ -134,9 +118,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             switch(wParam)
             {
                 case BT1_ID://Control ID
-                    for(int i = 0; i < sDirectory.pointer; i++)
-                        SendMessage( hwnd_cb, CB_ADDSTRING, 0,( LPARAM ) sDirectory.fContainer[i].fName.c_str() );
-                   /*openURL(hwnd_lb);
+                    /*openURL(hwnd_lb);
                    if(BT1_text_stat){
                         SetWindowTextA(hwnd_bt, "przycisk");
                         BT1_text_stat = 0;

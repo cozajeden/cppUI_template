@@ -8,7 +8,6 @@
 #endif
 #define BT1_ID 501
 #define LB1_ID 502
-#define CB1_ID 503
 
 string adressUrl = "http://www.google.com";
 bool BT1_text_stat = 1;
@@ -16,7 +15,7 @@ bool BT1_text_stat = 1;
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 HWND hwnd_bt;
 HWND hwnd_lb;
-HWND hwnd_cb;
 configuration conf;
+fileContainer fContainer;
 SearchDir sDirectory(".\\check",".nc");
 #endif // DEFINES_H_INCLUDED
