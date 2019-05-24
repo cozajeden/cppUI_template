@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1558642848 source:y:\projekty\test\main.cpp
+1558727514 source:y:\projekty\test\main.cpp
 	"incudes.h"
 
 1558623789 y:\projekty\test\dialogs.h
@@ -34,7 +34,7 @@
 	"include/SearchDir.h"
 	"defines.h"
 
-1558643219 y:\projekty\test\defines.h
+1558727210 y:\projekty\test\defines.h
 
 1558626862 y:\projekty\test\include\configuration.h
 	<iostream>
