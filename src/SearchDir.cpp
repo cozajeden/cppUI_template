@@ -39,11 +39,11 @@ void SearchDir::Search(string path){
             string temp;
             temp += path + "\\" + ent->d_name;
 
-            if(temp.find_first_of(".") == -1)
-                Search(temp);
-            else if(CheckExtension(temp)){
+
+             if(CheckExtension(temp)){
                 addItem(path, ent->d_name);
-            }
+            }else if(temp.find("..") == -1)
+                Search(temp);
         }
     } else {
         /* could not open directory */
