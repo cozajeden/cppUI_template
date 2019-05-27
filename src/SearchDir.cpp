@@ -42,7 +42,7 @@ void SearchDir::Search(string path){
 
              if(CheckExtension(temp)){
                 addItem(path, ent->d_name);
-            }else if(temp.find("..") == -1)
+            }else if(temp.find_first_of(".") == -1)
                 Search(temp);
         }
     } else {

@@ -1,7 +1,7 @@
 #include "incudes.h"
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
-
+HWND hwnd2;
 
 
 int WINAPI WinMain (HINSTANCE hThisInstance,
@@ -10,6 +10,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
                      int nCmdShow)
 {
     HWND hwnd;               /* This is the handle for our window */
+                   /* This is the handle for our window */
     MSG messages;            /* Here messages to the application are saved */
     WNDCLASSEX wincl;        /* Data structure for the windowclass */
     /* The Window structure */
@@ -52,7 +53,23 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
            NULL                 /* No Window Creation data */
            );
 
+    hwnd2 = CreateWindowEx (
+           0,                   /* Extended possibilites for variation */
+           szClassName,         /* Classname */
+           _T("TEST"),          /* Title Text */
+           WM_MDICREATE | WS_EX_MDICHILD | WS_CLIPCHILDREN , /* default window */
+           CW_USEDEFAULT,       /* Windows decides the position */
+           CW_USEDEFAULT,       /* where the window ends up on the screen */
+           544,                 /* The programs width */
+           375,                 /* and height in pixels */
+           NULL,                /* The window is a child-window to desktop */
+           NULL,                /* No menu */
+           hThisInstance,       /* Program Instance handler */
+           NULL                 /* No Window Creation data */
+           );
+
     conf.initialize(hwnd);
+    conf.initialize(hwnd2);
 
     hwnd_bt = CreateWindowEx(
         0,
@@ -98,6 +115,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
     /* Make the window visible on the screen */
     ShowWindow (hwnd, nCmdShow);
+    ShowWindow (hwnd2, nCmdShow);
 
     /* Run the message loop. It will run until GetMessage() returns 0 */
     while (GetMessage (&messages, NULL, 0, 0))
@@ -120,7 +138,23 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     switch (message)                  /* handle the messages */
     {
         case WM_CREATE:
+                /*{
+        CLIENTCREATESTRUCT ccs;
 
+        // Retrieve the handle to the window menu and assign the
+        // first child window identifier.
+
+        ccs.hWindowMenu = GetSubMenu(GetMenu(hwnd), NULL);
+        ccs.idFirstChild = 4100;
+
+        // Create the MDI client window.
+
+        hwnd2 = CreateWindow( "MDICLIENT", (LPCTSTR) NULL,
+            WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL,
+            0, 0, 0, 0, hwnd, (HMENU) 0xCAC, GetModuleHandle(NULL), (LPSTR) &ccs);
+
+        ShowWindow(hwnd2, SW_SHOW);
+    }*/
             sDirectory.Search(sDirectory.directory);
             break;
 

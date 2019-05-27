@@ -7,6 +7,7 @@ using namespace std;
 #include <stdio.h>
 #include <string>
 #include <shlobj.h>
+#include <winuser.h>
 #include "Dialogs.h"
 #include "include/configuration.h"
 #include "include/fileContainer.h"

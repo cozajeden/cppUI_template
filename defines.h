@@ -18,5 +18,5 @@ HWND hwnd_bt;
 HWND hwnd_lb;
 HWND hwnd_cb;
 configuration conf;
-SearchDir sDirectory(".\\check",".nc");
+SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
 #endif // DEFINES_H_INCLUDED
