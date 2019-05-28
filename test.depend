@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1558961349 source:y:\projekty\test\main.cpp
+1559045566 source:y:\projekty\test\main.cpp
 	"incudes.h"
 
-1558623789 y:\projekty\test\dialogs.h
+1559044262 y:\projekty\test\dialogs.h
 
 1558800485 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
 	"incudes.h"
@@ -38,7 +38,7 @@
 	"include/SearchDir.h"
 	"defines.h"
 
-1558961389 y:\projekty\test\defines.h
+1559045494 y:\projekty\test\defines.h
 
 1558626862 y:\projekty\test\include\configuration.h
 	<iostream>

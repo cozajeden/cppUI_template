@@ -9,8 +9,6 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
                      LPSTR lpszArgument,
                      int nCmdShow)
 {
-    HWND hwnd;               /* This is the handle for our window */
-                   /* This is the handle for our window */
     MSG messages;            /* Here messages to the application are saved */
     WNDCLASSEX wincl;        /* Data structure for the windowclass */
     /* The Window structure */
@@ -45,57 +43,182 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
            WS_OVERLAPPEDWINDOW, /* default window */
            CW_USEDEFAULT,       /* Windows decides the position */
            CW_USEDEFAULT,       /* where the window ends up on the screen */
-           544,                 /* The programs width */
-           375,                 /* and height in pixels */
+           100,                 /* The programs width */
+           100,                 /* and height in pixels */
            HWND_DESKTOP,        /* The window is a child-window to desktop */
            NULL,                /* No menu */
            hThisInstance,       /* Program Instance handler */
            NULL                 /* No Window Creation data */
            );
 
-    hwnd2 = CreateWindowEx (
-           0,                   /* Extended possibilites for variation */
-           szClassName,         /* Classname */
-           _T("TEST"),          /* Title Text */
-           WM_MDICREATE | WS_EX_MDICHILD | WS_CLIPCHILDREN , /* default window */
-           CW_USEDEFAULT,       /* Windows decides the position */
-           CW_USEDEFAULT,       /* where the window ends up on the screen */
-           544,                 /* The programs width */
-           375,                 /* and height in pixels */
-           NULL,                /* The window is a child-window to desktop */
-           NULL,                /* No menu */
-           hThisInstance,       /* Program Instance handler */
-           NULL                 /* No Window Creation data */
-           );
 
-    conf.initialize(hwnd);
-    conf.initialize(hwnd2);
+
 
     hwnd_bt = CreateWindowEx(
         0,
         "BUTTON",           //class name
-        "beep",    //Text title
-        WS_CHILD | WS_VISIBLE/*|BS_CHECKBOX|BS_RADIOBUTTON|BS_GROUPBOX*/,
-        10,
-        10,
-        400,
+        "LOGIN",    //Text title
+        WS_CHILD | WS_VISIBLE,
+        0,
+        30,
+        100,
         30,
         hwnd,               //Main window handle
         (HMENU)BT1_ID,      //control ID
         hThisInstance,      //Program instance handler
         NULL );
 
+    hwnd_bt2 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "Zmieñ has³o",    //Text title
+        WS_CHILD,
+        0,
+        0,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT2_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_bt3 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "MANUAL",    //Text title
+        WS_CHILD,
+        0,
+        20,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT3_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_bt4 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "ZAPISZ",    //Text title
+        WS_CHILD,
+        0,
+        130,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT4_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_bt5 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "Œcie¿ka",    //Text title
+        WS_CHILD,
+        0,
+        160,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT5_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_bt6 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "Zarz¹dzaj",    //Text title
+        WS_CHILD,
+        0,
+        190,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT6_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_bt7 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "Zapisz zmiany",    //Text title
+        WS_CHILD,
+        0,
+        220,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT7_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_bt8 = CreateWindowEx(
+        0,
+        "BUTTON",           //class name
+        "WyjdŸ",    //Text title
+        WS_CHILD,
+        0,
+        250,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)BT8_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_lb2 = CreateWindowEx(
+        0,
+        "STATIC",           //class name
+        "Tryb:",    //Text title
+        WS_CHILD | SS_CENTER,
+        0,
+        0,
+        100,
+        20,
+        hwnd,               //Main window handle
+        (HMENU)LB2_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_lb3 = CreateWindowEx(
+        0,
+        "STATIC",           //class name
+        "Interwa³[s]:",    //Text title
+        WS_CHILD | SS_CENTER,
+        0,
+        80,
+        100,
+        20,
+        hwnd,               //Main window handle
+        (HMENU)LB3_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
     hwnd_lb = CreateWindowEx(
         WS_EX_CLIENTEDGE,
         "EDIT",           //class name
-        adressUrl.c_str(),    //Text title
-        WS_CHILD | WS_VISIBLE | BS_DEFPUSHBUTTON/*| WS_VSCROLL | ES_MULTILINE | ES_AUTOVSCROLL | BS_CHECKBOX | BS_RADIOBUTTON | BS_GROUPBOX*/,
-        10,
-        40,
-        400,
+        NULL,    //Text title
+        WS_CHILD | WS_VISIBLE | ES_PASSWORD,
+        0,
+        0,
+        100,
         30,
         hwnd,               //Main window handle
         (HMENU)LB1_ID,      //control ID
+        hThisInstance,      //Program instance handler
+        NULL );
+
+    hwnd_lb4 = CreateWindowEx(
+        WS_EX_CLIENTEDGE,
+        "EDIT",           //class name
+        NULL,    //Text title
+        WS_CHILD,
+        0,
+        100,
+        100,
+        30,
+        hwnd,               //Main window handle
+        (HMENU)LB4_ID,      //control ID
         hThisInstance,      //Program instance handler
         NULL );
 
@@ -103,7 +226,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
               WS_EX_CLIENTEDGE,
               "COMBOBOX",
               NULL,
-              WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | ES_AUTOVSCROLL,
+              WS_CHILD | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | ES_AUTOVSCROLL,
               10,
               70,
               500,
@@ -113,9 +236,8 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
               hThisInstance,
               NULL );
 
-    /* Make the window visible on the screen */
+    /* Make the window v//Set Interwalisible on the screen */
     ShowWindow (hwnd, nCmdShow);
-    ShowWindow (hwnd2, nCmdShow);
 
     /* Run the message loop. It will run until GetMessage() returns 0 */
     while (GetMessage (&messages, NULL, 0, 0))
@@ -138,47 +260,67 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     switch (message)                  /* handle the messages */
     {
         case WM_CREATE:
-                /*{
-        CLIENTCREATESTRUCT ccs;
-
-        // Retrieve the handle to the window menu and assign the
-        // first child window identifier.
-
-        ccs.hWindowMenu = GetSubMenu(GetMenu(hwnd), NULL);
-        ccs.idFirstChild = 4100;
-
-        // Create the MDI client window.
-
-        hwnd2 = CreateWindow( "MDICLIENT", (LPCTSTR) NULL,
-            WS_CHILD | WS_CLIPCHILDREN | WS_VSCROLL | WS_HSCROLL,
-            0, 0, 0, 0, hwnd, (HMENU) 0xCAC, GetModuleHandle(NULL), (LPSTR) &ccs);
-
-        ShowWindow(hwnd2, SW_SHOW);
-    }*/
-            sDirectory.Search(sDirectory.directory);
-            break;
+            {
+                conf.initialize(hwnd);
+                sDirectory.Search(sDirectory.directory);
+                break;
+            }
 
         case WM_DESTROY:
-            PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
-            break;
+            {
+                PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
+                break;
+            }
 
 
         case WM_COMMAND:
 
             switch(wParam)
             {
-                case BT1_ID://Control ID
-                    for(int i = 0; i < sDirectory.pointer; i++)
-                        SendMessage( hwnd_cb, CB_ADDSTRING, 0,( LPARAM )(sDirectory.fContainer[i].fPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
-                   /*openURL(hwnd_lb);
-                   if(BT1_text_stat){
-                        SetWindowTextA(hwnd_bt, "przycisk");
-                        BT1_text_stat = 0;
-                    }else{
-                        SetWindowTextA(hwnd_bt, "beep");
-                        BT1_text_stat = 1;
-                    }*/
-                    break;
+                case BT1_ID:
+                    {
+                            //if(GetWindowTextString(hwnd_lb) != def_pass)
+                            //    MessageBox( hwnd, "Nieprawid³owe Has³o", "Ha!", MB_ICONINFORMATION );
+                            //else{
+                                HWND hLogin[] = {hwnd_bt, hwnd_lb};
+                                HWND hMain[] = {hwnd_bt2, hwnd_lb2, hwnd_bt3, hwnd_lb3, hwnd_lb4, hwnd_bt4, hwnd_bt5, hwnd_bt6, hwnd_bt7, hwnd_bt8};
+                                ShowObjects(hMain,10,hLogin,2);
+                                SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 400, 400, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
+                            //}
+                        //for(int i = 0; i < sDirectory.pointer; i++)
+                            //SendMessage( hwnd_cb, CB_ADDSTRING, 0,( LPARAM )(sDirectory.fContainer[i].fPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
+                        break;
+                    }
+                case BT2_ID:
+                    {
+                        break;
+                    }
+                case BT3_ID:
+                    {
+                        if(GetWindowTextString(hwnd_bt3)==(string)"MANUAL"){
+                            conf.autoscanOnOff = true;
+                            SetWindowTextA(hwnd_bt3,"AUTO");
+                        }else{
+                            conf.autoscanOnOff = false;
+                            SetWindowTextA(hwnd_bt3,"MANUAL");
+                        }
+                        break;
+                    }
+                case BT4_ID:
+                    {
+                        if(is_Number(GetWindowTextString(hwnd_lb4)))
+                            conf.scanInterval = atoi(GetWindowTextString(hwnd_lb4));
+                        else
+                            MessageBox( hwnd, "To nie jest liczba. Spróbuj ponownie.", "Ha!", MB_ICONINFORMATION );
+                        break;
+                    }
+                case BT5_ID:
+                    {
+
+                            conf.scanDir = BrowseFolder(conf.scanDir);
+
+                        break;
+                    }
             }
             break;
 

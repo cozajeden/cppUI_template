@@ -35,15 +35,37 @@ string BrowseFolder(string saved_path)
 
     return "";
 }
-bool openURL(HWND hwnd){
-    try{
+
+LPSTR GetWindowTextString(HWND hwnd)
+{
     DWORD dlugosc = GetWindowTextLength( hwnd );
     LPSTR Bufor =( LPSTR ) GlobalAlloc( GPTR, dlugosc + 1 );
     GetWindowText( hwnd, Bufor, dlugosc + 1 );
-    if((int)ShellExecute(0, 0, Bufor, 0, 0 , SW_SHOW ) < 33)
+    return Bufor;
+}
+
+bool openURL(HWND hwnd){
+    try{
+    if((int)ShellExecute(0, 0, GetWindowTextString(hwnd), 0, 0 , SW_SHOW ) < 33)
     throw "Nie mo¿na za³adowaæ URL";
     }catch(LPCSTR e){
         MessageBox( hwnd, e, "Ha!", MB_ICONINFORMATION );//pop-up window
     }
+}
+
+bool ShowObjects(HWND IDS[], int lnS, HWND IDH[], int lnH)//show IDS, hide IDH
+{
+    for(int i = 0; i < lnS; i++)
+    ShowWindow(IDS[i],SW_SHOW);
+    for(int i = 0; i < lnH; i++)
+    ShowWindow(IDH[i],SW_HIDE);
+    return true;
+}
+
+bool is_Number(const string& s)
+{
+    std::string::const_iterator it = s.begin();
+    while (it != s.end() && std::isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
 }
 #endif // DIALOGS_H_INCLUDED
