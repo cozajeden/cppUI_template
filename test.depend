@@ -4,26 +4,28 @@
 
 1559044262 y:\projekty\test\dialogs.h
 
-1558800485 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
+1559071760 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
 	"incudes.h"
+	"controls.h"
 
-1558695592 c:\users\cozajeden\documents\github\cppui_template\dialogs.h
+1559062994 c:\users\cozajeden\documents\github\cppui_template\dialogs.h
 
 1558602533 source:c:\users\cozajeden\documents\github\cppui_template\winproccb.cpp
 
-1558695592 c:\users\cozajeden\documents\github\cppui_template\incudes.h
+1559062994 c:\users\cozajeden\documents\github\cppui_template\incudes.h
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
 	<string>
 	<shlobj.h>
+	<winuser.h>
 	"Dialogs.h"
 	"include/configuration.h"
 	"include/fileContainer.h"
 	"include/SearchDir.h"
 	"defines.h"
 
-1558695592 c:\users\cozajeden\documents\github\cppui_template\defines.h
+1559071903 c:\users\cozajeden\documents\github\cppui_template\defines.h
 
 1558960691 y:\projekty\test\incudes.h
 	<tchar.h>
@@ -69,32 +71,34 @@
 1558643061 source:y:\projekty\test\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
-1558695592 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
+1559062994 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
 	<iostream>
 	<string>
 	<stdio.h>
 	<fstream>
 	<windows.h>
 
-1558695592 c:\users\cozajeden\documents\github\cppui_template\include\filecontainer.h
+1559062994 c:\users\cozajeden\documents\github\cppui_template\include\filecontainer.h
 	<iostream>
 	<dirent.h>
 	<stdio.h>
 	<fstream>
 
-1558695592 c:\users\cozajeden\documents\github\cppui_template\include\searchdir.h
+1559062994 c:\users\cozajeden\documents\github\cppui_template\include\searchdir.h
 	<iostream>
 	<string>
 	<dirent.h>
 	<stdio.h>
 	"fileContainer.h"
 
-1558695592 source:c:\users\cozajeden\documents\github\cppui_template\src\configuration.cpp
+1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\configuration.cpp
 	"../include/configuration.h"
 
-1558695592 source:c:\users\cozajeden\documents\github\cppui_template\src\filecontainer.cpp
+1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
-1558800609 source:c:\users\cozajeden\documents\github\cppui_template\src\searchdir.cpp
+1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\searchdir.cpp
 	"../include/SearchDir.h"
+
+1559071895 c:\users\cozajeden\documents\github\cppui_template\controls.h
 
