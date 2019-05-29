@@ -76,8 +76,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                             //    MessageBox( hwnd, "Nieprawidlowe Haslo", "Ha!", MB_ICONINFORMATION );
                             //else{
                                 HWND hLogin[] = {hLoginBt, hMainPassEd};
-                                HWND hMain[] = {hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
-                                ShowObjects(hMain,10,hLogin,2);
+                                HWND hMain[] = {hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                                ShowObjects(hMain,11,hLogin,2);
                                 SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 400, 400, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
                         break;
                     }

@@ -109,6 +109,20 @@ hExitMenuBt = CreateWindowEx(
     hThisInstance,
     NULL );
 
+hMenuScanBt = CreateWindowEx(
+    0,
+    "BUTTON",
+    "Skanuj",
+    WS_CHILD,
+    0,
+    280,
+    100,
+    30,
+    hwnd,
+    (HMENU)hMenuScanBt_ID,
+    hThisInstance,
+    NULL );
+
 hMenuModeSt = CreateWindowEx(
     0,
     "STATIC",

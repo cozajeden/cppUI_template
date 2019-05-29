@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1559045566 source:y:\projekty\test\main.cpp
+1559108045 source:y:\projekty\test\main.cpp
 	"incudes.h"
+	"controls.h"
 
-1559044262 y:\projekty\test\dialogs.h
+1559107543 y:\projekty\test\dialogs.h
 
 1559073363 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
 	"incudes.h"
@@ -26,22 +27,21 @@
 
 1559071903 c:\users\cozajeden\documents\github\cppui_template\defines.h
 
-1558960691 y:\projekty\test\incudes.h
+1559107543 y:\projekty\test\incudes.h
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
 	<string>
 	<shlobj.h>
-	<winuser.h>
 	"Dialogs.h"
 	"include/configuration.h"
 	"include/fileContainer.h"
 	"include/SearchDir.h"
 	"defines.h"
 
-1559045494 y:\projekty\test\defines.h
+1559108144 y:\projekty\test\defines.h
 
-1558626862 y:\projekty\test\include\configuration.h
+1559107543 y:\projekty\test\include\configuration.h
 	<iostream>
 	<string>
 	<stdio.h>
@@ -61,7 +61,7 @@
 	<stdio.h>
 	"fileContainer.h"
 
-1558643079 source:y:\projekty\test\src\configuration.cpp
+1559107544 source:y:\projekty\test\src\configuration.cpp
 	"../include/configuration.h"
 
 1558946029 source:y:\projekty\test\src\searchdir.cpp
@@ -100,4 +100,6 @@
 	"../include/SearchDir.h"
 
 1559071895 c:\users\cozajeden\documents\github\cppui_template\controls.h
+
+1559108144 y:\projekty\test\controls.h
 

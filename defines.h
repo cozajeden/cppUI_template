@@ -19,6 +19,7 @@
 #define hGTEditWndBt_ID 511
 #define hSaveChMenuBt_ID 512
 #define hExitMenuBt_ID 513
+#define hMenuScanBt_ID 514
 
 string def_pass = "master";
 bool BT1_text_stat = 1;
@@ -38,6 +39,7 @@ HWND hMenuModeSt;
 HWND hMenuTISt;
 HWND hMenuTIEd;//Set Interval
 HWND hwnd_cb;
+HWND hMenuScanBt;
 configuration conf;
 SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
 
