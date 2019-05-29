@@ -10,7 +10,7 @@ configuration::configuration()
 
 }
 
-void configuration::initialize(HWND hwnd)
+void configuration::initialize()
 {
     ifstream ifile(configFile.c_str(),ios::in | ios::binary);
     if(ifile.is_open())
@@ -22,18 +22,20 @@ void configuration::initialize(HWND hwnd)
         getline(ifile,temp);
         autoscanOnOff = atoi(temp.c_str());
         ifile.close();
-        //MessageBox( hwnd, "conf loaded", "Ha!", MB_ICONINFORMATION);
     }else{
+        save();
+        }
+}
+
+void configuration::save()
+{
         ofstream ofile(configFile.c_str(),ios::out | ios::binary);
         ofile << scanDir << "\r\n";
         ofile << scanInterval << "\r\n";
         ofile << autoscanOnOff << "\r\n";
         ofile.close();
-        //MessageBox( hwnd, "conf created", "Ha!", MB_ICONINFORMATION);
-        }
 }
 
 configuration::~configuration()
 {
-    //dtor
 }

@@ -38,6 +38,7 @@
 			<Add library="comctl32" />
 		</Linker>
 		<Unit filename="Dialogs.h" />
+		<Unit filename="controls.h" />
 		<Unit filename="defines.h" />
 		<Unit filename="include/SearchDir.h" />
 		<Unit filename="include/configuration.h" />

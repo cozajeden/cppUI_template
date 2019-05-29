@@ -18,7 +18,8 @@ class configuration
         string backupDir;
         int scanInterval;
         bool autoscanOnOff;
-        void initialize(HWND hwnd);
+        void initialize();
+        void save();
         configuration();
         virtual ~configuration();
 

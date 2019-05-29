@@ -3,17 +3,15 @@
 //#include <string>
 //#include <shlobj.h>
 //using namespace std;
-string BrowseFolder(string saved_path)
+string BrowseFolder(string saved_path, HWND hWND)
 {
     TCHAR path[MAX_PATH];
 
-    const char * path_param = saved_path.c_str();
-
     BROWSEINFO bi = { 0 };
-    bi.lpszTitle  = ("Browse for folder...");
+    bi.hwndOwner  = hWND;
+    bi.lpszTitle  = ("Wybierz folder");
     bi.ulFlags    = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
-    //bi.lpfn       = BrowseCallbackProc;
-    bi.lParam     = (LPARAM) path_param;
+    bi.lParam     = (LPARAM)saved_path.c_str();
 
     LPITEMIDLIST pidl = SHBrowseForFolder ( &bi );
 
@@ -36,20 +34,20 @@ string BrowseFolder(string saved_path)
     return "";
 }
 
-LPSTR GetWindowTextString(HWND hwnd)
+LPSTR GetWindowTextString(HWND hWND)
 {
-    DWORD dlugosc = GetWindowTextLength( hwnd );
+    DWORD dlugosc = GetWindowTextLength( hWND );
     LPSTR Bufor =( LPSTR ) GlobalAlloc( GPTR, dlugosc + 1 );
-    GetWindowText( hwnd, Bufor, dlugosc + 1 );
+    GetWindowText( hWND, Bufor, dlugosc + 1 );
     return Bufor;
 }
 
-bool openURL(HWND hwnd){
+bool openURL(HWND hWND){
     try{
-    if((int)ShellExecute(0, 0, GetWindowTextString(hwnd), 0, 0 , SW_SHOW ) < 33)
+    if((int)ShellExecute(0, 0, GetWindowTextString(hWND), 0, 0 , SW_SHOW ) < 33)
     throw "Nie mo¿na za³adowaæ URL";
     }catch(LPCSTR e){
-        MessageBox( hwnd, e, "Ha!", MB_ICONINFORMATION );//pop-up window
+        MessageBox( hWND, e, "Ha!", MB_ICONINFORMATION );//pop-up window
     }
 }
 

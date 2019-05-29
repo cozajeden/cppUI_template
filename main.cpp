@@ -1,8 +1,6 @@
 #include "incudes.h"
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
-HWND hwnd2;
-
 
 int WINAPI WinMain (HINSTANCE hThisInstance,
                      HINSTANCE hPrevInstance,
@@ -56,7 +54,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
     {
         case WM_CREATE:
             {
-                conf.initialize(hwnd);
+                conf.initialize();
                 sDirectory.Search(sDirectory.directory);
                 break;
             }
@@ -75,7 +73,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case hLoginBt_ID:
                     {
                             //if(GetWindowTextString(hMainPassEd) != def_pass)
-                            //    MessageBox( hwnd, "Nieprawid³owe Has³o", "Ha!", MB_ICONINFORMATION );
+                            //    MessageBox( hwnd, "Nieprawidlowe Haslo", "Ha!", MB_ICONINFORMATION );
                             //else{
                                 HWND hLogin[] = {hLoginBt, hMainPassEd};
                                 HWND hMain[] = {hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
@@ -103,13 +101,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         if(is_Number(GetWindowTextString(hMenuTIEd)))
                             conf.scanInterval = atoi(GetWindowTextString(hMenuTIEd));
                         else
-                            MessageBox( hwnd, "To nie jest liczba. Spróbuj ponownie.", "Ha!", MB_ICONINFORMATION );
+                            MessageBox( hwnd, "To nie jest liczba. Sprobuj ponownie.", "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hPathBt_ID:
                     {
 
-                            conf.scanDir = BrowseFolder(conf.scanDir);
+                            conf.scanDir = BrowseFolder(conf.scanDir, hwnd);
+                            conf.save();
 
                         break;
                     }
