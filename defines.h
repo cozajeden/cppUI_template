@@ -21,7 +21,7 @@
 #define hExitMenuBt_ID 513
 #define hMenuScanBt_ID 514
 
-string def_pass = "master";
+
 bool BT1_text_stat = 1;
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");

@@ -56,6 +56,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             {
                 conf.initialize();
                 sDirectory.Search(sDirectory.directory);
+                SetWindowTextA(hMainPassEd,conf.password.c_str());
                 break;
             }
 
@@ -72,15 +73,20 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             {
                 case hLoginBt_ID:
                     {
-                            //if(GetWindowTextString(hMainPassEd) != def_pass)
-                            //    MessageBox( hwnd, "Nieprawidlowe Haslo", "Ha!", MB_ICONINFORMATION );
+                            //if(GetWindowTextString(hMainPassEd) != conf.password)
+                           //     MessageBox( hwnd, "nieprawidlowe haslo", "Ha!", MB_ICONINFORMATION );
                             //else{
                                 HWND hLogin[] = {hLoginBt, hMainPassEd};
                                 HWND hMain[] = {hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
                                 ShowObjects(hMain,11,hLogin,2);
                                 SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 400, 400, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
-                                //SetWindowTextA(hMenuTIEd,to_string(conf.scanInterval).c_str());
-                                SetWindowTextA(hMenuTIEd,conf.scanDir.c_str());
+                                SetWindowTextA(hMenuTIEd,to_string(conf.scanInterval).c_str());
+                                if(conf.autoscanOnOff)
+                                    SetWindowTextA(hAutoBt,"AUTO");
+                                else
+                                    SetWindowTextA(hAutoBt,"MANUAL");
+                            //}
+                                //SetWindowTextA(hMenuTIEd,conf.scanDir.c_str());
                         break;
                     }
                 case hPassBt_ID:
@@ -103,7 +109,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         if(is_Number(GetWindowTextString(hMenuTIEd)))
                             conf.scanInterval = atoi(GetWindowTextString(hMenuTIEd));
                         else
-                            MessageBox( hwnd, "To nie jest liczba. Sprobuj ponownie.", "Ha!", MB_ICONINFORMATION );
+                            MessageBox( hwnd, /*"To nie jest liczba. Sprobuj ponownie."*/conf.temp, "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hPathBt_ID:
@@ -114,6 +120,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case hSaveChMenuBt_ID:
                     {
                         conf.save();
+                        break;
+                    }
+                case hExitMenuBt_ID:
+                    {
+                        HWND hLogin[] = {hLoginBt, hMainPassEd};
+                        HWND hMain[] = {hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                        ShowObjects(hLogin,2,hMain,11);
+                        SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 100, 100, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
                         break;
                     }
             }

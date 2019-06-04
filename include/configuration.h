@@ -16,9 +16,13 @@ class configuration
         string configFile;
         string scanDir;
         string backupDir;
+        string password;
+    TCHAR temp[MAX_PATH];
         int scanInterval;
         bool autoscanOnOff;
         void initialize();
+        string encrypt(string toEncrypt);
+        string decrypt(string toDecrypt);
         void save();
         configuration();
         virtual ~configuration();
