@@ -1,8 +1,11 @@
 #ifndef DIALOGS_H_INCLUDED
 #define DIALOGS_H_INCLUDED
-//#include <string>
-//#include <shlobj.h>
-//using namespace std;
+//CALLBACK for BrowseFolder
+INT CALLBACK BrowseCallbackProc(HWND hWND, UINT uMsg, LPARAM lp, LPARAM pData)
+{
+    if (uMsg==BFFM_INITIALIZED) SendMessage(hWND, BFFM_SETSELECTION, TRUE, pData);
+    return 0;
+}
 string BrowseFolder(string saved_path, HWND hWND)
 {
     TCHAR path[MAX_PATH];
@@ -10,9 +13,9 @@ string BrowseFolder(string saved_path, HWND hWND)
     BROWSEINFO bi = { 0 };
     bi.hwndOwner  = hWND;
     bi.lpszTitle  = ("Wybierz folder");
-    bi.ulFlags    = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+    bi.ulFlags    = BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE | BFFM_SETSELECTION;
+    bi.lpfn       = BrowseCallbackProc;
     bi.lParam     = (LPARAM)saved_path.c_str();
-
     LPITEMIDLIST pidl = SHBrowseForFolder ( &bi );
 
     if ( pidl != 0 )
@@ -29,7 +32,7 @@ string BrowseFolder(string saved_path, HWND hWND)
         }
 
         return path;
-    }
+    }else
 
     return "";
 }
@@ -45,7 +48,7 @@ LPSTR GetWindowTextString(HWND hWND)
 bool openURL(HWND hWND){
     try{
     if((int)ShellExecute(0, 0, GetWindowTextString(hWND), 0, 0 , SW_SHOW ) < 33)
-    throw "Nie mo¿na za³adowaæ URL";
+    throw "Nie mozna zaladowac URL";
     }catch(LPCSTR e){
         MessageBox( hWND, e, "Ha!", MB_ICONINFORMATION );//pop-up window
     }

@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1559108045 source:y:\projekty\test\main.cpp
+1559608324 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
-1559107543 y:\projekty\test\dialogs.h
+1559611614 y:\projekty\test\dialogs.h
 
 1559073363 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
 	"incudes.h"
@@ -27,12 +27,13 @@
 
 1559071903 c:\users\cozajeden\documents\github\cppui_template\defines.h
 
-1559107543 y:\projekty\test\incudes.h
+1559606693 y:\projekty\test\incudes.h
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
 	<string>
 	<shlobj.h>
+	<sstream>
 	"Dialogs.h"
 	"include/configuration.h"
 	"include/fileContainer.h"
@@ -61,7 +62,7 @@
 	<stdio.h>
 	"fileContainer.h"
 
-1559107544 source:y:\projekty\test\src\configuration.cpp
+1559608075 source:y:\projekty\test\src\configuration.cpp
 	"../include/configuration.h"
 
 1558946029 source:y:\projekty\test\src\searchdir.cpp
@@ -101,5 +102,5 @@
 
 1559071895 c:\users\cozajeden\documents\github\cppui_template\controls.h
 
-1559108144 y:\projekty\test\controls.h
+1559606486 y:\projekty\test\controls.h
 

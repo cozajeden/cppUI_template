@@ -79,6 +79,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                 HWND hMain[] = {hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
                                 ShowObjects(hMain,11,hLogin,2);
                                 SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 400, 400, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
+                                //SetWindowTextA(hMenuTIEd,to_string(conf.scanInterval).c_str());
+                                SetWindowTextA(hMenuTIEd,conf.scanDir.c_str());
                         break;
                     }
                 case hPassBt_ID:
@@ -106,10 +108,12 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hPathBt_ID:
                     {
-
-                            conf.scanDir = BrowseFolder(conf.scanDir, hwnd);
-                            conf.save();
-
+                        conf.scanDir = BrowseFolder(conf.scanDir, hwnd);
+                        break;
+                    }
+                case hSaveChMenuBt_ID:
+                    {
+                        conf.save();
                         break;
                     }
             }
