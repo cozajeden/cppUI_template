@@ -109,7 +109,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         if(is_Number(GetWindowTextString(hMenuTIEd)))
                             conf.scanInterval = atoi(GetWindowTextString(hMenuTIEd));
                         else
-                            MessageBox( hwnd, /*"To nie jest liczba. Sprobuj ponownie."*/conf.temp, "Ha!", MB_ICONINFORMATION );
+                            MessageBox( hwnd, "To nie jest liczba. Sprobuj ponownie.", "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hPathBt_ID:
