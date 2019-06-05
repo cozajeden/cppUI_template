@@ -69,4 +69,9 @@ bool is_Number(const string& s)
     while (it != s.end() && std::isdigit(*it)) ++it;
     return !s.empty() && it == s.end();
 }
+
+void ChangeWindowDimensions(HWND hWND, int x, int y)
+{
+    SetWindowPos(hWND, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, x, y, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
+}
 #endif // DIALOGS_H_INCLUDED

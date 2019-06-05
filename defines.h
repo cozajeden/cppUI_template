@@ -20,6 +20,14 @@
 #define hSaveChMenuBt_ID 512
 #define hExitMenuBt_ID 513
 #define hMenuScanBt_ID 514
+#define hMenuExtensionEd_ID 515
+#define hMenuExtensionSt_ID 516
+#define hMenuExtensionSaveBt_ID 517
+#define hMenuPathSt_ID 518
+#define hChangePassEd_ID 519
+#define hChangePassSt_ID 520
+#define hChangePassBt_ID 521
+#define hChangePassBackBt_ID 522
 
 
 bool BT1_text_stat = 1;
@@ -40,6 +48,14 @@ HWND hMenuTISt;
 HWND hMenuTIEd;//Set Interval
 HWND hwnd_cb;
 HWND hMenuScanBt;
+HWND hMenuExtensionEd;
+HWND hMenuExtensionSt;
+HWND hMenuExtensionSaveBt;
+HWND hChangePassEd;
+HWND hChangePassSt;
+HWND hChangePassBt;
+HWND hChangePassBackBt;
+HWND hMenuPathSt;
 configuration conf;
 SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
 

@@ -74,13 +74,18 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case hLoginBt_ID:
                     {
                             //if(GetWindowTextString(hMainPassEd) != conf.password)
-                           //     MessageBox( hwnd, "nieprawidlowe haslo", "Ha!", MB_ICONINFORMATION );
+                            //    MessageBox( hwnd, "nieprawidlowe haslo", "Ha!", MB_ICONINFORMATION );
                             //else{
+                                conf.initialize();
                                 HWND hLogin[] = {hLoginBt, hMainPassEd};
-                                HWND hMain[] = {hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
-                                ShowObjects(hMain,11,hLogin,2);
-                                SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 400, 400, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
+                                HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
+                                hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
+                                hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                                ShowObjects(hMain,15,hLogin,2);
+                                ChangeWindowDimensions(hwnd,340,280);
                                 SetWindowTextA(hMenuTIEd,to_string(conf.scanInterval).c_str());
+                                SetWindowTextA(hMenuExtensionEd,conf.extension.c_str());
+                                SetWindowTextA(hMenuPathSt,conf.scanDir.c_str());
                                 if(conf.autoscanOnOff)
                                     SetWindowTextA(hAutoBt,"AUTO");
                                 else
@@ -91,6 +96,12 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hPassBt_ID:
                     {
+                        HWND hChangePass[] = {hChangePassBackBt, hChangePassEd, hChangePassSt, hChangePassBt};
+                        HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
+                        hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
+                        hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                        ShowObjects(hChangePass,4,hMain,15);
+                        ChangeWindowDimensions(hwnd, 100, 150);
                         break;
                     }
                 case hAutoBt_ID:
@@ -109,12 +120,13 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         if(is_Number(GetWindowTextString(hMenuTIEd)))
                             conf.scanInterval = atoi(GetWindowTextString(hMenuTIEd));
                         else
-                            MessageBox( hwnd, "To nie jest liczba. Sprobuj ponownie.", "Ha!", MB_ICONINFORMATION );
+                            MessageBox( hwnd, /*"To nie jest liczba. Sprobuj ponownie."*/conf.backupDir.c_str(), "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hPathBt_ID:
                     {
                         conf.scanDir = BrowseFolder(conf.scanDir, hwnd);
+                        SetWindowTextA(hMenuPathSt,conf.scanDir.c_str());
                         break;
                     }
                 case hSaveChMenuBt_ID:
@@ -125,10 +137,39 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case hExitMenuBt_ID:
                     {
                         HWND hLogin[] = {hLoginBt, hMainPassEd};
-                        HWND hMain[] = {hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt, hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
-                        ShowObjects(hLogin,2,hMain,11);
-                        SetWindowPos(hwnd, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, 100, 100, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
+                        HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
+                        hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
+                        hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                        ShowObjects(hLogin,2,hMain,15);
+                        ChangeWindowDimensions(hwnd,100,100);
                         break;
+                    }
+                case hMenuExtensionSaveBt_ID:
+                    {
+                        conf.extension = GetWindowTextString(hMenuExtensionSaveBt);
+                        break;
+                    }
+                case hChangePassBt_ID:
+                    {
+                        conf.initialize();
+                        conf.password = GetWindowTextString(hChangePassEd);
+                        conf.save();
+                        break;
+                    }
+                case hChangePassBackBt_ID:
+                    {
+                        HWND hChangePass[] = {hChangePassBackBt, hChangePassEd, hChangePassSt, hChangePassBt};
+                        HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
+                        hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
+                        hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                        ShowObjects(hMain,15,hChangePass,4);
+                        ChangeWindowDimensions(hwnd, 340, 280);
+                        break;
+                    }
+                case hMenuScanBt_ID:
+                    {
+                        sDirectory.Search(conf.scanDir);//tylko przeszukuje, dodaæ porównywanie i zapis gdy siê ró¿ni
+                        break;                          //
                     }
             }
             break;

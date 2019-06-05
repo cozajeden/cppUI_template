@@ -31,7 +31,7 @@ hPassBt = CreateWindowEx(
     "BUTTON",
     "Zmien haslo",
     WS_CHILD,
-    0, 100, 100, 30,
+    0, 200, 100, 30,
     hwnd,
     (HMENU)hPassBt_ID,
     hThisInstance,
@@ -64,7 +64,7 @@ hPathBt = CreateWindowEx(
     "BUTTON",
     "Sciezka",
     WS_CHILD,
-    0, 0, 100, 30,
+    0, 100, 100, 30,
     hwnd,
     (HMENU)hPathBt_ID,
     hThisInstance,
@@ -75,7 +75,7 @@ hGTEditWndBt = CreateWindowEx(
     "BUTTON",
     "Zarzadzaj",
     WS_CHILD,
-    0, 30, 100, 30,
+    0, 150, 100, 30,
     hwnd,
     (HMENU)hGTEditWndBt_ID,
     hThisInstance,
@@ -86,7 +86,7 @@ hSaveChMenuBt = CreateWindowEx(
     "BUTTON",
     "Zapisz zmiany",
     WS_CHILD,
-    100+x_offset, 100, 100, 30,
+    100+x_offset, 200, 100, 30,
     hwnd,
     (HMENU)hSaveChMenuBt_ID,
     hThisInstance,
@@ -97,7 +97,7 @@ hExitMenuBt = CreateWindowEx(
     "BUTTON",
     "Wyjdz",
     WS_CHILD,
-    200+x_offset+x_offset, 100, 100, 30,
+    200+x_offset+x_offset, 200, 100, 30,
     hwnd,
     (HMENU)hExitMenuBt_ID,
     hThisInstance,
@@ -166,6 +166,95 @@ hwnd_cb = CreateWindowEx(
     10, 70, 500, 200,
     hwnd,
     (HMENU)hwnd_cb_ID,
+    hThisInstance,
+    NULL );
+
+hMenuExtensionSt = CreateWindowEx(
+    0,
+    "STATIC",
+    "Rozszerzenie:",
+    WS_CHILD | SS_CENTER,
+    0, 0, 100, 20,
+    hwnd,
+    (HMENU)hMenuExtensionSt_ID,
+    hThisInstance,
+    NULL );
+
+hMenuExtensionEd = CreateWindowEx(
+    WS_EX_CLIENTEDGE,
+    "EDIT",
+    NULL,
+    WS_CHILD,
+    0, 20, 100, 30,
+    hwnd,
+    (HMENU)hMenuExtensionEd_ID,
+    hThisInstance,
+    NULL );
+
+hMenuExtensionSaveBt = CreateWindowEx(
+    0,
+    "BUTTON",
+    "ZAPISZ",
+    WS_CHILD,
+    0, 50, 100, 30,
+    hwnd,
+    (HMENU)hMenuExtensionSaveBt_ID,
+    hThisInstance,
+    NULL );
+
+
+hChangePassSt = CreateWindowEx(
+    0,
+    "STATIC",
+    "Nowe haslo:",
+    WS_CHILD | SS_CENTER,
+    0, 0, 100, 20,
+    hwnd,
+    (HMENU)hChangePassSt_ID,
+    hThisInstance,
+    NULL );
+
+hChangePassEd = CreateWindowEx(
+    WS_EX_CLIENTEDGE,
+    "EDIT",
+    NULL,
+    WS_CHILD,
+    0, 20, 100, 30,
+    hwnd,
+    (HMENU)hChangePassEd_ID,
+    hThisInstance,
+    NULL );
+
+hChangePassBt = CreateWindowEx(
+    0,
+    "BUTTON",
+    "ZAPISZ",
+    WS_CHILD,
+    0, 50, 100, 30,
+    hwnd,
+    (HMENU)hChangePassBt_ID,
+    hThisInstance,
+    NULL );
+
+hChangePassBackBt = CreateWindowEx(
+    0,
+    "BUTTON",
+    "WYJDZ",
+    WS_CHILD,
+    0, 80, 100, 30,
+    hwnd,
+    (HMENU)hChangePassBackBt_ID,
+    hThisInstance,
+    NULL );
+
+hMenuPathSt = CreateWindowEx(
+    0,
+    "STATIC",
+    NULL,
+    WS_CHILD | ES_LEFT,
+    0, 130, 800, 20,
+    hwnd,
+    (HMENU)hMenuPathSt_ID,
     hThisInstance,
     NULL );
 //for(int i = 0; i < sDirectory.pointer; i++)

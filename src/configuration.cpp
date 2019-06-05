@@ -2,10 +2,14 @@
 
 configuration::configuration()
 {
-    GetModuleFileName(NULL,temp,MAX_PATH);
-    configFile = ".\\data.conf";
-    backupDir = ".\\backup";
-    scanDir = ".\\check";
+    GetModuleFileName(NULL,tPath,MAX_PATH);
+    string temp = tPath;
+    temp.replace(temp.length() -10,10,"");
+    instancePath = temp;
+    configFile = instancePath + "data.conf";
+    backupDir = instancePath + "backup";
+    scanDir = instancePath + "check";
+    extension = ".nc";
     password = "master";
     autoscanOnOff = false;
     scanInterval = 60;
@@ -48,6 +52,8 @@ void configuration::initialize()
         getline(ifile, temp);
         autoscanOnOff = atoi(temp.c_str());
         getline(ifile, temp);
+        extension = temp;
+        getline(ifile, temp);
         password = decrypt(temp);
         ifile.close();
     }else{
@@ -61,6 +67,7 @@ void configuration::save()
         ofile << scanDir.c_str() << "\r\n";
         ofile << scanInterval << "\r\n";
         ofile << autoscanOnOff << "\r\n";
+        ofile << extension.c_str() << "\r\n";
         ofile << encrypt(password).c_str() ;
         ofile.close();
 }

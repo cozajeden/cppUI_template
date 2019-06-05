@@ -15,9 +15,11 @@ class configuration
     public:
         string configFile;
         string scanDir;
-        string backupDir;
         string password;
-    TCHAR temp[MAX_PATH];
+        string backupDir;
+        string extension;
+        string instancePath;
+        TCHAR tPath[MAX_PATH];
         int scanInterval;
         bool autoscanOnOff;
         void initialize();
