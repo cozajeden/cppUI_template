@@ -171,6 +171,25 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         sDirectory.Search(conf.scanDir);//tylko przeszukuje, dodaæ porównywanie i zapis gdy siê ró¿ni
                         break;                          //
                     }
+                case hGTEditWndBt_ID:
+                    {
+                        sDirectory.directory = conf.scanDir;
+                        sDirectory.ClearFileContainer();
+                        sDirectory.Search(conf.scanDir);
+                        for(int i = 0; i < sDirectory.pointer; i++){
+                                size_t len = conf.scanDir.length();
+                            string cuttedPath = sDirectory.fContainer[i].fPath;
+                            cuttedPath.replace(0,conf.scanDir.length(),"");
+                            SendMessage( hManagmentFile, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
+                        }
+                        HWND hManagment[] = {hManagmentFile};
+                        HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
+                        hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
+                        hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                        ShowObjects(hManagment,1,hMain,15);
+                        ChangeWindowDimensions(hwnd, 300, 300);
+                        break;
+                    }
             }
             break;
 

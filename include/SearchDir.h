@@ -23,6 +23,7 @@ class SearchDir
         void Search(string path);//Do searching in path directory and subdirectories
         void fillAll();//Fill all file containers with text from files
         void clearAll();//Clear all file containers from text
+        void ClearFileContainer();//Reset fileContainer to 0 records
     protected:
         int size_buff;//Actual size of fContainer
         void addItem(string name, string path);//add another file to fContainer

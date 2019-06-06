@@ -46,14 +46,15 @@ void configuration::initialize()
     if(ifile.is_open())
     {
         string temp;
-        getline(ifile, scanDir);
-        getline(ifile, temp);
+        getline(ifile, temp, '\r');
+        scanDir = temp.c_str();
+        getline(ifile, temp, '\r');
         scanInterval = atoi(temp.c_str());
-        getline(ifile, temp);
+        getline(ifile, temp, '\r');
         autoscanOnOff = atoi(temp.c_str());
-        getline(ifile, temp);
+        getline(ifile, temp, '\r');
         extension = temp;
-        getline(ifile, temp);
+        getline(ifile, temp, '\r');
         password = decrypt(temp);
         ifile.close();
     }else{

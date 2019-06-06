@@ -8,7 +8,7 @@
 #endif
 #define hLoginBt_ID 501
 #define hMainPassEd_ID 502
-#define hwnd_cb_ID 503
+#define hManagmentFile_ID 503
 #define hPassBt_ID 504
 #define hMenuModeSt_ID 505
 #define hAutoBt_ID 506
@@ -46,7 +46,6 @@ HWND hMainPassEd;
 HWND hMenuModeSt;
 HWND hMenuTISt;
 HWND hMenuTIEd;//Set Interval
-HWND hwnd_cb;
 HWND hMenuScanBt;
 HWND hMenuExtensionEd;
 HWND hMenuExtensionSt;
@@ -56,6 +55,7 @@ HWND hChangePassSt;
 HWND hChangePassBt;
 HWND hChangePassBackBt;
 HWND hMenuPathSt;
+HWND hManagmentFile;
 configuration conf;
 SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
 

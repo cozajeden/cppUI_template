@@ -63,6 +63,15 @@ void SearchDir::clearAll(){
         fContainer[i].clearContainer();
 }
 
+void SearchDir::ClearFileContainer()
+{
+    size_buff = 32;
+    pointer = 0;
+    fileContainer* temp = new fileContainer[size_buff];
+    delete [] fContainer;
+    fContainer = temp;
+}
+
 void SearchDir::addItem(string path, string name){
     if(pointer >= size_buff){
         size_buff *= 2;

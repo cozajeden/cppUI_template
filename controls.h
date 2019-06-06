@@ -158,17 +158,6 @@ hMenuTIEd = CreateWindowEx(
     hThisInstance,
     NULL );
 
-hwnd_cb = CreateWindowEx(
-    WS_EX_CLIENTEDGE,
-    "COMBOBOX",
-    NULL,
-    WS_CHILD | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | ES_AUTOVSCROLL,
-    10, 70, 500, 200,
-    hwnd,
-    (HMENU)hwnd_cb_ID,
-    hThisInstance,
-    NULL );
-
 hMenuExtensionSt = CreateWindowEx(
     0,
     "STATIC",
@@ -257,8 +246,18 @@ hMenuPathSt = CreateWindowEx(
     (HMENU)hMenuPathSt_ID,
     hThisInstance,
     NULL );
-//for(int i = 0; i < sDirectory.pointer; i++)
-//SendMessage( hwnd_cb, CB_ADDSTRING, 0,( LPARAM )(sDirectory.fContainer[i].fPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
+
+hManagmentFile = CreateWindowEx(
+    WS_EX_CLIENTEDGE,
+    "COMBOBOX",
+    NULL,
+    WS_CHILD | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | ES_AUTOVSCROLL,
+    0, 20, 500, 200,
+    hwnd,
+    (HMENU)hManagmentFile_ID,
+    hThisInstance,
+    NULL );
+
 
 ShowWindow (hwnd, nCmdShow);
 #endif // CONTROLS_H_INCLUDED
