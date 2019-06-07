@@ -4,6 +4,8 @@
 #include <dirent.h>
 #include <stdio.h>
 #include <fstream>
+#include <string>
+#include <windows.h>
 
 
 using namespace std;

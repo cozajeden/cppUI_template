@@ -7,6 +7,8 @@
 #include <string>
 #include <shlobj.h>
 #include <sstream>
+#include <time.h>
+#include <math.h>
 using namespace std;
 #include "Dialogs.h"
 #include "include/configuration.h"

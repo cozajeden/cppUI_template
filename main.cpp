@@ -55,7 +55,10 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
         case WM_CREATE:
             {
                 conf.initialize();
-                sDirectory.Search(sDirectory.directory);
+                sDirectory.Search(conf.scanDir);
+                CreateDirectory(conf.backupDir.c_str(),NULL);
+                sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+                bDirectory.Search(conf.backupDir);
                 SetWindowTextA(hMainPassEd,conf.password.c_str());
                 break;
             }
@@ -168,16 +171,27 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hMenuScanBt_ID:
                     {
-                        sDirectory.Search(conf.scanDir);//tylko przeszukuje, dodaæ porównywanie i zapis gdy siê ró¿ni
-                        break;                          //
+                        sDirectory.directory = conf.scanDir;
+                        sDirectory.ClearFileContainer();
+                        sDirectory.Search(conf.scanDir);
+                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+                        break;
                     }
                 case hGTEditWndBt_ID:
                     {
                         sDirectory.directory = conf.scanDir;
                         sDirectory.ClearFileContainer();
                         sDirectory.Search(conf.scanDir);
+                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+                        bDirectory.directory = conf.backupDir;
+                        bDirectory.ClearFileContainer();
+                        bDirectory.Search(conf.backupDir);
+                        /*for(int i = 0; i < bDirectory.pointer; i++){
+                            string cuttedPath = bDirectory.fContainer[i].fPath;
+                            cuttedPath.replace(0,conf.backupDir.length(),"");
+                            SendMessage( hManagmentFile, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + bDirectory.fContainer[i].fName).c_str() );
+                        }*/
                         for(int i = 0; i < sDirectory.pointer; i++){
-                                size_t len = conf.scanDir.length();
                             string cuttedPath = sDirectory.fContainer[i].fPath;
                             cuttedPath.replace(0,conf.scanDir.length(),"");
                             SendMessage( hManagmentFile, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );

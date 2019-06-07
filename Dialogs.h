@@ -74,4 +74,37 @@ void ChangeWindowDimensions(HWND hWND, int x, int y)
 {
     SetWindowPos(hWND, HWND_DESKTOP, CW_USEDEFAULT, CW_USEDEFAULT, x, y, SWP_NOMOVE | SWP_NOZORDER | SWP_FRAMECHANGED);
 }
+
+string GetFormatedTime()
+{
+  time_t rawtime;
+  struct tm * timeinfo;
+  time ( &rawtime );
+  timeinfo = localtime ( &rawtime );
+  string timeString = asctime (timeinfo);
+  string formatedString = timeString.substr(20,4) + timeString.substr(4,3) + timeString.substr(8,2) + timeString.substr(11,2) + timeString.substr(14,2) + timeString.substr(17,2);
+  return formatedString;
+}
+
+string GetTimeFromFormat(string _time)
+{
+    string time = _time.substr(0,4) + "-" + _time.substr(4,3) + "-" + _time.substr(7,2) + " " + _time.substr(9,2) + ":" + _time.substr(11,2) + ":" + _time.substr(13,2);
+    return time;
+}
+
+string GetFormatFromTime(string _time)
+{
+    string time = _time.substr(0,4) + _time.substr(5,3) + _time.substr(9,2) + _time.substr(12,2) + _time.substr(15,2) + _time.substr(18,2);
+    return time;
+}
+
+string GetFormatedTimeFromFileName(string _name)
+{
+    return GetFormatFromTime(GetTimeFromFormat(_name));
+}
+
+string GetTimeFromName(string _name)
+{
+    return GetTimeFromFormat(_name);
+}
 #endif // DIALOGS_H_INCLUDED

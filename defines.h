@@ -58,6 +58,7 @@ HWND hMenuPathSt;
 HWND hManagmentFile;
 configuration conf;
 SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
+SearchDir bDirectory("Y:\\projekty\\test\\backup",".nc");
 
 
 #endif // DEFINES_H_INCLUDED

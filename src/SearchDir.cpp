@@ -17,6 +17,16 @@ void SearchDir::saveFile(string path, fileContainer file){
 //save file method in file container
 }
 
+void SearchDir::MakeBackupDirectories(string pathToReplace, string pathReplacing)
+{
+    for(int i = 0; i < pointer; i++)
+    {
+        string path = fContainer[i].fPath;
+        path = pathReplacing + path.substr(pathToReplace.length());
+        CreateDirectory(path.c_str(),NULL);
+    }
+}
+
 bool compFile(fileContainer file1, fileContainer file2){
     if(file1.pointer != file2.pointer)
         return false;
