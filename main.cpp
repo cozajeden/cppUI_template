@@ -123,7 +123,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         if(is_Number(GetWindowTextString(hMenuTIEd)))
                             conf.scanInterval = atoi(GetWindowTextString(hMenuTIEd));
                         else
-                            MessageBox( hwnd, /*"To nie jest liczba. Sprobuj ponownie."*/conf.backupDir.c_str(), "Ha!", MB_ICONINFORMATION );
+                            MessageBox( hwnd, "To nie jest liczba. Sprobuj ponownie.", "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hPathBt_ID:
@@ -149,7 +149,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hMenuExtensionSaveBt_ID:
                     {
-                        conf.extension = GetWindowTextString(hMenuExtensionSaveBt);
+                        string gotText = (string)GetWindowTextString(hMenuExtensionEd);
+                        int length = gotText.length();
+                        char *temp = new char[length + 1];
+                        strcpy(temp,gotText.c_str());
+                        if(temp[0] == '.')
+                            conf.extension = GetWindowTextString(hMenuExtensionEd);
+                        else
+                            MessageBox( hwnd, "Rozszerzenie musi zaczynac sie kropka.", "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hChangePassBt_ID:

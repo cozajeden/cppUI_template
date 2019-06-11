@@ -42,19 +42,19 @@ string configuration::decrypt(string toDecrypt)
 
 void configuration::initialize()
 {
-    ifstream ifile(configFile.c_str(),ios::in | ios::binary);
+    ifstream ifile(configFile.c_str(),ios::in/* | ios::binary*/);
     if(ifile.is_open())
     {
         string temp;
-        getline(ifile, temp, '\r');
+        getline(ifile, temp);
         scanDir = temp.c_str();
-        getline(ifile, temp, '\r');
+        getline(ifile, temp);
         scanInterval = atoi(temp.c_str());
-        getline(ifile, temp, '\r');
+        getline(ifile, temp);
         autoscanOnOff = atoi(temp.c_str());
-        getline(ifile, temp, '\r');
+        getline(ifile, temp);
         extension = temp;
-        getline(ifile, temp, '\r');
+        getline(ifile, temp);
         password = decrypt(temp);
         ifile.close();
     }else{
@@ -64,11 +64,11 @@ void configuration::initialize()
 
 void configuration::save()
 {
-        ofstream ofile(configFile.c_str(),ios::out | ios::binary);
-        ofile << scanDir.c_str() << "\r\n";
-        ofile << scanInterval << "\r\n";
-        ofile << autoscanOnOff << "\r\n";
-        ofile << extension.c_str() << "\r\n";
+        ofstream ofile(configFile.c_str(),ios::out/* | ios::binary*/);
+        ofile << scanDir.c_str() << endl;
+        ofile << scanInterval << endl;
+        ofile << autoscanOnOff << endl;
+        ofile << extension.c_str() << endl;
         ofile << encrypt(password).c_str() ;
         ofile.close();
 }

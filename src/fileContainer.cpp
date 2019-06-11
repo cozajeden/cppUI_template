@@ -10,16 +10,16 @@ void fileContainer::saveFile(string path, string name){
     string location = path;
     string line;
     location += "\\" + name;
-    ofstream ofile(location.c_str(),ios::out | ios::trunc | ios::binary);
+    ofstream ofile(location.c_str(),ios::out/* | ios::trunc | ios::binary*/);
     for(int i = 0; i < pointer; i++)
-        ofile << text[i] << "\r\n";
+        ofile << text[i] << endl;
     ofile.close();
 
 }
 
 void fileContainer::Show(){
         for(int i = 0; i < pointer; i++)
-            cout << text[i] << "\r\n";
+            cout << text[i] << endl;
 }
 
 void fileContainer::fillContainer(){
@@ -27,7 +27,7 @@ void fileContainer::fillContainer(){
     string line;
     location += "\\" + fName;
     ifstream ifile(location.c_str(),ios::in | ios::binary);
-    while(getline(ifile, line, '\r'))
+    while(getline(ifile, line))
         addLine(line);
     ifile.close();
 }

@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1559878661 source:y:\projekty\test\main.cpp
+1560266246 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
@@ -66,13 +66,13 @@
 	<stdio.h>
 	"fileContainer.h"
 
-1559793076 source:y:\projekty\test\src\configuration.cpp
+1560266881 source:y:\projekty\test\src\configuration.cpp
 	"../include/configuration.h"
 
 1559879155 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
-1559869162 source:y:\projekty\test\src\filecontainer.cpp
+1560267007 source:y:\projekty\test\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
 1559073363 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
