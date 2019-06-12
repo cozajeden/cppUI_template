@@ -86,6 +86,12 @@ string GetFormatedTime()
   return formatedString;
 }
 
+string GetNameFromBackupFileName(string _name)
+{
+    string name = _name.substr(15);
+    return name;
+}
+
 string GetTimeFromFormat(string _time)
 {
     string time = _time.substr(0,4) + "-" + _time.substr(4,3) + "-" + _time.substr(7,2) + " " + _time.substr(9,2) + ":" + _time.substr(11,2) + ":" + _time.substr(13,2);

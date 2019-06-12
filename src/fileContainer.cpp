@@ -26,7 +26,7 @@ void fileContainer::fillContainer(){
     string location = fPath;
     string line;
     location += "\\" + fName;
-    ifstream ifile(location.c_str(),ios::in | ios::binary);
+    ifstream ifile(location.c_str(), ios::in);
     while(getline(ifile, line))
         addLine(line);
     ifile.close();

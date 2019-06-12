@@ -8,7 +8,6 @@
 #endif
 #define hLoginBt_ID 501
 #define hMainPassEd_ID 502
-#define hManagmentFile_ID 503
 #define hPassBt_ID 504
 #define hMenuModeSt_ID 505
 #define hAutoBt_ID 506
@@ -28,7 +27,21 @@
 #define hChangePassSt_ID 520
 #define hChangePassBt_ID 521
 #define hChangePassBackBt_ID 522
-
+#define Timer_ID 523
+#define hManagmentFileCb_ID 503
+#define hManagmentDate1Cb_ID 524
+#define hManagmentDate2Cb_ID 525
+#define hManagmentFileSt_ID 526
+#define hManagmentDate1St_ID 527
+#define hManagmentDate2St_ID 528
+#define hManagmentBackBt_ID 529
+#define hManagmentDate1BackupBt_ID 527
+#define hManagmentDate2BackupBt_ID 528
+#define hManagmentDate1LookBt_ID 527
+#define hManagmentDate2CompareBt_ID 528
+#define hManagmentDate1SaveAsBt_ID 527
+#define hManagmentDate2SaveAsBt_ID 528
+int test = 0;
 
 bool BT1_text_stat = 1;
 /*  Make the class name into a global variable  */
@@ -55,7 +68,19 @@ HWND hChangePassSt;
 HWND hChangePassBt;
 HWND hChangePassBackBt;
 HWND hMenuPathSt;
-HWND hManagmentFile;
+HWND hManagmentFileCb;
+HWND hManagmentDate1Cb;
+HWND hManagmentDate2Cb;
+HWND hManagmentFileSt;
+HWND hManagmentDate1St;
+HWND hManagmentDate2St;
+HWND hManagmentBackBt;
+HWND hManagmentDate1BackupBt;
+HWND hManagmentDate2BackupBt;
+HWND hManagmentDate1LookBt;
+HWND hManagmentDate2CompareBt;
+HWND hManagmentDate1SaveAsBt;
+HWND hManagmentDate2SaveAsBt;
 configuration conf;
 SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
 SearchDir bDirectory("Y:\\projekty\\test\\backup",".nc");

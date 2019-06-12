@@ -27,7 +27,7 @@ void SearchDir::MakeBackupDirectories(string pathToReplace, string pathReplacing
     }
 }
 
-bool compFile(fileContainer file1, fileContainer file2){
+bool SearchDir::compFile(fileContainer file1, fileContainer file2){
     if(file1.pointer != file2.pointer)
         return false;
     for(int i = 0; i < file1.pointer; i++){
