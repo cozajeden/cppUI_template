@@ -41,7 +41,7 @@
 #define hManagmentDate2CompareBt_ID 528
 #define hManagmentDate1SaveAsBt_ID 527
 #define hManagmentDate2SaveAsBt_ID 528
-int test = 0;
+bool autoAllowed = false;
 
 bool BT1_text_stat = 1;
 /*  Make the class name into a global variable  */

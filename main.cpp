@@ -89,15 +89,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 {
                 case Timer_ID:
                     {
-                        sDirectory.directory = conf.scanDir;
-                        sDirectory.ClearFileContainer();
-                        sDirectory.Search(conf.scanDir);
-                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
-                        sDirectory.fillAll();
-                        bDirectory.directory = conf.backupDir;
-                        bDirectory.ClearFileContainer();
-                        bDirectory.Search(conf.backupDir);
-                        bDirectory.fillAll();
+                        if(autoAllowed)
+                        ScanAndBackup(&conf, &sDirectory, &bDirectory);
                         break;
                     }
                 default:
@@ -111,6 +104,48 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
             switch(LOWORD(wParam))
             {
+                case hManagmentDate1BackupBt_ID:
+                    {
+                        string selectedFile = GetSelectedFromCombo(hManagmentFileCb);
+                        string selectedDate = GetFormatFromTime(GetSelectedFromCombo(hManagmentDate1Cb));
+                        string backupFileforCompare;
+                        string backupPath;
+                        string backupName;
+                        bDirectory.clearAll();
+                        bDirectory.fillAll();
+                        for(int i = 0; i < bDirectory.pointer; i++)
+                        {
+                            backupName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                            backupPath = bDirectory.fContainer[i].fPath;
+                            backupPath.replace(0,conf.backupDir.length(),"");
+                            backupFileforCompare = backupPath + "\\" + backupName;
+                            if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
+                                try{
+                                    bDirectory.fContainer[i].saveFile(conf.scanDir + backupPath, backupName);
+                                }catch(exception& e){
+                                    MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
+                                }
+                        }
+                        break;
+                    }
+                case hManagmentDate2BackupBt_ID:
+                    {
+                        string selectedFile = GetSelectedFromCombo(hManagmentFileCb);
+                        string selectedDate = GetFormatFromTime(GetSelectedFromCombo(hManagmentDate2Cb));
+                        string backupFileforCompare;
+                        string backupPath;
+                        string backupName;
+                        for(int i = 0; i < bDirectory.pointer; i++)
+                        {
+                            backupName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                            backupPath = bDirectory.fContainer[i].fPath;
+                            backupPath.replace(0,conf.backupDir.length(),"");
+                            backupFileforCompare = backupPath + "\\" + backupName;
+                            if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
+                                bDirectory.fContainer[i].saveFile(conf.scanDir + backupPath, backupName);
+                        }
+                        break;
+                    }
                 case hLoginBt_ID:
                     {
                             //if(GetWindowTextString(hMainPassEd) != conf.password)
@@ -149,9 +184,13 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         if(GetWindowTextString(hAutoBt)==(string)"MANUAL"){
                             conf.autoscanOnOff = true;
                             SetWindowTextA(hAutoBt,"AUTO");
+                            SetTimer(hwnd,Timer_ID,60000*conf.scanInterval,(TIMERPROC)NULL);
                         }else{
                             conf.autoscanOnOff = false;
                             SetWindowTextA(hAutoBt,"MANUAL");
+                            try{
+                                KillTimer(hwnd, Timer_ID);
+                            }catch(exception& e){}
                         }
                         break;
                     }
@@ -226,47 +265,11 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hMenuScanBt_ID:
                     {
-                        sDirectory.directory = conf.scanDir;
-                        sDirectory.ClearFileContainer();
-                        sDirectory.Search(conf.scanDir);
-                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
-                        sDirectory.fillAll();
-                        bDirectory.directory = conf.backupDir;
-                        bDirectory.ClearFileContainer();
-                        bDirectory.Search(conf.backupDir);
-                        bDirectory.fillAll();
-                        if(sDirectory.pointer > 0)
-                            if(bDirectory.pointer > 0)
-                            {
-                                for(int i = 0; i < sDirectory.pointer; i++)
-                                    for(int j = 0; j < bDirectory.pointer; j++)
-                                    {
-                                        //========================================================
-                                    }
-                            }else
-                            {
-                                for(int i = 0; i < sDirectory.pointer; i++)
-                                {
-                                    string tempPath = sDirectory.fContainer[i].fPath;
-                                    tempPath.replace(0,conf.scanDir.length(),"");
-                                    tempPath = conf.backupDir + tempPath;
-                                    string tempName = GetFormatedTime() + sDirectory.fContainer[i].fName;
-                                    sDirectory.fContainer[i].saveFile(tempPath, tempName);
-                                }
-                            }
+                        ScanAndBackup(&conf, &sDirectory, &bDirectory);
                         break;
                     }
                 case hGTEditWndBt_ID:
                     {
-                        sDirectory.directory = conf.scanDir;
-                        sDirectory.ClearFileContainer();
-                        sDirectory.Search(conf.scanDir);
-                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
-                        sDirectory.fillAll();
-                        bDirectory.directory = conf.backupDir;
-                        bDirectory.ClearFileContainer();
-                        bDirectory.Search(conf.backupDir);
-                        bDirectory.fillAll();
                         for(int i = 0; i < sDirectory.pointer; i++){
                             string cuttedPath = sDirectory.fContainer[i].fPath;
                             cuttedPath.replace(0,conf.scanDir.length(),"");
@@ -279,6 +282,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
                         hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
                         hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                        autoAllowed = false;
                         ShowObjects(hManagment,13,hMain,15);
                         ChangeWindowDimensions(hwnd, 320, 320);
                         break;
@@ -302,6 +306,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         for(int i = 0; i < Data2CbCount; Data2CbCount--)
                             SendMessage(hManagmentDate2Cb, CB_DELETESTRING, Data2CbCount - 1, NULL);
                         ShowObjects(hMain,15,hManagment,13);
+                        autoAllowed = true;
                         ChangeWindowDimensions(hwnd, 340, 280);
                         break;
                     }
@@ -309,17 +314,33 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     {
                         switch(HIWORD(wParam))
                         {
-                        case CBN_CLOSEUP://When close CB list
+                        case CBN_CLOSEUP:
                             {
                                 if(SendMessage(hManagmentFileCb, CB_GETCURSEL, NULL, NULL) != CB_ERR)
                                 {
-                                    int FileCbSelectedItem = SendMessage(hManagmentFileCb, CB_GETCURSEL, NULL, NULL);
-                                    char FileCbSelectedText[255];
-                                    SendMessage(hManagmentFileCb, CB_GETLBTEXT, FileCbSelectedItem,(LPARAM)FileCbSelectedText);
-                                    //Najpierw robiebie kopii !!!!!!!!!!!!!!!!!!!
-                                    //SendMessage(hManagmentDate1Cb, CB_ADDSTRING, NULL, (LPARAM) GetTimeFromName(bDirectory.fContainer[0].fName).c_str());
+                                    int Data1CbCount = SendMessage(hManagmentDate1Cb, CB_GETCOUNT, NULL, NULL);
+                                    for(int i = 0; i < Data1CbCount; Data1CbCount--)
+                                        SendMessage(hManagmentDate1Cb, CB_DELETESTRING, Data1CbCount - 1, NULL);
+                                    int Data2CbCount = SendMessage(hManagmentDate2Cb, CB_GETCOUNT, NULL, NULL);
+                                    for(int i = 0; i < Data2CbCount; Data2CbCount--)
+                                        SendMessage(hManagmentDate2Cb, CB_DELETESTRING, Data2CbCount - 1, NULL);
+                                    string FileCbSelectedTextString = GetSelectedFromCombo(hManagmentFileCb);
+                                    string backupFileforCompare;
+                                    string backupPath;
+                                    string backupName;
+                                    for(int i = 0; i < bDirectory.pointer; i ++)
+                                    {
+                                        backupName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                                        backupPath = bDirectory.fContainer[i].fPath;
+                                        backupPath.replace(0,conf.backupDir.length(),"");
+                                        backupFileforCompare = backupPath + "\\" + backupName;
+                                        if(FileCbSelectedTextString == backupFileforCompare)
+                                        {
+                                            SendMessage(hManagmentDate1Cb, CB_ADDSTRING, NULL, (LPARAM) GetTimeFromName(bDirectory.fContainer[i].fName).c_str());
+                                            SendMessage(hManagmentDate2Cb, CB_ADDSTRING, NULL, (LPARAM) GetTimeFromName(bDirectory.fContainer[i].fName).c_str());
+                                        }
+                                    }
                                 }
-                                //MessageBox(hwnd,"Lista","zamknieto",MB_OK);
                                 break;
                             }
                         default:
@@ -336,7 +357,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             break;
 
 
-        default:                      /* for messages that we don't deal with */
+        default:
             return DefWindowProc (hwnd, message, wParam, lParam);
     }
 

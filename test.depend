@@ -1,9 +1,12 @@
 # depslib dependency file v1.0
-1560367808 source:y:\projekty\test\main.cpp
+1560544028 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
-1560358091 y:\projekty\test\dialogs.h
+1560544643 y:\projekty\test\dialogs.h
+	"include/configuration.h"
+	"include/SearchDir.h"
+	"include/fileContainer.h"
 
 1559073363 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
 	"incudes.h"
@@ -42,9 +45,9 @@
 	"include/SearchDir.h"
 	"defines.h"
 
-1560366858 y:\projekty\test\defines.h
+1560543307 y:\projekty\test\defines.h
 
-1559778198 y:\projekty\test\include\configuration.h
+1560524658 y:\projekty\test\include\configuration.h
 	<iostream>
 	<string>
 	<stdio.h>
@@ -72,7 +75,7 @@
 1560358091 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
-1560358091 source:y:\projekty\test\src\filecontainer.cpp
+1560544129 source:y:\projekty\test\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
 1559073363 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h

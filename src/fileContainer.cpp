@@ -7,14 +7,13 @@ fileContainer::fileContainer(){
 }
 
 void fileContainer::saveFile(string path, string name){
-    string location = path;
-    string line;
-    location += "\\" + name;
-    ofstream ofile(location.c_str(),ios::out/* | ios::trunc | ios::binary*/);
-    for(int i = 0; i < pointer; i++)
-        ofile << text[i] << endl;
-    ofile.close();
-
+    try{
+        string location = path;
+        ofstream ofile(location.c_str(), ios::trunc | ios::out);
+        for(int i = 0; i < pointer; i++)
+            ofile << text[i] << endl;
+        ofile.close();
+    }catch(exception& e){throw "Niepowodzenie zapisu";}
 }
 
 void fileContainer::Show(){

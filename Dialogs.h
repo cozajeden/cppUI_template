@@ -1,5 +1,8 @@
 #ifndef DIALOGS_H_INCLUDED
 #define DIALOGS_H_INCLUDED
+#include "include/configuration.h"
+#include "include/SearchDir.h"
+#include "include/fileContainer.h"
 //CALLBACK for BrowseFolder
 INT CALLBACK BrowseCallbackProc(HWND hWND, UINT uMsg, LPARAM lp, LPARAM pData)
 {
@@ -113,4 +116,63 @@ string GetTimeFromName(string _name)
 {
     return GetTimeFromFormat(_name);
 }
+
+void ScanAndBackup(configuration* con, SearchDir* sDir, SearchDir* bDir)
+{
+    sDir->directory = con->scanDir;
+    sDir->ClearFileContainer();
+    sDir->Search(con->scanDir);
+    sDir->MakeBackupDirectories(con->scanDir,con->backupDir);
+    sDir->fillAll();
+    bDir->directory = con->backupDir;
+    bDir->ClearFileContainer();
+    bDir->Search(con->backupDir);
+    bDir->fillAll();
+    if(sDir->pointer > 0)
+        if(bDir->pointer > 0)
+        {
+            for(int i = 0; i < sDir->pointer; i++)
+            {
+                string scanPath = sDir->fContainer[i].fPath;
+                string scanFile = sDir->fContainer[i].fName;
+                scanPath.replace(0,con->scanDir.length(),"");
+                bool isDifferent = true;
+                for(int j = 0; j < bDir->pointer; j++)
+                {
+                    string backupPath = bDir->fContainer[j].fPath;
+                    string backupFile = GetNameFromBackupFileName(bDir->fContainer[j].fName);
+                    backupPath.replace(0,con->backupDir.length(),"");
+                    if(scanPath == backupPath && scanFile == backupFile)
+                        if(sDir->compFile(sDir->fContainer[i],bDir->fContainer[j]))
+                            isDifferent = false;
+                }
+                if(isDifferent)
+                {
+                    scanPath = con->backupDir + scanPath;
+                    scanFile = GetFormatedTime() + scanFile;
+                    sDir->fContainer[i].saveFile(scanPath, scanFile);
+                }
+            }
+        }else
+        {
+            for(int i = 0; i < sDir->pointer; i++)
+            {
+                string tempPath = sDir->fContainer[i].fPath;
+                tempPath.replace(0,con->scanDir.length(),"");
+                tempPath = con->backupDir + tempPath;
+                string tempName = GetFormatedTime() + sDir->fContainer[i].fName;
+                sDir->fContainer[i].saveFile(tempPath, tempName);
+            }
+        }
+}
+
+string GetSelectedFromCombo(HWND hWnd)
+{
+    int FileCbSelectedItem = SendMessage(hWnd, CB_GETCURSEL, NULL, NULL);
+    char FileCbSelectedText[255];
+    SendMessage(hWnd, CB_GETLBTEXT, FileCbSelectedItem,(LPARAM)FileCbSelectedText);
+    string result = FileCbSelectedText;
+    return result;
+}
+
 #endif // DIALOGS_H_INCLUDED
