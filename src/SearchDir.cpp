@@ -44,7 +44,7 @@ void SearchDir::Search(string path){
     if (dir) {
         /* print all the files and directories within directory */
         while ((ent = readdir (dir)) != NULL) {
-            if(ent->d_name[0] == '.' || ent->d_name[0] == '\0')
+            if(ent->d_name[0] == '.' || (ent->d_name[0] == '.' && ent->d_name[1] == '.') || ent->d_name[0] == '\0')
                 continue;
             string temp;
             temp += path + "\\" + ent->d_name;
@@ -61,6 +61,7 @@ void SearchDir::Search(string path){
         //  return EXIT_FAILURE;
     }
         closedir(dir);
+        delete ent;
 }
 
 void SearchDir::fillAll(){
@@ -75,6 +76,10 @@ void SearchDir::clearAll(){
 
 void SearchDir::ClearFileContainer()
 {
+    for(int i = 0; i < pointer; i++)
+    {
+        fContainer[i].clearContainer();
+    }
     size_buff = 32;
     pointer = 0;
     fileContainer* temp = new fileContainer[size_buff];

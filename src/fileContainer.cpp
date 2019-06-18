@@ -9,11 +9,12 @@ fileContainer::fileContainer(){
 void fileContainer::saveFile(string path, string name){
     try{
         string location = path;
+        location += "\\" + name;
         ofstream ofile(location.c_str(), ios::trunc | ios::out);
         for(int i = 0; i < pointer; i++)
             ofile << text[i] << endl;
         ofile.close();
-    }catch(exception& e){throw "Niepowodzenie zapisu";}
+    }catch(exception& e){throw "SaveError";}
 }
 
 void fileContainer::Show(){
@@ -32,6 +33,8 @@ void fileContainer::fillContainer(){
 }
 
 void fileContainer::clearContainer(){
+    pointer = 0;
+    maxSize = 32;
     delete [] text;
     text = new string[maxSize];
 }

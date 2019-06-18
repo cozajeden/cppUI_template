@@ -90,7 +90,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case Timer_ID:
                     {
                         if(autoAllowed)
-                        ScanAndBackup(&conf, &sDirectory, &bDirectory);
+                        //ScanAndBackup(&conf, &sDirectory, &bDirectory, hwnd);
                         break;
                     }
                 default:
@@ -111,7 +111,13 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         string backupFileforCompare;
                         string backupPath;
                         string backupName;
-                        bDirectory.clearAll();
+                        sDirectory.directory = conf.scanDir;
+                        sDirectory.ClearFileContainer();
+                        sDirectory.Search(conf.scanDir);
+                        sDirectory.fillAll();
+                        bDirectory.directory = conf.backupDir;
+                        bDirectory.ClearFileContainer();
+                        bDirectory.Search(conf.backupDir);
                         bDirectory.fillAll();
                         for(int i = 0; i < bDirectory.pointer; i++)
                         {
@@ -265,7 +271,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hMenuScanBt_ID:
                     {
-                        ScanAndBackup(&conf, &sDirectory, &bDirectory);
+                        ScanAndBackup(conf, sDirectory, bDirectory, hwnd);
                         break;
                     }
                 case hGTEditWndBt_ID:

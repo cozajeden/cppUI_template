@@ -15,8 +15,8 @@ class SearchDir
         virtual ~SearchDir();//Destructor
         string directory;//Path for searching
         string extension;//Contain extension parameter for search
-        int pointer;//Amount of found files
         fileContainer * fContainer;//Array of objects containing files
+        int pointer;//Amount of found files
         bool compFile(fileContainer file1, fileContainer file2);//Compare two files, return true if are the same
         void saveFile(string path, fileContainer file);//Save file in path location
         bool CheckExtension(string path);//If path extension is equal to extension variable than return true, otherwise false

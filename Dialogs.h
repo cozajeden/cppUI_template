@@ -86,6 +86,7 @@ string GetFormatedTime()
   timeinfo = localtime ( &rawtime );
   string timeString = asctime (timeinfo);
   string formatedString = timeString.substr(20,4) + timeString.substr(4,3) + timeString.substr(8,2) + timeString.substr(11,2) + timeString.substr(14,2) + timeString.substr(17,2);
+  delete timeinfo;
   return formatedString;
 }
 
@@ -117,53 +118,55 @@ string GetTimeFromName(string _name)
     return GetTimeFromFormat(_name);
 }
 
-void ScanAndBackup(configuration* con, SearchDir* sDir, SearchDir* bDir)
+void ScanAndBackup(configuration& con, SearchDir& sDir, SearchDir& bDir, HWND hWnd)
 {
-    sDir->directory = con->scanDir;
-    sDir->ClearFileContainer();
-    sDir->Search(con->scanDir);
-    sDir->MakeBackupDirectories(con->scanDir,con->backupDir);
-    sDir->fillAll();
-    bDir->directory = con->backupDir;
-    bDir->ClearFileContainer();
-    bDir->Search(con->backupDir);
-    bDir->fillAll();
-    if(sDir->pointer > 0)
-        if(bDir->pointer > 0)
+    sDirectory.directory = conf.scanDir;
+    bDirectory.directory = conf.backupDir;
+    sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+    sDirectory.ClearFileContainer();
+    bDirectory.ClearFileContainer();
+    sDirectory.Search(conf.scanDir);//======
+    bDirectory.Search(conf.backupDir);//=======
+    sDirectory.fillAll();
+    bDirectory.fillAll();
+    if(sDirectory.pointer > 0)
+    {
+        if(bDirectory.pointer > 0)
         {
-            for(int i = 0; i < sDir->pointer; i++)
+            for(int i = 0; i < sDirectory.pointer; i++)
             {
-                string scanPath = sDir->fContainer[i].fPath;
-                string scanFile = sDir->fContainer[i].fName;
-                scanPath.replace(0,con->scanDir.length(),"");
+                string scanPath = sDirectory.fContainer[i].fPath;
+                string scanFile = sDirectory.fContainer[i].fName;
+                scanPath.replace(0,con.scanDirectory.length(),"");
                 bool isDifferent = true;
-                for(int j = 0; j < bDir->pointer; j++)
+                for(int j = 0; j < bDirectory.pointer; j++)
                 {
-                    string backupPath = bDir->fContainer[j].fPath;
-                    string backupFile = GetNameFromBackupFileName(bDir->fContainer[j].fName);
-                    backupPath.replace(0,con->backupDir.length(),"");
+                    string backupPath = bDirectory.fContainer[j].fPath;
+                    string backupFile = GetNameFromBackupFileName(bDirectory.fContainer[j].fName);
+                    backupPath.replace(0,conf.backupDir.length(),"");
                     if(scanPath == backupPath && scanFile == backupFile)
-                        if(sDir->compFile(sDir->fContainer[i],bDir->fContainer[j]))
+                        if(sDir.compFile(sDirectory.fContainer[i],bDirectory.fContainer[j]))
                             isDifferent = false;
                 }
                 if(isDifferent)
                 {
-                    scanPath = con->backupDir + scanPath;
+                    scanPath = conf.backupDir + scanPath;
                     scanFile = GetFormatedTime() + scanFile;
-                    sDir->fContainer[i].saveFile(scanPath, scanFile);
+                    sDirectory.fContainer[i].saveFile(scanPath, scanFile);
                 }
             }
         }else
         {
-            for(int i = 0; i < sDir->pointer; i++)
+            for(int i = 0; i < sDirectory.pointer; i++)
             {
-                string tempPath = sDir->fContainer[i].fPath;
-                tempPath.replace(0,con->scanDir.length(),"");
-                tempPath = con->backupDir + tempPath;
-                string tempName = GetFormatedTime() + sDir->fContainer[i].fName;
-                sDir->fContainer[i].saveFile(tempPath, tempName);
+                string tempPath = sDirectory.fContainer[i].fPath;
+                tempPath.replace(0,conf.scanDir.length(),"");
+                tempPath = conf.backupDir + tempPath;
+                string tempName = GetFormatedTime() + sDirectory.fContainer[i].fName;
+                sDirectory.fContainer[i].saveFile(tempPath, tempName);
             }
         }
+    }
 }
 
 string GetSelectedFromCombo(HWND hWnd)
