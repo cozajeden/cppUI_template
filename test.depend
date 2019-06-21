@@ -1,0 +1,113 @@
+# depslib dependency file v1.0
+1561119176 source:y:\projekty\test\main.cpp
+	"incudes.h"
+	"controls.h"
+
+1561118994 y:\projekty\test\dialogs.h
+	"include/configuration.h"
+	"include/fileContainer.h"
+	"include/SearchDir.h"
+
+1559073363 source:c:\users\cozajeden\documents\github\cppui_template\main.cpp
+	"incudes.h"
+	"controls.h"
+
+1559074834 c:\users\cozajeden\documents\github\cppui_template\dialogs.h
+
+1558602533 source:c:\users\cozajeden\documents\github\cppui_template\winproccb.cpp
+
+1559075326 c:\users\cozajeden\documents\github\cppui_template\incudes.h
+	<tchar.h>
+	<windows.h>
+	<stdio.h>
+	<string>
+	<shlobj.h>
+	"Dialogs.h"
+	"include/configuration.h"
+	"include/fileContainer.h"
+	"include/SearchDir.h"
+	"defines.h"
+
+1559071903 c:\users\cozajeden\documents\github\cppui_template\defines.h
+
+1560372150 y:\projekty\test\incudes.h
+	<tchar.h>
+	<windows.h>
+	<stdio.h>
+	<string>
+	<shlobj.h>
+	<sstream>
+	<time.h>
+	<math.h>
+	"Dialogs.h"
+	"include/configuration.h"
+	"include/fileContainer.h"
+	"include/SearchDir.h"
+	"defines.h"
+
+1560372150 y:\projekty\test\defines.h
+
+1560372150 y:\projekty\test\include\configuration.h
+	<iostream>
+	<string>
+	<stdio.h>
+	<fstream>
+	<windows.h>
+
+1560372150 y:\projekty\test\include\filecontainer.h
+	<iostream>
+	<dirent.h>
+	<stdio.h>
+	<fstream>
+	<string>
+	<windows.h>
+
+1560372150 y:\projekty\test\include\searchdir.h
+	<iostream>
+	<string>
+	<dirent.h>
+	<stdio.h>
+	"fileContainer.h"
+
+1560372150 source:y:\projekty\test\src\configuration.cpp
+	"../include/configuration.h"
+
+1561113849 source:y:\projekty\test\src\searchdir.cpp
+	"../include/SearchDir.h"
+
+1561116218 source:y:\projekty\test\src\filecontainer.cpp
+	"../include/fileContainer.h"
+
+1559073363 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
+	<iostream>
+	<string>
+	<stdio.h>
+	<fstream>
+	<windows.h>
+
+1559062994 c:\users\cozajeden\documents\github\cppui_template\include\filecontainer.h
+	<iostream>
+	<dirent.h>
+	<stdio.h>
+	<fstream>
+
+1559062994 c:\users\cozajeden\documents\github\cppui_template\include\searchdir.h
+	<iostream>
+	<string>
+	<dirent.h>
+	<stdio.h>
+	"fileContainer.h"
+
+1559073673 source:c:\users\cozajeden\documents\github\cppui_template\src\configuration.cpp
+	"../include/configuration.h"
+
+1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\filecontainer.cpp
+	"../include/fileContainer.h"
+
+1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\searchdir.cpp
+	"../include/SearchDir.h"
+
+1559071895 c:\users\cozajeden\documents\github\cppui_template\controls.h
+
+1560372150 y:\projekty\test\controls.h
+
