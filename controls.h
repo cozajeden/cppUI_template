@@ -5,7 +5,7 @@ int x_offset = 10;
 hwnd = CreateWindowEx (
     0,                   // Extended possibilites for variation
     szClassName,         // Classname
-    _T("SipEye"),          // Title Text
+    _T("TEST"),          // Title Text
     WS_OVERLAPPEDWINDOW, // default window
     CW_USEDEFAULT,       // Windows decides the position
     CW_USEDEFAULT,       // where the window ends up on the screen
@@ -207,7 +207,7 @@ hChangePassEd = CreateWindowEx(
     WS_EX_CLIENTEDGE,
     "EDIT",
     NULL,
-    WS_CHILD | ES_PASSWORD,
+    WS_CHILD,
     0, 20, 100, 30,
     hwnd,
     (HMENU)hChangePassEd_ID,
@@ -247,147 +247,14 @@ hMenuPathSt = CreateWindowEx(
     hThisInstance,
     NULL );
 
-hManagmentFileCb = CreateWindowEx(
-    WS_EX_CLIENTEDGE,
-    "COMBOBOX",
-    NULL,
-    WS_CHILD | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | WS_HSCROLL | ES_AUTOHSCROLL | ES_AUTOVSCROLL,
-    0, 20, 300, 200,
-    hwnd,
-    (HMENU)hManagmentFileCb_ID,
-    hThisInstance,
-    NULL );
-
-
-hManagmentDate1Cb = CreateWindowEx(
+hManagmentFile = CreateWindowEx(
     WS_EX_CLIENTEDGE,
     "COMBOBOX",
     NULL,
     WS_CHILD | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | ES_AUTOVSCROLL,
-    0, 100, 300, 200,
+    0, 20, 500, 200,
     hwnd,
-    (HMENU)hManagmentDate1Cb_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate2Cb = CreateWindowEx(
-    WS_EX_CLIENTEDGE,
-    "COMBOBOX",
-    NULL,
-    WS_CHILD | WS_BORDER | CBS_SORT | CBS_DROPDOWNLIST | WS_VSCROLL | ES_AUTOVSCROLL,
-    0, 180, 300, 200,
-    hwnd,
-    (HMENU)hManagmentDate2Cb_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentFileSt = CreateWindowEx(
-    0,
-    "STATIC",
-    "Wybierz plik:",
-    WS_CHILD | ES_LEFT,
-    0, 0, 250, 20,
-    hwnd,
-    (HMENU)hManagmentFileSt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate1St = CreateWindowEx(
-    0,
-    "STATIC",
-    "Wybierz date kopii:",
-    WS_CHILD | ES_LEFT,
-    0, 80, 250, 20,
-    hwnd,
-    (HMENU)hManagmentDate1St_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate2St = CreateWindowEx(
-    0,
-    "STATIC",
-    "Wybierz date kopii do porownania:",
-    WS_CHILD | ES_LEFT,
-    0, 160, 250, 20,
-    hwnd,
-    (HMENU)hManagmentDate2St_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentBackBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "WYJDZ",
-    WS_CHILD,
-    0, 50, 100, 30,
-    hwnd,
-    (HMENU)hManagmentBackBt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate1BackupBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "Przywroc",
-    WS_CHILD,
-    0, 130, 100, 30,
-    hwnd,
-    (HMENU)hManagmentDate1BackupBt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate2BackupBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "Przywroc",
-    WS_CHILD,
-    0, 210, 100, 30,
-    hwnd,
-    (HMENU)hManagmentDate2BackupBt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate1LookBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "Podejrzyj",
-    WS_CHILD,
-    100, 130, 100, 30,
-    hwnd,
-    (HMENU)hManagmentDate1LookBt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate2CompareBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "Porownaj",
-    WS_CHILD,
-    100, 210, 100, 30,
-    hwnd,
-    (HMENU)hManagmentDate2CompareBt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate1SaveAsBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "Zapisz Jako",
-    WS_CHILD,
-    200, 130, 100, 30,
-    hwnd,
-    (HMENU)hManagmentDate1SaveAsBt_ID,
-    hThisInstance,
-    NULL );
-
-hManagmentDate2SaveAsBt = CreateWindowEx(
-    0,
-    "BUTTON",
-    "Zapisz jako",
-    WS_CHILD,
-    200, 210, 100, 30,
-    hwnd,
-    (HMENU)hManagmentDate2SaveAsBt_ID,
+    (HMENU)hManagmentFile_ID,
     hThisInstance,
     NULL );
 

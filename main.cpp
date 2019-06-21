@@ -60,29 +60,16 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
                 bDirectory.Search(conf.backupDir);
                 SetWindowTextA(hMainPassEd,conf.password.c_str());
-                if(conf.autoscanOnOff)
-                    SetTimer(hwnd,Timer_ID,60000*conf.scanInterval,(TIMERPROC)NULL);
-                break;
-            }
-        case WM_CLOSE:
-            {
-                if (MessageBox(hwnd, "Aby zakonczyc musisz byc zalogowany", "chcesz zakonczyc?", MB_OKCANCEL) == IDOK)
-                {
-                    if(IsWindowVisible(hLoginBt) == NULL)
-                        DestroyWindow(hwnd);
-                    else
-                        MessageBox(hwnd,"Nie jestes zalogowany","Ups!",MB_OK);
-                }
                 break;
             }
 
         case WM_DESTROY:
             {
-                KillTimer(hwnd,Timer_ID);
                 PostQuitMessage (0);       /* send a WM_QUIT to the message queue */
                 break;
             }
 
+<<<<<<< HEAD
         case WM_TIMER:
             {
                 switch(wParam)
@@ -100,9 +87,12 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 }
                 break;
             }
+=======
+
+>>>>>>> parent of f4aea78... Half Saving files
         case WM_COMMAND:
 
-            switch(LOWORD(wParam))
+            switch(wParam)
             {
                 case hManagmentDate1BackupBt_ID:
                     {
@@ -217,17 +207,6 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case hSaveChMenuBt_ID:
                     {
                         conf.save();
-                        if(conf.autoscanOnOff)
-                        {
-                            try{
-                                KillTimer(hwnd,Timer_ID);
-                            }catch(exception& e){}
-                            SetTimer(hwnd,Timer_ID,60000*conf.scanInterval,(TIMERPROC)NULL);
-                        }else{
-                            try{
-                                KillTimer(hwnd,Timer_ID);
-                            }catch(exception& e){}
-                        }
                         break;
                     }
                 case hExitMenuBt_ID:
@@ -271,23 +250,43 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hMenuScanBt_ID:
                     {
+<<<<<<< HEAD
                         ScanAndBackup(conf, sDirectory, bDirectory, hwnd);
+=======
+                        sDirectory.directory = conf.scanDir;
+                        sDirectory.ClearFileContainer();
+                        sDirectory.Search(conf.scanDir);
+                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+>>>>>>> parent of f4aea78... Half Saving files
                         break;
                     }
                 case hGTEditWndBt_ID:
                     {
+<<<<<<< HEAD
+=======
+                        sDirectory.directory = conf.scanDir;
+                        sDirectory.ClearFileContainer();
+                        sDirectory.Search(conf.scanDir);
+                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+                        bDirectory.directory = conf.backupDir;
+                        bDirectory.ClearFileContainer();
+                        bDirectory.Search(conf.backupDir);
+                        /*for(int i = 0; i < bDirectory.pointer; i++){
+                            string cuttedPath = bDirectory.fContainer[i].fPath;
+                            cuttedPath.replace(0,conf.backupDir.length(),"");
+                            SendMessage( hManagmentFile, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + bDirectory.fContainer[i].fName).c_str() );
+                        }*/
+>>>>>>> parent of f4aea78... Half Saving files
                         for(int i = 0; i < sDirectory.pointer; i++){
                             string cuttedPath = sDirectory.fContainer[i].fPath;
                             cuttedPath.replace(0,conf.scanDir.length(),"");
-                            SendMessage( hManagmentFileCb, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
+                            SendMessage( hManagmentFile, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
                         }
-                        HWND hManagment[] = {hManagmentDate1Cb, hManagmentFileCb, hManagmentDate2Cb,
-                        hManagmentFileSt, hManagmentDate1St, hManagmentDate2St, hManagmentDate1BackupBt,
-                        hManagmentDate2BackupBt, hManagmentDate1LookBt, hManagmentDate2CompareBt,
-                        hManagmentDate1SaveAsBt, hManagmentDate2SaveAsBt, hManagmentBackBt};
+                        HWND hManagment[] = {hManagmentFile};
                         HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
                         hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
                         hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+<<<<<<< HEAD
                         autoAllowed = false;
                         ShowObjects(hManagment,13,hMain,15);
                         ChangeWindowDimensions(hwnd, 320, 320);
@@ -357,6 +356,10 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                     default:
                     {
+=======
+                        ShowObjects(hManagment,1,hMain,15);
+                        ChangeWindowDimensions(hwnd, 300, 300);
+>>>>>>> parent of f4aea78... Half Saving files
                         break;
                     }
             }
