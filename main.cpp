@@ -70,6 +70,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         case WM_TIMER:
             {
                 switch(wParam)
@@ -90,10 +91,14 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 =======
 
 >>>>>>> parent of f4aea78... Half Saving files
+=======
+
+>>>>>>> parent of f4aea78... Half Saving files
         case WM_COMMAND:
 
             switch(wParam)
             {
+<<<<<<< HEAD
                 case hManagmentDate1BackupBt_ID:
                     {
                         string selectedFile = GetSelectedFromCombo(hManagmentFileCb);
@@ -142,6 +147,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         }
                         break;
                     }
+=======
+>>>>>>> parent of f4aea78... Half Saving files
                 case hLoginBt_ID:
                     {
                             //if(GetWindowTextString(hMainPassEd) != conf.password)
@@ -257,6 +264,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         sDirectory.ClearFileContainer();
                         sDirectory.Search(conf.scanDir);
                         sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+<<<<<<< HEAD
+>>>>>>> parent of f4aea78... Half Saving files
+=======
 >>>>>>> parent of f4aea78... Half Saving files
                         break;
                     }
@@ -276,6 +286,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                             cuttedPath.replace(0,conf.backupDir.length(),"");
                             SendMessage( hManagmentFile, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + bDirectory.fContainer[i].fName).c_str() );
                         }*/
+<<<<<<< HEAD
+>>>>>>> parent of f4aea78... Half Saving files
+=======
 >>>>>>> parent of f4aea78... Half Saving files
                         for(int i = 0; i < sDirectory.pointer; i++){
                             string cuttedPath = sDirectory.fContainer[i].fPath;
@@ -286,6 +299,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
                         hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
                         hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+<<<<<<< HEAD
 <<<<<<< HEAD
                         autoAllowed = false;
                         ShowObjects(hManagment,13,hMain,15);
@@ -356,6 +370,10 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                     default:
                     {
+=======
+                        ShowObjects(hManagment,1,hMain,15);
+                        ChangeWindowDimensions(hwnd, 300, 300);
+>>>>>>> parent of f4aea78... Half Saving files
 =======
                         ShowObjects(hManagment,1,hMain,15);
                         ChangeWindowDimensions(hwnd, 300, 300);

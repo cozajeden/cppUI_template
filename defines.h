@@ -29,6 +29,7 @@
 #define hChangePassBt_ID 521
 #define hChangePassBackBt_ID 522
 <<<<<<< HEAD
+<<<<<<< HEAD
 #define Timer_ID 523
 #define hManagmentFileCb_ID 503
 #define hManagmentDate1Cb_ID 524
@@ -44,6 +45,9 @@
 #define hManagmentDate1SaveAsBt_ID 527
 #define hManagmentDate2SaveAsBt_ID 528
 bool autoAllowed = false;
+=======
+
+>>>>>>> parent of f4aea78... Half Saving files
 =======
 
 >>>>>>> parent of f4aea78... Half Saving files

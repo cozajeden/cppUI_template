@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
 <<<<<<< HEAD
+<<<<<<< HEAD
 1560876739 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
@@ -8,6 +9,13 @@
 	"include/configuration.h"
 	"include/SearchDir.h"
 	"include/fileContainer.h"
+=======
+1560266246 source:y:\projekty\test\main.cpp
+	"incudes.h"
+	"controls.h"
+
+1559877741 y:\projekty\test\dialogs.h
+>>>>>>> parent of f4aea78... Half Saving files
 =======
 1560266246 source:y:\projekty\test\main.cpp
 	"incudes.h"
@@ -54,7 +62,11 @@
 	"defines.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 1560543307 y:\projekty\test\defines.h
+=======
+1559869318 y:\projekty\test\defines.h
+>>>>>>> parent of f4aea78... Half Saving files
 =======
 1559869318 y:\projekty\test\defines.h
 >>>>>>> parent of f4aea78... Half Saving files
@@ -85,15 +97,21 @@
 	"../include/configuration.h"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 1560864995 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
 1560858999 source:y:\projekty\test\src\filecontainer.cpp
 =======
+=======
+>>>>>>> parent of f4aea78... Half Saving files
 1559879155 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
 1560267007 source:y:\projekty\test\src\filecontainer.cpp
+<<<<<<< HEAD
+>>>>>>> parent of f4aea78... Half Saving files
+=======
 >>>>>>> parent of f4aea78... Half Saving files
 	"../include/fileContainer.h"
 
