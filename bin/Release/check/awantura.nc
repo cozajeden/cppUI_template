@@ -1,5 +1,5 @@
 cokolwiek
-asdasd
+cos
 asdavokjndfc
 2zmiana
 sdad

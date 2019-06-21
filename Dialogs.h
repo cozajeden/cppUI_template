@@ -118,10 +118,12 @@ string GetTimeFromName(string _name)
     return GetTimeFromFormat(_name);
 }
 
-void ScanAndBackup(configuration& con, SearchDir& sDir, SearchDir& bDir, HWND hWnd)
+void ScanAndBackup(configuration& conf, SearchDir& sDirectory, SearchDir& bDirectory, HWND hWnd)
 {
     sDirectory.directory = conf.scanDir;
     bDirectory.directory = conf.backupDir;
+    sDirectory.extension = conf.extension;
+    bDirectory.extension = conf.extension;
     sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
     sDirectory.ClearFileContainer();
     bDirectory.ClearFileContainer();
@@ -137,15 +139,16 @@ void ScanAndBackup(configuration& con, SearchDir& sDir, SearchDir& bDir, HWND hW
             {
                 string scanPath = sDirectory.fContainer[i].fPath;
                 string scanFile = sDirectory.fContainer[i].fName;
-                scanPath.replace(0,con.scanDirectory.length(),"");
+                scanPath.replace(0,conf.scanDir.length(),"");
                 bool isDifferent = true;
+                bool test =  true;
                 for(int j = 0; j < bDirectory.pointer; j++)
                 {
                     string backupPath = bDirectory.fContainer[j].fPath;
                     string backupFile = GetNameFromBackupFileName(bDirectory.fContainer[j].fName);
                     backupPath.replace(0,conf.backupDir.length(),"");
                     if(scanPath == backupPath && scanFile == backupFile)
-                        if(sDir.compFile(sDirectory.fContainer[i],bDirectory.fContainer[j]))
+                        if(sDirectory.compFile(sDirectory.fContainer[i],bDirectory.fContainer[j]))
                             isDifferent = false;
                 }
                 if(isDifferent)
@@ -153,6 +156,8 @@ void ScanAndBackup(configuration& con, SearchDir& sDir, SearchDir& bDir, HWND hW
                     scanPath = conf.backupDir + scanPath;
                     scanFile = GetFormatedTime() + scanFile;
                     sDirectory.fContainer[i].saveFile(scanPath, scanFile);
+                    MessageBox(hWnd,scanPath.c_str(),scanFile.c_str(),MB_OK);//!!!!!!!!!
+                    bDirectory.addItem(scanPath,scanFile);
                 }
             }
         }else

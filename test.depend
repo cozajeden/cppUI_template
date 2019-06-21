@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1560859553 source:y:\projekty\test\main.cpp
+1560876739 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
-1560866639 y:\projekty\test\dialogs.h
+1561107426 y:\projekty\test\dialogs.h
 	"include/configuration.h"
 	"include/SearchDir.h"
 	"include/fileContainer.h"
@@ -62,7 +62,7 @@
 	<string>
 	<windows.h>
 
-1560864200 y:\projekty\test\include\searchdir.h
+1561106170 y:\projekty\test\include\searchdir.h
 	<iostream>
 	<string>
 	<dirent.h>
