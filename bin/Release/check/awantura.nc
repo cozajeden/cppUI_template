@@ -1,5 +1,0 @@
-cokolwiek
-cos
-asdavokjndfc
-2zmiana
-sdad
