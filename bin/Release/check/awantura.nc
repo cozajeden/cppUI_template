@@ -1,5 +1,3 @@
 tratatata
 tom
-mama
-oni
-one
+tata

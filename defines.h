@@ -35,13 +35,13 @@
 #define hManagmentDate1St_ID 527
 #define hManagmentDate2St_ID 528
 #define hManagmentBackBt_ID 529
-#define hManagmentDate1BackupBt_ID 527
-#define hManagmentDate2BackupBt_ID 528
-#define hManagmentDate1LookBt_ID 527
-#define hManagmentDate2CompareBt_ID 528
-#define hManagmentDate1SaveAsBt_ID 527
-#define hManagmentDate2SaveAsBt_ID 528
-int test = 0;
+#define hManagmentDate1BackupBt_ID 530
+#define hManagmentDate2BackupBt_ID 531
+#define hManagmentDate1LookBt_ID 532
+#define hManagmentDate2CompareBt_ID 533
+#define hManagmentDate1SaveAsBt_ID 534
+#define hManagmentDate2SaveAsBt_ID 535
+bool IsManagment = false;
 
 bool BT1_text_stat = 1;
 /*  Make the class name into a global variable  */

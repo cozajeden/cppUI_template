@@ -17,6 +17,15 @@ void fileContainer::saveFile(string path, string name){
 
 }
 
+void fileContainer::saveFileAs(string path){
+    string line;
+    ofstream ofile(path.c_str(),ios::out | ios::trunc);
+    for(int i = 0; i < pointer; i++)
+        ofile << text[i] << endl;
+    ofile.close();
+
+}
+
 void fileContainer::Show(){
         for(int i = 0; i < pointer; i++)
             cout << text[i] << endl;
@@ -33,6 +42,8 @@ void fileContainer::fillContainer(){
 }
 
 void fileContainer::clearContainer(){
+    pointer = 0;
+    maxSize = 32;
     delete [] text;
     text = new string[maxSize];
 }

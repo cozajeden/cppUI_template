@@ -26,6 +26,7 @@ class fileContainer
         void Show();//Show containment to command line
         void addLine(string line);//Add single line and increment pointer
         void setContainer(string path, string name);//Set file path and name
+        void saveFileAs(string path);//Save file using full path
     protected:
         int maxSize;//Actual size of text array
     private:

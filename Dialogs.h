@@ -117,4 +117,15 @@ string GetTimeFromName(string _name)
     return GetTimeFromFormat(_name);
 }
 
+string GetSelectedFromCombo(HWND hWnd)
+{
+        int FileCbSelectedItem = SendMessage(hWnd, CB_GETCURSEL, NULL, NULL);
+        char FileCbSelectedText[MAX_PATH];
+        string result;
+        if(SendMessage(hWnd, CB_GETLBTEXT, FileCbSelectedItem,(LPARAM)FileCbSelectedText) != CB_ERR && FileCbSelectedText != "")
+            result = FileCbSelectedText;
+        else
+            result = "";
+        return result;
+}
 #endif // DIALOGS_H_INCLUDED

@@ -79,6 +79,8 @@ void SearchDir::clearAll(){
 
 void SearchDir::ClearFileContainer()
 {
+    for(int i = 0; i < pointer; i++)
+        fContainer[i].clearContainer();
     size_buff = 32;
     pointer = 0;
     fileContainer* temp = new fileContainer[size_buff];
