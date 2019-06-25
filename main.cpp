@@ -40,7 +40,8 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
     SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
 
-    //Notification
+    //**NOTIFYICON SECTION
+    //Create notify icon structure
     NOTIFYICONDATA nid = {};
     nid.cbSize = sizeof(nid);
     nid.hWnd = hwnd;
@@ -48,11 +49,23 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
     nid.uFlags = NIF_ICON | NIF_TIP | NIF_MESSAGE;
     nid.uCallbackMessage = APPWM_ICONNOTIFY;
     nid.hIcon = hIcon;
+
     // This text will be shown as the icon's tooltip.
     strcpy(nid.szTip, "text");
 
     // Show the notification.
     Shell_NotifyIcon(NIM_ADD, &nid);
+
+    //Check DLL version
+    ULONGLONG ullVersion = GetDllVersion(_T("Shell32.dll"));
+        if(ullVersion >= MAKEDLLVERULL(6, 0,6,0))
+            nid.cbSize = sizeof(NOTIFYICONDATA);
+        else if(ullVersion >= MAKEDLLVERULL(6, 0,0,0))
+            nid.cbSize = sizeof(NOTIFYICONDATA);
+        else if(ullVersion >= MAKEDLLVERULL(5, 0,0,0))
+            nid.cbSize = NOTIFYICONDATA_V2_SIZE;
+        else nid.cbSize = NOTIFYICONDATA_V1_SIZE;
+    //** END OF NOTIFYICON SECTION
     /* Run the message loop. It will run until GetMessage() returns 0 */
     while (GetMessage (&messages, NULL, 0, 0))
     {
@@ -73,6 +86,19 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 {
     switch (message)                  /* handle the messages */
     {
+        case APPWM_ICONNOTIFY:
+            {
+                switch(lParam)
+                {
+                case WM_LBUTTONDBLCLK:
+                    ShowWindow(hwnd, SW_RESTORE);
+                    break;
+                case WM_RBUTTONDOWN:
+                case WM_CONTEXTMENU:
+                    ShowContextMenu(hwnd);
+                }
+                break;
+            }
         case WM_CREATE:
             {
                 conf.initialize();
@@ -604,4 +630,30 @@ void ShowContextMenu(HWND hWnd)
 			pt.x, pt.y, 0, hWnd, NULL );
 		DestroyMenu(hMenu);
 	}
+}
+
+
+// Get dll version number
+ULONGLONG GetDllVersion(LPCTSTR lpszDllName)
+{
+    ULONGLONG ullVersion = 0;
+	HINSTANCE hinstDll;
+    hinstDll = LoadLibrary(lpszDllName);
+    if(hinstDll)
+    {
+        DLLGETVERSIONPROC pDllGetVersion;
+        pDllGetVersion = (DLLGETVERSIONPROC)GetProcAddress(hinstDll, "DllGetVersion");
+        if(pDllGetVersion)
+        {
+            DLLVERSIONINFO dvi;
+            HRESULT hr;
+            ZeroMemory(&dvi, sizeof(dvi));
+            dvi.cbSize = sizeof(dvi);
+            hr = (*pDllGetVersion)(&dvi);
+            if(SUCCEEDED(hr))
+				ullVersion = MAKEDLLVERULL(dvi.dwMajorVersion, dvi.dwMinorVersion,0,0);
+        }
+        FreeLibrary(hinstDll);
+    }
+    return ullVersion;
 }

@@ -9,6 +9,13 @@
 #include <sstream>
 #include <time.h>
 #include <math.h>
+#include <commctrl.h>
+#include <Shellapi.h>
+#include <Shlwapi.h>
+#include <stdlib.h>
+#include <malloc.h>
+#include <memory.h>
+#include <winver.h>
 using namespace std;
 #include "Dialogs.h"
 #include "include/configuration.h"

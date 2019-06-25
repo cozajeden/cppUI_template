@@ -392,5 +392,5 @@ hManagmentDate2SaveAsBt = CreateWindowEx(
     NULL );
 
 
-ShowWindow (hwnd, nCmdShow);
+//ShowWindow (hwnd, nCmdShow);//DEBUG ONLY
 #endif // CONTROLS_H_INCLUDED
