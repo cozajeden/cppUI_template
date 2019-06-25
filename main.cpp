@@ -1,4 +1,5 @@
 #include "incudes.h"
+/*Entire project was created in Code::Blocks by Ryszard Napiera³a*/
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 
@@ -7,22 +8,22 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
                      LPSTR lpszArgument,
                      int nCmdShow)
 {
-    MSG messages;            /* Here messages to the application are saved */
-    WNDCLASSEX wincl;/* Data structure for the windowclass */
+    MSG messages;                                   /* Here messages to the application are saved */
+    WNDCLASSEX wincl;                               /* Data structure for the windowclass */
     /* The Window structure */
     wincl.hInstance = hThisInstance;
     wincl.lpszClassName = szClassName;
-    wincl.lpfnWndProc = WindowProcedure;      /* This function is called by windows */
-    wincl.style = CS_DBLCLKS;                 /* Catch double-clicks */
+    wincl.lpfnWndProc = WindowProcedure;            /* This function is called by windows */
+    wincl.style = CS_DBLCLKS;                       /* Catch double-clicks */
     wincl.cbSize = sizeof (WNDCLASSEX);
 
     /* Use default icon and mouse-pointer */
     wincl.hIcon = LoadIcon (NULL, IDI_APPLICATION);
     wincl.hIconSm = LoadIcon (NULL, IDI_APPLICATION);
     wincl.hCursor = LoadCursor (NULL, IDC_ARROW);
-    wincl.lpszMenuName = NULL;                 /* No menu */
-    wincl.cbClsExtra = 0;                      /* No extra bytes after the window class */
-    wincl.cbWndExtra = 0;                      /* structure or the window instance */
+    wincl.lpszMenuName = NULL;                      /* No menu */
+    wincl.cbClsExtra = 0;                           /* No extra bytes after the window class */
+    wincl.cbWndExtra = 0;                           /* structure or the window instance */
     /* Use Windows's default colour as the background of the window */
     wincl.hbrBackground = (HBRUSH) COLOR_BACKGROUND;
 
@@ -103,7 +104,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 {
                     case SIZE_MINIMIZED:
                         {
-
+                            ShowWindow(hwnd, SW_HIDE);
                         }
                 }
                 break;
@@ -413,18 +414,21 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hSaveChMenuBt_ID:
                     {
-                        conf.save();
-                        if(conf.autoscanOnOff)
+                                                if(!conf.scanDir.empty() && conf.scanDir != "")
                         {
-                            try{
-                                KillTimer(hwnd,Timer_ID);
-                            }catch(exception& e){}
-                            SetTimer(hwnd,Timer_ID,60000*conf.scanInterval,(TIMERPROC)NULL);
-                        }else{
-                            try{
-                                KillTimer(hwnd,Timer_ID);
-                            }catch(exception& e){}
-                        }
+                            conf.save();
+                            if(conf.autoscanOnOff)
+                            {
+                                try{
+                                    KillTimer(hwnd,Timer_ID);
+                                }catch(exception& e){}
+                                SetTimer(hwnd,Timer_ID,60000*conf.scanInterval,(TIMERPROC)NULL);
+                            }else{
+                                try{
+                                    KillTimer(hwnd,Timer_ID);
+                                }catch(exception& e){}
+                            }
+                        }else{MessageBox(hwnd,"Nie wybrano sciezki","HA!",MB_OK);}
                         break;
                     }
                 case hExitMenuBt_ID:
@@ -468,87 +472,93 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hMenuScanBt_ID:
                     {
-                        sDirectory.directory = conf.scanDir;
-                        sDirectory.extension = conf.extension;
-                        sDirectory.ClearFileContainer();
-                        sDirectory.Search(conf.scanDir);
-                        sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
-                        sDirectory.fillAll();
-                        bDirectory.directory = conf.backupDir;
-                        bDirectory.extension = conf.extension;
-                        bDirectory.ClearFileContainer();
-                        bDirectory.Search(conf.backupDir);
-                        bDirectory.fillAll();
-                        if(sDirectory.pointer > 0)
-                            if(bDirectory.pointer > 0)
-                            {
-                                for(int i = 0; i < sDirectory.pointer; i++)
-                                    {
-                                        string tempScanPath = sDirectory.fContainer[i].fPath;
-                                        string tempScanFile = sDirectory.fContainer[i].fName;
-                                        tempScanPath.replace(0, conf.scanDir.length(), "");
-                                        bool backupExist = false;
-                                        bool backupLength = false;
-                                        for(int j = 0; j < bDirectory.pointer && !backupExist; j++)
+                        if(!conf.scanDir.empty() && conf.scanDir != "")
+                        {
+                            sDirectory.directory = conf.scanDir;
+                            sDirectory.extension = conf.extension;
+                            sDirectory.ClearFileContainer();
+                            sDirectory.Search(conf.scanDir);
+                            sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
+                            sDirectory.fillAll();
+                            bDirectory.directory = conf.backupDir;
+                            bDirectory.extension = conf.extension;
+                            bDirectory.ClearFileContainer();
+                            bDirectory.Search(conf.backupDir);
+                            bDirectory.fillAll();
+                            if(sDirectory.pointer > 0)
+                                if(bDirectory.pointer > 0)
+                                {
+                                    for(int i = 0; i < sDirectory.pointer; i++)
                                         {
-                                            string tempBackPath = bDirectory.fContainer[j].fPath;
-                                            string tempBackFile = GetNameFromBackupFileName(bDirectory.fContainer[j].fName);
-                                            tempBackPath.replace(0, conf.backupDir.length(), "");
-                                            if(tempScanFile == tempBackFile && tempScanPath == tempBackPath)
+                                            string tempScanPath = sDirectory.fContainer[i].fPath;
+                                            string tempScanFile = sDirectory.fContainer[i].fName;
+                                            tempScanPath.replace(0, conf.scanDir.length(), "");
+                                            bool backupExist = false;
+                                            bool backupLength = false;
+                                            for(int j = 0; j < bDirectory.pointer && !backupExist; j++)
                                             {
-                                                if(sDirectory.fContainer[i].pointer == bDirectory.fContainer[j].pointer)
+                                                string tempBackPath = bDirectory.fContainer[j].fPath;
+                                                string tempBackFile = GetNameFromBackupFileName(bDirectory.fContainer[j].fName);
+                                                tempBackPath.replace(0, conf.backupDir.length(), "");
+                                                if(tempScanFile == tempBackFile && tempScanPath == tempBackPath)
                                                 {
-                                                    bool check = true;
-                                                    for(int k = 0; k < sDirectory.fContainer[i].pointer && check; k++)
+                                                    if(sDirectory.fContainer[i].pointer == bDirectory.fContainer[j].pointer)
                                                     {
-                                                        if(sDirectory.fContainer[i].text[k] != bDirectory.fContainer[j].text[k])
-                                                            check = false;
+                                                        bool check = true;
+                                                        for(int k = 0; k < sDirectory.fContainer[i].pointer && check; k++)
+                                                        {
+                                                            if(sDirectory.fContainer[i].text[k] != bDirectory.fContainer[j].text[k])
+                                                                check = false;
+                                                        }
+                                                        if(check)
+                                                            backupExist = true;
+                                                        backupLength = true;
                                                     }
-                                                    if(check)
-                                                        backupExist = true;
-                                                    backupLength = true;
                                                 }
                                             }
+                                            if(!backupExist || !backupLength)
+                                            {
+                                                string resultBackupPath = conf.backupDir + tempScanPath;
+                                                string resultBackupFile = GetFormatedTime() + tempScanFile;
+                                                sDirectory.fContainer[i].saveFile(resultBackupPath, resultBackupFile);
+                                            }
                                         }
-                                        if(!backupExist || !backupLength)
-                                        {
-                                            string resultBackupPath = conf.backupDir + tempScanPath;
-                                            string resultBackupFile = GetFormatedTime() + tempScanFile;
-                                            sDirectory.fContainer[i].saveFile(resultBackupPath, resultBackupFile);
-                                        }
-                                    }
-                            }else
-                            {
-                                for(int i = 0; i < sDirectory.pointer; i++)
+                                }else
                                 {
-                                    string tempPath = sDirectory.fContainer[i].fPath;
-                                    tempPath.replace(0,conf.scanDir.length(),"");
-                                    tempPath = conf.backupDir + tempPath;
-                                    string tempName = GetFormatedTime() + sDirectory.fContainer[i].fName;
-                                    sDirectory.fContainer[i].saveFile(tempPath, tempName);
+                                    for(int i = 0; i < sDirectory.pointer; i++)
+                                    {
+                                        string tempPath = sDirectory.fContainer[i].fPath;
+                                        tempPath.replace(0,conf.scanDir.length(),"");
+                                        tempPath = conf.backupDir + tempPath;
+                                        string tempName = GetFormatedTime() + sDirectory.fContainer[i].fName;
+                                        sDirectory.fContainer[i].saveFile(tempPath, tempName);
+                                    }
                                 }
-                            }
+                        }else{MessageBox(hwnd,"Nie wybrano sciezki","HA!",MB_OK);}
                         break;
                     }
                 case hGTEditWndBt_ID:
                     {
-                        SendMessage(hMenuScanBt,BM_CLICK,0,0);
-                        for(int i = 0; i < sDirectory.pointer; i++){
-                            string cuttedPath = sDirectory.fContainer[i].fPath;
-                            cuttedPath.replace(0,conf.scanDir.length(),"");
-                            SendMessage( hManagmentFileCb, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
-                        }
-                        HWND hManagment[] = {hManagmentDate1Cb, hManagmentFileCb, hManagmentDate2Cb,
-                        hManagmentFileSt, hManagmentDate1St, hManagmentDate2St, hManagmentDate1BackupBt,
-                        hManagmentDate2BackupBt, hManagmentDate1LookBt, hManagmentDate2CompareBt,
-                        hManagmentDate1SaveAsBt, hManagmentDate2SaveAsBt, hManagmentBackBt};
-                        HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
-                        hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
-                        hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
-                        ShowObjects(hManagment,13,hMain,15);
-                        ChangeWindowDimensions(hwnd, 320, 320);
-                        IsManagment = true;
-                        break;
+                        if(!conf.scanDir.empty() && conf.scanDir != "")
+                        {
+                            SendMessage(hMenuScanBt,BM_CLICK,0,0);
+                            for(int i = 0; i < sDirectory.pointer; i++){
+                                string cuttedPath = sDirectory.fContainer[i].fPath;
+                                cuttedPath.replace(0,conf.scanDir.length(),"");
+                                SendMessage( hManagmentFileCb, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
+                            }
+                            HWND hManagment[] = {hManagmentDate1Cb, hManagmentFileCb, hManagmentDate2Cb,
+                            hManagmentFileSt, hManagmentDate1St, hManagmentDate2St, hManagmentDate1BackupBt,
+                            hManagmentDate2BackupBt, hManagmentDate1LookBt, hManagmentDate2CompareBt,
+                            hManagmentDate1SaveAsBt, hManagmentDate2SaveAsBt, hManagmentBackBt};
+                            HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
+                            hMenuExtensionSt, hMenuScanBt, hPassBt, hMenuModeSt, hAutoBt, hMenuTISt,
+                            hMenuTIEd, hSaveTIBt, hPathBt, hGTEditWndBt, hSaveChMenuBt, hExitMenuBt};
+                            ShowObjects(hManagment,13,hMain,15);
+                            ChangeWindowDimensions(hwnd, 320, 320);
+                            IsManagment = true;
+                            break;
+                        }else{MessageBox(hwnd,"Nie wybrano sciezki","HA!",MB_OK);}
                     }
                 case hManagmentBackBt_ID:
                     {

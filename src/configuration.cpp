@@ -8,7 +8,7 @@ configuration::configuration()
     instancePath = temp;
     configFile = instancePath + "data.conf";
     backupDir = instancePath + "backup";
-    scanDir = instancePath + "check";
+    scanDir = "";
     extension = ".nc";
     password = "master";
     autoscanOnOff = false;
