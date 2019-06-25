@@ -58,9 +58,7 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
 
     //Check DLL version
     ULONGLONG ullVersion = GetDllVersion(_T("Shell32.dll"));
-        if(ullVersion >= MAKEDLLVERULL(6, 0,6,0))
-            nid.cbSize = sizeof(NOTIFYICONDATA);
-        else if(ullVersion >= MAKEDLLVERULL(6, 0,0,0))
+        if(ullVersion >= MAKEDLLVERULL(6, 0,0,0))
             nid.cbSize = sizeof(NOTIFYICONDATA);
         else if(ullVersion >= MAKEDLLVERULL(5, 0,0,0))
             nid.cbSize = NOTIFYICONDATA_V2_SIZE;
@@ -96,6 +94,17 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 case WM_RBUTTONDOWN:
                 case WM_CONTEXTMENU:
                     ShowContextMenu(hwnd);
+                }
+                break;
+            }
+        case WM_SIZE:
+            {
+                switch(wParam)
+                {
+                    case SIZE_MINIMIZED:
+                        {
+
+                        }
                 }
                 break;
             }
@@ -154,8 +163,17 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             }
         case WM_COMMAND:
 
+
             switch(LOWORD(wParam))
             {
+                //** NOTIFYICON SECTION
+                case SWM_SHOW:
+                    ShowWindow(hwnd, SW_RESTORE);
+                    break;
+                case SWM_HIDE:
+                    ShowWindow(hwnd, SW_HIDE);
+                    break;
+                //** END OF NOTIFY ICON SECTION
                 case hManagmentDate1BackupBt_ID:
                     {
                      if(GetSelectedFromCombo(hManagmentDate2Cb) != "")
@@ -608,7 +626,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
     return 0;
 }
-
+//**NOTIFYICON SECTION
 void ShowContextMenu(HWND hWnd)
 {
 	POINT pt;
@@ -633,27 +651,4 @@ void ShowContextMenu(HWND hWnd)
 }
 
 
-// Get dll version number
-ULONGLONG GetDllVersion(LPCTSTR lpszDllName)
-{
-    ULONGLONG ullVersion = 0;
-	HINSTANCE hinstDll;
-    hinstDll = LoadLibrary(lpszDllName);
-    if(hinstDll)
-    {
-        DLLGETVERSIONPROC pDllGetVersion;
-        pDllGetVersion = (DLLGETVERSIONPROC)GetProcAddress(hinstDll, "DllGetVersion");
-        if(pDllGetVersion)
-        {
-            DLLVERSIONINFO dvi;
-            HRESULT hr;
-            ZeroMemory(&dvi, sizeof(dvi));
-            dvi.cbSize = sizeof(dvi);
-            hr = (*pDllGetVersion)(&dvi);
-            if(SUCCEEDED(hr))
-				ullVersion = MAKEDLLVERULL(dvi.dwMajorVersion, dvi.dwMinorVersion,0,0);
-        }
-        FreeLibrary(hinstDll);
-    }
-    return ullVersion;
-}
+//**END OF NOTIFYICON SECTION
