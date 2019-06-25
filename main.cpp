@@ -582,3 +582,26 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 
     return 0;
 }
+
+void ShowContextMenu(HWND hWnd)
+{
+	POINT pt;
+	GetCursorPos(&pt);
+	HMENU hMenu = CreatePopupMenu();
+	if(hMenu)
+	{
+		if( IsWindowVisible(hWnd) )
+			InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_HIDE, _T("Hide"));
+		else
+			InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_SHOW, _T("Show"));
+		//InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_EXIT, _T("Exit"));
+
+		// note:	must set window to the foreground or the
+		//			menu won't disappear when it should
+		SetForegroundWindow(hWnd);
+
+		TrackPopupMenu(hMenu, TPM_BOTTOMALIGN,
+			pt.x, pt.y, 0, hWnd, NULL );
+		DestroyMenu(hMenu);
+	}
+}

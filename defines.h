@@ -42,6 +42,9 @@
 #define hManagmentDate1SaveAsBt_ID 534
 #define hManagmentDate2SaveAsBt_ID 535
 #define APPWM_ICONNOTIFY 536
+#define SWM_HIDE 537
+#define SWM_SHOW 538
+#define SWM_EXIT 539
 bool IsManagment = false;
 
 bool BT1_text_stat = 1;
@@ -85,6 +88,6 @@ HWND hManagmentDate2SaveAsBt;
 configuration conf;
 SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
 SearchDir bDirectory("Y:\\projekty\\test\\backup",".nc");
-
+void ShowContextMenu(HWND hWnd);
 
 #endif // DEFINES_H_INCLUDED

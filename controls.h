@@ -95,7 +95,7 @@ hSaveChMenuBt = CreateWindowEx(
 hExitMenuBt = CreateWindowEx(
     0,
     "BUTTON",
-    "Wyjdz",
+    "Wyloguj",
     WS_CHILD,
     200+x_offset+x_offset, 200, 100, 30,
     hwnd,
