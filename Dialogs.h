@@ -1,3 +1,4 @@
+/*Entire project was created in Code::Blocks 17.12 by Ryszard Napiera³a*/
 #ifndef DIALOGS_H_INCLUDED
 #define DIALOGS_H_INCLUDED
 #include "include/configuration.h"

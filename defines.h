@@ -41,13 +41,21 @@
 #define hManagmentDate2CompareBt_ID 533
 #define hManagmentDate1SaveAsBt_ID 534
 #define hManagmentDate2SaveAsBt_ID 535
+//**NOTIFYICON SECTION
 #define APPWM_ICONNOTIFY 536
 #define SWM_HIDE 537
 #define SWM_SHOW 538
 #define SWM_EXIT 539
+#define SWM_ABOUT 540
+//**END OF NOTIFY ICON SECTION
+//GLOBALS
 bool IsManagment = false;
-
 bool BT1_text_stat = 1;
+configuration conf;
+SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
+SearchDir bDirectory("Y:\\projekty\\test\\backup",".nc");
+//END OF GLOBALS
+/*Entire project was created in Code::Blocks 17.12 by Ryszard Napiera³a*/
 /*  Make the class name into a global variable  */
 TCHAR szClassName[ ] = _T("CodeBlocksWindowsApp");
 HWND hwnd;
@@ -85,8 +93,5 @@ HWND hManagmentDate1LookBt;
 HWND hManagmentDate2CompareBt;
 HWND hManagmentDate1SaveAsBt;
 HWND hManagmentDate2SaveAsBt;
-configuration conf;
-SearchDir sDirectory("Y:\\projekty\\test\\check",".nc");
-SearchDir bDirectory("Y:\\projekty\\test\\backup",".nc");
 void ShowContextMenu(HWND hWnd);
 #endif // DEFINES_H_INCLUDED

@@ -1,5 +1,5 @@
 #include "incudes.h"
-/*Entire project was created in Code::Blocks by Ryszard Napiera³a*/
+/*Entire project was created in Code::Blocks 17.12 by Ryszard Napiera³a*/
 /*  Declare Windows procedure  */
 LRESULT CALLBACK WindowProcedure (HWND, UINT, WPARAM, LPARAM);
 
@@ -85,6 +85,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
 {
     switch (message)                  /* handle the messages */
     {
+        //**NOTIFYICON SECTION
         case APPWM_ICONNOTIFY:
             {
                 switch(lParam)
@@ -105,10 +106,12 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     case SIZE_MINIMIZED:
                         {
                             ShowWindow(hwnd, SW_HIDE);
+                            break;
                         }
                 }
                 break;
             }
+            //**END OF NOTIFY ICON SECTION
         case WM_CREATE:
             {
                 conf.initialize();
@@ -128,12 +131,13 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
             }
         case WM_CLOSE:
             {
-                if (MessageBox(hwnd, "Aby zakonczyc musisz byc zalogowany", "chcesz zakonczyc?", MB_OKCANCEL) == IDOK)
+                if (MessageBox(hwnd, "Aby zakonczyc musisz byc zalogowany", "Chcesz zakonczyc?", MB_OKCANCEL) == IDOK)
                 {
                     if(IsWindowVisible(hLoginBt) == NULL)
                         DestroyWindow(hwnd);
                     else
-                        MessageBox(hwnd,"Nie jestes zalogowany","Ups!",MB_OK);
+                        if(MessageBox(hwnd,"Nie jestes zalogowany.\nZminimalizowac?","Ups!",MB_OKCANCEL) == IDOK)
+                            SendMessage(hwnd,WM_SIZE,SIZE_MINIMIZED,NULL);
                 }
                 break;
             }
@@ -173,6 +177,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     break;
                 case SWM_HIDE:
                     ShowWindow(hwnd, SW_HIDE);
+                    break;
+                case SWM_ABOUT:
+                    MessageBox(HWND_DESKTOP, "Aplikacja pozwala wykonywac automatyczne bacup'y.\nWedlug ustawionego programu.\nBledy i pytania prosze kierowac na adres:\nryszard.napierala@kimballelectronics.com", "INFO", MB_OK);
                     break;
                 //** END OF NOTIFY ICON SECTION
                 case hManagmentDate1BackupBt_ID:
@@ -645,10 +652,10 @@ void ShowContextMenu(HWND hWnd)
 	if(hMenu)
 	{
 		if( IsWindowVisible(hWnd) )
-			InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_HIDE, _T("Hide"));
+			InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_HIDE, _T("Schowaj"));
 		else
-			InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_SHOW, _T("Show"));
-		//InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_EXIT, _T("Exit"));
+			InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_SHOW, _T("Pokaz"));
+		InsertMenu(hMenu, -1, MF_BYPOSITION, SWM_ABOUT, _T("INFO"));
 
 		// note:	must set window to the foreground or the
 		//			menu won't disappear when it should
