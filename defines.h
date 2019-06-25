@@ -41,6 +41,7 @@
 #define hManagmentDate2CompareBt_ID 533
 #define hManagmentDate1SaveAsBt_ID 534
 #define hManagmentDate2SaveAsBt_ID 535
+#define APPWM_ICONNOTIFY 536
 bool IsManagment = false;
 
 bool BT1_text_stat = 1;

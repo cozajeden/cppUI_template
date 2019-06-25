@@ -31,7 +31,28 @@ int WINAPI WinMain (HINSTANCE hThisInstance,
         return 0;
 
 #include "controls.h"
+    HICON hIcon = static_cast<HICON>(LoadImage(NULL,
+        TEXT("Stealth.ico"),
+        IMAGE_ICON,
+        0, 0,
+        LR_DEFAULTCOLOR | LR_SHARED | LR_DEFAULTSIZE | LR_LOADFROMFILE));
 
+    SendMessage(hwnd, WM_SETICON, ICON_BIG, (LPARAM)hIcon);
+    SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)hIcon);
+
+    //Notification
+    NOTIFYICONDATA nid = {};
+    nid.cbSize = sizeof(nid);
+    nid.hWnd = hwnd;
+    nid.uID = 1;
+    nid.uFlags = NIF_ICON | NIF_TIP | NIF_MESSAGE;
+    nid.uCallbackMessage = APPWM_ICONNOTIFY;
+    nid.hIcon = hIcon;
+    // This text will be shown as the icon's tooltip.
+    strcpy(nid.szTip, "text");
+
+    // Show the notification.
+    Shell_NotifyIcon(NIM_ADD, &nid);
     /* Run the message loop. It will run until GetMessage() returns 0 */
     while (GetMessage (&messages, NULL, 0, 0))
     {

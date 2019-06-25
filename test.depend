@@ -78,33 +78,35 @@
 1561195058 source:y:\projekty\test\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
-1559073363 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
+1561432113 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
 	<iostream>
 	<string>
 	<stdio.h>
 	<fstream>
 	<windows.h>
 
-1559062994 c:\users\cozajeden\documents\github\cppui_template\include\filecontainer.h
+1561432113 c:\users\cozajeden\documents\github\cppui_template\include\filecontainer.h
 	<iostream>
 	<dirent.h>
 	<stdio.h>
 	<fstream>
+	<string>
+	<windows.h>
 
-1559062994 c:\users\cozajeden\documents\github\cppui_template\include\searchdir.h
+1561432113 c:\users\cozajeden\documents\github\cppui_template\include\searchdir.h
 	<iostream>
 	<string>
 	<dirent.h>
 	<stdio.h>
 	"fileContainer.h"
 
-1559073673 source:c:\users\cozajeden\documents\github\cppui_template\src\configuration.cpp
+1561432113 source:c:\users\cozajeden\documents\github\cppui_template\src\configuration.cpp
 	"../include/configuration.h"
 
-1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\filecontainer.cpp
+1561432113 source:c:\users\cozajeden\documents\github\cppui_template\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
-1559062994 source:c:\users\cozajeden\documents\github\cppui_template\src\searchdir.cpp
+1561432113 source:c:\users\cozajeden\documents\github\cppui_template\src\searchdir.cpp
 	"../include/SearchDir.h"
 
 1559071895 c:\users\cozajeden\documents\github\cppui_template\controls.h
