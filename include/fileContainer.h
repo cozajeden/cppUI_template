@@ -27,6 +27,8 @@ class fileContainer
         void addLine(string line);//Add single line and increment pointer
         void setContainer(string path, string name);//Set file path and name
         void saveFileAs(string path);//Save file using full path
+        void makePreview(string _name, string _date, string _path);//Create preview HTML document
+        void makePComparison(string _name, string _date1, string _date2, string _text2[], int _pointer2, string _path);//Create comparison in HTML document
     protected:
         int maxSize;//Actual size of text array
     private:

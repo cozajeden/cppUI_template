@@ -49,9 +49,9 @@ LPSTR GetWindowTextString(HWND hWND)
     return Bufor;
 }
 
-bool openURL(HWND hWND){
+bool openURL(string _url, HWND hWND){
     try{
-    if((int)ShellExecute(0, 0, GetWindowTextString(hWND), 0, 0 , SW_SHOW ) < 33)
+    if((int)ShellExecute(0, 0, _url.c_str(), 0, 0 , SW_SHOW ) < 33)
     throw "Nie mozna zaladowac URL";
     }catch(LPCSTR e){
         MessageBox( hWND, e, "Ha!", MB_ICONINFORMATION );//pop-up window

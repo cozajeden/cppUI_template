@@ -182,6 +182,82 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     MessageBox(HWND_DESKTOP, "Aplikacja pozwala wykonywac automatyczne bacup'y.\nWedlug ustawionego programu.\nBledy i pytania prosze kierowac na adres:\nryszard.napierala@kimballelectronics.com", "INFO", MB_OK);
                     break;
                 //** END OF NOTIFY ICON SECTION
+                case hManagmentDate2CompareBt_ID:
+                    {
+                        if(GetSelectedFromCombo(hManagmentDate2Cb) != "" && GetSelectedFromCombo(hManagmentDate1Cb) != "")
+                        {
+                            string selectedFile = GetSelectedFromCombo(hManagmentFileCb);
+                            string selectedDate = GetFormatFromTime(GetSelectedFromCombo(hManagmentDate1Cb));
+                            string backupFileforCompare;
+                            string backupPath;
+                            string backupName;
+                            string fileName;
+                            string file1Date;
+                            int file1Number;
+                            bDirectory.clearAll();
+                            bDirectory.fillAll();
+                            for(int i = 0; i < bDirectory.pointer; i++)
+                            {
+                                backupName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                                backupPath = bDirectory.fContainer[i].fPath;
+                                backupPath.replace(0,conf.backupDir.length(),"");
+                                backupFileforCompare = backupPath + "\\" + backupName;
+                                if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
+                                    try{
+                                        fileName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                                        file1Date =  GetTimeFromName(bDirectory.fContainer[i].fName);
+                                        file1Number = i;
+                                    }catch(exception& e){
+                                        MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
+                                    }
+                            }
+                            selectedFile = GetSelectedFromCombo(hManagmentFileCb);
+                            selectedDate = GetFormatFromTime(GetSelectedFromCombo(hManagmentDate2Cb));
+                            for(int i = 0; i < bDirectory.pointer; i++)
+                            {
+                                backupName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                                backupPath = bDirectory.fContainer[i].fPath;
+                                backupPath.replace(0,conf.backupDir.length(),"");
+                                backupFileforCompare = backupPath + "\\" + backupName;
+                                if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
+                                    try{
+                                        bDirectory.fContainer[i].makePComparison(fileName, GetTimeFromName(bDirectory.fContainer[i].fName), file1Date, bDirectory.fContainer[file1Number].text, bDirectory.fContainer[file1Number].pointer, "index.html");
+                                        openURL("index.html", hwnd);
+                                    }catch(exception& e){
+                                        MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
+                                    }
+                            }
+                        }else MessageBox(hwnd, "Wybierz plik", "HA!", MB_OK);
+                        break;
+                    }
+                case hManagmentDate1LookBt_ID:
+                    {
+                        if(GetSelectedFromCombo(hManagmentDate1Cb) != "")
+                        {
+                            string selectedFile = GetSelectedFromCombo(hManagmentFileCb);
+                            string selectedDate = GetFormatFromTime(GetSelectedFromCombo(hManagmentDate1Cb));
+                            string backupFileforCompare;
+                            string backupPath;
+                            string backupName;
+                            bDirectory.clearAll();
+                            bDirectory.fillAll();
+                            for(int i = 0; i < bDirectory.pointer; i++)
+                            {
+                                backupName = GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                                backupPath = bDirectory.fContainer[i].fPath;
+                                backupPath.replace(0,conf.backupDir.length(),"");
+                                backupFileforCompare = backupPath + "\\" + backupName;
+                                if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
+                                    try{
+                                        bDirectory.fContainer[i].makePreview(GetNameFromBackupFileName(bDirectory.fContainer[i].fName), GetTimeFromName(bDirectory.fContainer[i].fName), "index.html");
+                                        openURL("index.html", hwnd);
+                                    }catch(exception& e){
+                                        MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
+                                    }
+                            }
+                        }else MessageBox(hwnd, "Wybierz plik", "HA!", MB_OK);
+                        break;
+                    }
                 case hManagmentDate1BackupBt_ID:
                     {
                      if(GetSelectedFromCombo(hManagmentDate2Cb) != "")
@@ -206,8 +282,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                         MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
                                     }
                             }
-                        }else
-                            MessageBox(hwnd, "Wybierz plik", "HA!", MB_OK);
+                        }else MessageBox(hwnd, "Wybierz plik", "HA!", MB_OK);
+
                         break;
                     }
                 case hManagmentDate2BackupBt_ID:
@@ -363,9 +439,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hLoginBt_ID:
                     {
-                            //if(GetWindowTextString(hMainPassEd) != conf.password)
-                            //    MessageBox( hwnd, "nieprawidlowe haslo", "Ha!", MB_ICONINFORMATION );
-                            //else{
+                            if(GetWindowTextString(hMainPassEd) != conf.password)
+                                MessageBox( hwnd, "nieprawidlowe haslo", "Ha!", MB_ICONINFORMATION );
+                            else{
                                 conf.initialize();
                                 HWND hLogin[] = {hLoginBt, hMainPassEd};
                                 HWND hMain[] = {hMenuPathSt, hMenuExtensionSaveBt, hMenuExtensionEd,
@@ -380,7 +456,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                     SetWindowTextA(hAutoBt,"AUTO");
                                 else
                                     SetWindowTextA(hAutoBt,"MANUAL");
-                            //}
+                            }
                                 //SetWindowTextA(hMenuTIEd,conf.scanDir.c_str());
                         break;
                     }

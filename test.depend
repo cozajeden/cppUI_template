@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1561201576 source:y:\projekty\test\main.cpp
+1561509706 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
-1561201735 y:\projekty\test\dialogs.h
+1561505238 y:\projekty\test\dialogs.h
 	"include/configuration.h"
 	"include/fileContainer.h"
 	"include/SearchDir.h"
@@ -43,7 +43,7 @@
 
 1561465532 c:\users\cozajeden\documents\github\cppui_template\defines.h
 
-1560372150 y:\projekty\test\incudes.h
+1561502281 y:\projekty\test\incudes.h
 	<tchar.h>
 	<windows.h>
 	<stdio.h>
@@ -52,13 +52,20 @@
 	<sstream>
 	<time.h>
 	<math.h>
+	<commctrl.h>
+	<Shellapi.h>
+	<Shlwapi.h>
+	<stdlib.h>
+	<malloc.h>
+	<memory.h>
+	<winver.h>
 	"Dialogs.h"
 	"include/configuration.h"
 	"include/fileContainer.h"
 	"include/SearchDir.h"
 	"defines.h"
 
-1561193147 y:\projekty\test\defines.h
+1561502281 y:\projekty\test\defines.h
 
 1560372150 y:\projekty\test\include\configuration.h
 	<iostream>
@@ -67,7 +74,7 @@
 	<fstream>
 	<windows.h>
 
-1561195058 y:\projekty\test\include\filecontainer.h
+1561505565 y:\projekty\test\include\filecontainer.h
 	<iostream>
 	<dirent.h>
 	<stdio.h>
@@ -82,13 +89,13 @@
 	<stdio.h>
 	"fileContainer.h"
 
-1560372150 source:y:\projekty\test\src\configuration.cpp
+1561502281 source:y:\projekty\test\src\configuration.cpp
 	"../include/configuration.h"
 
 1561182608 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
-1561195058 source:y:\projekty\test\src\filecontainer.cpp
+1561509287 source:y:\projekty\test\src\filecontainer.cpp
 	"../include/fileContainer.h"
 
 1561432113 c:\users\cozajeden\documents\github\cppui_template\include\configuration.h
@@ -124,5 +131,5 @@
 
 1561462342 c:\users\cozajeden\documents\github\cppui_template\controls.h
 
-1560372150 y:\projekty\test\controls.h
+1561502280 y:\projekty\test\controls.h
 
