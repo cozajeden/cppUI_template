@@ -128,7 +128,7 @@ hMenuModeSt = CreateWindowEx(
 hMenuTISt = CreateWindowEx(
     0,
     "STATIC",
-    "Interwal[s]:",
+    "Interwal[min]:",
     WS_CHILD | SS_CENTER,
     200+x_offset+x_offset, 0, 100, 20,
     hwnd,

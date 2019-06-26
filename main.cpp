@@ -483,10 +483,10 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hSaveTIBt_ID:
                     {
-                        if(is_Number(GetWindowTextString(hMenuTIEd)))
+                        if(is_Number(GetWindowTextString(hMenuTIEd)) && atoi(GetWindowTextString(hMenuTIEd)) > 0)
                             conf.scanInterval = atoi(GetWindowTextString(hMenuTIEd));
                         else
-                            MessageBox( hwnd, "To nie jest liczba. Sprobuj ponownie.", "Ha!", MB_ICONINFORMATION );
+                            MessageBox( hwnd, "Przedzial czasowy musi byc liczba wieksza od zera", "Ha!", MB_ICONINFORMATION );
                         break;
                     }
                 case hPathBt_ID:
