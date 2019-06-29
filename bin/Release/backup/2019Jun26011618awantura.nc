@@ -1,3 +1,0 @@
-tratatata
-syn
-tata

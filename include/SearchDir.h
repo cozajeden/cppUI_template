@@ -24,6 +24,7 @@ class SearchDir
         void fillAll();//Fill all file containers with text from files
         void clearAll();//Clear all file containers from text
         void ClearFileContainer();//Reset fileContainer to 0 records
+        void MakeDirectoriesRecursively(string path);//Make directories and intermediate directories if do not exist
         void MakeBackupDirectories(string pathToReplace, string pathReplacing);//Creates Folders for all files from fileContainer replacing part of path
     protected:
         int size_buff;//Actual size of fContainer

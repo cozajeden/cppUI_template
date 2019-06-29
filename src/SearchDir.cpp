@@ -23,7 +23,24 @@ void SearchDir::MakeBackupDirectories(string pathToReplace, string pathReplacing
     {
         string path = fContainer[i].fPath;
         path = pathReplacing + path.substr(pathToReplace.length());
-        CreateDirectory(path.c_str(),NULL);
+        MakeDirectoriesRecursively(path);
+
+    }
+}
+
+void SearchDir::MakeDirectoriesRecursively(string path)
+{
+      DWORD ftyp = GetFileAttributesA(path.c_str());
+
+  if (!(ftyp & FILE_ATTRIBUTE_DIRECTORY))
+    if(CreateDirectory(path.c_str(),NULL) == 0)
+    {
+        int position = path.find_last_of("/\\");
+        if(position != -1)
+        {
+            string subPath = path.substr(0,position);
+            MakeDirectoriesRecursively(subPath);
+        }
     }
 }
 
@@ -53,11 +70,11 @@ void SearchDir::Search(string path){
             string temp;
             temp += path + "\\" + ent->d_name;
 
-
              if(CheckExtension(temp)){
                 addItem(path, ent->d_name);
-            }else if(temp.find_first_of(".") == -1)
+            }else if(temp.find_first_of(".") == -1){
                 Search(temp);
+            }
         }
     } else {
         /* could not open directory */
@@ -106,13 +123,14 @@ bool SearchDir::CheckExtension(string path){
     bool res = false;
     string::iterator it = path.end();
     it = it - extension.length();
-    for(int i = 0; i < extension.length(); i++){
-        if(*(it+i) == extension[i])
-            res = true;
-        else{
-            res = false;
-            break;
+    if(extension.length() <= path.length())
+        for(int i = 0; i < extension.length(); i++){
+            if(*(it+i) == extension[i])
+                res = true;
+            else{
+                res = false;
+                break;
+            }
         }
-    }
     return res;
 }

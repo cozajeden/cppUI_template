@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1561509706 source:y:\projekty\test\main.cpp
+1561781999 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
-1561505238 y:\projekty\test\dialogs.h
+1561767512 y:\projekty\test\dialogs.h
 	"include/configuration.h"
 	"include/fileContainer.h"
 	"include/SearchDir.h"
@@ -82,17 +82,17 @@
 	<string>
 	<windows.h>
 
-1560372150 y:\projekty\test\include\searchdir.h
+1561782541 y:\projekty\test\include\searchdir.h
 	<iostream>
 	<string>
 	<dirent.h>
 	<stdio.h>
 	"fileContainer.h"
 
-1561502281 source:y:\projekty\test\src\configuration.cpp
+1561776762 source:y:\projekty\test\src\configuration.cpp
 	"../include/configuration.h"
 
-1561182608 source:y:\projekty\test\src\searchdir.cpp
+1561781821 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
 1561510006 source:y:\projekty\test\src\filecontainer.cpp
@@ -131,5 +131,5 @@
 
 1561462342 c:\users\cozajeden\documents\github\cppui_template\controls.h
 
-1561502280 y:\projekty\test\controls.h
+1561588535 y:\projekty\test\controls.h
 

@@ -119,11 +119,10 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                 bDirectory.extension = conf.extension;
                 sDirectory.directory = conf.scanDir;
                 bDirectory.directory = conf.backupDir;
-                sDirectory.Search(conf.scanDir);
-                bDirectory.Search(conf.backupDir);
+                //sDirectory.Search(conf.scanDir);
+                //bDirectory.Search(conf.backupDir);
                 CreateDirectory(conf.backupDir.c_str(),NULL);
                 sDirectory.MakeBackupDirectories(conf.scanDir,conf.backupDir);
-                bDirectory.Search(conf.backupDir);
                 SetWindowTextA(hMainPassEd,conf.password.c_str());
                 if(conf.autoscanOnOff)
                     SetTimer(hwnd,Timer_ID,60000*conf.scanInterval,(TIMERPROC)NULL);
@@ -314,7 +313,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                             MessageBox(hwnd, "Wybierz plik do zapisu", "HA!", MB_OK);
                         break;
                     }
-                case hManagmentDate1SaveAsBt_ID://===================zmien na wybrany folder
+                case hManagmentDate1SaveAsBt_ID:
                     {
                     if(GetSelectedFromCombo(hManagmentDate1Cb) != "")
                     {
@@ -457,7 +456,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                 else
                                     SetWindowTextA(hAutoBt,"MANUAL");
                             }
-                                //SetWindowTextA(hMenuTIEd,conf.scanDir.c_str());
+                                SetWindowTextA(hMainPassEd,"");
                         break;
                     }
                 case hPassBt_ID:

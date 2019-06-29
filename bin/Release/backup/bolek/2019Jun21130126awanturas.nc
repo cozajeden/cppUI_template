@@ -1,3 +1,0 @@
-tego
-ten
-tego

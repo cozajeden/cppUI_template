@@ -13,6 +13,7 @@ configuration::configuration()
     password = "master";
     autoscanOnOff = false;
     scanInterval = 60;
+    initialize();
 
 }
 

@@ -1,4 +1,0 @@
-tratatata
-tom
-mama
-oni
