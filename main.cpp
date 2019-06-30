@@ -274,7 +274,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     }
                 case hManagmentDate1BackupBt_ID:
                     {
-                     if(GetSelectedFromCombo(hManagmentDate2Cb) != "")
+                     if(GetSelectedFromCombo(hManagmentDate1Cb) != "")
                         {
                             string selectedFile = GetSelectedFromCombo(hManagmentFileCb);
                             string selectedDate = GetFormatFromTime(GetSelectedFromCombo(hManagmentDate1Cb));
@@ -355,6 +355,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         string backupPath;
                         string backupName;
                         string Filename = filename;
+                        Filename += conf.extension;
                         bool Saved = true;
                         bDirectory.clearAll();
                         bDirectory.fillAll();
@@ -373,7 +374,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                 }
                         }
                         if(Saved)
-                            MessageBox(hwnd, filename, "Zapisano", MB_OK);
+                            MessageBox(hwnd, Filename.c_str(), "Zapisano", MB_OK);
                       }
                       /*else
                       {
@@ -428,6 +429,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                             string backupPath;
                             string backupName;
                             string Filename = filename;
+                            Filename += conf.extension;
                             bool Saved = true;
                             bDirectory.clearAll();
                             bDirectory.fillAll();
@@ -446,7 +448,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                     }
                             }
                             if(Saved)
-                                MessageBox(hwnd, filename, "Zapisano", MB_OK);
+                                MessageBox(hwnd, Filename.c_str(), "Zapisano", MB_OK);
                         }
                       }else{MessageBox(hwnd, "Wybierz plik do zapisu", "HA!", MB_OK);}
                         break;
