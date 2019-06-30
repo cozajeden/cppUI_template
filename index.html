@@ -6,550 +6,2182 @@
 <table border="2">
 <tr>
 <td colspan="2">Podglad pluku:</td>
-<td colspan="2">Philips50_ciecie.NC</td>
+<td colspan="2">MAIN_01_PINY.NC</td>
 </tr>
 <tr>
 <td>Data pliku1:</td>
-<td>2019-Jun-29 05:47:19</td>
+<td>2019-Jun-30 14:23:43</td>
 <td>Data pliku2:</td>
-<td>2019-Jun-29 05:51:35</td>
+<td>2019-Jun-30 14:23:43</td>
 </tr>
 <tr>
 <td colspan ="4"><p style="text-align:center" ><font color="red"><b>Roznice pomiedzy plikami uwydatniono czerwonym kolorem</b></font></p>
 </tr>
 <tr>
 <p>
-<td colspan="2"><br><font color="black">1:</font>
-<br><font color="black">2:N00010 M169</font>
-<br><font color="black">3:N00020 M153</font>
-<br><font color="black">4:N00030 #SET AX [X,1,0] [Y1,2,1] [Z1,3,2]</font>
-<br><font color="black">5:N00040 (Programm: PHILIPS50_CIECIE)</font>
-<br><font color="black">6:N00050 (Maschine: GAS)</font>
-<br><font color="black">7:N00060 (PATH ROUGH CUTTING  ø1.6)</font>
-<br><font color="black">8:N00070 V.P.RequestedTool=16</font>
-<br><font color="black">9:N00080 V.P.ZR20=68.3			(Z-Achse Transporthöhe)</font>
-<br><font color="black">10:N00090 V.P.ZR21=10	 		(Vorposition)</font>
-<br><font color="black">11:N00100 V.P.ZR24=10	 		(Ausgangsebene = Springhöhe von Steg zu Steg)</font>
-<br><font color="black">12:N00110 V.P.ZR22=5			(Sicherheitsebene Fräsbeginn oberhalb Werkstück )</font>
-<br><font color="black">13:N00120 V.P.ZR23=-1		        (Fräsebene)</font>
-<br><font color="black">14:N00130 V.P.Zstep=0		( Step Fräserlängenabarbeitung ) </font>
-<br><font color="black">15:N00140 V.S.lrBitCutDepth_Ch1 = V.S.lrBitCutDepth_Ch1 + V.P.Zstep </font>
-<br><font color="black">16:N00150 $IF V.S.lrBitCutDepth_Ch1 > V.E.lrBitUsableLength OR V.P.Zstep == 0 </font>
-<br><font color="black">17:N00160 V.S.lrBitCutDepth_Ch1 = 0 </font>
-<br><font color="black">18:N00170 $ENDIF </font>
-<br><font color="black">19:N00180 V.P.ZR23 = V.P.ZR23 - V.S.lrBitCutDepth_Ch1</font>
-<br><font color="black">20:N00190 V.S.R100=V.S.R100+1</font>
-<br><font color="black">21:N00200 G00</font>
-<br><font color="black">22:N00210</font>
-<br><font color="black">23:N00220 (Database part)</font>
-<br><font color="black">24:N00230 $IF [V.E.bDB_On == TRUE]					(Database enabled)</font>
-<br><font color="black">25:N00240 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
-<br><font color="black">26:N00250 	G00 X=115.95 Y1=252.25								(Position to read pcb code)</font>
-<br><font color="black">27:N00260 	M191									(Read PCB code)</font>
-<br><font color="black">28:N00270 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)</font>
-<br><font color="black">29:N00280 		M179								(Read database)	</font>
-<br><font color="black">30:N00290 	$ENDIF</font>
-<br><font color="black">31:N00300 $ENDIF</font>
-<br><font color="black">32:N00310</font>
-<br><font color="black">33:N00320 (Check release part)</font>
-<br><font color="black">34:N00330 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)</font>
-<br><font color="black">35:N00340 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
-<br><font color="black">36:N00350 	G00 X=470 Y1=1031</font>
-<br><font color="black">37:N00360 	$GOTO [Homing]</font>
-<br><font color="black">38:N00370 $ENDIF</font>
-<br><font color="black">39:N00380</font>
-<br><font color="black">40:N00390</font>
-<br><font color="black">41:N00400 G54</font>
-<br><font color="black">42:N00410 G00 Z1=V.P.ZR20</font>
-<br><font color="red"><b>43:N00420 G92 X=0.03 Y1=-0.05</b></font>
-<br><font color="black">44:N00430</font>
-<br><font color="black">45:N00440 #FLUSH WAIT</font>
-<br><font color="black">46:N00450 TV.P.RequestedTool</font>
-<br><font color="black">47:N00460 $IF V.S.R100>=50</font>
-<br><font color="black">48:N00470  V.S.R100=0</font>
-<br><font color="black">49:N00480  L _brushcontrol.nc</font>
-<br><font color="black">50:N00490 $ENDIF</font>
-<br><font color="black">51:N00500 L _toolchange_K1.nc</font>
-<br><font color="black">52:N00510 #FLUSH WAIT</font>
-<br><font color="black">53:N00520 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
-<br><font color="black">54:N00530 L _Bitbreakcontrol_K1.nc</font>
-<br><font color="black">55:N00540 Z1=V.P.ZR20</font>
-<br><font color="black">56:N00550 #FLUSH WAIT</font>
-<br><font color="black">57:N00560 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
-<br><font color="black">58:N00570 S1 [M03 REV=V.E.lrSpindleRPM]</font>
-<br><font color="black">59:N00580 $IF V.P.ToolChangeDone==1</font>
-<br><font color="black">60:N00590  L _CheckBitTipLevel_K1.nc</font>
-<br><font color="black">61:N00600 $ENDIF</font>
-<br><font color="black">62:N00610 G00 X-226.088 Y1=63.205 Z1=V.P.ZR20</font>
-<br><font color="black">63:N00620 Z1=V.P.ZR21 </font>
-<br><font color="black">64:N00630 M108</font>
-<br><font color="black">65:N00640</font>
-<br><font color="black">66:N00650 G00 Z1=V.P.ZR22</font>
-<br><font color="black">67:N00660 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">68:N00670 X-233.095 F1250</font>
-<br><font color="black">69:N00680 G00 Z1=V.P.ZR24</font>
-<br><font color="black">70:N00690 X-285.795 Y1=63.205 Z1=V.P.ZR24</font>
-<br><font color="black">71:N00700 Z1=V.P.ZR22</font>
-<br><font color="black">72:N00710 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">73:N00720 X-292.795 F1250</font>
-<br><font color="black">74:N00730 G00 Z1=V.P.ZR24</font>
-<br><font color="black">75:N00740 X-314.594 Y1=105.681 Z1=V.P.ZR24</font>
-<br><font color="black">76:N00750 Z1=V.P.ZR22</font>
-<br><font color="black">77:N00760 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">78:N00770 Y1=111.186 F1250</font>
-<br><font color="black">79:N00780 G00 Z1=V.P.ZR24</font>
-<br><font color="black">80:N00790 X-314.594 Y1=176.394 Z1=V.P.ZR24</font>
-<br><font color="black">81:N00800 Z1=V.P.ZR22</font>
-<br><font color="black">82:N00810 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">83:N00820 Y1=182.505 F1250</font>
-<br><font color="black">84:N00830 G00 Z1=V.P.ZR24</font>
-<br><font color="black">85:N00840 X-292.795 Y1=211.965 Z1=V.P.ZR24</font>
-<br><font color="black">86:N00850 Z1=V.P.ZR22</font>
-<br><font color="black">87:N00860 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">88:N00870 X-285.792 F1250</font>
-<br><font color="black">89:N00880 G00 Z1=V.P.ZR24</font>
-<br><font color="black">90:N00890 X-242.907 Y1=212.028 Z1=V.P.ZR24</font>
-<br><font color="black">91:N00900 Z1=V.P.ZR22</font>
-<br><font color="black">92:N00910 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">93:N00920 X-236.53 F1250</font>
-<br><font color="black">94:N00930 G00 Z1=V.P.ZR24</font>
-<br><font color="black">95:N00940 X-224.495 Y1=182.505 Z1=V.P.ZR24</font>
-<br><font color="black">96:N00950 Z1=V.P.ZR22</font>
-<br><font color="black">97:N00960 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">98:N00970 Y1=176.155 F1250</font>
-<br><font color="black">99:N00980 G00 Z1=V.P.ZR24</font>
-<br><font color="black">100:N00990 X-224.495 Y1=111.805 Z1=V.P.ZR24</font>
-<br><font color="black">101:N01000 Z1=V.P.ZR22</font>
-<br><font color="black">102:N01010 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">103:N01020 Y1=105.131 F1250</font>
-<br><font color="black">104:N01030 G00 Z1=V.P.ZR24</font>
-<br><font color="black">105:N01040 X-212.255 Y1=126.621 Z1=V.P.ZR24</font>
-<br><font color="black">106:N01050 Z1=V.P.ZR22</font>
-<br><font color="black">107:N01060 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">108:N01070 X-212.364 Y1=121.061 F1250</font>
-<br><font color="black">109:N01080 G00 Z1=V.P.ZR24</font>
-<br><font color="black">110:N01090 X-212.255 Y1=77.605 Z1=V.P.ZR24</font>
-<br><font color="black">111:N01100 Z1=V.P.ZR22</font>
-<br><font color="black">112:N01110 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">113:N01120 Y1=70.605 F1250</font>
-<br><font color="black">114:N01130 G00 Z1=V.P.ZR24</font>
-<br><font color="black">115:N01140 X-182.795 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">116:N01150 Z1=V.P.ZR22</font>
-<br><font color="black">117:N01160 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">118:N01170 X-175.81 F1250</font>
-<br><font color="black">119:N01180 G00 Z1=V.P.ZR24</font>
-<br><font color="black">120:N01190 X-112.076 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">121:N01200 Z1=V.P.ZR22</font>
-<br><font color="black">122:N01210 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">123:N01220 X-105.447 F1250</font>
-<br><font color="black">124:N01230 G00 Z1=V.P.ZR24</font>
-<br><font color="black">125:N01240 X-63.495 Y1=70.857 Z1=V.P.ZR24</font>
-<br><font color="black">126:N01250 Z1=V.P.ZR22</font>
-<br><font color="black">127:N01260 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">128:N01270 Y1=77.605 F1250</font>
-<br><font color="black">129:N01280 G00 Z1=V.P.ZR24</font>
-<br><font color="black">130:N01290 X-51.255 Y1=77.605 Z1=V.P.ZR24</font>
-<br><font color="black">131:N01300 Z1=V.P.ZR22</font>
-<br><font color="black">132:N01310 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">133:N01320 Y1=70.605 F1250</font>
-<br><font color="black">134:N01330 G00 Z1=V.P.ZR24</font>
-<br><font color="black">135:N01340 X-21.795 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">136:N01350 Z1=V.P.ZR22</font>
-<br><font color="black">137:N01360 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">138:N01370 X-14.81 F1250</font>
-<br><font color="black">139:N01380 G00 Z1=V.P.ZR24</font>
-<br><font color="black">140:N01390 X48.905 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">141:N01400 Z1=V.P.ZR22</font>
-<br><font color="black">142:N01410 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">143:N01420 X55.515 F1250</font>
-<br><font color="black">144:N01430 G00 Z1=V.P.ZR24</font>
-<br><font color="black">145:N01440 X97.505 Y1=70.879 Z1=V.P.ZR24</font>
-<br><font color="black">146:N01450 Z1=V.P.ZR22</font>
-<br><font color="black">147:N01460 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">148:N01470 Y1=77.605 F1250</font>
-<br><font color="black">149:N01480 G00 Z1=V.P.ZR24</font>
-<br><font color="black">150:N01490 X97.505 Y1=130.305 Z1=V.P.ZR24</font>
-<br><font color="black">151:N01500 Z1=V.P.ZR22</font>
-<br><font color="black">152:N01510 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">153:N01520 Y1=137.305 F1250</font>
-<br><font color="black">154:N01530 G00 Z1=V.P.ZR24</font>
-<br><font color="black">155:N01540 X55.905 Y1=138.905 Z1=V.P.ZR24</font>
-<br><font color="black">156:N01550 Z1=V.P.ZR22</font>
-<br><font color="black">157:N01560 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">158:N01570 X48.905 F1250</font>
-<br><font color="black">159:N01580 G02 I0 J0.4 X48.932 Y1=139.705</font>
-<br><font color="black">160:N01590 G01 X55.859</font>
-<br><font color="black">161:N01600 G00 Z1=V.P.ZR24</font>
-<br><font color="black">162:N01610 X-21.754 Y1=139.705 Z1=V.P.ZR24</font>
-<br><font color="black">163:N01620 Z1=V.P.ZR22</font>
-<br><font color="black">164:N01630 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">165:N01640 X-14.795 F1250</font>
-<br><font color="black">166:N01650 G02 I0 J-0.4 X-14.795 Y1=138.905</font>
-<br><font color="black">167:N01660 G01 X-21.861</font>
-<br><font color="black">168:N01670 G00 Z1=V.P.ZR24</font>
-<br><font color="black">169:N01680 X-51.255 Y1=126.605 Z1=V.P.ZR24</font>
-<br><font color="black">170:N01690 Z1=V.P.ZR22</font>
-<br><font color="black">171:N01700 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">172:N01710 Y1=119.605 F1250</font>
-<br><font color="black">173:N01720 G00 Z1=V.P.ZR24</font>
-<br><font color="black">174:N01730 X-63.495 Y1=130.341 Z1=V.P.ZR24</font>
-<br><font color="black">175:N01740 Z1=V.P.ZR22</font>
-<br><font color="black">176:N01750 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">177:N01760 Y1=137.305 F1250</font>
-<br><font color="black">178:N01770 G00 Z1=V.P.ZR24</font>
-<br><font color="black">179:N01780 X-105.095 Y1=138.906 Z1=V.P.ZR24</font>
-<br><font color="black">180:N01790 Z1=V.P.ZR22</font>
-<br><font color="black">181:N01800 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">182:N01810 Y1=138.933 F1250</font>
-<br><font color="black">183:N01820 X-112.095 Y1=138.934</font>
-<br><font color="black">184:N01830 G00 Z1=V.P.ZR24</font>
-<br><font color="black">185:N01840 X-112.083 Y1=138.905 Z1=V.P.ZR24</font>
-<br><font color="black">186:N01850 Z1=V.P.ZR22</font>
-<br><font color="black">187:N01860 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">188:N01870 G02 I-0.012 J0.4 X-112.095 Y1=139.705 F1250</font>
-<br><font color="black">189:N01880 G01 X-105.095</font>
-<br><font color="black">190:N01890 G00 Z1=V.P.ZR24</font>
-<br><font color="black">191:N01900 X-182.795 Y1=138.905 Z1=V.P.ZR24</font>
-<br><font color="black">192:N01910 Z1=V.P.ZR22</font>
-<br><font color="black">193:N01920 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">194:N01930 X-175.621 F1250</font>
-<br><font color="black">195:N01940 G03 I-0.174 J0.381 X-175.795 Y1=139.705</font>
-<br><font color="black">196:N01950 G01 X-182.795</font>
-<br><font color="black">197:N01960 G00 Z1=V.P.ZR24</font>
-<br><font color="black">198:N01970 X-212.255 Y1=161.505 Z1=V.P.ZR24</font>
-<br><font color="black">199:N01980 Z1=V.P.ZR22</font>
-<br><font color="black">200:N01990 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">201:N02000 Y1=168.505 F1250</font>
-<br><font color="black">202:N02010 G00 Z1=V.P.ZR24</font>
-<br><font color="black">203:N02020 X-212.255 Y1=210.837 Z1=V.P.ZR24</font>
-<br><font color="black">204:N02030 Z1=V.P.ZR22</font>
-<br><font color="black">205:N02040 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">206:N02050 Y1=217.505 F1250</font>
-<br><font color="black">207:N02060 G00 Z1=V.P.ZR24</font>
-<br><font color="black">208:N02070 X-182.795 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">209:N02080 Z1=V.P.ZR22</font>
-<br><font color="black">210:N02090 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">211:N02100 X-175.795 F1250</font>
-<br><font color="black">212:N02110 G00 Z1=V.P.ZR24</font>
-<br><font color="black">213:N02120 X-112.095 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">214:N02130 Z1=V.P.ZR22</font>
-<br><font color="black">215:N02140 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">216:N02150 X-105.095 F1250</font>
-<br><font color="black">217:N02160 G00 Z1=V.P.ZR24</font>
-<br><font color="black">218:N02170 X-63.495 Y1=228.205 Z1=V.P.ZR24</font>
-<br><font color="black">219:N02180 Z1=V.P.ZR22</font>
-<br><font color="black">220:N02190 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">221:N02200 Y1=221.205 F1250</font>
-<br><font color="black">222:N02210 G00 Z1=V.P.ZR24</font>
-<br><font color="black">223:N02220 X-63.495 Y1=168.505 Z1=V.P.ZR24</font>
-<br><font color="black">224:N02230 Z1=V.P.ZR22</font>
-<br><font color="black">225:N02240 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">226:N02250 Y1=162.228 F1250</font>
-<br><font color="black">227:N02260 G00 Z1=V.P.ZR24</font>
-<br><font color="black">228:N02270 X-51.255 Y1=161.72 Z1=V.P.ZR24</font>
-<br><font color="black">229:N02280 Z1=V.P.ZR22</font>
-<br><font color="black">230:N02290 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">231:N02300 Y1=168.505 F1250</font>
-<br><font color="black">232:N02310 G00 Z1=V.P.ZR24</font>
-<br><font color="black">233:N02320 X-51.255 Y1=210.505 Z1=V.P.ZR24</font>
-<br><font color="black">234:N02330 Z1=V.P.ZR22</font>
-<br><font color="black">235:N02340 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">236:N02350 Y1=217.505 F1250</font>
-<br><font color="black">237:N02360 G00 Z1=V.P.ZR24</font>
-<br><font color="black">238:N02370 X-21.795 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">239:N02380 Z1=V.P.ZR22</font>
-<br><font color="black">240:N02390 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">241:N02400 X-14.914 F1250</font>
-<br><font color="black">242:N02410 G00 Z1=V.P.ZR24</font>
-<br><font color="black">243:N02420 X48.905 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">244:N02430 Z1=V.P.ZR22</font>
-<br><font color="black">245:N02440 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">246:N02450 X55.905 F1250</font>
-<br><font color="black">247:N02460 G00 Z1=V.P.ZR24</font>
-<br><font color="black">248:N02470 X97.505 Y1=228.205 Z1=V.P.ZR24</font>
-<br><font color="black">249:N02480 Z1=V.P.ZR22</font>
-<br><font color="black">250:N02490 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">251:N02500 Y1=221.465 F1250</font>
-<br><font color="black">252:N02510 G00 Z1=V.P.ZR24</font>
-<br><font color="black">253:N02520 X97.505 Y1=168.505 Z1=V.P.ZR24</font>
-<br><font color="black">254:N02530 Z1=V.P.ZR22</font>
-<br><font color="black">255:N02540 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">256:N02550 Y1=161.688 F1250</font>
-<br><font color="black">257:N02560 G00 Z1=V.P.ZR24</font>
-<br><font color="black">258:N02570 (Move out brush)</font>
-<br><font color="black">259:N02580 X203.16 Y1=200.355</font>
-<br><font color="black">260:N02590 [Homing]</font>
-<br><font color="black">261:N02600 M109</font>
-<br><font color="black">262:N02610 #ROTATION OFF</font>
-<br><font color="black">263:N02620 G00 Z1=V.P.ZR20</font>
-<br><font color="black">264:N02630 L _M100.nc</font>
-<br><font color="black">265:N02640 M30</font>
+<td colspan="2"><br><font color="black">1:N00010    (Project: Magnetic_WT_CH1 v1.3.0 - 16 pin storages (Universal program)</font>
+<br><font color="black">2:N00020    (Program: MAIN_01_PINY)</font>
+<br><font color="black">3:N00030    (Machine: GAS SARxxxx </font>
+<br><font color="black">4:N00040    (Author: Patryk Panylo /GAS GmbH</font>
+<br><font color="black">5:N00050  </font>
+<br><font color="black">6:N00060  </font>
+<br><font color="black">7:N00070    #VAR</font>
+<br><font color="black">8:N00080    V.L.FeedZ = 10000</font>
+<br><font color="black">9:N00090    V.L.FeedXY = 30000</font>
+<br><font color="black">10:N00100    V.L.UpLevelCoordZ = 68.3</font>
+<br><font color="black">11:N00110    V.L.PickPinCoordZ = -10.5</font>
+<br><font color="black">12:N00120    V.L.PlacePinCoordZ = -12.3</font>
+<br><font color="black">13:N00130    #ENDVAR</font>
+<br><font color="black">14:N00140  </font>
+<br><font color="black">15:N00150    #SET AX [X,1,0][Y1,2,1][Z1,3,3]</font>
+<br><font color="black">16:N00160  </font>
+<br><font color="black">17:N00170    T0</font>
+<br><font color="black">18:N00180    L _toolchange_K1.nc</font>
+<br><font color="black">19:N00190  </font>
+<br><font color="black">20:N00200    (Main Tool take</font>
+<br><font color="black">21:N00210    G54</font>
+<br><font color="black">22:N00220    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">23:N00230    G00 G90 X=392.5 Y1=22.861</font>
+<br><font color="black">24:N00240    M120</font>
+<br><font color="black">25:N00250    G04 0.5</font>
+<br><font color="black">26:N00260    G01 FV.L.FeedXY Z1=-13</font>
+<br><font color="black">27:N00270    M121</font>
+<br><font color="black">28:N00280    G04 0.1</font>
+<br><font color="black">29:N00290    Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">30:N00300  </font>
+<br><font color="black">31:N00310    (---------Number of current pin = 1, Type of current pin = 2</font>
+<br><font color="black">32:N00320  </font>
+<br><font color="black">33:N00330    (First safety rule come true</font>
+<br><font color="black">34:N00340    (Second safety rule come true</font>
+<br><font color="black">35:N00350    (Third safety rule disabled</font>
+<br><font color="black">36:N00360    G01 X=385.7  Y1=606.111  FV.L.FeedXY</font>
+<br><font color="black">37:N00370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">38:N00380    G04 0.2</font>
+<br><font color="black">39:N00390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">40:N00400    G01 X=-329.126  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">41:N00410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">42:N00420    G04 0.2</font>
+<br><font color="black">43:N00430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">44:N00440  </font>
+<br><font color="black">45:N00450    (---------Number of current pin = 2, Type of current pin = 2</font>
+<br><font color="black">46:N00460  </font>
+<br><font color="black">47:N00470    (First safety rule come true</font>
+<br><font color="black">48:N00480    (Second safety rule come true</font>
+<br><font color="black">49:N00490    (Third safety rule disabled</font>
+<br><font color="black">50:N00500    G01 X=385.7  Y1=581.111  FV.L.FeedXY</font>
+<br><font color="black">51:N00510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">52:N00520    G04 0.2</font>
+<br><font color="black">53:N00530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">54:N00540    G01 X=-250.936  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">55:N00550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">56:N00560    G04 0.2</font>
+<br><font color="black">57:N00570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">58:N00580  </font>
+<br><font color="black">59:N00590    (---------Number of current pin = 3, Type of current pin = 2</font>
+<br><font color="black">60:N00600  </font>
+<br><font color="black">61:N00610    (First safety rule come true</font>
+<br><font color="black">62:N00620    (Second safety rule come true</font>
+<br><font color="black">63:N00630    (Third safety rule disabled</font>
+<br><font color="black">64:N00640    G01 X=385.7  Y1=556.111  FV.L.FeedXY</font>
+<br><font color="black">65:N00650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">66:N00660    G04 0.2</font>
+<br><font color="black">67:N00670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">68:N00680    G01 X=-171.071  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">69:N00690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">70:N00700    G04 0.2</font>
+<br><font color="black">71:N00710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">72:N00720  </font>
+<br><font color="black">73:N00730    (---------Number of current pin = 4, Type of current pin = 2</font>
+<br><font color="black">74:N00740  </font>
+<br><font color="black">75:N00750    (First safety rule come true</font>
+<br><font color="black">76:N00760    (Second safety rule come true</font>
+<br><font color="black">77:N00770    (Third safety rule disabled</font>
+<br><font color="black">78:N00780    G01 X=385.7  Y1=531.111  FV.L.FeedXY</font>
+<br><font color="black">79:N00790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">80:N00800    G04 0.2</font>
+<br><font color="black">81:N00810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">82:N00820    G01 X=-100.796  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">83:N00830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">84:N00840    G04 0.2</font>
+<br><font color="black">85:N00850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">86:N00860  </font>
+<br><font color="black">87:N00870    (---------Number of current pin = 5, Type of current pin = 2</font>
+<br><font color="black">88:N00880  </font>
+<br><font color="black">89:N00890    (First safety rule come true</font>
+<br><font color="black">90:N00900    (Second safety rule come true</font>
+<br><font color="black">91:N00910    (Third safety rule disabled</font>
+<br><font color="black">92:N00920    G01 X=385.7  Y1=506.111  FV.L.FeedXY</font>
+<br><font color="black">93:N00930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">94:N00940    G04 0.2</font>
+<br><font color="black">95:N00950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">96:N00960    G01 X=-87.895  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">97:N00970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">98:N00980    G04 0.2</font>
+<br><font color="black">99:N00990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">100:N01000  </font>
+<br><font color="black">101:N01010    (---------Number of current pin = 6, Type of current pin = 2</font>
+<br><font color="black">102:N01020  </font>
+<br><font color="black">103:N01030    (First safety rule come true</font>
+<br><font color="black">104:N01040    (Second safety rule come true</font>
+<br><font color="black">105:N01050    (Third safety rule disabled</font>
+<br><font color="black">106:N01060    G01 X=385.7  Y1=481.111  FV.L.FeedXY</font>
+<br><font color="black">107:N01070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">108:N01080    G04 0.2</font>
+<br><font color="black">109:N01090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">110:N01100    G01 X=-87.895  Y1=223.886  FV.L.FeedXY</font>
+<br><font color="black">111:N01110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">112:N01120    G04 0.2</font>
+<br><font color="black">113:N01130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">114:N01140  </font>
+<br><font color="black">115:N01150    (---------Number of current pin = 7, Type of current pin = 2</font>
+<br><font color="black">116:N01160  </font>
+<br><font color="black">117:N01170    (First safety rule come true</font>
+<br><font color="black">118:N01180    (Second safety rule come true</font>
+<br><font color="black">119:N01190    (Third safety rule disabled</font>
+<br><font color="black">120:N01200    G01 X=385.7  Y1=456.111  FV.L.FeedXY</font>
+<br><font color="black">121:N01210    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">122:N01220    G04 0.2</font>
+<br><font color="black">123:N01230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">124:N01240    G01 X=-87.895  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">125:N01250    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">126:N01260    G04 0.2</font>
+<br><font color="black">127:N01270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">128:N01280  </font>
+<br><font color="black">129:N01290    (---------Number of current pin = 8, Type of current pin = 2</font>
+<br><font color="black">130:N01300  </font>
+<br><font color="black">131:N01310    (First safety rule come true</font>
+<br><font color="black">132:N01320    (Second safety rule come true</font>
+<br><font color="black">133:N01330    (Third safety rule disabled</font>
+<br><font color="black">134:N01340    G01 X=394.3  Y1=593.611  FV.L.FeedXY</font>
+<br><font color="black">135:N01350    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">136:N01360    G04 0.2</font>
+<br><font color="black">137:N01370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">138:N01380    G01 X=-87.895  Y1=149.184  FV.L.FeedXY</font>
+<br><font color="black">139:N01390    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">140:N01400    G04 0.2</font>
+<br><font color="black">141:N01410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">142:N01420  </font>
+<br><font color="black">143:N01430    (---------Number of current pin = 9, Type of current pin = 2</font>
+<br><font color="black">144:N01440  </font>
+<br><font color="black">145:N01450    (First safety rule come true</font>
+<br><font color="black">146:N01460    (Second safety rule come true</font>
+<br><font color="black">147:N01470    (Third safety rule disabled</font>
+<br><font color="black">148:N01480    G01 X=394.3  Y1=568.611  FV.L.FeedXY</font>
+<br><font color="black">149:N01490    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">150:N01500    G04 0.2</font>
+<br><font color="black">151:N01510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">152:N01520    G01 X=-87.895  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">153:N01530    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">154:N01540    G04 0.2</font>
+<br><font color="black">155:N01550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">156:N01560  </font>
+<br><font color="black">157:N01570    (---------Number of current pin = 10, Type of current pin = 2</font>
+<br><font color="black">158:N01580  </font>
+<br><font color="black">159:N01590    (First safety rule come true</font>
+<br><font color="black">160:N01600    (Second safety rule come true</font>
+<br><font color="black">161:N01610    (Third safety rule disabled</font>
+<br><font color="black">162:N01620    G01 X=394.3  Y1=543.611  FV.L.FeedXY</font>
+<br><font color="black">163:N01630    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">164:N01640    G04 0.2</font>
+<br><font color="black">165:N01650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">166:N01660    G01 X=-87.895  Y1=77.241  FV.L.FeedXY</font>
+<br><font color="black">167:N01670    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">168:N01680    G04 0.2</font>
+<br><font color="black">169:N01690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">170:N01700  </font>
+<br><font color="black">171:N01710    (---------Number of current pin = 11, Type of current pin = 2</font>
+<br><font color="black">172:N01720  </font>
+<br><font color="black">173:N01730    (First safety rule come true</font>
+<br><font color="black">174:N01740    (Second safety rule come true</font>
+<br><font color="black">175:N01750    (Third safety rule disabled</font>
+<br><font color="black">176:N01760    G01 X=394.3  Y1=518.611  FV.L.FeedXY</font>
+<br><font color="black">177:N01770    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">178:N01780    G04 0.2</font>
+<br><font color="black">179:N01790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">180:N01800    G01 X=-87.895  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">181:N01810    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">182:N01820    G04 0.2</font>
+<br><font color="black">183:N01830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">184:N01840  </font>
+<br><font color="black">185:N01850    (---------Number of current pin = 12, Type of current pin = 2</font>
+<br><font color="black">186:N01860  </font>
+<br><font color="black">187:N01870    (First safety rule come true</font>
+<br><font color="black">188:N01880    (Second safety rule come true</font>
+<br><font color="black">189:N01890    (Third safety rule disabled</font>
+<br><font color="black">190:N01900    G01 X=394.3  Y1=493.611  FV.L.FeedXY</font>
+<br><font color="black">191:N01910    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">192:N01920    G04 0.2</font>
+<br><font color="black">193:N01930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">194:N01940    G01 X=-142.651  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">195:N01950    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">196:N01960    G04 0.2</font>
+<br><font color="black">197:N01970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">198:N01980  </font>
+<br><font color="black">199:N01990    (---------Number of current pin = 13, Type of current pin = 2</font>
+<br><font color="black">200:N02000  </font>
+<br><font color="black">201:N02010    (First safety rule come true</font>
+<br><font color="black">202:N02020    (Second safety rule come true</font>
+<br><font color="black">203:N02030    (Third safety rule disabled</font>
+<br><font color="black">204:N02040    G01 X=394.3  Y1=468.611  FV.L.FeedXY</font>
+<br><font color="black">205:N02050    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">206:N02060    G04 0.2</font>
+<br><font color="black">207:N02070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">208:N02080    G01 X=-221.617  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">209:N02090    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">210:N02100    G04 0.2</font>
+<br><font color="black">211:N02110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">212:N02120  </font>
+<br><font color="black">213:N02130    (---------Number of current pin = 14, Type of current pin = 2</font>
+<br><font color="black">214:N02140  </font>
+<br><font color="black">215:N02150    (First safety rule come true</font>
+<br><font color="black">216:N02160    (Second safety rule come true</font>
+<br><font color="black">217:N02170    (Third safety rule disabled</font>
+<br><font color="black">218:N02180    G01 X=394.3  Y1=443.611  FV.L.FeedXY</font>
+<br><font color="black">219:N02190    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">220:N02200    G04 0.2</font>
+<br><font color="black">221:N02210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">222:N02220    G01 X=-300.713  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">223:N02230    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">224:N02240    G04 0.2</font>
+<br><font color="black">225:N02250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">226:N02260  </font>
+<br><font color="black">227:N02270    (---------Number of current pin = 15, Type of current pin = 2</font>
+<br><font color="black">228:N02280  </font>
+<br><font color="black">229:N02290    (First safety rule come true</font>
+<br><font color="black">230:N02300    (Second safety rule come true</font>
+<br><font color="black">231:N02310    (Third safety rule disabled</font>
+<br><font color="black">232:N02320    G01 X=385.7  Y1=206.111  FV.L.FeedXY</font>
+<br><font color="black">233:N02330    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">234:N02340    G04 0.2</font>
+<br><font color="black">235:N02350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">236:N02360    G01 X=-267.195  Y1=41.705  FV.L.FeedXY</font>
+<br><font color="black">237:N02370    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">238:N02380    G04 0.2</font>
+<br><font color="black">239:N02390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">240:N02400  </font>
+<br><font color="black">241:N02410    (---------Number of current pin = 16, Type of current pin = 2</font>
+<br><font color="black">242:N02420  </font>
+<br><font color="black">243:N02430    (First safety rule come true</font>
+<br><font color="black">244:N02440    (Second safety rule come true</font>
+<br><font color="black">245:N02450    (Third safety rule disabled</font>
+<br><font color="black">246:N02460    G01 X=385.7  Y1=181.111  FV.L.FeedXY</font>
+<br><font color="black">247:N02470    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">248:N02480    G04 0.2</font>
+<br><font color="black">249:N02490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">250:N02500    G01 X=-241.813  Y1=41.705  FV.L.FeedXY</font>
+<br><font color="black">251:N02510    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">252:N02520    G04 0.2</font>
+<br><font color="black">253:N02530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">254:N02540  </font>
+<br><font color="black">255:N02550    (---------Number of current pin = 17, Type of current pin = 2</font>
+<br><font color="black">256:N02560  </font>
+<br><font color="black">257:N02570    (First safety rule come true</font>
+<br><font color="black">258:N02580    (Second safety rule come true</font>
+<br><font color="black">259:N02590    (Third safety rule disabled</font>
+<br><font color="black">260:N02600    G01 X=385.7  Y1=156.111  FV.L.FeedXY</font>
+<br><font color="black">261:N02610    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">262:N02620    G04 0.2</font>
+<br><font color="black">263:N02630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">264:N02640    G01 X=-109.463  Y1=41.705  FV.L.FeedXY</font>
+<br><font color="black">265:N02650    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">266:N02660    G04 0.2</font>
+<br><font color="black">267:N02670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">268:N02680  </font>
+<br><font color="black">269:N02690    (---------Number of current pin = 18, Type of current pin = 3</font>
+<br><font color="black">270:N02700  </font>
+<br><font color="black">271:N02710    (First safety rule come true</font>
+<br><font color="black">272:N02720    (Second safety rule come true</font>
+<br><font color="black">273:N02730    (Third safety rule disabled</font>
+<br><font color="black">274:N02740    G01 X=-355.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">275:N02750    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">276:N02760    G04 0.2</font>
+<br><font color="black">277:N02770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">278:N02780    G01 X=-271.145  Y1=253.805  FV.L.FeedXY</font>
+<br><font color="black">279:N02790    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">280:N02800    G04 0.2</font>
+<br><font color="black">281:N02810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">282:N02820  </font>
+<br><font color="black">283:N02830    (---------Number of current pin = 19, Type of current pin = 3</font>
+<br><font color="black">284:N02840  </font>
+<br><font color="black">285:N02850    (First safety rule come true</font>
+<br><font color="black">286:N02860    (Second safety rule come true</font>
+<br><font color="black">287:N02870    (Third safety rule disabled</font>
+<br><font color="black">288:N02880    G01 X=-326.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">289:N02890    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">290:N02900    G04 0.2</font>
+<br><font color="black">291:N02910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">292:N02920    G01 X=-192.145  Y1=253.805  FV.L.FeedXY</font>
+<br><font color="black">293:N02930    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">294:N02940    G04 0.2</font>
+<br><font color="black">295:N02950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">296:N02960  </font>
+<br><font color="black">297:N02970    (---------Number of current pin = 20, Type of current pin = 3</font>
+<br><font color="black">298:N02980  </font>
+<br><font color="black">299:N02990    (First safety rule come true</font>
+<br><font color="black">300:N03000    (Second safety rule come true</font>
+<br><font color="black">301:N03010    (Third safety rule disabled</font>
+<br><font color="black">302:N03020    G01 X=-297.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">303:N03030    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">304:N03040    G04 0.2</font>
+<br><font color="black">305:N03050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">306:N03060    G01 X=-113.145  Y1=253.805  FV.L.FeedXY</font>
+<br><font color="black">307:N03070    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">308:N03080    G04 0.2</font>
+<br><font color="black">309:N03090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">310:N03100  </font>
+<br><font color="black">311:N03110    (---------Number of current pin = 21, Type of current pin = 3</font>
+<br><font color="black">312:N03120  </font>
+<br><font color="black">313:N03130    (First safety rule come true</font>
+<br><font color="black">314:N03140    (Second safety rule come true</font>
+<br><font color="black">315:N03150    (Third safety rule disabled</font>
+<br><font color="black">316:N03160    G01 X=-268.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">317:N03170    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">318:N03180    G04 0.2</font>
+<br><font color="black">319:N03190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">320:N03200    G01 X=-271.145  Y1=181.605  FV.L.FeedXY</font>
+<br><font color="black">321:N03210    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">322:N03220    G04 0.2</font>
+<br><font color="black">323:N03230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">324:N03240  </font>
+<br><font color="black">325:N03250    (---------Number of current pin = 22, Type of current pin = 3</font>
+<br><font color="black">326:N03260  </font>
+<br><font color="black">327:N03270    (First safety rule come true</font>
+<br><font color="black">328:N03280    (Second safety rule come true</font>
+<br><font color="black">329:N03290    (Third safety rule disabled</font>
+<br><font color="black">330:N03300    G01 X=-239.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">331:N03310    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">332:N03320    G04 0.2</font>
+<br><font color="black">333:N03330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">334:N03340    G01 X=-192.145  Y1=181.605  FV.L.FeedXY</font>
+<br><font color="black">335:N03350    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">336:N03360    G04 0.2</font>
+<br><font color="black">337:N03370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">338:N03380  </font>
+<br><font color="black">339:N03390    (---------Number of current pin = 23, Type of current pin = 3</font>
+<br><font color="black">340:N03400  </font>
+<br><font color="black">341:N03410    (First safety rule come true</font>
+<br><font color="black">342:N03420    (Second safety rule come true</font>
+<br><font color="black">343:N03430    (Third safety rule disabled</font>
+<br><font color="black">344:N03440    G01 X=-210.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">345:N03450    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">346:N03460    G04 0.2</font>
+<br><font color="black">347:N03470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">348:N03480    G01 X=-113.145  Y1=181.605  FV.L.FeedXY</font>
+<br><font color="black">349:N03490    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">350:N03500    G04 0.2</font>
+<br><font color="black">351:N03510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">352:N03520  </font>
+<br><font color="black">353:N03530    (---------Number of current pin = 24, Type of current pin = 3</font>
+<br><font color="black">354:N03540  </font>
+<br><font color="black">355:N03550    (First safety rule come true</font>
+<br><font color="black">356:N03560    (Second safety rule come true</font>
+<br><font color="black">357:N03570    (Third safety rule disabled</font>
+<br><font color="black">358:N03580    G01 X=-341.25  Y1=-13.339  FV.L.FeedXY</font>
+<br><font color="black">359:N03590    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">360:N03600    G04 0.2</font>
+<br><font color="black">361:N03610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">362:N03620    G01 X=-113.145  Y1=109.405  FV.L.FeedXY</font>
+<br><font color="black">363:N03630    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">364:N03640    G04 0.2</font>
+<br><font color="black">365:N03650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">366:N03660  </font>
+<br><font color="black">367:N03670    (---------Number of current pin = 25, Type of current pin = 3</font>
+<br><font color="black">368:N03680  </font>
+<br><font color="black">369:N03690    (First safety rule come true</font>
+<br><font color="black">370:N03700    (Second safety rule come true</font>
+<br><font color="black">371:N03710    (Third safety rule disabled</font>
+<br><font color="black">372:N03720    G01 X=-312.25  Y1=-13.339  FV.L.FeedXY</font>
+<br><font color="black">373:N03730    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">374:N03740    G04 0.2</font>
+<br><font color="black">375:N03750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">376:N03760    G01 X=-192.145  Y1=109.405  FV.L.FeedXY</font>
+<br><font color="black">377:N03770    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">378:N03780    G04 0.2</font>
+<br><font color="black">379:N03790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">380:N03800  </font>
+<br><font color="black">381:N03810    (---------Number of current pin = 26, Type of current pin = 3</font>
+<br><font color="black">382:N03820  </font>
+<br><font color="black">383:N03830    (First safety rule come true</font>
+<br><font color="black">384:N03840    (Second safety rule come true</font>
+<br><font color="black">385:N03850    (Third safety rule disabled</font>
+<br><font color="black">386:N03860    G01 X=-283.25  Y1=-13.339  FV.L.FeedXY</font>
+<br><font color="black">387:N03870    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">388:N03880    G04 0.2</font>
+<br><font color="black">389:N03890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">390:N03900    G01 X=-271.145  Y1=109.405  FV.L.FeedXY</font>
+<br><font color="black">391:N03910    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">392:N03920    G04 0.2</font>
+<br><font color="black">393:N03930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">394:N03940  </font>
+<br><font color="black">395:N03950    (---------Number of current pin = 27, Type of current pin = 7</font>
+<br><font color="black">396:N03960  </font>
+<br><font color="black">397:N03970    (First safety rule come true</font>
+<br><font color="black">398:N03980    (Second safety rule come true</font>
+<br><font color="black">399:N03990    (Third safety rule disabled</font>
+<br><font color="black">400:N04000    G01 X=-394.3  Y1=204.611  FV.L.FeedXY</font>
+<br><font color="black">401:N04010    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">402:N04020    G04 0.2</font>
+<br><font color="black">403:N04030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">404:N04040    G01 X=-314.822  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">405:N04050    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">406:N04060    G04 0.2</font>
+<br><font color="black">407:N04070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">408:N04080  </font>
+<br><font color="black">409:N04090    (---------Number of current pin = 28, Type of current pin = 7</font>
+<br><font color="black">410:N04100  </font>
+<br><font color="black">411:N04110    (First safety rule come true</font>
+<br><font color="black">412:N04120    (Second safety rule come true</font>
+<br><font color="black">413:N04130    (Third safety rule disabled</font>
+<br><font color="black">414:N04140    G01 X=-394.3  Y1=175.611  FV.L.FeedXY</font>
+<br><font color="black">415:N04150    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">416:N04160    G04 0.2</font>
+<br><font color="black">417:N04170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">418:N04180    G01 X=-287.655  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">419:N04190    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">420:N04200    G04 0.2</font>
+<br><font color="black">421:N04210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">422:N04220  </font>
+<br><font color="black">423:N04230    (---------Number of current pin = 29, Type of current pin = 7</font>
+<br><font color="black">424:N04240  </font>
+<br><font color="black">425:N04250    (First safety rule come true</font>
+<br><font color="black">426:N04260    (Second safety rule come true</font>
+<br><font color="black">427:N04270    (Third safety rule disabled</font>
+<br><font color="black">428:N04280    G01 X=-394.3  Y1=146.611  FV.L.FeedXY</font>
+<br><font color="black">429:N04290    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">430:N04300    G04 0.2</font>
+<br><font color="black">431:N04310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">432:N04320    G01 X=-314.822  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">433:N04330    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">434:N04340    G04 0.2</font>
+<br><font color="black">435:N04350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">436:N04360  </font>
+<br><font color="black">437:N04370    (---------Number of current pin = 30, Type of current pin = 7</font>
+<br><font color="black">438:N04380  </font>
+<br><font color="black">439:N04390    (First safety rule come true</font>
+<br><font color="black">440:N04400    (Second safety rule come true</font>
+<br><font color="black">441:N04410    (Third safety rule disabled</font>
+<br><font color="black">442:N04420    G01 X=-394.3  Y1=117.611  FV.L.FeedXY</font>
+<br><font color="black">443:N04430    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">444:N04440    G04 0.2</font>
+<br><font color="black">445:N04450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">446:N04460    G01 X=-287.655  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">447:N04470    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">448:N04480    G04 0.2</font>
+<br><font color="black">449:N04490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">450:N04500  </font>
+<br><font color="black">451:N04510    (---------Number of current pin = 31, Type of current pin = 7</font>
+<br><font color="black">452:N04520  </font>
+<br><font color="black">453:N04530    (First safety rule come true</font>
+<br><font color="black">454:N04540    (Second safety rule come true</font>
+<br><font color="black">455:N04550    (Third safety rule disabled</font>
+<br><font color="black">456:N04560    G01 X=-394.3  Y1=88.611  FV.L.FeedXY</font>
+<br><font color="black">457:N04570    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">458:N04580    G04 0.2</font>
+<br><font color="black">459:N04590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">460:N04600    G01 X=-314.822  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">461:N04610    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">462:N04620    G04 0.2</font>
+<br><font color="black">463:N04630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">464:N04640  </font>
+<br><font color="black">465:N04650    (---------Number of current pin = 32, Type of current pin = 7</font>
+<br><font color="black">466:N04660  </font>
+<br><font color="black">467:N04670    (First safety rule come true</font>
+<br><font color="black">468:N04680    (Second safety rule come true</font>
+<br><font color="black">469:N04690    (Third safety rule disabled</font>
+<br><font color="black">470:N04700    G01 X=-394.3  Y1=59.611  FV.L.FeedXY</font>
+<br><font color="black">471:N04710    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">472:N04720    G04 0.2</font>
+<br><font color="black">473:N04730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">474:N04740    G01 X=-287.655  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">475:N04750    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">476:N04760    G04 0.2</font>
+<br><font color="black">477:N04770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">478:N04780  </font>
+<br><font color="black">479:N04790    (---------Number of current pin = 33, Type of current pin = 7</font>
+<br><font color="black">480:N04800  </font>
+<br><font color="black">481:N04810    (First safety rule come true</font>
+<br><font color="black">482:N04820    (Second safety rule come true</font>
+<br><font color="black">483:N04830    (Third safety rule disabled</font>
+<br><font color="black">484:N04840    G01 X=-385.7  Y1=190.111  FV.L.FeedXY</font>
+<br><font color="black">485:N04850    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">486:N04860    G04 0.2</font>
+<br><font color="black">487:N04870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">488:N04880    G01 X=-314.822  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">489:N04890    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">490:N04900    G04 0.2</font>
+<br><font color="black">491:N04910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">492:N04920  </font>
+<br><font color="black">493:N04930    (---------Number of current pin = 34, Type of current pin = 7</font>
+<br><font color="black">494:N04940  </font>
+<br><font color="black">495:N04950    (First safety rule come true</font>
+<br><font color="black">496:N04960    (Second safety rule come true</font>
+<br><font color="black">497:N04970    (Third safety rule disabled</font>
+<br><font color="black">498:N04980    G01 X=-385.7  Y1=161.111  FV.L.FeedXY</font>
+<br><font color="black">499:N04990    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">500:N05000    G04 0.2</font>
+<br><font color="black">501:N05010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">502:N05020    G01 X=-206.147  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">503:N05030    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">504:N05040    G04 0.2</font>
+<br><font color="black">505:N05050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">506:N05060  </font>
+<br><font color="black">507:N05070    (---------Number of current pin = 35, Type of current pin = 7</font>
+<br><font color="black">508:N05080  </font>
+<br><font color="black">509:N05090    (First safety rule come true</font>
+<br><font color="black">510:N05100    (Second safety rule come true</font>
+<br><font color="black">511:N05110    (Third safety rule disabled</font>
+<br><font color="black">512:N05120    G01 X=-385.7  Y1=132.111  FV.L.FeedXY</font>
+<br><font color="black">513:N05130    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">514:N05140    G04 0.2</font>
+<br><font color="black">515:N05150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">516:N05160    G01 X=-235.822  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">517:N05170    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">518:N05180    G04 0.2</font>
+<br><font color="black">519:N05190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">520:N05200  </font>
+<br><font color="black">521:N05210    (---------Number of current pin = 36, Type of current pin = 7</font>
+<br><font color="black">522:N05220  </font>
+<br><font color="black">523:N05230    (First safety rule come true</font>
+<br><font color="black">524:N05240    (Second safety rule come true</font>
+<br><font color="black">525:N05250    (Third safety rule disabled</font>
+<br><font color="black">526:N05260    G01 X=-385.7  Y1=103.111  FV.L.FeedXY</font>
+<br><font color="black">527:N05270    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">528:N05280    G04 0.2</font>
+<br><font color="black">529:N05290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">530:N05300    G01 X=-208.655  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">531:N05310    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">532:N05320    G04 0.2</font>
+<br><font color="black">533:N05330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">534:N05340  </font>
+<br><font color="black">535:N05350    (---------Number of current pin = 37, Type of current pin = 7</font>
+<br><font color="black">536:N05360  </font>
+<br><font color="black">537:N05370    (First safety rule come true</font>
+<br><font color="black">538:N05380    (Second safety rule come true</font>
+<br><font color="black">539:N05390    (Third safety rule disabled</font>
+<br><font color="black">540:N05400    G01 X=-385.7  Y1=74.111  FV.L.FeedXY</font>
+<br><font color="black">541:N05410    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">542:N05420    G04 0.2</font>
+<br><font color="black">543:N05430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">544:N05440    G01 X=-235.822  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">545:N05450    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">546:N05460    G04 0.2</font>
+<br><font color="black">547:N05470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">548:N05480  </font>
+<br><font color="black">549:N05490    (---------Number of current pin = 38, Type of current pin = 7</font>
+<br><font color="black">550:N05500  </font>
+<br><font color="black">551:N05510    (First safety rule come true</font>
+<br><font color="black">552:N05520    (Second safety rule come true</font>
+<br><font color="black">553:N05530    (Third safety rule disabled</font>
+<br><font color="black">554:N05540    G01 X=-385.7  Y1=45.111  FV.L.FeedXY</font>
+<br><font color="black">555:N05550    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">556:N05560    G04 0.2</font>
+<br><font color="black">557:N05570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">558:N05580    G01 X=-208.655  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">559:N05590    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">560:N05600    G04 0.2</font>
+<br><font color="black">561:N05610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">562:N05620  </font>
+<br><font color="black">563:N05630    (---------Number of current pin = 39, Type of current pin = 7</font>
+<br><font color="black">564:N05640  </font>
+<br><font color="black">565:N05650    (First safety rule come true</font>
+<br><font color="black">566:N05660    (Second safety rule come true</font>
+<br><font color="black">567:N05670    (Third safety rule disabled</font>
+<br><font color="black">568:N05680    G01 X=-394.3  Y1=604.611  FV.L.FeedXY</font>
+<br><font color="black">569:N05690    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">570:N05700    G04 0.2</font>
+<br><font color="black">571:N05710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">572:N05720    G01 X=-235.822  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">573:N05730    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">574:N05740    G04 0.2</font>
+<br><font color="black">575:N05750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">576:N05760  </font>
+<br><font color="black">577:N05770    (---------Number of current pin = 40, Type of current pin = 7</font>
+<br><font color="black">578:N05780  </font>
+<br><font color="black">579:N05790    (First safety rule come true</font>
+<br><font color="black">580:N05800    (Second safety rule come true</font>
+<br><font color="black">581:N05810    (Third safety rule disabled</font>
+<br><font color="black">582:N05820    G01 X=-394.3  Y1=575.611  FV.L.FeedXY</font>
+<br><font color="black">583:N05830    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">584:N05840    G04 0.2</font>
+<br><font color="black">585:N05850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">586:N05860    G01 X=-208.655  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">587:N05870    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">588:N05880    G04 0.2</font>
+<br><font color="black">589:N05890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">590:N05900  </font>
+<br><font color="black">591:N05910    (---------Number of current pin = 41, Type of current pin = 7</font>
+<br><font color="black">592:N05920  </font>
+<br><font color="black">593:N05930    (First safety rule come true</font>
+<br><font color="black">594:N05940    (Second safety rule come true</font>
+<br><font color="black">595:N05950    (Third safety rule disabled</font>
+<br><font color="black">596:N05960    G01 X=-394.3  Y1=546.611  FV.L.FeedXY</font>
+<br><font color="black">597:N05970    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">598:N05980    G04 0.2</font>
+<br><font color="black">599:N05990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">600:N06000    G01 X=-156.822  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">601:N06010    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">602:N06020    G04 0.2</font>
+<br><font color="black">603:N06030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">604:N06040  </font>
+<br><font color="black">605:N06050    (---------Number of current pin = 42, Type of current pin = 7</font>
+<br><font color="black">606:N06060  </font>
+<br><font color="black">607:N06070    (First safety rule come true</font>
+<br><font color="black">608:N06080    (Second safety rule come true</font>
+<br><font color="black">609:N06090    (Third safety rule disabled</font>
+<br><font color="black">610:N06100    G01 X=-394.3  Y1=517.611  FV.L.FeedXY</font>
+<br><font color="black">611:N06110    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">612:N06120    G04 0.2</font>
+<br><font color="black">613:N06130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">614:N06140    G01 X=-129.655  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">615:N06150    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">616:N06160    G04 0.2</font>
+<br><font color="black">617:N06170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">618:N06180  </font>
+<br><font color="black">619:N06190    (---------Number of current pin = 43, Type of current pin = 7</font>
+<br><font color="black">620:N06200  </font>
+<br><font color="black">621:N06210    (First safety rule come true</font>
+<br><font color="black">622:N06220    (Second safety rule come true</font>
+<br><font color="black">623:N06230    (Third safety rule disabled</font>
+<br><font color="black">624:N06240    G01 X=-394.3  Y1=488.611  FV.L.FeedXY</font>
+<br><font color="black">625:N06250    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">626:N06260    G04 0.2</font>
+<br><font color="black">627:N06270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">628:N06280    G01 X=-156.822  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">629:N06290    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">630:N06300    G04 0.2</font>
+<br><font color="black">631:N06310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">632:N06320  </font>
+<br><font color="black">633:N06330    (---------Number of current pin = 44, Type of current pin = 7</font>
+<br><font color="black">634:N06340  </font>
+<br><font color="black">635:N06350    (First safety rule come true</font>
+<br><font color="black">636:N06360    (Second safety rule come true</font>
+<br><font color="black">637:N06370    (Third safety rule disabled</font>
+<br><font color="black">638:N06380    G01 X=-394.3  Y1=459.611  FV.L.FeedXY</font>
+<br><font color="black">639:N06390    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">640:N06400    G04 0.2</font>
+<br><font color="black">641:N06410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">642:N06420    G01 X=-129.655  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">643:N06430    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">644:N06440    G04 0.2</font>
+<br><font color="black">645:N06450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">646:N06460  </font>
+<br><font color="black">647:N06470    (---------Number of current pin = 45, Type of current pin = 7</font>
+<br><font color="black">648:N06480  </font>
+<br><font color="black">649:N06490    (First safety rule come true</font>
+<br><font color="black">650:N06500    (Second safety rule come true</font>
+<br><font color="black">651:N06510    (Third safety rule disabled</font>
+<br><font color="black">652:N06520    G01 X=-385.7  Y1=590.111  FV.L.FeedXY</font>
+<br><font color="black">653:N06530    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">654:N06540    G04 0.2</font>
+<br><font color="black">655:N06550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">656:N06560    G01 X=-156.822  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">657:N06570    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">658:N06580    G04 0.2</font>
+<br><font color="black">659:N06590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">660:N06600  </font>
+<br><font color="black">661:N06610    (---------Number of current pin = 46, Type of current pin = 7</font>
+<br><font color="black">662:N06620  </font>
+<br><font color="black">663:N06630    (First safety rule come true</font>
+<br><font color="black">664:N06640    (Second safety rule come true</font>
+<br><font color="black">665:N06650    (Third safety rule disabled</font>
+<br><font color="black">666:N06660    G01 X=-385.7  Y1=561.111  FV.L.FeedXY</font>
+<br><font color="black">667:N06670    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">668:N06680    G04 0.2</font>
+<br><font color="black">669:N06690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">670:N06700    G01 X=-129.655  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">671:N06710    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">672:N06720    G04 0.2</font>
+<br><font color="black">673:N06730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">674:N06740  </font>
+<br><font color="black">675:N06750    (---------Number of current pin = 47, Type of current pin = 7</font>
+<br><font color="black">676:N06760  </font>
+<br><font color="black">677:N06770    (First safety rule come true</font>
+<br><font color="black">678:N06780    (Second safety rule come true</font>
+<br><font color="black">679:N06790    (Third safety rule disabled</font>
+<br><font color="black">680:N06800    G01 X=-385.7  Y1=532.111  FV.L.FeedXY</font>
+<br><font color="black">681:N06810    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">682:N06820    G04 0.2</font>
+<br><font color="black">683:N06830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">684:N06840    G01 X=-156.822  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">685:N06850    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">686:N06860    G04 0.2</font>
+<br><font color="black">687:N06870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">688:N06880  </font>
+<br><font color="black">689:N06890    (---------Number of current pin = 48, Type of current pin = 7</font>
+<br><font color="black">690:N06900  </font>
+<br><font color="black">691:N06910    (First safety rule come true</font>
+<br><font color="black">692:N06920    (Second safety rule come true</font>
+<br><font color="black">693:N06930    (Third safety rule disabled</font>
+<br><font color="black">694:N06940    G01 X=-385.7  Y1=503.111  FV.L.FeedXY</font>
+<br><font color="black">695:N06950    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">696:N06960    G04 0.2</font>
+<br><font color="black">697:N06970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">698:N06980    G01 X=-258.895  Y1=241.705  FV.L.FeedXY</font>
+<br><font color="black">699:N06990    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">700:N07000    G04 0.2</font>
+<br><font color="black">701:N07010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">702:N07020  </font>
+<br><font color="black">703:N07030    (---------Number of current pin = 49, Type of current pin = 7</font>
+<br><font color="black">704:N07040  </font>
+<br><font color="black">705:N07050    (First safety rule come true</font>
+<br><font color="black">706:N07060    (Second safety rule come true</font>
+<br><font color="black">707:N07070    (Third safety rule disabled</font>
+<br><font color="black">708:N07080    G01 X=-385.7  Y1=474.111  FV.L.FeedXY</font>
+<br><font color="black">709:N07090    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">710:N07100    G04 0.2</font>
+<br><font color="black">711:N07110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">712:N07120    G01 X=-258.895  Y1=198.205  FV.L.FeedXY</font>
+<br><font color="black">713:N07130    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">714:N07140    G04 0.2</font>
+<br><font color="black">715:N07150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">716:N07160  </font>
+<br><font color="black">717:N07170    (---------Number of current pin = 50, Type of current pin = 7</font>
+<br><font color="black">718:N07180  </font>
+<br><font color="black">719:N07190    (First safety rule come true</font>
+<br><font color="black">720:N07200    (Second safety rule come true</font>
+<br><font color="black">721:N07210    (Third safety rule disabled</font>
+<br><font color="black">722:N07220    G01 X=-385.7  Y1=445.111  FV.L.FeedXY</font>
+<br><font color="black">723:N07230    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">724:N07240    G04 0.2</font>
+<br><font color="black">725:N07250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">726:N07260    G01 X=-326.095  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">727:N07270    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">728:N07280    G04 0.2</font>
+<br><font color="black">729:N07290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">730:N07300  </font>
+<br><font color="black">731:N07310    (---------Number of current pin = 51, Type of current pin = 7</font>
+<br><font color="black">732:N07320  </font>
+<br><font color="black">733:N07330    (First safety rule come true</font>
+<br><font color="black">734:N07340    (Second safety rule come true</font>
+<br><font color="black">735:N07350    (Third safety rule disabled</font>
+<br><font color="black">736:N07360    G01 X=-368.8  Y1=204.611  FV.L.FeedXY</font>
+<br><font color="black">737:N07370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">738:N07380    G04 0.2</font>
+<br><font color="black">739:N07390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">740:N07400    G01 X=-326.095  Y1=211.205  FV.L.FeedXY</font>
+<br><font color="black">741:N07410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">742:N07420    G04 0.2</font>
+<br><font color="black">743:N07430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">744:N07440  </font>
+<br><font color="black">745:N07450    (---------Number of current pin = 52, Type of current pin = 7</font>
+<br><font color="black">746:N07460  </font>
+<br><font color="black">747:N07470    (First safety rule come true</font>
+<br><font color="black">748:N07480    (Second safety rule come true</font>
+<br><font color="black">749:N07490    (Third safety rule disabled</font>
+<br><font color="black">750:N07500    G01 X=-368.8  Y1=175.611  FV.L.FeedXY</font>
+<br><font color="black">751:N07510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">752:N07520    G04 0.2</font>
+<br><font color="black">753:N07530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">754:N07540    G01 X=-247.095  Y1=211.205  FV.L.FeedXY</font>
+<br><font color="black">755:N07550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">756:N07560    G04 0.2</font>
+<br><font color="black">757:N07570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">758:N07580  </font>
+<br><font color="black">759:N07590    (---------Number of current pin = 53, Type of current pin = 7</font>
+<br><font color="black">760:N07600  </font>
+<br><font color="black">761:N07610    (First safety rule come true</font>
+<br><font color="black">762:N07620    (Second safety rule come true</font>
+<br><font color="black">763:N07630    (Third safety rule disabled</font>
+<br><font color="black">764:N07640    G01 X=-368.8  Y1=146.611  FV.L.FeedXY</font>
+<br><font color="black">765:N07650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">766:N07660    G04 0.2</font>
+<br><font color="black">767:N07670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">768:N07680    G01 X=-179.895  Y1=198.205  FV.L.FeedXY</font>
+<br><font color="black">769:N07690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">770:N07700    G04 0.2</font>
+<br><font color="black">771:N07710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">772:N07720  </font>
+<br><font color="black">773:N07730    (---------Number of current pin = 54, Type of current pin = 7</font>
+<br><font color="black">774:N07740  </font>
+<br><font color="black">775:N07750    (First safety rule come true</font>
+<br><font color="black">776:N07760    (Second safety rule come true</font>
+<br><font color="black">777:N07770    (Third safety rule disabled</font>
+<br><font color="black">778:N07780    G01 X=-368.8  Y1=117.611  FV.L.FeedXY</font>
+<br><font color="black">779:N07790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">780:N07800    G04 0.2</font>
+<br><font color="black">781:N07810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">782:N07820    G01 X=-168.095  Y1=211.205  FV.L.FeedXY</font>
+<br><font color="black">783:N07830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">784:N07840    G04 0.2</font>
+<br><font color="black">785:N07850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">786:N07860  </font>
+<br><font color="black">787:N07870    (---------Number of current pin = 55, Type of current pin = 7</font>
+<br><font color="black">788:N07880  </font>
+<br><font color="black">789:N07890    (First safety rule come true</font>
+<br><font color="black">790:N07900    (Second safety rule come true</font>
+<br><font color="black">791:N07910    (Third safety rule disabled</font>
+<br><font color="black">792:N07920    G01 X=-368.8  Y1=88.611  FV.L.FeedXY</font>
+<br><font color="black">793:N07930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">794:N07940    G04 0.2</font>
+<br><font color="black">795:N07950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">796:N07960    G01 X=-179.895  Y1=241.705  FV.L.FeedXY</font>
+<br><font color="black">797:N07970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">798:N07980    G04 0.2</font>
+<br><font color="black">799:N07990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">800:N08000  </font>
+<br><font color="black">801:N08010    (---------Number of current pin = 56, Type of current pin = 7</font>
+<br><font color="black">802:N08020  </font>
+<br><font color="black">803:N08030    (First safety rule come true</font>
+<br><font color="black">804:N08040    (Second safety rule come true</font>
+<br><font color="black">805:N08050    (Third safety rule disabled</font>
+<br><font color="black">806:N08060    G01 X=-368.8  Y1=59.611  FV.L.FeedXY</font>
+<br><font color="black">807:N08070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">808:N08080    G04 0.2</font>
+<br><font color="black">809:N08090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">810:N08100    G01 X=-100.895  Y1=241.705  FV.L.FeedXY</font>
+<br><font color="black">811:N08110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">812:N08120    G04 0.2</font>
+<br><font color="black">813:N08130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">814:N08140  </font>
+<br><font color="black">815:N08150    (---------Number of current pin = 57, Type of current pin = 7</font>
+<br><font color="black">816:N08160  </font>
+<br><font color="black">817:N08170    (First safety rule come true</font>
+<br><font color="black">818:N08180    (Second safety rule come true</font>
+<br><font color="black">819:N08190    (Third safety rule disabled</font>
+<br><font color="black">820:N08200    G01 X=-360.2  Y1=190.111  FV.L.FeedXY</font>
+<br><font color="black">821:N08210    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">822:N08220    G04 0.2</font>
+<br><font color="black">823:N08230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">824:N08240    G01 X=-100.895  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">825:N08250    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">826:N08260    G04 0.2</font>
+<br><font color="black">827:N08270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">828:N08280  </font>
+<br><font color="black">829:N08290    (---------Number of current pin = 58, Type of current pin = 7</font>
+<br><font color="black">830:N08300  </font>
+<br><font color="black">831:N08310    (First safety rule come true</font>
+<br><font color="black">832:N08320    (Second safety rule come true</font>
+<br><font color="black">833:N08330    (Third safety rule disabled</font>
+<br><font color="black">834:N08340    G01 X=-360.2  Y1=161.111  FV.L.FeedXY</font>
+<br><font color="black">835:N08350    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">836:N08360    G04 0.2</font>
+<br><font color="black">837:N08370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">838:N08380    G01 X=-100.895  Y1=97.305  FV.L.FeedXY</font>
+<br><font color="black">839:N08390    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">840:N08400    G04 0.2</font>
+<br><font color="black">841:N08410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">842:N08420  </font>
+<br><font color="black">843:N08430    (---------Number of current pin = 59, Type of current pin = 7</font>
+<br><font color="black">844:N08440  </font>
+<br><font color="black">845:N08450    (First safety rule come true</font>
+<br><font color="black">846:N08460    (Second safety rule come true</font>
+<br><font color="black">847:N08470    (Third safety rule disabled</font>
+<br><font color="black">848:N08480    G01 X=-360.2  Y1=132.111  FV.L.FeedXY</font>
+<br><font color="black">849:N08490    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">850:N08500    G04 0.2</font>
+<br><font color="black">851:N08510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">852:N08520    G01 X=-179.895  Y1=97.305  FV.L.FeedXY</font>
+<br><font color="black">853:N08530    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">854:N08540    G04 0.2</font>
+<br><font color="black">855:N08550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">856:N08560  </font>
+<br><font color="black">857:N08570    (---------Number of current pin = 60, Type of current pin = 7</font>
+<br><font color="black">858:N08580  </font>
+<br><font color="black">859:N08590    (First safety rule come true</font>
+<br><font color="black">860:N08600    (Second safety rule come true</font>
+<br><font color="black">861:N08610    (Third safety rule disabled</font>
+<br><font color="black">862:N08620    G01 X=-360.2  Y1=103.111  FV.L.FeedXY</font>
+<br><font color="black">863:N08630    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">864:N08640    G04 0.2</font>
+<br><font color="black">865:N08650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">866:N08660    G01 X=-258.895  Y1=97.305  FV.L.FeedXY</font>
+<br><font color="black">867:N08670    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">868:N08680    G04 0.2</font>
+<br><font color="black">869:N08690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">870:N08700  </font>
+<br><font color="black">871:N08710    (---------Number of current pin = 61, Type of current pin = 7</font>
+<br><font color="black">872:N08720  </font>
+<br><font color="black">873:N08730    (First safety rule come true</font>
+<br><font color="black">874:N08740    (Second safety rule come true</font>
+<br><font color="black">875:N08750    (Third safety rule disabled</font>
+<br><font color="black">876:N08760    G01 X=-360.2  Y1=74.111  FV.L.FeedXY</font>
+<br><font color="black">877:N08770    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">878:N08780    G04 0.2</font>
+<br><font color="black">879:N08790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">880:N08800    G01 X=-326.095  Y1=66.805  FV.L.FeedXY</font>
+<br><font color="black">881:N08810    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">882:N08820    G04 0.2</font>
+<br><font color="black">883:N08830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">884:N08840  </font>
+<br><font color="black">885:N08850    (---------Number of current pin = 62, Type of current pin = 7</font>
+<br><font color="black">886:N08860  </font>
+<br><font color="black">887:N08870    (First safety rule come true</font>
+<br><font color="black">888:N08880    (Second safety rule come true</font>
+<br><font color="black">889:N08890    (Third safety rule disabled</font>
+<br><font color="black">890:N08900    G01 X=-360.2  Y1=45.111  FV.L.FeedXY</font>
+<br><font color="black">891:N08910    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">892:N08920    G04 0.2</font>
+<br><font color="black">893:N08930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">894:N08940    G01 X=-258.895  Y1=53.805  FV.L.FeedXY</font>
+<br><font color="black">895:N08950    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">896:N08960    G04 0.2</font>
+<br><font color="black">897:N08970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">898:N08980  </font>
+<br><font color="black">899:N08990    (---------Number of current pin = 63, Type of current pin = 7</font>
+<br><font color="black">900:N09000  </font>
+<br><font color="black">901:N09010    (First safety rule come true</font>
+<br><font color="black">902:N09020    (Second safety rule come true</font>
+<br><font color="black">903:N09030    (Third safety rule disabled</font>
+<br><font color="black">904:N09040    G01 X=-368.8  Y1=604.611  FV.L.FeedXY</font>
+<br><font color="black">905:N09050    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">906:N09060    G04 0.2</font>
+<br><font color="black">907:N09070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">908:N09080    G01 X=-179.895  Y1=53.805  FV.L.FeedXY</font>
+<br><font color="black">909:N09090    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">910:N09100    G04 0.2</font>
+<br><font color="black">911:N09110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">912:N09120  </font>
+<br><font color="black">913:N09130    (---------Number of current pin = 64, Type of current pin = 7</font>
+<br><font color="black">914:N09140  </font>
+<br><font color="black">915:N09150    (First safety rule come true</font>
+<br><font color="black">916:N09160    (Second safety rule come true</font>
+<br><font color="black">917:N09170    (Third safety rule disabled</font>
+<br><font color="black">918:N09180    G01 X=-368.8  Y1=575.611  FV.L.FeedXY</font>
+<br><font color="black">919:N09190    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">920:N09200    G04 0.2</font>
+<br><font color="black">921:N09210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">922:N09220    G01 X=-100.895  Y1=53.805  FV.L.FeedXY</font>
+<br><font color="black">923:N09230    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">924:N09240    G04 0.2</font>
+<br><font color="black">925:N09250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">926:N09260  </font>
+<br><font color="black">927:N09270    (---------Number of current pin = 65, Type of current pin = 7</font>
+<br><font color="black">928:N09280  </font>
+<br><font color="black">929:N09290    (First safety rule come true</font>
+<br><font color="black">930:N09300    (Second safety rule come true</font>
+<br><font color="black">931:N09310    (Third safety rule disabled</font>
+<br><font color="black">932:N09320    G01 X=-368.8  Y1=546.611  FV.L.FeedXY</font>
+<br><font color="black">933:N09330    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">934:N09340    G04 0.2</font>
+<br><font color="black">935:N09350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">936:N09360    G01 X=-168.095  Y1=66.805  FV.L.FeedXY</font>
+<br><font color="black">937:N09370    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">938:N09380    G04 0.2</font>
+<br><font color="black">939:N09390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">940:N09400  </font>
+<br><font color="black">941:N09410    (---------Number of current pin = 66, Type of current pin = 7</font>
+<br><font color="black">942:N09420  </font>
+<br><font color="black">943:N09430    (First safety rule come true</font>
+<br><font color="black">944:N09440    (Second safety rule come true</font>
+<br><font color="black">945:N09450    (Third safety rule disabled</font>
+<br><font color="black">946:N09460    G01 X=-368.8  Y1=517.611  FV.L.FeedXY</font>
+<br><font color="black">947:N09470    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">948:N09480    G04 0.2</font>
+<br><font color="black">949:N09490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">950:N09500    G01 X=-247.095  Y1=66.805  FV.L.FeedXY</font>
+<br><font color="black">951:N09510    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">952:N09520    G04 0.2</font>
+<br><font color="black">953:N09530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">954:N09540  </font>
+<br><font color="black">955:N09550    (---------Number of current pin = 67, Type of current pin = 7</font>
+<br><font color="black">956:N09560  </font>
+<br><font color="black">957:N09570    (First safety rule come true</font>
+<br><font color="black">958:N09580    (Second safety rule come true</font>
+<br><font color="black">959:N09590    (Third safety rule disabled</font>
+<br><font color="black">960:N09600    G01 X=-368.8  Y1=488.611  FV.L.FeedXY</font>
+<br><font color="black">961:N09610    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">962:N09620    G04 0.2</font>
+<br><font color="black">963:N09630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">964:N09640    G01 X=-258.895  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">965:N09650    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">966:N09660    G04 0.2</font>
+<br><font color="black">967:N09670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">968:N09680  </font>
+<br><font color="black">969:N09690    (---------Number of current pin = 68, Type of current pin = 7</font>
+<br><font color="black">970:N09700  </font>
+<br><font color="black">971:N09710    (First safety rule come true</font>
+<br><font color="black">972:N09720    (Second safety rule come true</font>
+<br><font color="black">973:N09730    (Third safety rule disabled</font>
+<br><font color="black">974:N09740    G01 X=-368.8  Y1=459.611  FV.L.FeedXY</font>
+<br><font color="black">975:N09750    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">976:N09760    G04 0.2</font>
+<br><font color="black">977:N09770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">978:N09780    G01 X=-258.895  Y1=126.005  FV.L.FeedXY</font>
+<br><font color="black">979:N09790    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">980:N09800    G04 0.2</font>
+<br><font color="black">981:N09810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">982:N09820  </font>
+<br><font color="black">983:N09830    (---------Number of current pin = 69, Type of current pin = 7</font>
+<br><font color="black">984:N09840  </font>
+<br><font color="black">985:N09850    (First safety rule come true</font>
+<br><font color="black">986:N09860    (Second safety rule come true</font>
+<br><font color="black">987:N09870    (Third safety rule disabled</font>
+<br><font color="black">988:N09880    G01 X=-360.2  Y1=590.111  FV.L.FeedXY</font>
+<br><font color="black">989:N09890    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">990:N09900    G04 0.2</font>
+<br><font color="black">991:N09910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">992:N09920    G01 X=-247.095  Y1=139.005  FV.L.FeedXY</font>
+<br><font color="black">993:N09930    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">994:N09940    G04 0.2</font>
+<br><font color="black">995:N09950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">996:N09960  </font>
+<br><font color="black">997:N09970    (---------Number of current pin = 70, Type of current pin = 7</font>
+<br><font color="black">998:N09980  </font>
+<br><font color="black">999:N09990    (First safety rule come true</font>
+<br><font color="black">1000:N10000    (Second safety rule come true</font>
+<br><font color="black">1001:N10010    (Third safety rule disabled</font>
+<br><font color="black">1002:N10020    G01 X=-360.2  Y1=561.111  FV.L.FeedXY</font>
+<br><font color="black">1003:N10030    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1004:N10040    G04 0.2</font>
+<br><font color="black">1005:N10050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1006:N10060    G01 X=-179.895  Y1=126.005  FV.L.FeedXY</font>
+<br><font color="black">1007:N10070    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1008:N10080    G04 0.2</font>
+<br><font color="black">1009:N10090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1010:N10100  </font>
+<br><font color="black">1011:N10110    (---------Number of current pin = 71, Type of current pin = 7</font>
+<br><font color="black">1012:N10120  </font>
+<br><font color="black">1013:N10130    (First safety rule come true</font>
+<br><font color="black">1014:N10140    (Second safety rule come true</font>
+<br><font color="black">1015:N10150    (Third safety rule disabled</font>
+<br><font color="black">1016:N10160    G01 X=-360.2  Y1=532.111  FV.L.FeedXY</font>
+<br><font color="black">1017:N10170    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1018:N10180    G04 0.2</font>
+<br><font color="black">1019:N10190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1020:N10200    G01 X=-168.095  Y1=139.005  FV.L.FeedXY</font>
+<br><font color="black">1021:N10210    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1022:N10220    G04 0.2</font>
+<br><font color="black">1023:N10230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1024:N10240  </font>
+<br><font color="black">1025:N10250    (---------Number of current pin = 72, Type of current pin = 7</font>
+<br><font color="black">1026:N10260  </font>
+<br><font color="black">1027:N10270    (First safety rule come true</font>
+<br><font color="black">1028:N10280    (Second safety rule come true</font>
+<br><font color="black">1029:N10290    (Third safety rule disabled</font>
+<br><font color="black">1030:N10300    G01 X=-360.2  Y1=503.111  FV.L.FeedXY</font>
+<br><font color="black">1031:N10310    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1032:N10320    G04 0.2</font>
+<br><font color="black">1033:N10330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1034:N10340    G01 X=-179.895  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">1035:N10350    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1036:N10360    G04 0.2</font>
+<br><font color="black">1037:N10370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1038:N10380  </font>
+<br><font color="black">1039:N10390    (---------Number of current pin = 73, Type of current pin = 7</font>
+<br><font color="black">1040:N10400  </font>
+<br><font color="black">1041:N10410    (First safety rule come true</font>
+<br><font color="black">1042:N10420    (Second safety rule come true</font>
+<br><font color="black">1043:N10430    (Third safety rule disabled</font>
+<br><font color="black">1044:N10440    G01 X=-360.2  Y1=474.111  FV.L.FeedXY</font>
+<br><font color="black">1045:N10450    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1046:N10460    G04 0.2</font>
+<br><font color="black">1047:N10470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1048:N10480    G01 X=-100.895  Y1=126.005  FV.L.FeedXY</font>
+<br><font color="black">1049:N10490    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1050:N10500    G04 0.2</font>
+<br><font color="black">1051:N10510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1052:N10520  </font>
+<br><font color="black">1053:N10530    (---------Number of current pin = 74, Type of current pin = 7</font>
+<br><font color="black">1054:N10540  </font>
+<br><font color="black">1055:N10550    (First safety rule come true</font>
+<br><font color="black">1056:N10560    (Second safety rule come true</font>
+<br><font color="black">1057:N10570    (Third safety rule disabled</font>
+<br><font color="black">1058:N10580    G01 X=-360.2  Y1=445.111  FV.L.FeedXY</font>
+<br><font color="black">1059:N10590    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1060:N10600    G04 0.2</font>
+<br><font color="black">1061:N10610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1062:N10620    G01 X=-100.895  Y1=198.205  FV.L.FeedXY</font>
+<br><font color="black">1063:N10630    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1064:N10640    G04 0.2</font>
+<br><font color="black">1065:N10650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1066:N10660  </font>
+<br><font color="black">1067:N10670    (Main Tool put away</font>
+<br><font color="black">1068:N10680    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">1069:N10690    G00 G90 X=392.5 Y1=22.861</font>
+<br><font color="black">1070:N10700    G01 FV.L.FeedXY Z1=-13</font>
+<br><font color="black">1071:N10710    M120</font>
+<br><font color="black">1072:N10720    G04 0.2</font>
+<br><font color="black">1073:N10730    Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">1074:N10740    M121</font>
+<br><font color="black">1075:N10750    G04 0.1</font>
+<br><font color="black">1076:N10760    L _M100_MG.NC</font>
+<br><font color="black">1077:N10770  </font>
+<br><font color="black">1078:N10780    (Pins to Pick And Place = 74 / 144 </font>
+<br><font color="black">1079:N10790    (Errors = 0 </font>
+<br><font color="black">1080:N10800  </font>
+<br><font color="black">1081:N10810    M30</font>
 </td>
-<td colspan="2"><br><font color="black">1:</font>
-<br><font color="black">2:N00010 M169</font>
-<br><font color="black">3:N00020 M153</font>
-<br><font color="black">4:N00030 #SET AX [X,1,0] [Y1,2,1] [Z1,3,2]</font>
-<br><font color="black">5:N00040 (Programm: PHILIPS50_CIECIE)</font>
-<br><font color="black">6:N00050 (Maschine: GAS)</font>
-<br><font color="black">7:N00060 (PATH ROUGH CUTTING  ø1.6)</font>
-<br><font color="black">8:N00070 V.P.RequestedTool=16</font>
-<br><font color="black">9:N00080 V.P.ZR20=68.3			(Z-Achse Transporthöhe)</font>
-<br><font color="black">10:N00090 V.P.ZR21=10	 		(Vorposition)</font>
-<br><font color="black">11:N00100 V.P.ZR24=10	 		(Ausgangsebene = Springhöhe von Steg zu Steg)</font>
-<br><font color="black">12:N00110 V.P.ZR22=5			(Sicherheitsebene Fräsbeginn oberhalb Werkstück )</font>
-<br><font color="black">13:N00120 V.P.ZR23=-1		        (Fräsebene)</font>
-<br><font color="black">14:N00130 V.P.Zstep=0		( Step Fräserlängenabarbeitung ) </font>
-<br><font color="black">15:N00140 V.S.lrBitCutDepth_Ch1 = V.S.lrBitCutDepth_Ch1 + V.P.Zstep </font>
-<br><font color="black">16:N00150 $IF V.S.lrBitCutDepth_Ch1 > V.E.lrBitUsableLength OR V.P.Zstep == 0 </font>
-<br><font color="black">17:N00160 V.S.lrBitCutDepth_Ch1 = 0 </font>
-<br><font color="black">18:N00170 $ENDIF </font>
-<br><font color="black">19:N00180 V.P.ZR23 = V.P.ZR23 - V.S.lrBitCutDepth_Ch1</font>
-<br><font color="black">20:N00190 V.S.R100=V.S.R100+1</font>
-<br><font color="black">21:N00200 G00</font>
-<br><font color="black">22:N00210</font>
-<br><font color="black">23:N00220 (Database part)</font>
-<br><font color="black">24:N00230 $IF [V.E.bDB_On == TRUE]					(Database enabled)</font>
-<br><font color="black">25:N00240 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
-<br><font color="black">26:N00250 	G00 X=115.95 Y1=252.25								(Position to read pcb code)</font>
-<br><font color="black">27:N00260 	M191									(Read PCB code)</font>
-<br><font color="black">28:N00270 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)</font>
-<br><font color="black">29:N00280 		M179								(Read database)	</font>
-<br><font color="black">30:N00290 	$ENDIF</font>
-<br><font color="black">31:N00300 $ENDIF</font>
-<br><font color="black">32:N00310</font>
-<br><font color="black">33:N00320 (Check release part)</font>
-<br><font color="black">34:N00330 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)</font>
-<br><font color="black">35:N00340 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
-<br><font color="black">36:N00350 	G00 X=470 Y1=1031</font>
-<br><font color="black">37:N00360 	$GOTO [Homing]</font>
-<br><font color="black">38:N00370 $ENDIF</font>
-<br><font color="black">39:N00380</font>
-<br><font color="black">40:N00390</font>
-<br><font color="black">41:N00400 G54</font>
-<br><font color="black">42:N00410 G00 Z1=V.P.ZR20</font>
-<br><font color="red"><b>43:N00420 G92 X=0.03 Y1=-0.06</b></font>
-<br><font color="black">44:N00430</font>
-<br><font color="black">45:N00440 #FLUSH WAIT</font>
-<br><font color="black">46:N00450 TV.P.RequestedTool</font>
-<br><font color="black">47:N00460 $IF V.S.R100>=50</font>
-<br><font color="black">48:N00470  V.S.R100=0</font>
-<br><font color="black">49:N00480  L _brushcontrol.nc</font>
-<br><font color="black">50:N00490 $ENDIF</font>
-<br><font color="black">51:N00500 L _toolchange_K1.nc</font>
-<br><font color="black">52:N00510 #FLUSH WAIT</font>
-<br><font color="black">53:N00520 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
-<br><font color="black">54:N00530 L _Bitbreakcontrol_K1.nc</font>
-<br><font color="black">55:N00540 Z1=V.P.ZR20</font>
-<br><font color="black">56:N00550 #FLUSH WAIT</font>
-<br><font color="black">57:N00560 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
-<br><font color="black">58:N00570 S1 [M03 REV=V.E.lrSpindleRPM]</font>
-<br><font color="black">59:N00580 $IF V.P.ToolChangeDone==1</font>
-<br><font color="black">60:N00590  L _CheckBitTipLevel_K1.nc</font>
-<br><font color="black">61:N00600 $ENDIF</font>
-<br><font color="black">62:N00610 G00 X-226.088 Y1=63.205 Z1=V.P.ZR20</font>
-<br><font color="black">63:N00620 Z1=V.P.ZR21 </font>
-<br><font color="black">64:N00630 M108</font>
-<br><font color="black">65:N00640</font>
-<br><font color="black">66:N00650 G00 Z1=V.P.ZR22</font>
-<br><font color="black">67:N00660 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">68:N00670 X-233.095 F1250</font>
-<br><font color="black">69:N00680 G00 Z1=V.P.ZR24</font>
-<br><font color="black">70:N00690 X-285.795 Y1=63.205 Z1=V.P.ZR24</font>
-<br><font color="black">71:N00700 Z1=V.P.ZR22</font>
-<br><font color="black">72:N00710 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">73:N00720 X-292.795 F1250</font>
-<br><font color="black">74:N00730 G00 Z1=V.P.ZR24</font>
-<br><font color="black">75:N00740 X-314.594 Y1=105.681 Z1=V.P.ZR24</font>
-<br><font color="black">76:N00750 Z1=V.P.ZR22</font>
-<br><font color="black">77:N00760 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">78:N00770 Y1=111.186 F1250</font>
-<br><font color="black">79:N00780 G00 Z1=V.P.ZR24</font>
-<br><font color="black">80:N00790 X-314.594 Y1=176.394 Z1=V.P.ZR24</font>
-<br><font color="black">81:N00800 Z1=V.P.ZR22</font>
-<br><font color="black">82:N00810 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">83:N00820 Y1=182.505 F1250</font>
-<br><font color="black">84:N00830 G00 Z1=V.P.ZR24</font>
-<br><font color="black">85:N00840 X-292.795 Y1=211.965 Z1=V.P.ZR24</font>
-<br><font color="black">86:N00850 Z1=V.P.ZR22</font>
-<br><font color="black">87:N00860 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">88:N00870 X-285.792 F1250</font>
-<br><font color="black">89:N00880 G00 Z1=V.P.ZR24</font>
-<br><font color="black">90:N00890 X-242.907 Y1=212.028 Z1=V.P.ZR24</font>
-<br><font color="black">91:N00900 Z1=V.P.ZR22</font>
-<br><font color="black">92:N00910 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">93:N00920 X-236.53 F1250</font>
-<br><font color="black">94:N00930 G00 Z1=V.P.ZR24</font>
-<br><font color="black">95:N00940 X-224.495 Y1=182.505 Z1=V.P.ZR24</font>
-<br><font color="black">96:N00950 Z1=V.P.ZR22</font>
-<br><font color="black">97:N00960 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">98:N00970 Y1=176.155 F1250</font>
-<br><font color="black">99:N00980 G00 Z1=V.P.ZR24</font>
-<br><font color="black">100:N00990 X-224.495 Y1=111.805 Z1=V.P.ZR24</font>
-<br><font color="black">101:N01000 Z1=V.P.ZR22</font>
-<br><font color="black">102:N01010 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">103:N01020 Y1=105.131 F1250</font>
-<br><font color="black">104:N01030 G00 Z1=V.P.ZR24</font>
-<br><font color="black">105:N01040 X-212.255 Y1=126.621 Z1=V.P.ZR24</font>
-<br><font color="black">106:N01050 Z1=V.P.ZR22</font>
-<br><font color="black">107:N01060 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">108:N01070 X-212.364 Y1=121.061 F1250</font>
-<br><font color="black">109:N01080 G00 Z1=V.P.ZR24</font>
-<br><font color="black">110:N01090 X-212.255 Y1=77.605 Z1=V.P.ZR24</font>
-<br><font color="black">111:N01100 Z1=V.P.ZR22</font>
-<br><font color="black">112:N01110 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">113:N01120 Y1=70.605 F1250</font>
-<br><font color="black">114:N01130 G00 Z1=V.P.ZR24</font>
-<br><font color="black">115:N01140 X-182.795 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">116:N01150 Z1=V.P.ZR22</font>
-<br><font color="black">117:N01160 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">118:N01170 X-175.81 F1250</font>
-<br><font color="black">119:N01180 G00 Z1=V.P.ZR24</font>
-<br><font color="black">120:N01190 X-112.076 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">121:N01200 Z1=V.P.ZR22</font>
-<br><font color="black">122:N01210 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">123:N01220 X-105.447 F1250</font>
-<br><font color="black">124:N01230 G00 Z1=V.P.ZR24</font>
-<br><font color="black">125:N01240 X-63.495 Y1=70.857 Z1=V.P.ZR24</font>
-<br><font color="black">126:N01250 Z1=V.P.ZR22</font>
-<br><font color="black">127:N01260 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">128:N01270 Y1=77.605 F1250</font>
-<br><font color="black">129:N01280 G00 Z1=V.P.ZR24</font>
-<br><font color="black">130:N01290 X-51.255 Y1=77.605 Z1=V.P.ZR24</font>
-<br><font color="black">131:N01300 Z1=V.P.ZR22</font>
-<br><font color="black">132:N01310 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">133:N01320 Y1=70.605 F1250</font>
-<br><font color="black">134:N01330 G00 Z1=V.P.ZR24</font>
-<br><font color="black">135:N01340 X-21.795 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">136:N01350 Z1=V.P.ZR22</font>
-<br><font color="black">137:N01360 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">138:N01370 X-14.81 F1250</font>
-<br><font color="black">139:N01380 G00 Z1=V.P.ZR24</font>
-<br><font color="black">140:N01390 X48.905 Y1=48.806 Z1=V.P.ZR24</font>
-<br><font color="black">141:N01400 Z1=V.P.ZR22</font>
-<br><font color="black">142:N01410 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">143:N01420 X55.515 F1250</font>
-<br><font color="black">144:N01430 G00 Z1=V.P.ZR24</font>
-<br><font color="black">145:N01440 X97.505 Y1=70.879 Z1=V.P.ZR24</font>
-<br><font color="black">146:N01450 Z1=V.P.ZR22</font>
-<br><font color="black">147:N01460 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">148:N01470 Y1=77.605 F1250</font>
-<br><font color="black">149:N01480 G00 Z1=V.P.ZR24</font>
-<br><font color="black">150:N01490 X97.505 Y1=130.305 Z1=V.P.ZR24</font>
-<br><font color="black">151:N01500 Z1=V.P.ZR22</font>
-<br><font color="black">152:N01510 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">153:N01520 Y1=137.305 F1250</font>
-<br><font color="black">154:N01530 G00 Z1=V.P.ZR24</font>
-<br><font color="black">155:N01540 X55.905 Y1=138.905 Z1=V.P.ZR24</font>
-<br><font color="black">156:N01550 Z1=V.P.ZR22</font>
-<br><font color="black">157:N01560 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">158:N01570 X48.905 F1250</font>
-<br><font color="black">159:N01580 G02 I0 J0.4 X48.932 Y1=139.705</font>
-<br><font color="black">160:N01590 G01 X55.859</font>
-<br><font color="black">161:N01600 G00 Z1=V.P.ZR24</font>
-<br><font color="black">162:N01610 X-21.754 Y1=139.705 Z1=V.P.ZR24</font>
-<br><font color="black">163:N01620 Z1=V.P.ZR22</font>
-<br><font color="black">164:N01630 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">165:N01640 X-14.795 F1250</font>
-<br><font color="black">166:N01650 G02 I0 J-0.4 X-14.795 Y1=138.905</font>
-<br><font color="black">167:N01660 G01 X-21.861</font>
-<br><font color="black">168:N01670 G00 Z1=V.P.ZR24</font>
-<br><font color="black">169:N01680 X-51.255 Y1=126.605 Z1=V.P.ZR24</font>
-<br><font color="black">170:N01690 Z1=V.P.ZR22</font>
-<br><font color="black">171:N01700 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">172:N01710 Y1=119.605 F1250</font>
-<br><font color="black">173:N01720 G00 Z1=V.P.ZR24</font>
-<br><font color="black">174:N01730 X-63.495 Y1=130.341 Z1=V.P.ZR24</font>
-<br><font color="black">175:N01740 Z1=V.P.ZR22</font>
-<br><font color="black">176:N01750 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">177:N01760 Y1=137.305 F1250</font>
-<br><font color="black">178:N01770 G00 Z1=V.P.ZR24</font>
-<br><font color="black">179:N01780 X-105.095 Y1=138.906 Z1=V.P.ZR24</font>
-<br><font color="black">180:N01790 Z1=V.P.ZR22</font>
-<br><font color="black">181:N01800 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">182:N01810 Y1=138.933 F1250</font>
-<br><font color="black">183:N01820 X-112.095 Y1=138.934</font>
-<br><font color="black">184:N01830 G00 Z1=V.P.ZR24</font>
-<br><font color="black">185:N01840 X-112.083 Y1=138.905 Z1=V.P.ZR24</font>
-<br><font color="black">186:N01850 Z1=V.P.ZR22</font>
-<br><font color="black">187:N01860 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">188:N01870 G02 I-0.012 J0.4 X-112.095 Y1=139.705 F1250</font>
-<br><font color="black">189:N01880 G01 X-105.095</font>
-<br><font color="black">190:N01890 G00 Z1=V.P.ZR24</font>
-<br><font color="black">191:N01900 X-182.795 Y1=138.905 Z1=V.P.ZR24</font>
-<br><font color="black">192:N01910 Z1=V.P.ZR22</font>
-<br><font color="black">193:N01920 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">194:N01930 X-175.621 F1250</font>
-<br><font color="black">195:N01940 G03 I-0.174 J0.381 X-175.795 Y1=139.705</font>
-<br><font color="black">196:N01950 G01 X-182.795</font>
-<br><font color="black">197:N01960 G00 Z1=V.P.ZR24</font>
-<br><font color="black">198:N01970 X-212.255 Y1=161.505 Z1=V.P.ZR24</font>
-<br><font color="black">199:N01980 Z1=V.P.ZR22</font>
-<br><font color="black">200:N01990 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">201:N02000 Y1=168.505 F1250</font>
-<br><font color="black">202:N02010 G00 Z1=V.P.ZR24</font>
-<br><font color="black">203:N02020 X-212.255 Y1=210.837 Z1=V.P.ZR24</font>
-<br><font color="black">204:N02030 Z1=V.P.ZR22</font>
-<br><font color="black">205:N02040 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">206:N02050 Y1=217.505 F1250</font>
-<br><font color="black">207:N02060 G00 Z1=V.P.ZR24</font>
-<br><font color="black">208:N02070 X-182.795 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">209:N02080 Z1=V.P.ZR22</font>
-<br><font color="black">210:N02090 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">211:N02100 X-175.795 F1250</font>
-<br><font color="black">212:N02110 G00 Z1=V.P.ZR24</font>
-<br><font color="black">213:N02120 X-112.095 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">214:N02130 Z1=V.P.ZR22</font>
-<br><font color="black">215:N02140 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">216:N02150 X-105.095 F1250</font>
-<br><font color="black">217:N02160 G00 Z1=V.P.ZR24</font>
-<br><font color="black">218:N02170 X-63.495 Y1=228.205 Z1=V.P.ZR24</font>
-<br><font color="black">219:N02180 Z1=V.P.ZR22</font>
-<br><font color="black">220:N02190 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">221:N02200 Y1=221.205 F1250</font>
-<br><font color="black">222:N02210 G00 Z1=V.P.ZR24</font>
-<br><font color="black">223:N02220 X-63.495 Y1=168.505 Z1=V.P.ZR24</font>
-<br><font color="black">224:N02230 Z1=V.P.ZR22</font>
-<br><font color="black">225:N02240 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">226:N02250 Y1=162.228 F1250</font>
-<br><font color="black">227:N02260 G00 Z1=V.P.ZR24</font>
-<br><font color="black">228:N02270 X-51.255 Y1=161.72 Z1=V.P.ZR24</font>
-<br><font color="black">229:N02280 Z1=V.P.ZR22</font>
-<br><font color="black">230:N02290 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">231:N02300 Y1=168.505 F1250</font>
-<br><font color="black">232:N02310 G00 Z1=V.P.ZR24</font>
-<br><font color="black">233:N02320 X-51.255 Y1=210.505 Z1=V.P.ZR24</font>
-<br><font color="black">234:N02330 Z1=V.P.ZR22</font>
-<br><font color="black">235:N02340 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">236:N02350 Y1=217.505 F1250</font>
-<br><font color="black">237:N02360 G00 Z1=V.P.ZR24</font>
-<br><font color="black">238:N02370 X-21.795 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">239:N02380 Z1=V.P.ZR22</font>
-<br><font color="black">240:N02390 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">241:N02400 X-14.914 F1250</font>
-<br><font color="black">242:N02410 G00 Z1=V.P.ZR24</font>
-<br><font color="black">243:N02420 X48.905 Y1=229.805 Z1=V.P.ZR24</font>
-<br><font color="black">244:N02430 Z1=V.P.ZR22</font>
-<br><font color="black">245:N02440 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">246:N02450 X55.905 F1250</font>
-<br><font color="black">247:N02460 G00 Z1=V.P.ZR24</font>
-<br><font color="black">248:N02470 X97.505 Y1=228.205 Z1=V.P.ZR24</font>
-<br><font color="black">249:N02480 Z1=V.P.ZR22</font>
-<br><font color="black">250:N02490 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">251:N02500 Y1=221.465 F1250</font>
-<br><font color="black">252:N02510 G00 Z1=V.P.ZR24</font>
-<br><font color="black">253:N02520 X97.505 Y1=168.505 Z1=V.P.ZR24</font>
-<br><font color="black">254:N02530 Z1=V.P.ZR22</font>
-<br><font color="black">255:N02540 G01 Z1=V.P.ZR23 F40000</font>
-<br><font color="black">256:N02550 Y1=161.688 F1250</font>
-<br><font color="black">257:N02560 G00 Z1=V.P.ZR24</font>
-<br><font color="black">258:N02570 (Move out brush)</font>
-<br><font color="black">259:N02580 X203.16 Y1=200.355</font>
-<br><font color="black">260:N02590 [Homing]</font>
-<br><font color="black">261:N02600 M109</font>
-<br><font color="black">262:N02610 #ROTATION OFF</font>
-<br><font color="black">263:N02620 G00 Z1=V.P.ZR20</font>
-<br><font color="black">264:N02630 L _M100.nc</font>
-<br><font color="black">265:N02640 M30</font>
+<td colspan="2"><br><font color="black">1:N00010    (Project: Magnetic_WT_CH1 v1.3.0 - 16 pin storages (Universal program)</font>
+<br><font color="black">2:N00020    (Program: MAIN_01_PINY)</font>
+<br><font color="black">3:N00030    (Machine: GAS SARxxxx </font>
+<br><font color="black">4:N00040    (Author: Patryk Panylo /GAS GmbH</font>
+<br><font color="black">5:N00050  </font>
+<br><font color="black">6:N00060  </font>
+<br><font color="black">7:N00070    #VAR</font>
+<br><font color="black">8:N00080    V.L.FeedZ = 10000</font>
+<br><font color="black">9:N00090    V.L.FeedXY = 30000</font>
+<br><font color="black">10:N00100    V.L.UpLevelCoordZ = 68.3</font>
+<br><font color="black">11:N00110    V.L.PickPinCoordZ = -10.5</font>
+<br><font color="black">12:N00120    V.L.PlacePinCoordZ = -12.3</font>
+<br><font color="black">13:N00130    #ENDVAR</font>
+<br><font color="black">14:N00140  </font>
+<br><font color="black">15:N00150    #SET AX [X,1,0][Y1,2,1][Z1,3,3]</font>
+<br><font color="black">16:N00160  </font>
+<br><font color="black">17:N00170    T0</font>
+<br><font color="black">18:N00180    L _toolchange_K1.nc</font>
+<br><font color="black">19:N00190  </font>
+<br><font color="black">20:N00200    (Main Tool take</font>
+<br><font color="black">21:N00210    G54</font>
+<br><font color="black">22:N00220    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">23:N00230    G00 G90 X=392.5 Y1=22.861</font>
+<br><font color="black">24:N00240    M120</font>
+<br><font color="black">25:N00250    G04 0.5</font>
+<br><font color="black">26:N00260    G01 FV.L.FeedXY Z1=-13</font>
+<br><font color="black">27:N00270    M121</font>
+<br><font color="black">28:N00280    G04 0.1</font>
+<br><font color="black">29:N00290    Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">30:N00300  </font>
+<br><font color="black">31:N00310    (---------Number of current pin = 1, Type of current pin = 2</font>
+<br><font color="black">32:N00320  </font>
+<br><font color="black">33:N00330    (First safety rule come true</font>
+<br><font color="black">34:N00340    (Second safety rule come true</font>
+<br><font color="black">35:N00350    (Third safety rule disabled</font>
+<br><font color="black">36:N00360    G01 X=385.7  Y1=606.111  FV.L.FeedXY</font>
+<br><font color="black">37:N00370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">38:N00380    G04 0.2</font>
+<br><font color="black">39:N00390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">40:N00400    G01 X=-329.126  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">41:N00410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">42:N00420    G04 0.2</font>
+<br><font color="black">43:N00430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">44:N00440  </font>
+<br><font color="black">45:N00450    (---------Number of current pin = 2, Type of current pin = 2</font>
+<br><font color="black">46:N00460  </font>
+<br><font color="black">47:N00470    (First safety rule come true</font>
+<br><font color="black">48:N00480    (Second safety rule come true</font>
+<br><font color="black">49:N00490    (Third safety rule disabled</font>
+<br><font color="black">50:N00500    G01 X=385.7  Y1=581.111  FV.L.FeedXY</font>
+<br><font color="black">51:N00510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">52:N00520    G04 0.2</font>
+<br><font color="black">53:N00530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">54:N00540    G01 X=-250.936  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">55:N00550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">56:N00560    G04 0.2</font>
+<br><font color="black">57:N00570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">58:N00580  </font>
+<br><font color="black">59:N00590    (---------Number of current pin = 3, Type of current pin = 2</font>
+<br><font color="black">60:N00600  </font>
+<br><font color="black">61:N00610    (First safety rule come true</font>
+<br><font color="black">62:N00620    (Second safety rule come true</font>
+<br><font color="black">63:N00630    (Third safety rule disabled</font>
+<br><font color="black">64:N00640    G01 X=385.7  Y1=556.111  FV.L.FeedXY</font>
+<br><font color="black">65:N00650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">66:N00660    G04 0.2</font>
+<br><font color="black">67:N00670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">68:N00680    G01 X=-171.071  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">69:N00690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">70:N00700    G04 0.2</font>
+<br><font color="black">71:N00710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">72:N00720  </font>
+<br><font color="black">73:N00730    (---------Number of current pin = 4, Type of current pin = 2</font>
+<br><font color="black">74:N00740  </font>
+<br><font color="black">75:N00750    (First safety rule come true</font>
+<br><font color="black">76:N00760    (Second safety rule come true</font>
+<br><font color="black">77:N00770    (Third safety rule disabled</font>
+<br><font color="black">78:N00780    G01 X=385.7  Y1=531.111  FV.L.FeedXY</font>
+<br><font color="black">79:N00790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">80:N00800    G04 0.2</font>
+<br><font color="black">81:N00810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">82:N00820    G01 X=-100.796  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">83:N00830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">84:N00840    G04 0.2</font>
+<br><font color="black">85:N00850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">86:N00860  </font>
+<br><font color="black">87:N00870    (---------Number of current pin = 5, Type of current pin = 2</font>
+<br><font color="black">88:N00880  </font>
+<br><font color="black">89:N00890    (First safety rule come true</font>
+<br><font color="black">90:N00900    (Second safety rule come true</font>
+<br><font color="black">91:N00910    (Third safety rule disabled</font>
+<br><font color="black">92:N00920    G01 X=385.7  Y1=506.111  FV.L.FeedXY</font>
+<br><font color="black">93:N00930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">94:N00940    G04 0.2</font>
+<br><font color="black">95:N00950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">96:N00960    G01 X=-87.895  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">97:N00970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">98:N00980    G04 0.2</font>
+<br><font color="black">99:N00990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">100:N01000  </font>
+<br><font color="black">101:N01010    (---------Number of current pin = 6, Type of current pin = 2</font>
+<br><font color="black">102:N01020  </font>
+<br><font color="black">103:N01030    (First safety rule come true</font>
+<br><font color="black">104:N01040    (Second safety rule come true</font>
+<br><font color="black">105:N01050    (Third safety rule disabled</font>
+<br><font color="black">106:N01060    G01 X=385.7  Y1=481.111  FV.L.FeedXY</font>
+<br><font color="black">107:N01070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">108:N01080    G04 0.2</font>
+<br><font color="black">109:N01090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">110:N01100    G01 X=-87.895  Y1=223.886  FV.L.FeedXY</font>
+<br><font color="black">111:N01110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">112:N01120    G04 0.2</font>
+<br><font color="black">113:N01130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">114:N01140  </font>
+<br><font color="black">115:N01150    (---------Number of current pin = 7, Type of current pin = 2</font>
+<br><font color="black">116:N01160  </font>
+<br><font color="black">117:N01170    (First safety rule come true</font>
+<br><font color="black">118:N01180    (Second safety rule come true</font>
+<br><font color="black">119:N01190    (Third safety rule disabled</font>
+<br><font color="black">120:N01200    G01 X=385.7  Y1=456.111  FV.L.FeedXY</font>
+<br><font color="black">121:N01210    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">122:N01220    G04 0.2</font>
+<br><font color="black">123:N01230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">124:N01240    G01 X=-87.895  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">125:N01250    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">126:N01260    G04 0.2</font>
+<br><font color="black">127:N01270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">128:N01280  </font>
+<br><font color="black">129:N01290    (---------Number of current pin = 8, Type of current pin = 2</font>
+<br><font color="black">130:N01300  </font>
+<br><font color="black">131:N01310    (First safety rule come true</font>
+<br><font color="black">132:N01320    (Second safety rule come true</font>
+<br><font color="black">133:N01330    (Third safety rule disabled</font>
+<br><font color="black">134:N01340    G01 X=394.3  Y1=593.611  FV.L.FeedXY</font>
+<br><font color="black">135:N01350    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">136:N01360    G04 0.2</font>
+<br><font color="black">137:N01370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">138:N01380    G01 X=-87.895  Y1=149.184  FV.L.FeedXY</font>
+<br><font color="black">139:N01390    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">140:N01400    G04 0.2</font>
+<br><font color="black">141:N01410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">142:N01420  </font>
+<br><font color="black">143:N01430    (---------Number of current pin = 9, Type of current pin = 2</font>
+<br><font color="black">144:N01440  </font>
+<br><font color="black">145:N01450    (First safety rule come true</font>
+<br><font color="black">146:N01460    (Second safety rule come true</font>
+<br><font color="black">147:N01470    (Third safety rule disabled</font>
+<br><font color="black">148:N01480    G01 X=394.3  Y1=568.611  FV.L.FeedXY</font>
+<br><font color="black">149:N01490    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">150:N01500    G04 0.2</font>
+<br><font color="black">151:N01510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">152:N01520    G01 X=-87.895  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">153:N01530    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">154:N01540    G04 0.2</font>
+<br><font color="black">155:N01550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">156:N01560  </font>
+<br><font color="black">157:N01570    (---------Number of current pin = 10, Type of current pin = 2</font>
+<br><font color="black">158:N01580  </font>
+<br><font color="black">159:N01590    (First safety rule come true</font>
+<br><font color="black">160:N01600    (Second safety rule come true</font>
+<br><font color="black">161:N01610    (Third safety rule disabled</font>
+<br><font color="black">162:N01620    G01 X=394.3  Y1=543.611  FV.L.FeedXY</font>
+<br><font color="black">163:N01630    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">164:N01640    G04 0.2</font>
+<br><font color="black">165:N01650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">166:N01660    G01 X=-87.895  Y1=77.241  FV.L.FeedXY</font>
+<br><font color="black">167:N01670    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">168:N01680    G04 0.2</font>
+<br><font color="black">169:N01690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">170:N01700  </font>
+<br><font color="black">171:N01710    (---------Number of current pin = 11, Type of current pin = 2</font>
+<br><font color="black">172:N01720  </font>
+<br><font color="black">173:N01730    (First safety rule come true</font>
+<br><font color="black">174:N01740    (Second safety rule come true</font>
+<br><font color="black">175:N01750    (Third safety rule disabled</font>
+<br><font color="black">176:N01760    G01 X=394.3  Y1=518.611  FV.L.FeedXY</font>
+<br><font color="black">177:N01770    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">178:N01780    G04 0.2</font>
+<br><font color="black">179:N01790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">180:N01800    G01 X=-87.895  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">181:N01810    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">182:N01820    G04 0.2</font>
+<br><font color="black">183:N01830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">184:N01840  </font>
+<br><font color="black">185:N01850    (---------Number of current pin = 12, Type of current pin = 2</font>
+<br><font color="black">186:N01860  </font>
+<br><font color="black">187:N01870    (First safety rule come true</font>
+<br><font color="black">188:N01880    (Second safety rule come true</font>
+<br><font color="black">189:N01890    (Third safety rule disabled</font>
+<br><font color="black">190:N01900    G01 X=394.3  Y1=493.611  FV.L.FeedXY</font>
+<br><font color="black">191:N01910    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">192:N01920    G04 0.2</font>
+<br><font color="black">193:N01930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">194:N01940    G01 X=-142.651  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">195:N01950    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">196:N01960    G04 0.2</font>
+<br><font color="black">197:N01970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">198:N01980  </font>
+<br><font color="black">199:N01990    (---------Number of current pin = 13, Type of current pin = 2</font>
+<br><font color="black">200:N02000  </font>
+<br><font color="black">201:N02010    (First safety rule come true</font>
+<br><font color="black">202:N02020    (Second safety rule come true</font>
+<br><font color="black">203:N02030    (Third safety rule disabled</font>
+<br><font color="black">204:N02040    G01 X=394.3  Y1=468.611  FV.L.FeedXY</font>
+<br><font color="black">205:N02050    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">206:N02060    G04 0.2</font>
+<br><font color="black">207:N02070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">208:N02080    G01 X=-221.617  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">209:N02090    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">210:N02100    G04 0.2</font>
+<br><font color="black">211:N02110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">212:N02120  </font>
+<br><font color="black">213:N02130    (---------Number of current pin = 14, Type of current pin = 2</font>
+<br><font color="black">214:N02140  </font>
+<br><font color="black">215:N02150    (First safety rule come true</font>
+<br><font color="black">216:N02160    (Second safety rule come true</font>
+<br><font color="black">217:N02170    (Third safety rule disabled</font>
+<br><font color="black">218:N02180    G01 X=394.3  Y1=443.611  FV.L.FeedXY</font>
+<br><font color="black">219:N02190    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">220:N02200    G04 0.2</font>
+<br><font color="black">221:N02210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">222:N02220    G01 X=-300.713  Y1=264.605  FV.L.FeedXY</font>
+<br><font color="black">223:N02230    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">224:N02240    G04 0.2</font>
+<br><font color="black">225:N02250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">226:N02260  </font>
+<br><font color="black">227:N02270    (---------Number of current pin = 15, Type of current pin = 2</font>
+<br><font color="black">228:N02280  </font>
+<br><font color="black">229:N02290    (First safety rule come true</font>
+<br><font color="black">230:N02300    (Second safety rule come true</font>
+<br><font color="black">231:N02310    (Third safety rule disabled</font>
+<br><font color="black">232:N02320    G01 X=385.7  Y1=206.111  FV.L.FeedXY</font>
+<br><font color="black">233:N02330    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">234:N02340    G04 0.2</font>
+<br><font color="black">235:N02350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">236:N02360    G01 X=-267.195  Y1=41.705  FV.L.FeedXY</font>
+<br><font color="black">237:N02370    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">238:N02380    G04 0.2</font>
+<br><font color="black">239:N02390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">240:N02400  </font>
+<br><font color="black">241:N02410    (---------Number of current pin = 16, Type of current pin = 2</font>
+<br><font color="black">242:N02420  </font>
+<br><font color="black">243:N02430    (First safety rule come true</font>
+<br><font color="black">244:N02440    (Second safety rule come true</font>
+<br><font color="black">245:N02450    (Third safety rule disabled</font>
+<br><font color="black">246:N02460    G01 X=385.7  Y1=181.111  FV.L.FeedXY</font>
+<br><font color="black">247:N02470    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">248:N02480    G04 0.2</font>
+<br><font color="black">249:N02490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">250:N02500    G01 X=-241.813  Y1=41.705  FV.L.FeedXY</font>
+<br><font color="black">251:N02510    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">252:N02520    G04 0.2</font>
+<br><font color="black">253:N02530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">254:N02540  </font>
+<br><font color="black">255:N02550    (---------Number of current pin = 17, Type of current pin = 2</font>
+<br><font color="black">256:N02560  </font>
+<br><font color="black">257:N02570    (First safety rule come true</font>
+<br><font color="black">258:N02580    (Second safety rule come true</font>
+<br><font color="black">259:N02590    (Third safety rule disabled</font>
+<br><font color="black">260:N02600    G01 X=385.7  Y1=156.111  FV.L.FeedXY</font>
+<br><font color="black">261:N02610    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">262:N02620    G04 0.2</font>
+<br><font color="black">263:N02630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">264:N02640    G01 X=-109.463  Y1=41.705  FV.L.FeedXY</font>
+<br><font color="black">265:N02650    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">266:N02660    G04 0.2</font>
+<br><font color="black">267:N02670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">268:N02680  </font>
+<br><font color="black">269:N02690    (---------Number of current pin = 18, Type of current pin = 3</font>
+<br><font color="black">270:N02700  </font>
+<br><font color="black">271:N02710    (First safety rule come true</font>
+<br><font color="black">272:N02720    (Second safety rule come true</font>
+<br><font color="black">273:N02730    (Third safety rule disabled</font>
+<br><font color="black">274:N02740    G01 X=-355.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">275:N02750    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">276:N02760    G04 0.2</font>
+<br><font color="black">277:N02770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">278:N02780    G01 X=-271.145  Y1=253.805  FV.L.FeedXY</font>
+<br><font color="black">279:N02790    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">280:N02800    G04 0.2</font>
+<br><font color="black">281:N02810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">282:N02820  </font>
+<br><font color="black">283:N02830    (---------Number of current pin = 19, Type of current pin = 3</font>
+<br><font color="black">284:N02840  </font>
+<br><font color="black">285:N02850    (First safety rule come true</font>
+<br><font color="black">286:N02860    (Second safety rule come true</font>
+<br><font color="black">287:N02870    (Third safety rule disabled</font>
+<br><font color="black">288:N02880    G01 X=-326.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">289:N02890    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">290:N02900    G04 0.2</font>
+<br><font color="black">291:N02910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">292:N02920    G01 X=-192.145  Y1=253.805  FV.L.FeedXY</font>
+<br><font color="black">293:N02930    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">294:N02940    G04 0.2</font>
+<br><font color="black">295:N02950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">296:N02960  </font>
+<br><font color="black">297:N02970    (---------Number of current pin = 20, Type of current pin = 3</font>
+<br><font color="black">298:N02980  </font>
+<br><font color="black">299:N02990    (First safety rule come true</font>
+<br><font color="black">300:N03000    (Second safety rule come true</font>
+<br><font color="black">301:N03010    (Third safety rule disabled</font>
+<br><font color="black">302:N03020    G01 X=-297.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">303:N03030    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">304:N03040    G04 0.2</font>
+<br><font color="black">305:N03050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">306:N03060    G01 X=-113.145  Y1=253.805  FV.L.FeedXY</font>
+<br><font color="black">307:N03070    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">308:N03080    G04 0.2</font>
+<br><font color="black">309:N03090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">310:N03100  </font>
+<br><font color="black">311:N03110    (---------Number of current pin = 21, Type of current pin = 3</font>
+<br><font color="black">312:N03120  </font>
+<br><font color="black">313:N03130    (First safety rule come true</font>
+<br><font color="black">314:N03140    (Second safety rule come true</font>
+<br><font color="black">315:N03150    (Third safety rule disabled</font>
+<br><font color="black">316:N03160    G01 X=-268.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">317:N03170    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">318:N03180    G04 0.2</font>
+<br><font color="black">319:N03190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">320:N03200    G01 X=-271.145  Y1=181.605  FV.L.FeedXY</font>
+<br><font color="black">321:N03210    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">322:N03220    G04 0.2</font>
+<br><font color="black">323:N03230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">324:N03240  </font>
+<br><font color="black">325:N03250    (---------Number of current pin = 22, Type of current pin = 3</font>
+<br><font color="black">326:N03260  </font>
+<br><font color="black">327:N03270    (First safety rule come true</font>
+<br><font color="black">328:N03280    (Second safety rule come true</font>
+<br><font color="black">329:N03290    (Third safety rule disabled</font>
+<br><font color="black">330:N03300    G01 X=-239.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">331:N03310    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">332:N03320    G04 0.2</font>
+<br><font color="black">333:N03330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">334:N03340    G01 X=-192.145  Y1=181.605  FV.L.FeedXY</font>
+<br><font color="black">335:N03350    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">336:N03360    G04 0.2</font>
+<br><font color="black">337:N03370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">338:N03380  </font>
+<br><font color="black">339:N03390    (---------Number of current pin = 23, Type of current pin = 3</font>
+<br><font color="black">340:N03400  </font>
+<br><font color="black">341:N03410    (First safety rule come true</font>
+<br><font color="black">342:N03420    (Second safety rule come true</font>
+<br><font color="black">343:N03430    (Third safety rule disabled</font>
+<br><font color="black">344:N03440    G01 X=-210.75  Y1=-21.939  FV.L.FeedXY</font>
+<br><font color="black">345:N03450    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">346:N03460    G04 0.2</font>
+<br><font color="black">347:N03470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">348:N03480    G01 X=-113.145  Y1=181.605  FV.L.FeedXY</font>
+<br><font color="black">349:N03490    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">350:N03500    G04 0.2</font>
+<br><font color="black">351:N03510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">352:N03520  </font>
+<br><font color="black">353:N03530    (---------Number of current pin = 24, Type of current pin = 3</font>
+<br><font color="black">354:N03540  </font>
+<br><font color="black">355:N03550    (First safety rule come true</font>
+<br><font color="black">356:N03560    (Second safety rule come true</font>
+<br><font color="black">357:N03570    (Third safety rule disabled</font>
+<br><font color="black">358:N03580    G01 X=-341.25  Y1=-13.339  FV.L.FeedXY</font>
+<br><font color="black">359:N03590    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">360:N03600    G04 0.2</font>
+<br><font color="black">361:N03610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">362:N03620    G01 X=-113.145  Y1=109.405  FV.L.FeedXY</font>
+<br><font color="black">363:N03630    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">364:N03640    G04 0.2</font>
+<br><font color="black">365:N03650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">366:N03660  </font>
+<br><font color="black">367:N03670    (---------Number of current pin = 25, Type of current pin = 3</font>
+<br><font color="black">368:N03680  </font>
+<br><font color="black">369:N03690    (First safety rule come true</font>
+<br><font color="black">370:N03700    (Second safety rule come true</font>
+<br><font color="black">371:N03710    (Third safety rule disabled</font>
+<br><font color="black">372:N03720    G01 X=-312.25  Y1=-13.339  FV.L.FeedXY</font>
+<br><font color="black">373:N03730    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">374:N03740    G04 0.2</font>
+<br><font color="black">375:N03750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">376:N03760    G01 X=-192.145  Y1=109.405  FV.L.FeedXY</font>
+<br><font color="black">377:N03770    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">378:N03780    G04 0.2</font>
+<br><font color="black">379:N03790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">380:N03800  </font>
+<br><font color="black">381:N03810    (---------Number of current pin = 26, Type of current pin = 3</font>
+<br><font color="black">382:N03820  </font>
+<br><font color="black">383:N03830    (First safety rule come true</font>
+<br><font color="black">384:N03840    (Second safety rule come true</font>
+<br><font color="black">385:N03850    (Third safety rule disabled</font>
+<br><font color="black">386:N03860    G01 X=-283.25  Y1=-13.339  FV.L.FeedXY</font>
+<br><font color="black">387:N03870    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">388:N03880    G04 0.2</font>
+<br><font color="black">389:N03890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">390:N03900    G01 X=-271.145  Y1=109.405  FV.L.FeedXY</font>
+<br><font color="black">391:N03910    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">392:N03920    G04 0.2</font>
+<br><font color="black">393:N03930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">394:N03940  </font>
+<br><font color="black">395:N03950    (---------Number of current pin = 27, Type of current pin = 7</font>
+<br><font color="black">396:N03960  </font>
+<br><font color="black">397:N03970    (First safety rule come true</font>
+<br><font color="black">398:N03980    (Second safety rule come true</font>
+<br><font color="black">399:N03990    (Third safety rule disabled</font>
+<br><font color="black">400:N04000    G01 X=-394.3  Y1=204.611  FV.L.FeedXY</font>
+<br><font color="black">401:N04010    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">402:N04020    G04 0.2</font>
+<br><font color="black">403:N04030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">404:N04040    G01 X=-314.822  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">405:N04050    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">406:N04060    G04 0.2</font>
+<br><font color="black">407:N04070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">408:N04080  </font>
+<br><font color="black">409:N04090    (---------Number of current pin = 28, Type of current pin = 7</font>
+<br><font color="black">410:N04100  </font>
+<br><font color="black">411:N04110    (First safety rule come true</font>
+<br><font color="black">412:N04120    (Second safety rule come true</font>
+<br><font color="black">413:N04130    (Third safety rule disabled</font>
+<br><font color="black">414:N04140    G01 X=-394.3  Y1=175.611  FV.L.FeedXY</font>
+<br><font color="black">415:N04150    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">416:N04160    G04 0.2</font>
+<br><font color="black">417:N04170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">418:N04180    G01 X=-287.655  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">419:N04190    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">420:N04200    G04 0.2</font>
+<br><font color="black">421:N04210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">422:N04220  </font>
+<br><font color="black">423:N04230    (---------Number of current pin = 29, Type of current pin = 7</font>
+<br><font color="black">424:N04240  </font>
+<br><font color="black">425:N04250    (First safety rule come true</font>
+<br><font color="black">426:N04260    (Second safety rule come true</font>
+<br><font color="black">427:N04270    (Third safety rule disabled</font>
+<br><font color="black">428:N04280    G01 X=-394.3  Y1=146.611  FV.L.FeedXY</font>
+<br><font color="black">429:N04290    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">430:N04300    G04 0.2</font>
+<br><font color="black">431:N04310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">432:N04320    G01 X=-314.822  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">433:N04330    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">434:N04340    G04 0.2</font>
+<br><font color="black">435:N04350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">436:N04360  </font>
+<br><font color="black">437:N04370    (---------Number of current pin = 30, Type of current pin = 7</font>
+<br><font color="black">438:N04380  </font>
+<br><font color="black">439:N04390    (First safety rule come true</font>
+<br><font color="black">440:N04400    (Second safety rule come true</font>
+<br><font color="black">441:N04410    (Third safety rule disabled</font>
+<br><font color="black">442:N04420    G01 X=-394.3  Y1=117.611  FV.L.FeedXY</font>
+<br><font color="black">443:N04430    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">444:N04440    G04 0.2</font>
+<br><font color="black">445:N04450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">446:N04460    G01 X=-287.655  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">447:N04470    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">448:N04480    G04 0.2</font>
+<br><font color="black">449:N04490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">450:N04500  </font>
+<br><font color="black">451:N04510    (---------Number of current pin = 31, Type of current pin = 7</font>
+<br><font color="black">452:N04520  </font>
+<br><font color="black">453:N04530    (First safety rule come true</font>
+<br><font color="black">454:N04540    (Second safety rule come true</font>
+<br><font color="black">455:N04550    (Third safety rule disabled</font>
+<br><font color="black">456:N04560    G01 X=-394.3  Y1=88.611  FV.L.FeedXY</font>
+<br><font color="black">457:N04570    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">458:N04580    G04 0.2</font>
+<br><font color="black">459:N04590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">460:N04600    G01 X=-314.822  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">461:N04610    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">462:N04620    G04 0.2</font>
+<br><font color="black">463:N04630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">464:N04640  </font>
+<br><font color="black">465:N04650    (---------Number of current pin = 32, Type of current pin = 7</font>
+<br><font color="black">466:N04660  </font>
+<br><font color="black">467:N04670    (First safety rule come true</font>
+<br><font color="black">468:N04680    (Second safety rule come true</font>
+<br><font color="black">469:N04690    (Third safety rule disabled</font>
+<br><font color="black">470:N04700    G01 X=-394.3  Y1=59.611  FV.L.FeedXY</font>
+<br><font color="black">471:N04710    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">472:N04720    G04 0.2</font>
+<br><font color="black">473:N04730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">474:N04740    G01 X=-287.655  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">475:N04750    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">476:N04760    G04 0.2</font>
+<br><font color="black">477:N04770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">478:N04780  </font>
+<br><font color="black">479:N04790    (---------Number of current pin = 33, Type of current pin = 7</font>
+<br><font color="black">480:N04800  </font>
+<br><font color="black">481:N04810    (First safety rule come true</font>
+<br><font color="black">482:N04820    (Second safety rule come true</font>
+<br><font color="black">483:N04830    (Third safety rule disabled</font>
+<br><font color="black">484:N04840    G01 X=-385.7  Y1=190.111  FV.L.FeedXY</font>
+<br><font color="black">485:N04850    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">486:N04860    G04 0.2</font>
+<br><font color="black">487:N04870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">488:N04880    G01 X=-314.822  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">489:N04890    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">490:N04900    G04 0.2</font>
+<br><font color="black">491:N04910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">492:N04920  </font>
+<br><font color="black">493:N04930    (---------Number of current pin = 34, Type of current pin = 7</font>
+<br><font color="black">494:N04940  </font>
+<br><font color="black">495:N04950    (First safety rule come true</font>
+<br><font color="black">496:N04960    (Second safety rule come true</font>
+<br><font color="black">497:N04970    (Third safety rule disabled</font>
+<br><font color="black">498:N04980    G01 X=-385.7  Y1=161.111  FV.L.FeedXY</font>
+<br><font color="black">499:N04990    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">500:N05000    G04 0.2</font>
+<br><font color="black">501:N05010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">502:N05020    G01 X=-206.147  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">503:N05030    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">504:N05040    G04 0.2</font>
+<br><font color="black">505:N05050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">506:N05060  </font>
+<br><font color="black">507:N05070    (---------Number of current pin = 35, Type of current pin = 7</font>
+<br><font color="black">508:N05080  </font>
+<br><font color="black">509:N05090    (First safety rule come true</font>
+<br><font color="black">510:N05100    (Second safety rule come true</font>
+<br><font color="black">511:N05110    (Third safety rule disabled</font>
+<br><font color="black">512:N05120    G01 X=-385.7  Y1=132.111  FV.L.FeedXY</font>
+<br><font color="black">513:N05130    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">514:N05140    G04 0.2</font>
+<br><font color="black">515:N05150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">516:N05160    G01 X=-235.822  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">517:N05170    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">518:N05180    G04 0.2</font>
+<br><font color="black">519:N05190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">520:N05200  </font>
+<br><font color="black">521:N05210    (---------Number of current pin = 36, Type of current pin = 7</font>
+<br><font color="black">522:N05220  </font>
+<br><font color="black">523:N05230    (First safety rule come true</font>
+<br><font color="black">524:N05240    (Second safety rule come true</font>
+<br><font color="black">525:N05250    (Third safety rule disabled</font>
+<br><font color="black">526:N05260    G01 X=-385.7  Y1=103.111  FV.L.FeedXY</font>
+<br><font color="black">527:N05270    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">528:N05280    G04 0.2</font>
+<br><font color="black">529:N05290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">530:N05300    G01 X=-208.655  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">531:N05310    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">532:N05320    G04 0.2</font>
+<br><font color="black">533:N05330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">534:N05340  </font>
+<br><font color="black">535:N05350    (---------Number of current pin = 37, Type of current pin = 7</font>
+<br><font color="black">536:N05360  </font>
+<br><font color="black">537:N05370    (First safety rule come true</font>
+<br><font color="black">538:N05380    (Second safety rule come true</font>
+<br><font color="black">539:N05390    (Third safety rule disabled</font>
+<br><font color="black">540:N05400    G01 X=-385.7  Y1=74.111  FV.L.FeedXY</font>
+<br><font color="black">541:N05410    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">542:N05420    G04 0.2</font>
+<br><font color="black">543:N05430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">544:N05440    G01 X=-235.822  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">545:N05450    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">546:N05460    G04 0.2</font>
+<br><font color="black">547:N05470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">548:N05480  </font>
+<br><font color="black">549:N05490    (---------Number of current pin = 38, Type of current pin = 7</font>
+<br><font color="black">550:N05500  </font>
+<br><font color="black">551:N05510    (First safety rule come true</font>
+<br><font color="black">552:N05520    (Second safety rule come true</font>
+<br><font color="black">553:N05530    (Third safety rule disabled</font>
+<br><font color="black">554:N05540    G01 X=-385.7  Y1=45.111  FV.L.FeedXY</font>
+<br><font color="black">555:N05550    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">556:N05560    G04 0.2</font>
+<br><font color="black">557:N05570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">558:N05580    G01 X=-208.655  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">559:N05590    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">560:N05600    G04 0.2</font>
+<br><font color="black">561:N05610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">562:N05620  </font>
+<br><font color="black">563:N05630    (---------Number of current pin = 39, Type of current pin = 7</font>
+<br><font color="black">564:N05640  </font>
+<br><font color="black">565:N05650    (First safety rule come true</font>
+<br><font color="black">566:N05660    (Second safety rule come true</font>
+<br><font color="black">567:N05670    (Third safety rule disabled</font>
+<br><font color="black">568:N05680    G01 X=-394.3  Y1=604.611  FV.L.FeedXY</font>
+<br><font color="black">569:N05690    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">570:N05700    G04 0.2</font>
+<br><font color="black">571:N05710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">572:N05720    G01 X=-235.822  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">573:N05730    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">574:N05740    G04 0.2</font>
+<br><font color="black">575:N05750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">576:N05760  </font>
+<br><font color="black">577:N05770    (---------Number of current pin = 40, Type of current pin = 7</font>
+<br><font color="black">578:N05780  </font>
+<br><font color="black">579:N05790    (First safety rule come true</font>
+<br><font color="black">580:N05800    (Second safety rule come true</font>
+<br><font color="black">581:N05810    (Third safety rule disabled</font>
+<br><font color="black">582:N05820    G01 X=-394.3  Y1=575.611  FV.L.FeedXY</font>
+<br><font color="black">583:N05830    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">584:N05840    G04 0.2</font>
+<br><font color="black">585:N05850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">586:N05860    G01 X=-208.655  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">587:N05870    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">588:N05880    G04 0.2</font>
+<br><font color="black">589:N05890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">590:N05900  </font>
+<br><font color="black">591:N05910    (---------Number of current pin = 41, Type of current pin = 7</font>
+<br><font color="black">592:N05920  </font>
+<br><font color="black">593:N05930    (First safety rule come true</font>
+<br><font color="black">594:N05940    (Second safety rule come true</font>
+<br><font color="black">595:N05950    (Third safety rule disabled</font>
+<br><font color="black">596:N05960    G01 X=-394.3  Y1=546.611  FV.L.FeedXY</font>
+<br><font color="black">597:N05970    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">598:N05980    G04 0.2</font>
+<br><font color="black">599:N05990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">600:N06000    G01 X=-156.822  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">601:N06010    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">602:N06020    G04 0.2</font>
+<br><font color="black">603:N06030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">604:N06040  </font>
+<br><font color="black">605:N06050    (---------Number of current pin = 42, Type of current pin = 7</font>
+<br><font color="black">606:N06060  </font>
+<br><font color="black">607:N06070    (First safety rule come true</font>
+<br><font color="black">608:N06080    (Second safety rule come true</font>
+<br><font color="black">609:N06090    (Third safety rule disabled</font>
+<br><font color="black">610:N06100    G01 X=-394.3  Y1=517.611  FV.L.FeedXY</font>
+<br><font color="black">611:N06110    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">612:N06120    G04 0.2</font>
+<br><font color="black">613:N06130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">614:N06140    G01 X=-129.655  Y1=257.305  FV.L.FeedXY</font>
+<br><font color="black">615:N06150    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">616:N06160    G04 0.2</font>
+<br><font color="black">617:N06170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">618:N06180  </font>
+<br><font color="black">619:N06190    (---------Number of current pin = 43, Type of current pin = 7</font>
+<br><font color="black">620:N06200  </font>
+<br><font color="black">621:N06210    (First safety rule come true</font>
+<br><font color="black">622:N06220    (Second safety rule come true</font>
+<br><font color="black">623:N06230    (Third safety rule disabled</font>
+<br><font color="black">624:N06240    G01 X=-394.3  Y1=488.611  FV.L.FeedXY</font>
+<br><font color="black">625:N06250    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">626:N06260    G04 0.2</font>
+<br><font color="black">627:N06270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">628:N06280    G01 X=-156.822  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">629:N06290    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">630:N06300    G04 0.2</font>
+<br><font color="black">631:N06310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">632:N06320  </font>
+<br><font color="black">633:N06330    (---------Number of current pin = 44, Type of current pin = 7</font>
+<br><font color="black">634:N06340  </font>
+<br><font color="black">635:N06350    (First safety rule come true</font>
+<br><font color="black">636:N06360    (Second safety rule come true</font>
+<br><font color="black">637:N06370    (Third safety rule disabled</font>
+<br><font color="black">638:N06380    G01 X=-394.3  Y1=459.611  FV.L.FeedXY</font>
+<br><font color="black">639:N06390    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">640:N06400    G04 0.2</font>
+<br><font color="black">641:N06410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">642:N06420    G01 X=-129.655  Y1=185.105  FV.L.FeedXY</font>
+<br><font color="black">643:N06430    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">644:N06440    G04 0.2</font>
+<br><font color="black">645:N06450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">646:N06460  </font>
+<br><font color="black">647:N06470    (---------Number of current pin = 45, Type of current pin = 7</font>
+<br><font color="black">648:N06480  </font>
+<br><font color="black">649:N06490    (First safety rule come true</font>
+<br><font color="black">650:N06500    (Second safety rule come true</font>
+<br><font color="black">651:N06510    (Third safety rule disabled</font>
+<br><font color="black">652:N06520    G01 X=-385.7  Y1=590.111  FV.L.FeedXY</font>
+<br><font color="black">653:N06530    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">654:N06540    G04 0.2</font>
+<br><font color="black">655:N06550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">656:N06560    G01 X=-156.822  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">657:N06570    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">658:N06580    G04 0.2</font>
+<br><font color="black">659:N06590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">660:N06600  </font>
+<br><font color="black">661:N06610    (---------Number of current pin = 46, Type of current pin = 7</font>
+<br><font color="black">662:N06620  </font>
+<br><font color="black">663:N06630    (First safety rule come true</font>
+<br><font color="black">664:N06640    (Second safety rule come true</font>
+<br><font color="black">665:N06650    (Third safety rule disabled</font>
+<br><font color="black">666:N06660    G01 X=-385.7  Y1=561.111  FV.L.FeedXY</font>
+<br><font color="black">667:N06670    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">668:N06680    G04 0.2</font>
+<br><font color="black">669:N06690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">670:N06700    G01 X=-129.655  Y1=112.905  FV.L.FeedXY</font>
+<br><font color="black">671:N06710    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">672:N06720    G04 0.2</font>
+<br><font color="black">673:N06730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">674:N06740  </font>
+<br><font color="black">675:N06750    (---------Number of current pin = 47, Type of current pin = 7</font>
+<br><font color="black">676:N06760  </font>
+<br><font color="black">677:N06770    (First safety rule come true</font>
+<br><font color="black">678:N06780    (Second safety rule come true</font>
+<br><font color="black">679:N06790    (Third safety rule disabled</font>
+<br><font color="black">680:N06800    G01 X=-385.7  Y1=532.111  FV.L.FeedXY</font>
+<br><font color="black">681:N06810    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">682:N06820    G04 0.2</font>
+<br><font color="black">683:N06830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">684:N06840    G01 X=-156.822  Y1=40.705  FV.L.FeedXY</font>
+<br><font color="black">685:N06850    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">686:N06860    G04 0.2</font>
+<br><font color="black">687:N06870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">688:N06880  </font>
+<br><font color="black">689:N06890    (---------Number of current pin = 48, Type of current pin = 7</font>
+<br><font color="black">690:N06900  </font>
+<br><font color="black">691:N06910    (First safety rule come true</font>
+<br><font color="black">692:N06920    (Second safety rule come true</font>
+<br><font color="black">693:N06930    (Third safety rule disabled</font>
+<br><font color="black">694:N06940    G01 X=-385.7  Y1=503.111  FV.L.FeedXY</font>
+<br><font color="black">695:N06950    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">696:N06960    G04 0.2</font>
+<br><font color="black">697:N06970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">698:N06980    G01 X=-258.895  Y1=241.705  FV.L.FeedXY</font>
+<br><font color="black">699:N06990    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">700:N07000    G04 0.2</font>
+<br><font color="black">701:N07010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">702:N07020  </font>
+<br><font color="black">703:N07030    (---------Number of current pin = 49, Type of current pin = 7</font>
+<br><font color="black">704:N07040  </font>
+<br><font color="black">705:N07050    (First safety rule come true</font>
+<br><font color="black">706:N07060    (Second safety rule come true</font>
+<br><font color="black">707:N07070    (Third safety rule disabled</font>
+<br><font color="black">708:N07080    G01 X=-385.7  Y1=474.111  FV.L.FeedXY</font>
+<br><font color="black">709:N07090    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">710:N07100    G04 0.2</font>
+<br><font color="black">711:N07110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">712:N07120    G01 X=-258.895  Y1=198.205  FV.L.FeedXY</font>
+<br><font color="black">713:N07130    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">714:N07140    G04 0.2</font>
+<br><font color="black">715:N07150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">716:N07160  </font>
+<br><font color="black">717:N07170    (---------Number of current pin = 50, Type of current pin = 7</font>
+<br><font color="black">718:N07180  </font>
+<br><font color="black">719:N07190    (First safety rule come true</font>
+<br><font color="black">720:N07200    (Second safety rule come true</font>
+<br><font color="black">721:N07210    (Third safety rule disabled</font>
+<br><font color="black">722:N07220    G01 X=-385.7  Y1=445.111  FV.L.FeedXY</font>
+<br><font color="black">723:N07230    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">724:N07240    G04 0.2</font>
+<br><font color="black">725:N07250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">726:N07260    G01 X=-326.095  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">727:N07270    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">728:N07280    G04 0.2</font>
+<br><font color="black">729:N07290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">730:N07300  </font>
+<br><font color="black">731:N07310    (---------Number of current pin = 51, Type of current pin = 7</font>
+<br><font color="black">732:N07320  </font>
+<br><font color="black">733:N07330    (First safety rule come true</font>
+<br><font color="black">734:N07340    (Second safety rule come true</font>
+<br><font color="black">735:N07350    (Third safety rule disabled</font>
+<br><font color="black">736:N07360    G01 X=-368.8  Y1=204.611  FV.L.FeedXY</font>
+<br><font color="black">737:N07370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">738:N07380    G04 0.2</font>
+<br><font color="black">739:N07390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">740:N07400    G01 X=-326.095  Y1=211.205  FV.L.FeedXY</font>
+<br><font color="black">741:N07410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">742:N07420    G04 0.2</font>
+<br><font color="black">743:N07430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">744:N07440  </font>
+<br><font color="black">745:N07450    (---------Number of current pin = 52, Type of current pin = 7</font>
+<br><font color="black">746:N07460  </font>
+<br><font color="black">747:N07470    (First safety rule come true</font>
+<br><font color="black">748:N07480    (Second safety rule come true</font>
+<br><font color="black">749:N07490    (Third safety rule disabled</font>
+<br><font color="black">750:N07500    G01 X=-368.8  Y1=175.611  FV.L.FeedXY</font>
+<br><font color="black">751:N07510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">752:N07520    G04 0.2</font>
+<br><font color="black">753:N07530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">754:N07540    G01 X=-247.095  Y1=211.205  FV.L.FeedXY</font>
+<br><font color="black">755:N07550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">756:N07560    G04 0.2</font>
+<br><font color="black">757:N07570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">758:N07580  </font>
+<br><font color="black">759:N07590    (---------Number of current pin = 53, Type of current pin = 7</font>
+<br><font color="black">760:N07600  </font>
+<br><font color="black">761:N07610    (First safety rule come true</font>
+<br><font color="black">762:N07620    (Second safety rule come true</font>
+<br><font color="black">763:N07630    (Third safety rule disabled</font>
+<br><font color="black">764:N07640    G01 X=-368.8  Y1=146.611  FV.L.FeedXY</font>
+<br><font color="black">765:N07650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">766:N07660    G04 0.2</font>
+<br><font color="black">767:N07670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">768:N07680    G01 X=-179.895  Y1=198.205  FV.L.FeedXY</font>
+<br><font color="black">769:N07690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">770:N07700    G04 0.2</font>
+<br><font color="black">771:N07710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">772:N07720  </font>
+<br><font color="black">773:N07730    (---------Number of current pin = 54, Type of current pin = 7</font>
+<br><font color="black">774:N07740  </font>
+<br><font color="black">775:N07750    (First safety rule come true</font>
+<br><font color="black">776:N07760    (Second safety rule come true</font>
+<br><font color="black">777:N07770    (Third safety rule disabled</font>
+<br><font color="black">778:N07780    G01 X=-368.8  Y1=117.611  FV.L.FeedXY</font>
+<br><font color="black">779:N07790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">780:N07800    G04 0.2</font>
+<br><font color="black">781:N07810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">782:N07820    G01 X=-168.095  Y1=211.205  FV.L.FeedXY</font>
+<br><font color="black">783:N07830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">784:N07840    G04 0.2</font>
+<br><font color="black">785:N07850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">786:N07860  </font>
+<br><font color="black">787:N07870    (---------Number of current pin = 55, Type of current pin = 7</font>
+<br><font color="black">788:N07880  </font>
+<br><font color="black">789:N07890    (First safety rule come true</font>
+<br><font color="black">790:N07900    (Second safety rule come true</font>
+<br><font color="black">791:N07910    (Third safety rule disabled</font>
+<br><font color="black">792:N07920    G01 X=-368.8  Y1=88.611  FV.L.FeedXY</font>
+<br><font color="black">793:N07930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">794:N07940    G04 0.2</font>
+<br><font color="black">795:N07950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">796:N07960    G01 X=-179.895  Y1=241.705  FV.L.FeedXY</font>
+<br><font color="black">797:N07970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">798:N07980    G04 0.2</font>
+<br><font color="black">799:N07990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">800:N08000  </font>
+<br><font color="black">801:N08010    (---------Number of current pin = 56, Type of current pin = 7</font>
+<br><font color="black">802:N08020  </font>
+<br><font color="black">803:N08030    (First safety rule come true</font>
+<br><font color="black">804:N08040    (Second safety rule come true</font>
+<br><font color="black">805:N08050    (Third safety rule disabled</font>
+<br><font color="black">806:N08060    G01 X=-368.8  Y1=59.611  FV.L.FeedXY</font>
+<br><font color="black">807:N08070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">808:N08080    G04 0.2</font>
+<br><font color="black">809:N08090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">810:N08100    G01 X=-100.895  Y1=241.705  FV.L.FeedXY</font>
+<br><font color="black">811:N08110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">812:N08120    G04 0.2</font>
+<br><font color="black">813:N08130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">814:N08140  </font>
+<br><font color="black">815:N08150    (---------Number of current pin = 57, Type of current pin = 7</font>
+<br><font color="black">816:N08160  </font>
+<br><font color="black">817:N08170    (First safety rule come true</font>
+<br><font color="black">818:N08180    (Second safety rule come true</font>
+<br><font color="black">819:N08190    (Third safety rule disabled</font>
+<br><font color="black">820:N08200    G01 X=-360.2  Y1=190.111  FV.L.FeedXY</font>
+<br><font color="black">821:N08210    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">822:N08220    G04 0.2</font>
+<br><font color="black">823:N08230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">824:N08240    G01 X=-100.895  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">825:N08250    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">826:N08260    G04 0.2</font>
+<br><font color="black">827:N08270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">828:N08280  </font>
+<br><font color="black">829:N08290    (---------Number of current pin = 58, Type of current pin = 7</font>
+<br><font color="black">830:N08300  </font>
+<br><font color="black">831:N08310    (First safety rule come true</font>
+<br><font color="black">832:N08320    (Second safety rule come true</font>
+<br><font color="black">833:N08330    (Third safety rule disabled</font>
+<br><font color="black">834:N08340    G01 X=-360.2  Y1=161.111  FV.L.FeedXY</font>
+<br><font color="black">835:N08350    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">836:N08360    G04 0.2</font>
+<br><font color="black">837:N08370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">838:N08380    G01 X=-100.895  Y1=97.305  FV.L.FeedXY</font>
+<br><font color="black">839:N08390    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">840:N08400    G04 0.2</font>
+<br><font color="black">841:N08410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">842:N08420  </font>
+<br><font color="black">843:N08430    (---------Number of current pin = 59, Type of current pin = 7</font>
+<br><font color="black">844:N08440  </font>
+<br><font color="black">845:N08450    (First safety rule come true</font>
+<br><font color="black">846:N08460    (Second safety rule come true</font>
+<br><font color="black">847:N08470    (Third safety rule disabled</font>
+<br><font color="black">848:N08480    G01 X=-360.2  Y1=132.111  FV.L.FeedXY</font>
+<br><font color="black">849:N08490    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">850:N08500    G04 0.2</font>
+<br><font color="black">851:N08510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">852:N08520    G01 X=-179.895  Y1=97.305  FV.L.FeedXY</font>
+<br><font color="black">853:N08530    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">854:N08540    G04 0.2</font>
+<br><font color="black">855:N08550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">856:N08560  </font>
+<br><font color="black">857:N08570    (---------Number of current pin = 60, Type of current pin = 7</font>
+<br><font color="black">858:N08580  </font>
+<br><font color="black">859:N08590    (First safety rule come true</font>
+<br><font color="black">860:N08600    (Second safety rule come true</font>
+<br><font color="black">861:N08610    (Third safety rule disabled</font>
+<br><font color="black">862:N08620    G01 X=-360.2  Y1=103.111  FV.L.FeedXY</font>
+<br><font color="black">863:N08630    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">864:N08640    G04 0.2</font>
+<br><font color="black">865:N08650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">866:N08660    G01 X=-258.895  Y1=97.305  FV.L.FeedXY</font>
+<br><font color="black">867:N08670    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">868:N08680    G04 0.2</font>
+<br><font color="black">869:N08690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">870:N08700  </font>
+<br><font color="black">871:N08710    (---------Number of current pin = 61, Type of current pin = 7</font>
+<br><font color="black">872:N08720  </font>
+<br><font color="black">873:N08730    (First safety rule come true</font>
+<br><font color="black">874:N08740    (Second safety rule come true</font>
+<br><font color="black">875:N08750    (Third safety rule disabled</font>
+<br><font color="black">876:N08760    G01 X=-360.2  Y1=74.111  FV.L.FeedXY</font>
+<br><font color="black">877:N08770    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">878:N08780    G04 0.2</font>
+<br><font color="black">879:N08790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">880:N08800    G01 X=-326.095  Y1=66.805  FV.L.FeedXY</font>
+<br><font color="black">881:N08810    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">882:N08820    G04 0.2</font>
+<br><font color="black">883:N08830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">884:N08840  </font>
+<br><font color="black">885:N08850    (---------Number of current pin = 62, Type of current pin = 7</font>
+<br><font color="black">886:N08860  </font>
+<br><font color="black">887:N08870    (First safety rule come true</font>
+<br><font color="black">888:N08880    (Second safety rule come true</font>
+<br><font color="black">889:N08890    (Third safety rule disabled</font>
+<br><font color="black">890:N08900    G01 X=-360.2  Y1=45.111  FV.L.FeedXY</font>
+<br><font color="black">891:N08910    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">892:N08920    G04 0.2</font>
+<br><font color="black">893:N08930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">894:N08940    G01 X=-258.895  Y1=53.805  FV.L.FeedXY</font>
+<br><font color="black">895:N08950    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">896:N08960    G04 0.2</font>
+<br><font color="black">897:N08970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">898:N08980  </font>
+<br><font color="black">899:N08990    (---------Number of current pin = 63, Type of current pin = 7</font>
+<br><font color="black">900:N09000  </font>
+<br><font color="black">901:N09010    (First safety rule come true</font>
+<br><font color="black">902:N09020    (Second safety rule come true</font>
+<br><font color="black">903:N09030    (Third safety rule disabled</font>
+<br><font color="black">904:N09040    G01 X=-368.8  Y1=604.611  FV.L.FeedXY</font>
+<br><font color="black">905:N09050    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">906:N09060    G04 0.2</font>
+<br><font color="black">907:N09070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">908:N09080    G01 X=-179.895  Y1=53.805  FV.L.FeedXY</font>
+<br><font color="black">909:N09090    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">910:N09100    G04 0.2</font>
+<br><font color="black">911:N09110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">912:N09120  </font>
+<br><font color="black">913:N09130    (---------Number of current pin = 64, Type of current pin = 7</font>
+<br><font color="black">914:N09140  </font>
+<br><font color="black">915:N09150    (First safety rule come true</font>
+<br><font color="black">916:N09160    (Second safety rule come true</font>
+<br><font color="black">917:N09170    (Third safety rule disabled</font>
+<br><font color="black">918:N09180    G01 X=-368.8  Y1=575.611  FV.L.FeedXY</font>
+<br><font color="black">919:N09190    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">920:N09200    G04 0.2</font>
+<br><font color="black">921:N09210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">922:N09220    G01 X=-100.895  Y1=53.805  FV.L.FeedXY</font>
+<br><font color="black">923:N09230    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">924:N09240    G04 0.2</font>
+<br><font color="black">925:N09250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">926:N09260  </font>
+<br><font color="black">927:N09270    (---------Number of current pin = 65, Type of current pin = 7</font>
+<br><font color="black">928:N09280  </font>
+<br><font color="black">929:N09290    (First safety rule come true</font>
+<br><font color="black">930:N09300    (Second safety rule come true</font>
+<br><font color="black">931:N09310    (Third safety rule disabled</font>
+<br><font color="black">932:N09320    G01 X=-368.8  Y1=546.611  FV.L.FeedXY</font>
+<br><font color="black">933:N09330    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">934:N09340    G04 0.2</font>
+<br><font color="black">935:N09350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">936:N09360    G01 X=-168.095  Y1=66.805  FV.L.FeedXY</font>
+<br><font color="black">937:N09370    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">938:N09380    G04 0.2</font>
+<br><font color="black">939:N09390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">940:N09400  </font>
+<br><font color="black">941:N09410    (---------Number of current pin = 66, Type of current pin = 7</font>
+<br><font color="black">942:N09420  </font>
+<br><font color="black">943:N09430    (First safety rule come true</font>
+<br><font color="black">944:N09440    (Second safety rule come true</font>
+<br><font color="black">945:N09450    (Third safety rule disabled</font>
+<br><font color="black">946:N09460    G01 X=-368.8  Y1=517.611  FV.L.FeedXY</font>
+<br><font color="black">947:N09470    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">948:N09480    G04 0.2</font>
+<br><font color="black">949:N09490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">950:N09500    G01 X=-247.095  Y1=66.805  FV.L.FeedXY</font>
+<br><font color="black">951:N09510    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">952:N09520    G04 0.2</font>
+<br><font color="black">953:N09530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">954:N09540  </font>
+<br><font color="black">955:N09550    (---------Number of current pin = 67, Type of current pin = 7</font>
+<br><font color="black">956:N09560  </font>
+<br><font color="black">957:N09570    (First safety rule come true</font>
+<br><font color="black">958:N09580    (Second safety rule come true</font>
+<br><font color="black">959:N09590    (Third safety rule disabled</font>
+<br><font color="black">960:N09600    G01 X=-368.8  Y1=488.611  FV.L.FeedXY</font>
+<br><font color="black">961:N09610    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">962:N09620    G04 0.2</font>
+<br><font color="black">963:N09630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">964:N09640    G01 X=-258.895  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">965:N09650    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">966:N09660    G04 0.2</font>
+<br><font color="black">967:N09670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">968:N09680  </font>
+<br><font color="black">969:N09690    (---------Number of current pin = 68, Type of current pin = 7</font>
+<br><font color="black">970:N09700  </font>
+<br><font color="black">971:N09710    (First safety rule come true</font>
+<br><font color="black">972:N09720    (Second safety rule come true</font>
+<br><font color="black">973:N09730    (Third safety rule disabled</font>
+<br><font color="black">974:N09740    G01 X=-368.8  Y1=459.611  FV.L.FeedXY</font>
+<br><font color="black">975:N09750    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">976:N09760    G04 0.2</font>
+<br><font color="black">977:N09770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">978:N09780    G01 X=-258.895  Y1=126.005  FV.L.FeedXY</font>
+<br><font color="black">979:N09790    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">980:N09800    G04 0.2</font>
+<br><font color="black">981:N09810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">982:N09820  </font>
+<br><font color="black">983:N09830    (---------Number of current pin = 69, Type of current pin = 7</font>
+<br><font color="black">984:N09840  </font>
+<br><font color="black">985:N09850    (First safety rule come true</font>
+<br><font color="black">986:N09860    (Second safety rule come true</font>
+<br><font color="black">987:N09870    (Third safety rule disabled</font>
+<br><font color="black">988:N09880    G01 X=-360.2  Y1=590.111  FV.L.FeedXY</font>
+<br><font color="black">989:N09890    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">990:N09900    G04 0.2</font>
+<br><font color="black">991:N09910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">992:N09920    G01 X=-247.095  Y1=139.005  FV.L.FeedXY</font>
+<br><font color="black">993:N09930    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">994:N09940    G04 0.2</font>
+<br><font color="black">995:N09950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">996:N09960  </font>
+<br><font color="black">997:N09970    (---------Number of current pin = 70, Type of current pin = 7</font>
+<br><font color="black">998:N09980  </font>
+<br><font color="black">999:N09990    (First safety rule come true</font>
+<br><font color="black">1000:N10000    (Second safety rule come true</font>
+<br><font color="black">1001:N10010    (Third safety rule disabled</font>
+<br><font color="black">1002:N10020    G01 X=-360.2  Y1=561.111  FV.L.FeedXY</font>
+<br><font color="black">1003:N10030    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1004:N10040    G04 0.2</font>
+<br><font color="black">1005:N10050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1006:N10060    G01 X=-179.895  Y1=126.005  FV.L.FeedXY</font>
+<br><font color="black">1007:N10070    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1008:N10080    G04 0.2</font>
+<br><font color="black">1009:N10090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1010:N10100  </font>
+<br><font color="black">1011:N10110    (---------Number of current pin = 71, Type of current pin = 7</font>
+<br><font color="black">1012:N10120  </font>
+<br><font color="black">1013:N10130    (First safety rule come true</font>
+<br><font color="black">1014:N10140    (Second safety rule come true</font>
+<br><font color="black">1015:N10150    (Third safety rule disabled</font>
+<br><font color="black">1016:N10160    G01 X=-360.2  Y1=532.111  FV.L.FeedXY</font>
+<br><font color="black">1017:N10170    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1018:N10180    G04 0.2</font>
+<br><font color="black">1019:N10190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1020:N10200    G01 X=-168.095  Y1=139.005  FV.L.FeedXY</font>
+<br><font color="black">1021:N10210    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1022:N10220    G04 0.2</font>
+<br><font color="black">1023:N10230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1024:N10240  </font>
+<br><font color="black">1025:N10250    (---------Number of current pin = 72, Type of current pin = 7</font>
+<br><font color="black">1026:N10260  </font>
+<br><font color="black">1027:N10270    (First safety rule come true</font>
+<br><font color="black">1028:N10280    (Second safety rule come true</font>
+<br><font color="black">1029:N10290    (Third safety rule disabled</font>
+<br><font color="black">1030:N10300    G01 X=-360.2  Y1=503.111  FV.L.FeedXY</font>
+<br><font color="black">1031:N10310    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1032:N10320    G04 0.2</font>
+<br><font color="black">1033:N10330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1034:N10340    G01 X=-179.895  Y1=169.505  FV.L.FeedXY</font>
+<br><font color="black">1035:N10350    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1036:N10360    G04 0.2</font>
+<br><font color="black">1037:N10370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1038:N10380  </font>
+<br><font color="black">1039:N10390    (---------Number of current pin = 73, Type of current pin = 7</font>
+<br><font color="black">1040:N10400  </font>
+<br><font color="black">1041:N10410    (First safety rule come true</font>
+<br><font color="black">1042:N10420    (Second safety rule come true</font>
+<br><font color="black">1043:N10430    (Third safety rule disabled</font>
+<br><font color="black">1044:N10440    G01 X=-360.2  Y1=474.111  FV.L.FeedXY</font>
+<br><font color="black">1045:N10450    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1046:N10460    G04 0.2</font>
+<br><font color="black">1047:N10470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1048:N10480    G01 X=-100.895  Y1=126.005  FV.L.FeedXY</font>
+<br><font color="black">1049:N10490    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1050:N10500    G04 0.2</font>
+<br><font color="black">1051:N10510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1052:N10520  </font>
+<br><font color="black">1053:N10530    (---------Number of current pin = 74, Type of current pin = 7</font>
+<br><font color="black">1054:N10540  </font>
+<br><font color="black">1055:N10550    (First safety rule come true</font>
+<br><font color="black">1056:N10560    (Second safety rule come true</font>
+<br><font color="black">1057:N10570    (Third safety rule disabled</font>
+<br><font color="black">1058:N10580    G01 X=-360.2  Y1=445.111  FV.L.FeedXY</font>
+<br><font color="black">1059:N10590    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1060:N10600    G04 0.2</font>
+<br><font color="black">1061:N10610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1062:N10620    G01 X=-100.895  Y1=198.205  FV.L.FeedXY</font>
+<br><font color="black">1063:N10630    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ</font>
+<br><font color="black">1064:N10640    G04 0.2</font>
+<br><font color="black">1065:N10650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY</font>
+<br><font color="black">1066:N10660  </font>
+<br><font color="black">1067:N10670    (Main Tool put away</font>
+<br><font color="black">1068:N10680    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">1069:N10690    G00 G90 X=392.5 Y1=22.861</font>
+<br><font color="black">1070:N10700    G01 FV.L.FeedXY Z1=-13</font>
+<br><font color="black">1071:N10710    M120</font>
+<br><font color="black">1072:N10720    G04 0.2</font>
+<br><font color="black">1073:N10730    Z1=V.L.UpLevelCoordZ</font>
+<br><font color="black">1074:N10740    M121</font>
+<br><font color="black">1075:N10750    G04 0.1</font>
+<br><font color="black">1076:N10760    L _M100_MG.NC</font>
+<br><font color="black">1077:N10770  </font>
+<br><font color="black">1078:N10780    (Pins to Pick And Place = 74 / 144 </font>
+<br><font color="black">1079:N10790    (Errors = 0 </font>
+<br><font color="black">1080:N10800  </font>
+<br><font color="black">1081:N10810    M30</font>
 </td>
 </p>
 </tr>

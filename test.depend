@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1561781999 source:y:\projekty\test\main.cpp
+1561910183 source:y:\projekty\test\main.cpp
 	"incudes.h"
 	"controls.h"
 
@@ -92,7 +92,7 @@
 1561776762 source:y:\projekty\test\src\configuration.cpp
 	"../include/configuration.h"
 
-1561781821 source:y:\projekty\test\src\searchdir.cpp
+1561906351 source:y:\projekty\test\src\searchdir.cpp
 	"../include/SearchDir.h"
 
 1561510006 source:y:\projekty\test\src\filecontainer.cpp

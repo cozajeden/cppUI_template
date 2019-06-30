@@ -30,9 +30,6 @@ void SearchDir::MakeBackupDirectories(string pathToReplace, string pathReplacing
 
 void SearchDir::MakeDirectoriesRecursively(string path)
 {
-      DWORD ftyp = GetFileAttributesA(path.c_str());
-
-  if (!(ftyp & FILE_ATTRIBUTE_DIRECTORY))
     if(CreateDirectory(path.c_str(),NULL) == 0)
     {
         int position = path.find_last_of("/\\");
@@ -40,6 +37,7 @@ void SearchDir::MakeDirectoriesRecursively(string path)
         {
             string subPath = path.substr(0,position);
             MakeDirectoriesRecursively(subPath);
+            CreateDirectory(path.c_str(),NULL);
         }
     }
 }
@@ -125,9 +123,10 @@ bool SearchDir::CheckExtension(string path){
     it = it - extension.length();
     if(extension.length() <= path.length())
         for(int i = 0; i < extension.length(); i++){
-            if(*(it+i) == extension[i])
+            if(*(it+i) == extension[i] ||  ( ((*(it+i)) > 96) && ((*(it+i)) < 123) && ((*(it+i)) - 32) == extension[i] ) || ( ((*(it+i)) > 64) && ((*(it+i)) < 91) && ((*(it+i)) + 32) == extension[i] ))
+            {
                 res = true;
-            else{
+            }else{
                 res = false;
                 break;
             }

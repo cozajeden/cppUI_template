@@ -108,6 +108,21 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                             ShowWindow(hwnd, SW_HIDE);
                             break;
                         }
+                    case SIZE_RESTORED:
+                        {
+                            if(IsManagment)
+                            {
+                                RECT rect;
+                                if(GetWindowRect(hwnd, &rect))
+                                {
+                                    int _width = rect.right - rect.left;
+                                    ChangeWindowDimensions(hManagmentFileCb, _width -15, 200);
+                                    ChangeWindowDimensions(hManagmentDate1Cb, _width -15, 200);
+                                    ChangeWindowDimensions(hManagmentDate2Cb, _width -15, 200);
+                                }
+                            }
+                            break;
+                        }
                 }
                 break;
             }
@@ -368,7 +383,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                         {
                           case CDERR_DIALOGFAILURE   : MessageBox(hwnd, "", "CDERR_DIALOGFAILURE", MB_OK);   break;
                           case CDERR_FINDRESFAILURE  : MessageBox(hwnd, "", "CDERR_FINDRESFAILURE", MB_OK);  break;
-                          case CDERR_INITIALIZATION  : MessageBox(hwnd, "", "CDERR_INITIALIZATION", MB_OK);  break;
+                          case CDCreateDirectory(path.c_str(),NULL)ERR_INITIALIZATION  : MessageBox(hwnd, "", "CDERR_INITIALIZATION", MB_OK);  break;
                           case CDERR_LOADRESFAILURE  : MessageBox(hwnd, "", "CDERR_LOADRESFAILURE", MB_OK);  break;
                           case CDERR_LOADSTRFAILURE  : MessageBox(hwnd, "", "CDERR_LOADSTRFAILURE", MB_OK);  break;
                           case CDERR_LOCKRESFAILURE  : MessageBox(hwnd, "", "CDERR_LOCKRESFAILURE", MB_OK);  break;
@@ -623,11 +638,16 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                     {
                         if(!conf.scanDir.empty() && conf.scanDir != "")
                         {
-                            SendMessage(hMenuScanBt,BM_CLICK,0,0);
-                            for(int i = 0; i < sDirectory.pointer; i++){
-                                string cuttedPath = sDirectory.fContainer[i].fPath;
-                                cuttedPath.replace(0,conf.scanDir.length(),"");
-                                SendMessage( hManagmentFileCb, CB_ADDSTRING, 0,( LPARAM )(cuttedPath + "\\" + sDirectory.fContainer[i].fName).c_str() );
+                            //SendMessage(hMenuScanBt,BM_CLICK,0,0);
+                            bDirectory.ClearFileContainer();
+                            bDirectory.Search(conf.backupDir);
+                            string cuttedPath;
+                            for(int i = 0; i < bDirectory.pointer; i++){
+                                cuttedPath = bDirectory.fContainer[i].fPath;
+                                cuttedPath.replace(0,conf.backupDir.length(),"");
+                                cuttedPath = cuttedPath + "\\" + GetNameFromBackupFileName(bDirectory.fContainer[i].fName);
+                                if(SendMessage(hManagmentFileCb, CB_FINDSTRINGEXACT, 1, ( LPARAM )cuttedPath.c_str()) == CB_ERR)
+                                    SendMessage( hManagmentFileCb, CB_ADDSTRING, 0,( LPARAM )cuttedPath.c_str() );
                             }
                             HWND hManagment[] = {hManagmentDate1Cb, hManagmentFileCb, hManagmentDate2Cb,
                             hManagmentFileSt, hManagmentDate1St, hManagmentDate2St, hManagmentDate1BackupBt,
@@ -639,6 +659,7 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                             ShowObjects(hManagment,13,hMain,15);
                             ChangeWindowDimensions(hwnd, 320, 320);
                             IsManagment = true;
+                            SendMessage(hwnd, WM_SIZE, SIZE_RESTORED, NULL);
                             break;
                         }else{MessageBox(hwnd,"Nie wybrano sciezki","HA!",MB_OK);}
                     }
@@ -679,6 +700,8 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                     int Data2CbCount = SendMessage(hManagmentDate2Cb, CB_GETCOUNT, NULL, NULL);
                                     for(int i = 0; i < Data2CbCount; Data2CbCount--)
                                         SendMessage(hManagmentDate2Cb, CB_DELETESTRING, Data2CbCount - 1, NULL);
+                                    SendMessage(hManagmentDate1Cb, CB_SETCURSEL, -1, NULL);
+                                    SendMessage(hManagmentDate2Cb, CB_SETCURSEL, -1, NULL);
                                     string FileCbSelectedTextString = GetSelectedFromCombo(hManagmentFileCb);
                                     string backupFileforCompare;
                                     string backupPath;

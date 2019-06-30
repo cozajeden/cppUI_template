@@ -1,5 +1,5 @@
 N00010    (Project: Magnetic_WT_CH1 v1.3.0 - 16 pin storages (Universal program)
-N00020    (Program: PHILIPS21_PINY)
+N00020    (Program: PHILLIPS_2_PINY_V1)
 N00030    (Machine: GAS SARxxxx 
 N00040    (Author: Patryk Panylo /GAS GmbH
 N00050  
@@ -8,7 +8,7 @@ N00070    #VAR
 N00080    V.L.FeedZ = 10000
 N00090    V.L.FeedXY = 30000
 N00100    V.L.UpLevelCoordZ = 68.3
-N00110    V.L.PickPinCoordZ = -10.5
+N00110    V.L.PickPinCoordZ = -10.5  
 N00120    V.L.PlacePinCoordZ = -12.3
 N00130    #ENDVAR
 N00140  
@@ -19,6 +19,7 @@ N00180    L _toolchange_K1.nc
 N00190  
 N00200    (Main Tool take
 N00210    G54
+N00211	 (G92 X=0.332 Y1=0.06
 N00220    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ
 N00230    G00 G90 X=392.5 Y1=22.861
 N00240    M120
@@ -37,7 +38,7 @@ N00360    G01 X=-394.3  Y1=204.611  FV.L.FeedXY
 N00370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N00380    G04 0.2
 N00390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N00400    G01 X=-292.495  Y1=286.576  FV.L.FeedXY
+N00400    G01 X=-314.833  Y1=67.397  FV.L.FeedXY
 N00410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N00420    G04 0.2
 N00430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -51,7 +52,7 @@ N00500    G01 X=-394.3  Y1=175.611  FV.L.FeedXY
 N00510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N00520    G04 0.2
 N00530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N00540    G01 X=-230.192  Y1=314.16  FV.L.FeedXY
+N00540    G01 X=-268.474  Y1=74.762  FV.L.FeedXY
 N00550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N00560    G04 0.2
 N00570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -65,7 +66,7 @@ N00640    G01 X=-394.3  Y1=146.611  FV.L.FeedXY
 N00650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N00660    G04 0.2
 N00670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N00680    G01 X=-230.192  Y1=258.661  FV.L.FeedXY
+N00680    G01 X=-314.833  Y1=110.797  FV.L.FeedXY
 N00690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N00700    G04 0.2
 N00710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -79,7 +80,7 @@ N00780    G01 X=-394.3  Y1=117.611  FV.L.FeedXY
 N00790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N00800    G04 0.2
 N00810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N00820    G01 X=-216.577  Y1=286.576  FV.L.FeedXY
+N00820    G01 X=-314.833  Y1=138.337  FV.L.FeedXY
 N00830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N00840    G04 0.2
 N00850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -93,7 +94,7 @@ N00920    G01 X=-394.3  Y1=88.611  FV.L.FeedXY
 N00930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N00940    G04 0.2
 N00950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N00960    G01 X=-154.274  Y1=258.661  FV.L.FeedXY
+N00960    G01 X=-268.474  Y1=145.702  FV.L.FeedXY
 N00970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N00980    G04 0.2
 N00990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -107,7 +108,7 @@ N01060    G01 X=-394.3  Y1=59.611  FV.L.FeedXY
 N01070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01080    G04 0.2
 N01090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01100    G01 X=-154.274  Y1=314.16  FV.L.FeedXY
+N01100    G01 X=-314.833  Y1=181.737  FV.L.FeedXY
 N01110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01120    G04 0.2
 N01130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -121,7 +122,7 @@ N01200    G01 X=-385.7  Y1=190.111  FV.L.FeedXY
 N01210    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01220    G04 0.2
 N01230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01240    G01 X=-140.659  Y1=286.576  FV.L.FeedXY
+N01240    G01 X=-314.833  Y1=209.277  FV.L.FeedXY
 N01250    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01260    G04 0.2
 N01270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -135,7 +136,7 @@ N01340    G01 X=-385.7  Y1=161.111  FV.L.FeedXY
 N01350    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01360    G04 0.2
 N01370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01380    G01 X=-78.356  Y1=258.661  FV.L.FeedXY
+N01380    G01 X=-268.474  Y1=216.642  FV.L.FeedXY
 N01390    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01400    G04 0.2
 N01410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -149,7 +150,7 @@ N01480    G01 X=-385.7  Y1=132.111  FV.L.FeedXY
 N01490    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01500    G04 0.2
 N01510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01520    G01 X=-78.356  Y1=314.16  FV.L.FeedXY
+N01520    G01 X=-314.833  Y1=252.677  FV.L.FeedXY
 N01530    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01540    G04 0.2
 N01550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -163,7 +164,7 @@ N01620    G01 X=-385.7  Y1=103.111  FV.L.FeedXY
 N01630    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01640    G04 0.2
 N01650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01660    G01 X=-64.741  Y1=286.576  FV.L.FeedXY
+N01660    G01 X=-314.833  Y1=280.217  FV.L.FeedXY
 N01670    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01680    G04 0.2
 N01690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -177,7 +178,7 @@ N01760    G01 X=-385.7  Y1=74.111  FV.L.FeedXY
 N01770    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01780    G04 0.2
 N01790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01800    G01 X=-2.438  Y1=314.16  FV.L.FeedXY
+N01800    G01 X=-268.474  Y1=287.582  FV.L.FeedXY
 N01810    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01820    G04 0.2
 N01830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -191,7 +192,7 @@ N01900    G01 X=-385.7  Y1=45.111  FV.L.FeedXY
 N01910    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N01920    G04 0.2
 N01930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N01940    G01 X=-2.438  Y1=258.661  FV.L.FeedXY
+N01940    G01 X=-314.833  Y1=323.617  FV.L.FeedXY
 N01950    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N01960    G04 0.2
 N01970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -205,7 +206,7 @@ N02040    G01 X=-394.3  Y1=604.611  FV.L.FeedXY
 N02050    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02060    G04 0.2
 N02070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02080    G01 X=11.177  Y1=286.576  FV.L.FeedXY
+N02080    G01 X=-247.863  Y1=67.397  FV.L.FeedXY
 N02090    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02100    G04 0.2
 N02110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -219,7 +220,7 @@ N02180    G01 X=-394.3  Y1=575.611  FV.L.FeedXY
 N02190    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02200    G04 0.2
 N02210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02220    G01 X=73.48  Y1=258.661  FV.L.FeedXY
+N02220    G01 X=-201.504  Y1=74.762  FV.L.FeedXY
 N02230    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02240    G04 0.2
 N02250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -233,7 +234,7 @@ N02320    G01 X=-394.3  Y1=546.611  FV.L.FeedXY
 N02330    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02340    G04 0.2
 N02350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02360    G01 X=73.48  Y1=314.16  FV.L.FeedXY
+N02360    G01 X=-247.863  Y1=110.797  FV.L.FeedXY
 N02370    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02380    G04 0.2
 N02390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -247,7 +248,7 @@ N02460    G01 X=-394.3  Y1=517.611  FV.L.FeedXY
 N02470    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02480    G04 0.2
 N02490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02500    G01 X=-292.495  Y1=219.784  FV.L.FeedXY
+N02500    G01 X=-247.863  Y1=138.337  FV.L.FeedXY
 N02510    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02520    G04 0.2
 N02530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -261,7 +262,7 @@ N02600    G01 X=-394.3  Y1=488.611  FV.L.FeedXY
 N02610    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02620    G04 0.2
 N02630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02640    G01 X=-230.192  Y1=191.869  FV.L.FeedXY
+N02640    G01 X=-201.504  Y1=145.702  FV.L.FeedXY
 N02650    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02660    G04 0.2
 N02670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -275,7 +276,7 @@ N02740    G01 X=-394.3  Y1=459.611  FV.L.FeedXY
 N02750    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02760    G04 0.2
 N02770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02780    G01 X=-216.577  Y1=219.784  FV.L.FeedXY
+N02780    G01 X=-247.863  Y1=181.737  FV.L.FeedXY
 N02790    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02800    G04 0.2
 N02810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -289,7 +290,7 @@ N02880    G01 X=-385.7  Y1=590.111  FV.L.FeedXY
 N02890    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N02900    G04 0.2
 N02910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N02920    G01 X=-154.274  Y1=191.869  FV.L.FeedXY
+N02920    G01 X=-247.863  Y1=209.277  FV.L.FeedXY
 N02930    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N02940    G04 0.2
 N02950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -303,7 +304,7 @@ N03020    G01 X=-385.7  Y1=561.111  FV.L.FeedXY
 N03030    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03040    G04 0.2
 N03050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03060    G01 X=-140.659  Y1=219.784  FV.L.FeedXY
+N03060    G01 X=-201.504  Y1=216.642  FV.L.FeedXY
 N03070    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03080    G04 0.2
 N03090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -317,7 +318,7 @@ N03160    G01 X=-385.7  Y1=532.111  FV.L.FeedXY
 N03170    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03180    G04 0.2
 N03190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03200    G01 X=-78.356  Y1=191.869  FV.L.FeedXY
+N03200    G01 X=-247.863  Y1=252.677  FV.L.FeedXY
 N03210    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03220    G04 0.2
 N03230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -331,7 +332,7 @@ N03300    G01 X=-385.7  Y1=503.111  FV.L.FeedXY
 N03310    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03320    G04 0.2
 N03330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03340    G01 X=-64.741  Y1=219.784  FV.L.FeedXY
+N03340    G01 X=-247.863  Y1=280.217  FV.L.FeedXY
 N03350    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03360    G04 0.2
 N03370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -345,7 +346,7 @@ N03440    G01 X=-385.7  Y1=474.111  FV.L.FeedXY
 N03450    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03460    G04 0.2
 N03470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03480    G01 X=-2.438  Y1=191.869  FV.L.FeedXY
+N03480    G01 X=-201.504  Y1=287.582  FV.L.FeedXY
 N03490    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03500    G04 0.2
 N03510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -359,7 +360,7 @@ N03580    G01 X=-385.7  Y1=445.111  FV.L.FeedXY
 N03590    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03600    G04 0.2
 N03610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03620    G01 X=11.177  Y1=219.784  FV.L.FeedXY
+N03620    G01 X=-247.863  Y1=323.617  FV.L.FeedXY
 N03630    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03640    G04 0.2
 N03650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -373,7 +374,7 @@ N03720    G01 X=-368.8  Y1=204.611  FV.L.FeedXY
 N03730    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03740    G04 0.2
 N03750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03760    G01 X=73.48  Y1=191.869  FV.L.FeedXY
+N03760    G01 X=-180.893  Y1=67.397  FV.L.FeedXY
 N03770    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03780    G04 0.2
 N03790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -387,7 +388,7 @@ N03860    G01 X=-368.8  Y1=175.611  FV.L.FeedXY
 N03870    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N03880    G04 0.2
 N03890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N03900    G01 X=11.177  Y1=152.992  FV.L.FeedXY
+N03900    G01 X=-134.534  Y1=74.762  FV.L.FeedXY
 N03910    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N03920    G04 0.2
 N03930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -401,7 +402,7 @@ N04000    G01 X=-368.8  Y1=146.611  FV.L.FeedXY
 N04010    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04020    G04 0.2
 N04030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04040    G01 X=73.48  Y1=125.077  FV.L.FeedXY
+N04040    G01 X=-180.893  Y1=110.797  FV.L.FeedXY
 N04050    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04060    G04 0.2
 N04070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -415,7 +416,7 @@ N04140    G01 X=-368.8  Y1=117.611  FV.L.FeedXY
 N04150    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04160    G04 0.2
 N04170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04180    G01 X=-2.438  Y1=125.077  FV.L.FeedXY
+N04180    G01 X=-180.893  Y1=138.337  FV.L.FeedXY
 N04190    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04200    G04 0.2
 N04210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -429,7 +430,7 @@ N04280    G01 X=-368.8  Y1=88.611  FV.L.FeedXY
 N04290    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04300    G04 0.2
 N04310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04320    G01 X=-64.741  Y1=152.992  FV.L.FeedXY
+N04320    G01 X=-134.534  Y1=145.702  FV.L.FeedXY
 N04330    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04340    G04 0.2
 N04350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -443,7 +444,7 @@ N04420    G01 X=-368.8  Y1=59.611  FV.L.FeedXY
 N04430    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04440    G04 0.2
 N04450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04460    G01 X=-78.356  Y1=125.077  FV.L.FeedXY
+N04460    G01 X=-180.893  Y1=181.737  FV.L.FeedXY
 N04470    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04480    G04 0.2
 N04490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -457,7 +458,7 @@ N04560    G01 X=-360.2  Y1=190.111  FV.L.FeedXY
 N04570    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04580    G04 0.2
 N04590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04600    G01 X=-140.659  Y1=152.992  FV.L.FeedXY
+N04600    G01 X=-180.893  Y1=209.277  FV.L.FeedXY
 N04610    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04620    G04 0.2
 N04630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -471,7 +472,7 @@ N04700    G01 X=-360.2  Y1=161.111  FV.L.FeedXY
 N04710    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04720    G04 0.2
 N04730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04740    G01 X=-154.274  Y1=125.077  FV.L.FeedXY
+N04740    G01 X=-134.534  Y1=216.642  FV.L.FeedXY
 N04750    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04760    G04 0.2
 N04770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -485,7 +486,7 @@ N04840    G01 X=-360.2  Y1=132.111  FV.L.FeedXY
 N04850    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N04860    G04 0.2
 N04870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N04880    G01 X=-216.577  Y1=152.992  FV.L.FeedXY
+N04880    G01 X=-180.893  Y1=252.677  FV.L.FeedXY
 N04890    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N04900    G04 0.2
 N04910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -499,7 +500,7 @@ N04980    G01 X=-360.2  Y1=103.111  FV.L.FeedXY
 N04990    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05000    G04 0.2
 N05010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05020    G01 X=-230.192  Y1=125.077  FV.L.FeedXY
+N05020    G01 X=-180.893  Y1=280.217  FV.L.FeedXY
 N05030    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05040    G04 0.2
 N05050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -513,7 +514,7 @@ N05120    G01 X=-360.2  Y1=74.111  FV.L.FeedXY
 N05130    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05140    G04 0.2
 N05150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05160    G01 X=-292.495  Y1=152.992  FV.L.FeedXY
+N05160    G01 X=-134.534  Y1=287.582  FV.L.FeedXY
 N05170    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05180    G04 0.2
 N05190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
@@ -527,246 +528,293 @@ N05260    G01 X=-360.2  Y1=45.111  FV.L.FeedXY
 N05270    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05280    G04 0.2
 N05290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05300    G01 X=-292.495  Y1=86.2  FV.L.FeedXY
+N05300    G01 X=-180.893  Y1=323.617  FV.L.FeedXY
 N05310    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05320    G04 0.2
 N05330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N05340  
-N05350    (---------Number of current pin = 37, Type of current pin = 7
+N05350    (---------Number of current pin = 37, Type of current pin = 1
 N05360  
 N05370    (First safety rule come true
 N05380    (Second safety rule come true
 N05390    (Third safety rule come true
-N05400    G01 X=-368.8  Y1=604.611  FV.L.FeedXY
+N05400    G01 X=194.75  Y1=-21.939  FV.L.FeedXY
 N05410    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05420    G04 0.2
 N05430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05440    G01 X=-230.192  Y1=58.285  FV.L.FeedXY
+N05440    G01 X=-265.436  Y1=111.134  FV.L.FeedXY
 N05450    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05460    G04 0.2
 N05470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N05480  
-N05490    (---------Number of current pin = 38, Type of current pin = 7
+N05490    (---------Number of current pin = 38, Type of current pin = 1
 N05500  
 N05510    (First safety rule come true
 N05520    (Second safety rule come true
 N05530    (Third safety rule come true
-N05540    G01 X=-368.8  Y1=575.611  FV.L.FeedXY
+N05540    G01 X=219.75  Y1=-21.939  FV.L.FeedXY
 N05550    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05560    G04 0.2
 N05570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05580    G01 X=-154.274  Y1=58.285  FV.L.FeedXY
+N05580    G01 X=-265.436  Y1=182.074  FV.L.FeedXY
 N05590    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05600    G04 0.2
 N05610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N05620  
-N05630    (---------Number of current pin = 39, Type of current pin = 7
+N05630    (---------Number of current pin = 39, Type of current pin = 1
 N05640  
 N05650    (First safety rule come true
 N05660    (Second safety rule come true
 N05670    (Third safety rule come true
-N05680    G01 X=-368.8  Y1=546.611  FV.L.FeedXY
+N05680    G01 X=244.75  Y1=-21.939  FV.L.FeedXY
 N05690    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05700    G04 0.2
 N05710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05720    G01 X=-78.356  Y1=58.285  FV.L.FeedXY
+N05720    G01 X=-265.436  Y1=253.014  FV.L.FeedXY
 N05730    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05740    G04 0.2
 N05750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N05760  
-N05770    (---------Number of current pin = 40, Type of current pin = 7
+N05770    (---------Number of current pin = 40, Type of current pin = 1
 N05780  
 N05790    (First safety rule come true
 N05800    (Second safety rule come true
 N05810    (Third safety rule come true
-N05820    G01 X=-368.8  Y1=517.611  FV.L.FeedXY
+N05820    G01 X=269.75  Y1=-21.939  FV.L.FeedXY
 N05830    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05840    G04 0.2
 N05850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N05860    G01 X=-140.659  Y1=86.2  FV.L.FeedXY
+N05860    G01 X=-265.436  Y1=323.954  FV.L.FeedXY
 N05870    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N05880    G04 0.2
 N05890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N05900  
-N05910    (---------Number of current pin = 41, Type of current pin = 7
+N05910    (---------Number of current pin = 41, Type of current pin = 1
 N05920  
 N05930    (First safety rule come true
 N05940    (Second safety rule come true
 N05950    (Third safety rule come true
-N05960    G01 X=-368.8  Y1=488.611  FV.L.FeedXY
+N05960    G01 X=294.75  Y1=-21.939  FV.L.FeedXY
 N05970    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N05980    G04 0.2
 N05990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06000    G01 X=-64.741  Y1=86.2  FV.L.FeedXY
+N06000    G01 X=-198.466  Y1=111.134  FV.L.FeedXY
 N06010    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06020    G04 0.2
 N06030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06040  
-N06050    (---------Number of current pin = 42, Type of current pin = 7
+N06050    (---------Number of current pin = 42, Type of current pin = 1
 N06060  
 N06070    (First safety rule come true
 N06080    (Second safety rule come true
 N06090    (Third safety rule come true
-N06100    G01 X=-368.8  Y1=459.611  FV.L.FeedXY
+N06100    G01 X=319.75  Y1=-21.939  FV.L.FeedXY
 N06110    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06120    G04 0.2
 N06130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06140    G01 X=-2.438  Y1=58.285  FV.L.FeedXY
+N06140    G01 X=-198.466  Y1=182.074  FV.L.FeedXY
 N06150    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06160    G04 0.2
 N06170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06180  
-N06190    (---------Number of current pin = 43, Type of current pin = 7
+N06190    (---------Number of current pin = 43, Type of current pin = 1
 N06200  
 N06210    (First safety rule come true
 N06220    (Second safety rule come true
 N06230    (Third safety rule come true
-N06240    G01 X=-360.2  Y1=590.111  FV.L.FeedXY
+N06240    G01 X=344.75  Y1=-21.939  FV.L.FeedXY
 N06250    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06260    G04 0.2
 N06270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06280    G01 X=11.177  Y1=86.2  FV.L.FeedXY
+N06280    G01 X=-198.466  Y1=253.014  FV.L.FeedXY
 N06290    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06300    G04 0.2
 N06310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06320  
-N06330    (---------Number of current pin = 44, Type of current pin = 7
+N06330    (---------Number of current pin = 44, Type of current pin = 1
 N06340  
 N06350    (First safety rule come true
 N06360    (Second safety rule come true
 N06370    (Third safety rule come true
-N06380    G01 X=-360.2  Y1=561.111  FV.L.FeedXY
+N06380    G01 X=207.25  Y1=-13.339  FV.L.FeedXY
 N06390    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06400    G04 0.2
 N06410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06420    G01 X=73.48  Y1=58.285  FV.L.FeedXY
+N06420    G01 X=-198.466  Y1=323.954  FV.L.FeedXY
 N06430    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06440    G04 0.2
 N06450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06460  
-N06470    (---------Number of current pin = 45, Type of current pin = 3
+N06470    (---------Number of current pin = 45, Type of current pin = 1
 N06480  
 N06490    (First safety rule come true
 N06500    (Second safety rule come true
 N06510    (Third safety rule come true
-N06520    G01 X=-355.75  Y1=-21.939  FV.L.FeedXY
+N06520    G01 X=232.25  Y1=-13.339  FV.L.FeedXY
 N06530    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06540    G04 0.2
 N06550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06560    G01 X=32.784  Y1=253.777  FV.L.FeedXY
+N06560    G01 X=-131.496  Y1=111.134  FV.L.FeedXY
 N06570    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06580    G04 0.2
 N06590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06600  
-N06610    (---------Number of current pin = 46, Type of current pin = 3
+N06610    (---------Number of current pin = 46, Type of current pin = 1
 N06620  
 N06630    (First safety rule come true
 N06640    (Second safety rule come true
 N06650    (Third safety rule come true
-N06660    G01 X=-326.75  Y1=-21.939  FV.L.FeedXY
+N06660    G01 X=257.25  Y1=-13.339  FV.L.FeedXY
 N06670    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06680    G04 0.2
 N06690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06700    G01 X=-43.43  Y1=253.79  FV.L.FeedXY
+N06700    G01 X=-131.496  Y1=182.074  FV.L.FeedXY
 N06710    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06720    G04 0.2
 N06730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06740  
-N06750    (---------Number of current pin = 47, Type of current pin = 3
+N06750    (---------Number of current pin = 47, Type of current pin = 1
 N06760  
 N06770    (First safety rule come true
 N06780    (Second safety rule come true
 N06790    (Third safety rule come true
-N06800    G01 X=-297.75  Y1=-21.939  FV.L.FeedXY
+N06800    G01 X=282.25  Y1=-13.339  FV.L.FeedXY
 N06810    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06820    G04 0.2
 N06830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06840    G01 X=-118.969  Y1=253.797  FV.L.FeedXY
+N06840    G01 X=-131.496  Y1=253.014  FV.L.FeedXY
 N06850    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N06860    G04 0.2
 N06870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N06880  
-N06890    (---------Number of current pin = 48, Type of current pin = 3
+N06890    (---------Number of current pin = 48, Type of current pin = 1
 N06900  
 N06910    (First safety rule come true
 N06920    (Second safety rule come true
 N06930    (Third safety rule come true
-N06940    G01 X=-268.75  Y1=-21.939  FV.L.FeedXY
+N06940    G01 X=307.25  Y1=-13.339  FV.L.FeedXY
 N06950    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N06960    G04 0.2
 N06970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N06980    G01 X=-193.272  Y1=253.786  FV.L.FeedXY
+N06980    G01 X=-131.496  Y1=323.954  FV.L.FeedXY
 N06990    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N07000    G04 0.2
 N07010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N07020  
-N07030    (---------Number of current pin = 49, Type of current pin = 3
+N07030    (---------Number of current pin = 49, Type of current pin = 1
 N07040  
 N07050    (First safety rule come true
 N07060    (Second safety rule come true
 N07070    (Third safety rule come true
-N07080    G01 X=-239.75  Y1=-21.939  FV.L.FeedXY
+N07080    G01 X=332.25  Y1=-13.339  FV.L.FeedXY
 N07090    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N07100    G04 0.2
 N07110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N07120    G01 X=-193.314  Y1=187.011  FV.L.FeedXY
+N07120    G01 X=-271.16  Y1=272.896  FV.L.FeedXY
 N07130    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N07140    G04 0.2
 N07150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N07160  
-N07170    (---------Number of current pin = 50, Type of current pin = 3
+N07170    (---------Number of current pin = 50, Type of current pin = 1
 N07180  
 N07190    (First safety rule come true
 N07200    (Second safety rule come true
 N07210    (Third safety rule come true
-N07220    G01 X=-210.75  Y1=-21.939  FV.L.FeedXY
+N07220    G01 X=357.25  Y1=-13.339  FV.L.FeedXY
 N07230    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N07240    G04 0.2
 N07250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N07260    G01 X=-116.22  Y1=186.994  FV.L.FeedXY
+N07260    G01 X=-204.192  Y1=272.895  FV.L.FeedXY
 N07270    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N07280    G04 0.2
 N07290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N07300  
-N07310    (---------Number of current pin = 51, Type of current pin = 3
+N07310    (---------Number of current pin = 51, Type of current pin = 1
 N07320  
 N07330    (First safety rule come true
 N07340    (Second safety rule come true
 N07350    (Third safety rule come true
-N07360    G01 X=-341.25  Y1=-13.339  FV.L.FeedXY
+N07360    G01 X=194.75  Y1=3.561  FV.L.FeedXY
 N07370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N07380    G04 0.2
 N07390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N07400    G01 X=-41.999  Y1=186.979  FV.L.FeedXY
+N07400    G01 X=-137.221  Y1=272.896  FV.L.FeedXY
 N07410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N07420    G04 0.2
 N07430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N07440  
-N07450    (---------Number of current pin = 52, Type of current pin = 3
+N07450    (---------Number of current pin = 52, Type of current pin = 1
 N07460  
 N07470    (First safety rule come true
 N07480    (Second safety rule come true
 N07490    (Third safety rule come true
-N07500    G01 X=-312.25  Y1=-13.339  FV.L.FeedXY
+N07500    G01 X=219.75  Y1=3.561  FV.L.FeedXY
 N07510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N07520    G04 0.2
 N07530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N07540    G01 X=33.258  Y1=187.007  FV.L.FeedXY
+N07540    G01 X=-137.222  Y1=201.955  FV.L.FeedXY
 N07550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N07560    G04 0.2
 N07570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N07580  
-N07590    (---------Number of current pin = 53, Type of current pin = 3
+N07590    (---------Number of current pin = 53, Type of current pin = 1
 N07600  
 N07610    (First safety rule come true
 N07620    (Second safety rule come true
 N07630    (Third safety rule come true
-N07640    G01 X=-283.25  Y1=-13.339  FV.L.FeedXY
+N07640    G01 X=244.75  Y1=3.561  FV.L.FeedXY
 N07650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
 N07660    G04 0.2
 N07670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-N07680    G01 X=31.557  Y1=120.2  FV.L.FeedXY
+N07680    G01 X=-204.191  Y1=201.955  FV.L.FeedXY
 N07690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
 N07700    G04 0.2
 N07710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
 N07720  
+N07730    (---------Number of current pin = 54, Type of current pin = 1
+N07740  
+N07750    (First safety rule come true
+N07760    (Second safety rule come true
+N07770    (Third safety rule come true
+N07780    G01 X=269.75  Y1=3.561  FV.L.FeedXY
+N07790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
+N07800    G04 0.2
+N07810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
+N07820    G01 X=-271.163  Y1=201.954  FV.L.FeedXY
+N07830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
+N07840    G04 0.2
+N07850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
+N07860  
+N07870    (---------Number of current pin = 55, Type of current pin = 1
+N07880  
+N07890    (First safety rule come true
+N07900    (Second safety rule come true
+N07910    (Third safety rule come true
+N07920    G01 X=294.75  Y1=3.561  FV.L.FeedXY
+N07930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
+N07940    G04 0.2
+N07950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
+N07960    G01 X=-271.162  Y1=131.015  FV.L.FeedXY
+N07970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
+N07980    G04 0.2
+N07990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
+N08000  
+N08010    (---------Number of current pin = 56, Type of current pin = 1
+N08020  
+N08030    (First safety rule come true
+N08040    (Second safety rule come true
+N08050    (Third safety rule come true
+N08060    G01 X=319.75  Y1=3.561  FV.L.FeedXY
+N08070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
+N08080    G04 0.2
+N08090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
+N08100    G01 X=-204.192  Y1=131.015  FV.L.FeedXY
+N08110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
+N08120    G04 0.2
+N08130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
+N08140  
+N08150    (---------Number of current pin = 57, Type of current pin = 1
+N08160  
+N08170    (First safety rule come true
+N08180    (Second safety rule come true
+N08190    (Third safety rule come true
