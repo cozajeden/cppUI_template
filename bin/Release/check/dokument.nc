@@ -1,2 +1,0 @@
-cokolwiek
-asd
