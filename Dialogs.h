@@ -130,6 +130,13 @@ string GetSelectedFromCombo(HWND hWnd)
         return result;
 }
 
+void addLog(string _log, string path)
+{
+    ofstream ofile(path.c_str(),ios::out | ios::app);
+    ofile << _log.c_str() << endl;
+    ofile.close();
+}
+
 //**NOTIFYICON SECTION
 // Get dll version number
 ULONGLONG GetDllVersion(LPCTSTR lpszDllName)

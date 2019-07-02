@@ -5,645 +5,543 @@
 <body>
 <table border="2">
 <tr>
-<td>Podglad pliku:</td><td>Brose_piny.NC</td>
+<td>Podglad pliku:</td><td>UPM_RIGHT-CIECIE.NC</td>
 </tr>
 <tr>
-<td>Data pliku</td><td>2019-Jun-30 14:23:38</td>
+<td>Data pliku</td><td>2019-Jun-30 20:56:56</td>
 </tr>
 <tr>
-<td colspan ="2"><br>1:N00010    (Project: Magnetic_WT_CH1 v1.3.0 - 16 pin storages (Universal program)
-<br>2:N00020    (Program: BROSE_PINY)
-<br>3:N00030    (Machine: GAS SARxxxx 
-<br>4:N00040    (Author: Patryk Panylo /GAS GmbH
-<br>5:N00050  
-<br>6:N00060  
-<br>7:N00070    #VAR
-<br>8:N00080    V.L.FeedZ = 10000
-<br>9:N00090    V.L.FeedXY = 30000
-<br>10:N00100    V.L.UpLevelCoordZ = 68.3
-<br>11:N00110    V.L.PickPinCoordZ = -10.5
-<br>12:N00120    V.L.PlacePinCoordZ = -12.3
-<br>13:N00130    #ENDVAR
-<br>14:N00140  
-<br>15:N00150    #SET AX [X,1,0][Y1,2,1][Z1,3,3]
-<br>16:N00160  
-<br>17:N00170    T0
-<br>18:N00180    L _toolchange_K1.nc
-<br>19:N00190  
-<br>20:N00200    (Main Tool take
-<br>21:N00210    G54
-<br>22:N00220    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ
-<br>23:N00230    G00 G90 X=392.5 Y1=22.861
-<br>24:N00240    M120
-<br>25:N00250    G04 0.5
-<br>26:N00260    G01 FV.L.FeedXY Z1=-13
-<br>27:N00270    M121
-<br>28:N00280    G04 0.1
-<br>29:N00290    Z1=V.L.UpLevelCoordZ
-<br>30:N00300  
-<br>31:N00310    (---------Number of current pin = 1, Type of current pin = 3
-<br>32:N00320  
-<br>33:N00330    (First safety rule come true
-<br>34:N00340    (Second safety rule come true
-<br>35:N00350    (Third safety rule come true
-<br>36:N00360    G01 X=-355.75  Y1=-21.939  FV.L.FeedXY
-<br>37:N00370    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>38:N00380    G04 0.2
-<br>39:N00390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>40:N00400    G01 X=-149.554  Y1=269.374  FV.L.FeedXY
-<br>41:N00410    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>42:N00420    G04 0.2
-<br>43:N00430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>44:N00440  
-<br>45:N00450    (---------Number of current pin = 2, Type of current pin = 3
-<br>46:N00460  
-<br>47:N00470    (First safety rule come true
-<br>48:N00480    (Second safety rule come true
-<br>49:N00490    (Third safety rule come true
-<br>50:N00500    G01 X=-326.75  Y1=-21.939  FV.L.FeedXY
-<br>51:N00510    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>52:N00520    G04 0.2
-<br>53:N00530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>54:N00540    G01 X=-210.662  Y1=269.374  FV.L.FeedXY
-<br>55:N00550    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>56:N00560    G04 0.2
-<br>57:N00570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>58:N00580  
-<br>59:N00590    (---------Number of current pin = 3, Type of current pin = 3
-<br>60:N00600  
-<br>61:N00610    (First safety rule come true
-<br>62:N00620    (Second safety rule come true
-<br>63:N00630    (Third safety rule come true
-<br>64:N00640    G01 X=-297.75  Y1=-21.939  FV.L.FeedXY
-<br>65:N00650    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>66:N00660    G04 0.2
-<br>67:N00670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>68:N00680    G01 X=-282.131  Y1=270.075  FV.L.FeedXY
-<br>69:N00690    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>70:N00700    G04 0.2
-<br>71:N00710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>72:N00720  
-<br>73:N00730    (---------Number of current pin = 4, Type of current pin = 3
-<br>74:N00740  
-<br>75:N00750    (First safety rule come true
-<br>76:N00760    (Second safety rule come true
-<br>77:N00770    (Third safety rule come true
-<br>78:N00780    G01 X=-268.75  Y1=-21.939  FV.L.FeedXY
-<br>79:N00790    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>80:N00800    G04 0.2
-<br>81:N00810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>82:N00820    G01 X=-282.574  Y1=165.068  FV.L.FeedXY
-<br>83:N00830    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>84:N00840    G04 0.2
-<br>85:N00850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>86:N00860  
-<br>87:N00870    (---------Number of current pin = 5, Type of current pin = 3
-<br>88:N00880  
-<br>89:N00890    (First safety rule come true
-<br>90:N00900    (Second safety rule come true
-<br>91:N00910    (Third safety rule come true
-<br>92:N00920    G01 X=-239.75  Y1=-21.939  FV.L.FeedXY
-<br>93:N00930    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>94:N00940    G04 0.2
-<br>95:N00950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>96:N00960    G01 X=-211.105  Y1=164.367  FV.L.FeedXY
-<br>97:N00970    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>98:N00980    G04 0.2
-<br>99:N00990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>100:N01000  
-<br>101:N01010    (---------Number of current pin = 6, Type of current pin = 3
-<br>102:N01020  
-<br>103:N01030    (First safety rule come true
-<br>104:N01040    (Second safety rule come true
-<br>105:N01050    (Third safety rule come true
-<br>106:N01060    G01 X=-210.75  Y1=-21.939  FV.L.FeedXY
-<br>107:N01070    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>108:N01080    G04 0.2
-<br>109:N01090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>110:N01100    G01 X=-149.997  Y1=164.367  FV.L.FeedXY
-<br>111:N01110    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>112:N01120    G04 0.2
-<br>113:N01130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>114:N01140  
-<br>115:N01150    (---------Number of current pin = 7, Type of current pin = 2
-<br>116:N01160  
-<br>117:N01170    (First safety rule come true
-<br>118:N01180    (Second safety rule come true
-<br>119:N01190    (Third safety rule come true
-<br>120:N01200    G01 X=385.7  Y1=606.111  FV.L.FeedXY
-<br>121:N01210    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>122:N01220    G04 0.2
-<br>123:N01230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>124:N01240    G01 X=-141.921  Y1=191.679  FV.L.FeedXY
-<br>125:N01250    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>126:N01260    G04 0.2
-<br>127:N01270    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>128:N01280  
-<br>129:N01290    (---------Number of current pin = 8, Type of current pin = 2
-<br>130:N01300  
-<br>131:N01310    (First safety rule come true
-<br>132:N01320    (Second safety rule come true
-<br>133:N01330    (Third safety rule come true
-<br>134:N01340    G01 X=385.7  Y1=581.111  FV.L.FeedXY
-<br>135:N01350    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>136:N01360    G04 0.2
-<br>137:N01370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>138:N01380    G01 X=-153.814  Y1=198.277  FV.L.FeedXY
-<br>139:N01390    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>140:N01400    G04 0.2
-<br>141:N01410    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>142:N01420  
-<br>143:N01430    (---------Number of current pin = 9, Type of current pin = 2
-<br>144:N01440  
-<br>145:N01450    (First safety rule come true
-<br>146:N01460    (Second safety rule come true
-<br>147:N01470    (Third safety rule come true
-<br>148:N01480    G01 X=385.7  Y1=556.111  FV.L.FeedXY
-<br>149:N01490    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>150:N01500    G04 0.2
-<br>151:N01510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>152:N01520    G01 X=-145.13  Y1=248.924  FV.L.FeedXY
-<br>153:N01530    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>154:N01540    G04 0.2
-<br>155:N01550    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>156:N01560  
-<br>157:N01570    (---------Number of current pin = 10, Type of current pin = 2
-<br>158:N01580  
-<br>159:N01590    (First safety rule come true
-<br>160:N01600    (Second safety rule come true
-<br>161:N01610    (Third safety rule come true
-<br>162:N01620    G01 X=385.7  Y1=531.111  FV.L.FeedXY
-<br>163:N01630    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>164:N01640    G04 0.2
-<br>165:N01650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>166:N01660    G01 X=-206.239  Y1=248.924  FV.L.FeedXY
-<br>167:N01670    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>168:N01680    G04 0.2
-<br>169:N01690    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>170:N01700  
-<br>171:N01710    (---------Number of current pin = 11, Type of current pin = 2
-<br>172:N01720  
-<br>173:N01730    (First safety rule come true
-<br>174:N01740    (Second safety rule come true
-<br>175:N01750    (Third safety rule come true
-<br>176:N01760    G01 X=385.7  Y1=506.111  FV.L.FeedXY
-<br>177:N01770    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>178:N01780    G04 0.2
-<br>179:N01790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>180:N01800    G01 X=-203.03  Y1=191.679  FV.L.FeedXY
-<br>181:N01810    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>182:N01820    G04 0.2
-<br>183:N01830    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>184:N01840  
-<br>185:N01850    (---------Number of current pin = 12, Type of current pin = 2
-<br>186:N01860  
-<br>187:N01870    (First safety rule come true
-<br>188:N01880    (Second safety rule come true
-<br>189:N01890    (Third safety rule come true
-<br>190:N01900    G01 X=385.7  Y1=481.111  FV.L.FeedXY
-<br>191:N01910    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>192:N01920    G04 0.2
-<br>193:N01930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>194:N01940    G01 X=-214.923  Y1=198.277  FV.L.FeedXY
-<br>195:N01950    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>196:N01960    G04 0.2
-<br>197:N01970    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>198:N01980  
-<br>199:N01990    (---------Number of current pin = 13, Type of current pin = 2
-<br>200:N02000  
-<br>201:N02010    (First safety rule come true
-<br>202:N02020    (Second safety rule come true
-<br>203:N02030    (Third safety rule come true
-<br>204:N02040    G01 X=385.7  Y1=456.111  FV.L.FeedXY
-<br>205:N02050    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>206:N02060    G04 0.2
-<br>207:N02070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>208:N02080    G01 X=-277.708  Y1=249.625  FV.L.FeedXY
-<br>209:N02090    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>210:N02100    G04 0.2
-<br>211:N02110    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>212:N02120  
-<br>213:N02130    (---------Number of current pin = 14, Type of current pin = 2
-<br>214:N02140  
-<br>215:N02150    (First safety rule come true
-<br>216:N02160    (Second safety rule come true
-<br>217:N02170    (Third safety rule come true
-<br>218:N02180    G01 X=394.3  Y1=593.611  FV.L.FeedXY
-<br>219:N02190    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>220:N02200    G04 0.2
-<br>221:N02210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>222:N02220    G01 X=-274.499  Y1=192.38  FV.L.FeedXY
-<br>223:N02230    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>224:N02240    G04 0.2
-<br>225:N02250    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>226:N02260  
-<br>227:N02270    (---------Number of current pin = 15, Type of current pin = 2
-<br>228:N02280  
-<br>229:N02290    (First safety rule come true
-<br>230:N02300    (Second safety rule come true
-<br>231:N02310    (Third safety rule come true
-<br>232:N02320    G01 X=394.3  Y1=568.611  FV.L.FeedXY
-<br>233:N02330    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>234:N02340    G04 0.2
-<br>235:N02350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>236:N02360    G01 X=-286.392  Y1=198.978  FV.L.FeedXY
-<br>237:N02370    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>238:N02380    G04 0.2
-<br>239:N02390    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>240:N02400  
-<br>241:N02410    (---------Number of current pin = 16, Type of current pin = 2
-<br>242:N02420  
-<br>243:N02430    (First safety rule come true
-<br>244:N02440    (Second safety rule come true
-<br>245:N02450    (Third safety rule come true
-<br>246:N02460    G01 X=394.3  Y1=543.611  FV.L.FeedXY
-<br>247:N02470    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>248:N02480    G04 0.2
-<br>249:N02490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>250:N02500    G01 X=-278.151  Y1=144.618  FV.L.FeedXY
-<br>251:N02510    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>252:N02520    G04 0.2
-<br>253:N02530    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>254:N02540  
-<br>255:N02550    (---------Number of current pin = 17, Type of current pin = 2
-<br>256:N02560  
-<br>257:N02570    (First safety rule come true
-<br>258:N02580    (Second safety rule come true
-<br>259:N02590    (Third safety rule come true
-<br>260:N02600    G01 X=394.3  Y1=518.611  FV.L.FeedXY
-<br>261:N02610    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>262:N02620    G04 0.2
-<br>263:N02630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>264:N02640    G01 X=-286.835  Y1=93.971  FV.L.FeedXY
-<br>265:N02650    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>266:N02660    G04 0.2
-<br>267:N02670    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>268:N02680  
-<br>269:N02690    (---------Number of current pin = 18, Type of current pin = 2
-<br>270:N02700  
-<br>271:N02710    (First safety rule come true
-<br>272:N02720    (Second safety rule come true
-<br>273:N02730    (Third safety rule come true
-<br>274:N02740    G01 X=394.3  Y1=493.611  FV.L.FeedXY
-<br>275:N02750    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>276:N02760    G04 0.2
-<br>277:N02770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>278:N02780    G01 X=-274.942  Y1=87.373  FV.L.FeedXY
-<br>279:N02790    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>280:N02800    G04 0.2
-<br>281:N02810    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>282:N02820  
-<br>283:N02830    (---------Number of current pin = 19, Type of current pin = 2
-<br>284:N02840  
-<br>285:N02850    (First safety rule come true
-<br>286:N02860    (Second safety rule come true
-<br>287:N02870    (Third safety rule come true
-<br>288:N02880    G01 X=394.3  Y1=468.611  FV.L.FeedXY
-<br>289:N02890    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>290:N02900    G04 0.2
-<br>291:N02910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>292:N02920    G01 X=-206.682  Y1=143.917  FV.L.FeedXY
-<br>293:N02930    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>294:N02940    G04 0.2
-<br>295:N02950    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>296:N02960  
-<br>297:N02970    (---------Number of current pin = 20, Type of current pin = 2
-<br>298:N02980  
-<br>299:N02990    (First safety rule come true
-<br>300:N03000    (Second safety rule come true
-<br>301:N03010    (Third safety rule come true
-<br>302:N03020    G01 X=394.3  Y1=443.611  FV.L.FeedXY
-<br>303:N03030    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>304:N03040    G04 0.2
-<br>305:N03050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>306:N03060    G01 X=-203.473  Y1=86.672  FV.L.FeedXY
-<br>307:N03070    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>308:N03080    G04 0.2
-<br>309:N03090    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>310:N03100  
-<br>311:N03110    (---------Number of current pin = 21, Type of current pin = 2
-<br>312:N03120  
-<br>313:N03130    (First safety rule come true
-<br>314:N03140    (Second safety rule come true
-<br>315:N03150    (Third safety rule come true
-<br>316:N03160    G01 X=385.7  Y1=206.111  FV.L.FeedXY
-<br>317:N03170    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>318:N03180    G04 0.2
-<br>319:N03190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>320:N03200    G01 X=-215.366  Y1=93.27  FV.L.FeedXY
-<br>321:N03210    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>322:N03220    G04 0.2
-<br>323:N03230    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>324:N03240  
-<br>325:N03250    (---------Number of current pin = 22, Type of current pin = 2
-<br>326:N03260  
-<br>327:N03270    (First safety rule come true
-<br>328:N03280    (Second safety rule come true
-<br>329:N03290    (Third safety rule come true
-<br>330:N03300    G01 X=385.7  Y1=181.111  FV.L.FeedXY
-<br>331:N03310    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>332:N03320    G04 0.2
-<br>333:N03330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>334:N03340    G01 X=-145.573  Y1=143.917  FV.L.FeedXY
-<br>335:N03350    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>336:N03360    G04 0.2
-<br>337:N03370    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>338:N03380  
-<br>339:N03390    (---------Number of current pin = 23, Type of current pin = 2
-<br>340:N03400  
-<br>341:N03410    (First safety rule come true
-<br>342:N03420    (Second safety rule come true
-<br>343:N03430    (Third safety rule come true
-<br>344:N03440    G01 X=385.7  Y1=156.111  FV.L.FeedXY
-<br>345:N03450    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>346:N03460    G04 0.2
-<br>347:N03470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>348:N03480    G01 X=-154.257  Y1=93.27  FV.L.FeedXY
-<br>349:N03490    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>350:N03500    G04 0.2
-<br>351:N03510    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>352:N03520  
-<br>353:N03530    (---------Number of current pin = 24, Type of current pin = 2
-<br>354:N03540  
-<br>355:N03550    (First safety rule come true
-<br>356:N03560    (Second safety rule come true
-<br>357:N03570    (Third safety rule come true
-<br>358:N03580    G01 X=385.7  Y1=131.111  FV.L.FeedXY
-<br>359:N03590    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>360:N03600    G04 0.2
-<br>361:N03610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>362:N03620    G01 X=-142.364  Y1=86.672  FV.L.FeedXY
-<br>363:N03630    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>364:N03640    G04 0.2
-<br>365:N03650    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>366:N03660  
-<br>367:N03670    (---------Number of current pin = 25, Type of current pin = 7
-<br>368:N03680  
-<br>369:N03690    (First safety rule come true
-<br>370:N03700    (Second safety rule come true
-<br>371:N03710    (Third safety rule come true
-<br>372:N03720    G01 X=-394.3  Y1=204.611  FV.L.FeedXY
-<br>373:N03730    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>374:N03740    G04 0.2
-<br>375:N03750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>376:N03760    G01 X=-281.835  Y1=124.967  FV.L.FeedXY
-<br>377:N03770    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>378:N03780    G04 0.2
-<br>379:N03790    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>380:N03800  
-<br>381:N03810    (---------Number of current pin = 26, Type of current pin = 7
-<br>382:N03820  
-<br>383:N03830    (First safety rule come true
-<br>384:N03840    (Second safety rule come true
-<br>385:N03850    (Third safety rule come true
-<br>386:N03860    G01 X=-394.3  Y1=175.611  FV.L.FeedXY
-<br>387:N03870    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>388:N03880    G04 0.2
-<br>389:N03890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>390:N03900    G01 X=-247.735  Y1=124.967  FV.L.FeedXY
-<br>391:N03910    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>392:N03920    G04 0.2
-<br>393:N03930    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>394:N03940  
-<br>395:N03950    (---------Number of current pin = 27, Type of current pin = 7
-<br>396:N03960  
-<br>397:N03970    (First safety rule come true
-<br>398:N03980    (Second safety rule come true
-<br>399:N03990    (Third safety rule come true
-<br>400:N04000    G01 X=-394.3  Y1=146.611  FV.L.FeedXY
-<br>401:N04010    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>402:N04020    G04 0.2
-<br>403:N04030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>404:N04040    G01 X=-247.735  Y1=90.467  FV.L.FeedXY
-<br>405:N04050    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>406:N04060    G04 0.2
-<br>407:N04070    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>408:N04080  
-<br>409:N04090    (---------Number of current pin = 28, Type of current pin = 7
-<br>410:N04100  
-<br>411:N04110    (First safety rule come true
-<br>412:N04120    (Second safety rule come true
-<br>413:N04130    (Third safety rule come true
-<br>414:N04140    G01 X=-394.3  Y1=117.611  FV.L.FeedXY
-<br>415:N04150    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>416:N04160    G04 0.2
-<br>417:N04170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>418:N04180    G01 X=-210.366  Y1=124.266  FV.L.FeedXY
-<br>419:N04190    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>420:N04200    G04 0.2
-<br>421:N04210    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>422:N04220  
-<br>423:N04230    (---------Number of current pin = 29, Type of current pin = 7
-<br>424:N04240  
-<br>425:N04250    (First safety rule come true
-<br>426:N04260    (Second safety rule come true
-<br>427:N04270    (Third safety rule come true
-<br>428:N04280    G01 X=-394.3  Y1=88.611  FV.L.FeedXY
-<br>429:N04290    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>430:N04300    G04 0.2
-<br>431:N04310    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>432:N04320    G01 X=-176.266  Y1=124.266  FV.L.FeedXY
-<br>433:N04330    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>434:N04340    G04 0.2
-<br>435:N04350    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>436:N04360  
-<br>437:N04370    (---------Number of current pin = 30, Type of current pin = 7
-<br>438:N04380  
-<br>439:N04390    (First safety rule come true
-<br>440:N04400    (Second safety rule come true
-<br>441:N04410    (Third safety rule come true
-<br>442:N04420    G01 X=-394.3  Y1=59.611  FV.L.FeedXY
-<br>443:N04430    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>444:N04440    G04 0.2
-<br>445:N04450    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>446:N04460    G01 X=-176.266  Y1=89.766  FV.L.FeedXY
-<br>447:N04470    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>448:N04480    G04 0.2
-<br>449:N04490    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>450:N04500  
-<br>451:N04510    (---------Number of current pin = 31, Type of current pin = 7
-<br>452:N04520  
-<br>453:N04530    (First safety rule come true
-<br>454:N04540    (Second safety rule come true
-<br>455:N04550    (Third safety rule come true
-<br>456:N04560    G01 X=-385.7  Y1=190.111  FV.L.FeedXY
-<br>457:N04570    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>458:N04580    G04 0.2
-<br>459:N04590    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>460:N04600    G01 X=-149.258  Y1=124.266  FV.L.FeedXY
-<br>461:N04610    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>462:N04620    G04 0.2
-<br>463:N04630    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>464:N04640  
-<br>465:N04650    (---------Number of current pin = 32, Type of current pin = 7
-<br>466:N04660  
-<br>467:N04670    (First safety rule come true
-<br>468:N04680    (Second safety rule come true
-<br>469:N04690    (Third safety rule come true
-<br>470:N04700    G01 X=-385.7  Y1=161.111  FV.L.FeedXY
-<br>471:N04710    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>472:N04720    G04 0.2
-<br>473:N04730    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>474:N04740    G01 X=-115.158  Y1=124.266  FV.L.FeedXY
-<br>475:N04750    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>476:N04760    G04 0.2
-<br>477:N04770    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>478:N04780  
-<br>479:N04790    (---------Number of current pin = 33, Type of current pin = 7
-<br>480:N04800  
-<br>481:N04810    (First safety rule come true
-<br>482:N04820    (Second safety rule come true
-<br>483:N04830    (Third safety rule come true
-<br>484:N04840    G01 X=-385.7  Y1=132.111  FV.L.FeedXY
-<br>485:N04850    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>486:N04860    G04 0.2
-<br>487:N04870    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>488:N04880    G01 X=-115.158  Y1=89.766  FV.L.FeedXY
-<br>489:N04890    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>490:N04900    G04 0.2
-<br>491:N04910    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>492:N04920  
-<br>493:N04930    (---------Number of current pin = 34, Type of current pin = 7
-<br>494:N04940  
-<br>495:N04950    (First safety rule come true
-<br>496:N04960    (Second safety rule come true
-<br>497:N04970    (Third safety rule come true
-<br>498:N04980    G01 X=-385.7  Y1=103.111  FV.L.FeedXY
-<br>499:N04990    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>500:N05000    G04 0.2
-<br>501:N05010    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>502:N05020    G01 X=-148.815  Y1=229.273  FV.L.FeedXY
-<br>503:N05030    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>504:N05040    G04 0.2
-<br>505:N05050    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>506:N05060  
-<br>507:N05070    (---------Number of current pin = 35, Type of current pin = 7
-<br>508:N05080  
-<br>509:N05090    (First safety rule come true
-<br>510:N05100    (Second safety rule come true
-<br>511:N05110    (Third safety rule come true
-<br>512:N05120    G01 X=-385.7  Y1=74.111  FV.L.FeedXY
-<br>513:N05130    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>514:N05140    G04 0.2
-<br>515:N05150    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>516:N05160    G01 X=-114.715  Y1=229.273  FV.L.FeedXY
-<br>517:N05170    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>518:N05180    G04 0.2
-<br>519:N05190    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>520:N05200  
-<br>521:N05210    (---------Number of current pin = 36, Type of current pin = 7
-<br>522:N05220  
-<br>523:N05230    (First safety rule come true
-<br>524:N05240    (Second safety rule come true
-<br>525:N05250    (Third safety rule come true
-<br>526:N05260    G01 X=-385.7  Y1=45.111  FV.L.FeedXY
-<br>527:N05270    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>528:N05280    G04 0.2
-<br>529:N05290    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>530:N05300    G01 X=-114.715  Y1=194.773  FV.L.FeedXY
-<br>531:N05310    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>532:N05320    G04 0.2
-<br>533:N05330    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>534:N05340  
-<br>535:N05350    (---------Number of current pin = 37, Type of current pin = 7
-<br>536:N05360  
-<br>537:N05370    (First safety rule come true
-<br>538:N05380    (Second safety rule come true
-<br>539:N05390    (Third safety rule come true
-<br>540:N05400    G01 X=-394.3  Y1=604.611  FV.L.FeedXY
-<br>541:N05410    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>542:N05420    G04 0.2
-<br>543:N05430    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>544:N05440    G01 X=-209.923  Y1=229.273  FV.L.FeedXY
-<br>545:N05450    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>546:N05460    G04 0.2
-<br>547:N05470    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>548:N05480  
-<br>549:N05490    (---------Number of current pin = 38, Type of current pin = 7
-<br>550:N05500  
-<br>551:N05510    (First safety rule come true
-<br>552:N05520    (Second safety rule come true
-<br>553:N05530    (Third safety rule come true
-<br>554:N05540    G01 X=-394.3  Y1=575.611  FV.L.FeedXY
-<br>555:N05550    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>556:N05560    G04 0.2
-<br>557:N05570    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>558:N05580    G01 X=-175.823  Y1=229.273  FV.L.FeedXY
-<br>559:N05590    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>560:N05600    G04 0.2
-<br>561:N05610    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>562:N05620  
-<br>563:N05630    (---------Number of current pin = 39, Type of current pin = 7
-<br>564:N05640  
-<br>565:N05650    (First safety rule come true
-<br>566:N05660    (Second safety rule come true
-<br>567:N05670    (Third safety rule come true
-<br>568:N05680    G01 X=-394.3  Y1=546.611  FV.L.FeedXY
-<br>569:N05690    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>570:N05700    G04 0.2
-<br>571:N05710    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>572:N05720    G01 X=-281.392  Y1=229.974  FV.L.FeedXY
-<br>573:N05730    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>574:N05740    G04 0.2
-<br>575:N05750    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>576:N05760  
-<br>577:N05770    (---------Number of current pin = 40, Type of current pin = 7
-<br>578:N05780  
-<br>579:N05790    (First safety rule come true
-<br>580:N05800    (Second safety rule come true
-<br>581:N05810    (Third safety rule come true
-<br>582:N05820    G01 X=-394.3  Y1=517.611  FV.L.FeedXY
-<br>583:N05830    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>584:N05840    G04 0.2
-<br>585:N05850    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>586:N05860    G01 X=-247.292  Y1=229.974  FV.L.FeedXY
-<br>587:N05870    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>588:N05880    G04 0.2
-<br>589:N05890    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>590:N05900  
-<br>591:N05910    (---------Number of current pin = 41, Type of current pin = 7
-<br>592:N05920  
-<br>593:N05930    (First safety rule come true
-<br>594:N05940    (Second safety rule come true
-<br>595:N05950    (Third safety rule come true
-<br>596:N05960    G01 X=-394.3  Y1=488.611  FV.L.FeedXY
-<br>597:N05970    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>598:N05980    G04 0.2
-<br>599:N05990    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>600:N06000    G01 X=-247.292  Y1=195.474  FV.L.FeedXY
-<br>601:N06010    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>602:N06020    G04 0.2
-<br>603:N06030    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>604:N06040  
-<br>605:N06050    (---------Number of current pin = 42, Type of current pin = 7
-<br>606:N06060  
-<br>607:N06070    (First safety rule come true
-<br>608:N06080    (Second safety rule come true
-<br>609:N06090    (Third safety rule come true
-<br>610:N06100    G01 X=-394.3  Y1=459.611  FV.L.FeedXY
-<br>611:N06110    G01 Z1=V.L.PickPinCoordZ  FV.L.FeedZ
-<br>612:N06120    G04 0.2
-<br>613:N06130    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>614:N06140    G01 X=-175.823  Y1=194.773  FV.L.FeedXY
-<br>615:N06150    G01 Z1=V.L.PlacePinCoordZ  FV.L.FeedZ
-<br>616:N06160    G04 0.2
-<br>617:N06170    G01 Z1=V.L.UpLevelCoordZ  FV.L.FeedXY
-<br>618:N06180  
-<br>619:N06190    (Main Tool put away
-<br>620:N06200    G01 FV.L.FeedXY Z1=V.L.UpLevelCoordZ
-<br>621:N06210    G00 G90 X=392.5 Y1=22.861
-<br>622:N06220    G01 FV.L.FeedXY Z1=-13
-<br>623:N06230    M120
-<br>624:N06240    G04 0.2
-<br>625:N06250    Z1=V.L.UpLevelCoordZ
-<br>626:N06260    M121
-<br>627:N06270    G04 0.1
-<br>628:N06280    L _M100_MG.NC
-<br>629:N06290  
-<br>630:N06300    (Pins to Pick And Place = 42 / 144 
-<br>631:N06310    (Errors = 0 
-<br>632:N06320  
-<br>633:N06330    M30
+<td colspan ="2"><br>1:
+<br>2:N00010 M169
+<br>3:N00020 M153
+<br>4:N00030 #SET AX [X,1,0] [Y1,2,1] [Z1,3,2]
+<br>5:N00040 (Programm: UPM-CIECIE)
+<br>6:N00050 (Maschine: GAS)
+<br>7:N00060 (PATH ROUGH CUTTING  ø1.6)
+<br>8:N00070 V.P.RequestedTool=16
+<br>9:N00080 V.P.ZR20=68.3			(Z-Achse Transporthöhe)
+<br>10:N00090 V.P.ZR21=10	 		(Vorposition)
+<br>11:N00100 V.P.ZR24=10	 		(Ausgangsebene = Springhöhe von Steg zu Steg)
+<br>12:N00110 V.P.ZR22=5			(Sicherheitsebene Fräsbeginn oberhalb Werkstück )
+<br>13:N00120 V.P.ZR23=-11.5		        (Fräsebene)
+<br>14:N00130 V.P.Zstep=1.6		( Step Fräserlängenabarbeitung ) 
+<br>15:N00140 V.S.lrBitCutDepth_Ch1 = V.S.lrBitCutDepth_Ch1 + V.P.Zstep 
+<br>16:N00150 $IF V.S.lrBitCutDepth_Ch1 > V.E.lrBitUsableLength OR V.P.Zstep == 0 
+<br>17:N00160 V.S.lrBitCutDepth_Ch1 = 0 
+<br>18:N00170 $ENDIF 
+<br>19:N00180 V.P.ZR23 = V.P.ZR23 - V.S.lrBitCutDepth_Ch1
+<br>20:N00190 V.S.R100=V.S.R100+1
+<br>21:N00200 G00
+<br>22:N00210
+<br>23:N00220 (Database part)
+<br>24:N00230 $IF [V.E.bDB_On == TRUE]					(Database enabled)
+<br>25:N00240 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)
+<br>26:N00250 	G00 X=545.957 Y1=275.09							(Position to read pcb code)
+<br>27:N00260 	M191									(Read PCB code)
+<br>28:N00270 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)
+<br>29:N00280 		M179								(Read database)	
+<br>30:N00290 	$ENDIF
+<br>31:N00300 $ENDIF
+<br>32:N00310
+<br>33:N00320 (Check release part)
+<br>34:N00330 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)
+<br>35:N00340 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)
+<br>36:N00350 	G00 X=470 Y1=1031
+<br>37:N00360 	$GOTO [Homing]
+<br>38:N00370 $ENDIF
+<br>39:N00380
+<br>40:N00390 G55
+<br>41:N00400 G00 Z1=V.P.ZR20
+<br>42:N00410 G92 X=0.25 Y1=-0.05  (OFSSET PANELU DOLNEGO)
+<br>43:N00420 #FLUSH WAIT
+<br>44:N00430 TV.P.RequestedTool
+<br>45:N00440 $IF V.S.R100>=50
+<br>46:N00450  V.S.R100=0
+<br>47:N00460  L _brushcontrol.nc
+<br>48:N00470 $ENDIF
+<br>49:N00480 L _toolchange_K1.nc
+<br>50:N00490 #FLUSH WAIT
+<br>51:N00500 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]
+<br>52:N00510 L _Bitbreakcontrol_K1.nc
+<br>53:N00520 Z1=V.P.ZR20
+<br>54:N00530 #FLUSH WAIT
+<br>55:N00540 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]
+<br>56:N00550 S1 [M03 REV=V.E.lrSpindleRPM]
+<br>57:N00560 $IF V.P.ToolChangeDone==1
+<br>58:N00570  L _CheckBitTipLevel_K1.nc
+<br>59:N00580 $ENDIF
+<br>60:N00590 G00 X283.95 Y1=7.6 Z1=V.P.ZR20
+<br>61:N00600 Z1=V.P.ZR21 
+<br>62:N00610 M108
+<br>63:N00620
+<br>64:N00630 G00 Z1=V.P.ZR22
+<br>65:N00640 G01 Z1=V.P.ZR23 F20000
+<br>66:N00650 X277.65 F1600
+<br>67:N00660 G00 Z1=V.P.ZR24
+<br>68:N00670 (PATH ROUGH CUTTING  ø1.6)
+<br>69:N00680 X230.3 Y1=24.2 Z1=V.P.ZR24
+<br>70:N00690 Z1=V.P.ZR22
+<br>71:N00700 G01 Z1=V.P.ZR23 F20000
+<br>72:N00710 Y1=29.95 F1600
+<br>73:N00720 G00 Z1=V.P.ZR24
+<br>74:N00730 (PATH ROUGH CUTTING  ø1.6)
+<br>75:N00740 X230.3 Y1=65 Z1=V.P.ZR24
+<br>76:N00750 Z1=V.P.ZR22
+<br>77:N00760 G01 Z1=V.P.ZR23 F20000
+<br>78:N00770 Y1=71.3 F1600
+<br>79:N00780 G00 Z1=V.P.ZR24
+<br>80:N00790 (PATH ROUGH CUTTING  ø1.6)
+<br>81:N00800 X277.65 Y1=73.9 Z1=V.P.ZR24
+<br>82:N00810 Z1=V.P.ZR22
+<br>83:N00820 G01 Z1=V.P.ZR23 F20000
+<br>84:N00830 X283.95 F1600
+<br>85:N00840 G00 Z1=V.P.ZR24
+<br>86:N00850 (PATH ROUGH CUTTING  ø1.6)
+<br>87:N00860 X324.1 Y1=71.3 Z1=V.P.ZR24
+<br>88:N00870 Z1=V.P.ZR22
+<br>89:N00880 G01 Z1=V.P.ZR23 F20000
+<br>90:N00890 Y1=65 F1600
+<br>91:N00900 G00 Z1=V.P.ZR24
+<br>92:N00910 (PATH ROUGH CUTTING  ø1.6)
+<br>93:N00920 X324.1 Y1=30.03 Z1=V.P.ZR24
+<br>94:N00930 Z1=V.P.ZR22
+<br>95:N00940 G01 Z1=V.P.ZR23 F20000
+<br>96:N00950 Y1=23.65 F1600
+<br>97:N00960 G00 Z1=V.P.ZR24
+<br>98:N00970 (PATH ROUGH CUTTING  ø1.6)
+<br>99:N00980 X181.752 Y1=7.595 Z1=V.P.ZR24
+<br>100:N00990 Z1=V.P.ZR22
+<br>101:N01000 G01 Z1=V.P.ZR23 F20000
+<br>102:N01010 X175.452 F1600
+<br>103:N01020 G00 Z1=V.P.ZR24
+<br>104:N01030 (PATH ROUGH CUTTING  ø1.6)
+<br>105:N01040 X128.102 Y1=24.195 Z1=V.P.ZR24
+<br>106:N01050 Z1=V.P.ZR22
+<br>107:N01060 G01 Z1=V.P.ZR23 F20000
+<br>108:N01070 Y1=29.945 F1600
+<br>109:N01080 G00 Z1=V.P.ZR24
+<br>110:N01090 (PATH ROUGH CUTTING  ø1.6)
+<br>111:N01100 X128.102 Y1=64.995 Z1=V.P.ZR24
+<br>112:N01110 Z1=V.P.ZR22
+<br>113:N01120 G01 Z1=V.P.ZR23 F20000
+<br>114:N01130 Y1=71.294 F1600
+<br>115:N01140 G00 Z1=V.P.ZR24
+<br>116:N01150 (PATH ROUGH CUTTING  ø1.6)
+<br>117:N01160 X175.452 Y1=73.895 Z1=V.P.ZR24
+<br>118:N01170 Z1=V.P.ZR22
+<br>119:N01180 G01 Z1=V.P.ZR23 F20000
+<br>120:N01190 X181.752 F1600
+<br>121:N01200 G00 Z1=V.P.ZR24
+<br>122:N01210 (PATH ROUGH CUTTING  ø1.6)
+<br>123:N01220 X221.902 Y1=71.294 Z1=V.P.ZR24
+<br>124:N01230 Z1=V.P.ZR22
+<br>125:N01240 G01 Z1=V.P.ZR23 F20000
+<br>126:N01250 Y1=64.995 F1600
+<br>127:N01260 G00 Z1=V.P.ZR24
+<br>128:N01270 (PATH ROUGH CUTTING  ø1.6)
+<br>129:N01280 X221.902 Y1=30.025 Z1=V.P.ZR24
+<br>130:N01290 Z1=V.P.ZR22
+<br>131:N01300 G01 Z1=V.P.ZR23 F20000
+<br>132:N01310 Y1=23.645 F1600
+<br>133:N01320 G00 Z1=V.P.ZR24
+<br>134:N01330 (PATH ROUGH CUTTING  ø1.6)
+<br>135:N01340 X79.55 Y1=7.6 Z1=V.P.ZR24
+<br>136:N01350 Z1=V.P.ZR22
+<br>137:N01360 G01 Z1=V.P.ZR23 F20000
+<br>138:N01370 X73.25 F1600
+<br>139:N01380 G00 Z1=V.P.ZR24
+<br>140:N01390 (PATH ROUGH CUTTING  ø1.6)
+<br>141:N01400 X25.9 Y1=24.2 Z1=V.P.ZR24
+<br>142:N01410 Z1=V.P.ZR22
+<br>143:N01420 G01 Z1=V.P.ZR23 F20000
+<br>144:N01430 Y1=29.95 F1600
+<br>145:N01440 G00 Z1=V.P.ZR24
+<br>146:N01450 (PATH ROUGH CUTTING  ø1.6)
+<br>147:N01460 X25.9 Y1=65 Z1=V.P.ZR24
+<br>148:N01470 Z1=V.P.ZR22
+<br>149:N01480 G01 Z1=V.P.ZR23 F20000
+<br>150:N01490 Y1=71.3 F1600
+<br>151:N01500 G00 Z1=V.P.ZR24
+<br>152:N01510 (PATH ROUGH CUTTING  ø1.6)
+<br>153:N01520 X73.25 Y1=73.9 Z1=V.P.ZR24
+<br>154:N01530 Z1=V.P.ZR22
+<br>155:N01540 G01 Z1=V.P.ZR23 F20000
+<br>156:N01550 X79.55 F1600
+<br>157:N01560 G00 Z1=V.P.ZR24
+<br>158:N01570 (PATH ROUGH CUTTING  ø1.6)
+<br>159:N01580 X119.7 Y1=71.3 Z1=V.P.ZR24
+<br>160:N01590 Z1=V.P.ZR22
+<br>161:N01600 G01 Z1=V.P.ZR23 F20000
+<br>162:N01610 Y1=65 F1600
+<br>163:N01620 G00 Z1=V.P.ZR24
+<br>164:N01630 (PATH ROUGH CUTTING  ø1.6)
+<br>165:N01640 X119.7 Y1=30.03 Z1=V.P.ZR24
+<br>166:N01650 Z1=V.P.ZR22
+<br>167:N01660 G01 Z1=V.P.ZR23 F20000
+<br>168:N01670 Y1=23.65 F1600
+<br>169:N01680 G00 Z1=V.P.ZR24
+<br>170:N01690 (PATH ROUGH CUTTING  ø1.6)
+<br>171:N01700 X79.552 Y1=74.695 Z1=V.P.ZR24
+<br>172:N01710 Z1=V.P.ZR22
+<br>173:N01720 G01 Z1=V.P.ZR23 F20000
+<br>174:N01730 X73.252 F1600
+<br>175:N01740 G00 Z1=V.P.ZR24
+<br>176:N01750 (PATH ROUGH CUTTING  ø1.6)
+<br>177:N01760 X25.902 Y1=91.294 Z1=V.P.ZR24
+<br>178:N01770 Z1=V.P.ZR22
+<br>179:N01780 G01 Z1=V.P.ZR23 F20000
+<br>180:N01790 Y1=97.044 F1600
+<br>181:N01800 G00 Z1=V.P.ZR24
+<br>182:N01810 (PATH ROUGH CUTTING  ø1.6)
+<br>183:N01820 X25.902 Y1=132.095 Z1=V.P.ZR24
+<br>184:N01830 Z1=V.P.ZR22
+<br>185:N01840 G01 Z1=V.P.ZR23 F20000
+<br>186:N01850 Y1=138.394 F1600
+<br>187:N01860 G00 Z1=V.P.ZR24
+<br>188:N01870 (PATH ROUGH CUTTING  ø1.6)
+<br>189:N01880 X73.252 Y1=140.995 Z1=V.P.ZR24
+<br>190:N01890 Z1=V.P.ZR22
+<br>191:N01900 G01 Z1=V.P.ZR23 F20000
+<br>192:N01910 X79.552 F1600
+<br>193:N01920 G00 Z1=V.P.ZR24
+<br>194:N01930 (PATH ROUGH CUTTING  ø1.6)
+<br>195:N01940 X119.702 Y1=138.394 Z1=V.P.ZR24
+<br>196:N01950 Z1=V.P.ZR22
+<br>197:N01960 G01 Z1=V.P.ZR23 F20000
+<br>198:N01970 Y1=132.095 F1600
+<br>199:N01980 G00 Z1=V.P.ZR24
+<br>200:N01990 (PATH ROUGH CUTTING  ø1.6)
+<br>201:N02000 X119.702 Y1=97.124 Z1=V.P.ZR24
+<br>202:N02010 Z1=V.P.ZR22
+<br>203:N02020 G01 Z1=V.P.ZR23 F20000
+<br>204:N02030 Y1=90.745 F1600
+<br>205:N02040 G00 Z1=V.P.ZR24
+<br>206:N02050 (PATH ROUGH CUTTING  ø1.6)
+<br>207:N02060 X181.752 Y1=74.695 Z1=V.P.ZR24
+<br>208:N02070 Z1=V.P.ZR22
+<br>209:N02080 G01 Z1=V.P.ZR23 F20000
+<br>210:N02090 X175.452 F1600
+<br>211:N02100 G00 Z1=V.P.ZR24
+<br>212:N02110 (PATH ROUGH CUTTING  ø1.6)
+<br>213:N02120 X128.102 Y1=91.294 Z1=V.P.ZR24
+<br>214:N02130 Z1=V.P.ZR22
+<br>215:N02140 G01 Z1=V.P.ZR23 F20000
+<br>216:N02150 Y1=97.044 F1600
+<br>217:N02160 G00 Z1=V.P.ZR24
+<br>218:N02170 (PATH ROUGH CUTTING  ø1.6)
+<br>219:N02180 X128.102 Y1=132.095 Z1=V.P.ZR24
+<br>220:N02190 Z1=V.P.ZR22
+<br>221:N02200 G01 Z1=V.P.ZR23 F20000
+<br>222:N02210 Y1=138.394 F1600
+<br>223:N02220 G00 Z1=V.P.ZR24
+<br>224:N02230 (PATH ROUGH CUTTING  ø1.6)
+<br>225:N02240 X175.452 Y1=140.995 Z1=V.P.ZR24
+<br>226:N02250 Z1=V.P.ZR22
+<br>227:N02260 G01 Z1=V.P.ZR23 F20000
+<br>228:N02270 X181.752 F1600
+<br>229:N02280 G00 Z1=V.P.ZR24
+<br>230:N02290 (PATH ROUGH CUTTING  ø1.6)
+<br>231:N02300 X221.902 Y1=138.394 Z1=V.P.ZR24
+<br>232:N02310 Z1=V.P.ZR22
+<br>233:N02320 G01 Z1=V.P.ZR23 F20000
+<br>234:N02330 Y1=132.095 F1600
+<br>235:N02340 G00 Z1=V.P.ZR24
+<br>236:N02350 (PATH ROUGH CUTTING  ø1.6)
+<br>237:N02360 X221.902 Y1=97.124 Z1=V.P.ZR24
+<br>238:N02370 Z1=V.P.ZR22
+<br>239:N02380 G01 Z1=V.P.ZR23 F20000
+<br>240:N02390 Y1=90.745 F1600
+<br>241:N02400 G00 Z1=V.P.ZR24
+<br>242:N02410 (PATH ROUGH CUTTING  ø1.6)
+<br>243:N02420 X283.952 Y1=74.695 Z1=V.P.ZR24
+<br>244:N02430 Z1=V.P.ZR22
+<br>245:N02440 G01 Z1=V.P.ZR23 F20000
+<br>246:N02450 X277.652 F1600
+<br>247:N02460 G00 Z1=V.P.ZR24
+<br>248:N02470 (PATH ROUGH CUTTING  ø1.6)
+<br>249:N02480 X230.302 Y1=91.294 Z1=V.P.ZR24
+<br>250:N02490 Z1=V.P.ZR22
+<br>251:N02500 G01 Z1=V.P.ZR23 F20000
+<br>252:N02510 Y1=97.044 F1600
+<br>253:N02520 G00 Z1=V.P.ZR24
+<br>254:N02530 (PATH ROUGH CUTTING  ø1.6)
+<br>255:N02540 X230.302 Y1=132.095 Z1=V.P.ZR24
+<br>256:N02550 Z1=V.P.ZR22
+<br>257:N02560 G01 Z1=V.P.ZR23 F20000
+<br>258:N02570 Y1=138.394 F1600
+<br>259:N02580 G00 Z1=V.P.ZR24
+<br>260:N02590 (PATH ROUGH CUTTING  ø1.6)
+<br>261:N02600 X277.652 Y1=140.995 Z1=V.P.ZR24
+<br>262:N02610 Z1=V.P.ZR22
+<br>263:N02620 G01 Z1=V.P.ZR23 F20000
+<br>264:N02630 X283.952 F1600
+<br>265:N02640 G00 Z1=V.P.ZR24
+<br>266:N02650 (PATH ROUGH CUTTING  ø1.6)
+<br>267:N02660 X324.102 Y1=138.394 Z1=V.P.ZR24
+<br>268:N02670 Z1=V.P.ZR22
+<br>269:N02680 G01 Z1=V.P.ZR23 F20000
+<br>270:N02690 Y1=132.095 F1600
+<br>271:N02700 G00 Z1=V.P.ZR24
+<br>272:N02710 (PATH ROUGH CUTTING  ø1.6)
+<br>273:N02720 X324.102 Y1=97.124 Z1=V.P.ZR24
+<br>274:N02730 Z1=V.P.ZR22
+<br>275:N02740 G01 Z1=V.P.ZR23 F20000
+<br>276:N02750 Y1=90.745 F1600
+<br>277:N02760 G00 Z1=V.P.ZR24
+<br>278:
+<br>279:
+<br>280:N02761 (drugi panel)
+<br>281:N02762 (ZMIEN WYJEDZ POZA OBSZAR PCB)
+<br>282:N02763 X310.00 Y1=169.095 Z1=V.P.ZR22
+<br>283:N02764 G00 Z1=V.P.ZR22
+<br>284:
+<br>285:N02765 M109 (szczotka do gory)
+<br>286:N02766 G53
+<br>287:
+<br>288:N02767 (Database part)
+<br>289:N02768 $IF [V.E.bDB_On == TRUE]					(Database enabled)
+<br>290:N02769 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)
+<br>291:N02770 	G00 X=545.957 Y1=425.407						(Position to read pcb code)
+<br>292:N02771 	M191									(Read PCB code)
+<br>293:N02772 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)
+<br>294:N02773 		M179								(Read database)	
+<br>295:N02774 	$ENDIF
+<br>296:N02775 $ENDIF
+<br>297:N02776
+<br>298:N02777 (Check release part)
+<br>299:N02778 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)
+<br>300:N02779 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)
+<br>301:N02780 	G00 X=470 Y1=1031
+<br>302:N02781 	$GOTO [Homing]
+<br>303:N02782 $ENDIF
+<br>304:
+<br>305:N02783 G55
+<br>306:N02784 G00 Z1=V.P.ZR20 (offset
+<br>307:N02785 G92 Y1=-0.15 X=0.25 (offset PANELU GORNEGO)
+<br>308:N02786 M108 (szczotka w do³)
+<br>309:N02787 G00
+<br>310:(PATH ROUGH CUTTING  ø1.6)
+<br>311:N02788 X283.952 Y1=169.095 Z1=V.P.ZR24
+<br>312:N02789 Z1=V.P.ZR22
+<br>313:N02790 G01 Z1=V.P.ZR23 F20000
+<br>314:N02800 X277.652 F1600
+<br>315:N02820 G00 Z1=V.P.ZR24
+<br>316:N02830 (PATH ROUGH CUTTING  ø1.6)
+<br>317:N02840 X230.302 Y1=185.695 Z1=V.P.ZR24
+<br>318:N02850 Z1=V.P.ZR22
+<br>319:N02860 G01 Z1=V.P.ZR23 F20000
+<br>320:N02870 Y1=191.445 F1600
+<br>321:N02880 G00 Z1=V.P.ZR24
+<br>322:N02890 (PATH ROUGH CUTTING  ø1.6)
+<br>323:N02900 X230.302 Y1=226.495 Z1=V.P.ZR24
+<br>324:N02910 Z1=V.P.ZR22
+<br>325:N02920 G01 Z1=V.P.ZR23 F20000
+<br>326:N02930 Y1=232.795 F1600
+<br>327:N02940 G00 Z1=V.P.ZR24
+<br>328:N02950 (PATH ROUGH CUTTING  ø1.6)
+<br>329:N02960 X277.652 Y1=235.395 Z1=V.P.ZR24
+<br>330:N02970 Z1=V.P.ZR22
+<br>331:N02980 G01 Z1=V.P.ZR23 F20000
+<br>332:N02990 X283.952 F1600
+<br>333:N03000 G00 Z1=V.P.ZR24
+<br>334:N03010 (PATH ROUGH CUTTING  ø1.6)
+<br>335:N03020 X324.102 Y1=232.795 Z1=V.P.ZR24
+<br>336:N03030 Z1=V.P.ZR22
+<br>337:N03040 G01 Z1=V.P.ZR23 F20000
+<br>338:N03050 Y1=226.495 F1600
+<br>339:N03060 G00 Z1=V.P.ZR24
+<br>340:N03070 (PATH ROUGH CUTTING  ø1.6)
+<br>341:N03080 X324.102 Y1=191.525 Z1=V.P.ZR24
+<br>342:N03090 Z1=V.P.ZR22
+<br>343:N03100 G01 Z1=V.P.ZR23 F20000
+<br>344:N03110 Y1=185.145 F1600
+<br>345:N03120 G00 Z1=V.P.ZR24
+<br>346:N03130 (PATH ROUGH CUTTING  ø1.6)
+<br>347:N03140 X181.752 Y1=169.095 Z1=V.P.ZR24
+<br>348:N03150 Z1=V.P.ZR22
+<br>349:N03160 G01 Z1=V.P.ZR23 F20000
+<br>350:N03170 X175.452 F1600
+<br>351:N03180 G00 Z1=V.P.ZR24
+<br>352:N03190 (PATH ROUGH CUTTING  ø1.6)
+<br>353:N03200 X128.102 Y1=185.695 Z1=V.P.ZR24
+<br>354:N03210 Z1=V.P.ZR22
+<br>355:N03220 G01 Z1=V.P.ZR23 F20000
+<br>356:N03230 Y1=191.445 F1600
+<br>357:N03240 G00 Z1=V.P.ZR24
+<br>358:N03250 (PATH ROUGH CUTTING  ø1.6)
+<br>359:N03260 X128.102 Y1=226.495 Z1=V.P.ZR24
+<br>360:N03270 Z1=V.P.ZR22
+<br>361:N03280 G01 Z1=V.P.ZR23 F20000
+<br>362:N03290 Y1=232.795 F1600
+<br>363:N03300 G00 Z1=V.P.ZR24
+<br>364:N03310 (PATH ROUGH CUTTING  ø1.6)
+<br>365:N03320 X175.452 Y1=235.395 Z1=V.P.ZR24
+<br>366:N03330 Z1=V.P.ZR22
+<br>367:N03340 G01 Z1=V.P.ZR23 F20000
+<br>368:N03350 X181.752 F1600
+<br>369:N03360 G00 Z1=V.P.ZR24
+<br>370:N03370 (PATH ROUGH CUTTING  ø1.6)
+<br>371:N03380 X221.902 Y1=232.795 Z1=V.P.ZR24
+<br>372:N03390 Z1=V.P.ZR22
+<br>373:N03400 G01 Z1=V.P.ZR23 F20000
+<br>374:N03410 Y1=226.495 F1600
+<br>375:N03420 G00 Z1=V.P.ZR24
+<br>376:N03430 (PATH ROUGH CUTTING  ø1.6)
+<br>377:N03440 X221.902 Y1=191.525 Z1=V.P.ZR24
+<br>378:N03450 Z1=V.P.ZR22
+<br>379:N03460 G01 Z1=V.P.ZR23 F20000
+<br>380:N03470 Y1=185.145 F1600
+<br>381:N03480 G00 Z1=V.P.ZR24
+<br>382:N03490 (PATH ROUGH CUTTING  ø1.6)
+<br>383:N03500 X79.552 Y1=169.095 Z1=V.P.ZR24
+<br>384:N03510 Z1=V.P.ZR22
+<br>385:N03520 G01 Z1=V.P.ZR23 F20000
+<br>386:N03530 X73.252 F1600
+<br>387:N03540 G00 Z1=V.P.ZR24
+<br>388:N03550 (PATH ROUGH CUTTING  ø1.6)
+<br>389:N03560 X25.902 Y1=185.695 Z1=V.P.ZR24
+<br>390:N03570 Z1=V.P.ZR22
+<br>391:N03580 G01 Z1=V.P.ZR23 F20000
+<br>392:N03590 Y1=191.445 F1600
+<br>393:N03600 G00 Z1=V.P.ZR24
+<br>394:N03610 (PATH ROUGH CUTTING  ø1.6)
+<br>395:N03620 X25.902 Y1=226.495 Z1=V.P.ZR24
+<br>396:N03630 Z1=V.P.ZR22
+<br>397:N03640 G01 Z1=V.P.ZR23 F20000
+<br>398:N03650 Y1=232.795 F1600
+<br>399:N03660 G00 Z1=V.P.ZR24
+<br>400:N03670 (PATH ROUGH CUTTING  ø1.6)
+<br>401:N03680 X73.252 Y1=235.395 Z1=V.P.ZR24
+<br>402:N03690 Z1=V.P.ZR22
+<br>403:N03700 G01 Z1=V.P.ZR23 F20000
+<br>404:N03710 X79.552 F1600
+<br>405:N03720 G00 Z1=V.P.ZR24
+<br>406:N03730 (PATH ROUGH CUTTING  ø1.6)
+<br>407:N03740 X119.702 Y1=232.795 Z1=V.P.ZR24
+<br>408:N03750 Z1=V.P.ZR22
+<br>409:N03760 G01 Z1=V.P.ZR23 F20000
+<br>410:N03770 Y1=226.495 F1600
+<br>411:N03780 G00 Z1=V.P.ZR24
+<br>412:N03790 (PATH ROUGH CUTTING  ø1.6)
+<br>413:N03800 X119.702 Y1=191.525 Z1=V.P.ZR24
+<br>414:N03810 Z1=V.P.ZR22
+<br>415:N03820 G01 Z1=V.P.ZR23 F20000
+<br>416:N03830 Y1=185.145 F1600
+<br>417:N03840 G00 Z1=V.P.ZR24
+<br>418:N03850 (PATH ROUGH CUTTING  ø1.6)
+<br>419:N03860 X79.552 Y1=236.195 Z1=V.P.ZR24
+<br>420:N03870 Z1=V.P.ZR22
+<br>421:N03880 G01 Z1=V.P.ZR23 F20000
+<br>422:N03890 X73.252 F1600
+<br>423:N03900 G00 Z1=V.P.ZR24
+<br>424:N03910 (PATH ROUGH CUTTING  ø1.6)
+<br>425:N03920 X25.902 Y1=252.795 Z1=V.P.ZR24
+<br>426:N03930 Z1=V.P.ZR22
+<br>427:N03940 G01 Z1=V.P.ZR23 F20000
+<br>428:N03950 Y1=258.545 F1600
+<br>429:N03960 G00 Z1=V.P.ZR24
+<br>430:N03970 (PATH ROUGH CUTTING  ø1.6)
+<br>431:N03980 X25.902 Y1=293.595 Z1=V.P.ZR24
+<br>432:N03990 Z1=V.P.ZR22
+<br>433:N04000 G01 Z1=V.P.ZR23 F20000
+<br>434:N04010 Y1=299.894 F1600
+<br>435:N04020 G00 Z1=V.P.ZR24
+<br>436:N04030 (PATH ROUGH CUTTING  ø1.6)
+<br>437:N04040 X73.252 Y1=302.495 Z1=V.P.ZR24
+<br>438:N04050 Z1=V.P.ZR22
+<br>439:N04060 G01 Z1=V.P.ZR23 F20000
+<br>440:N04070 X79.552 F1600
+<br>441:N04080 G00 Z1=V.P.ZR24
+<br>442:N04090 (PATH ROUGH CUTTING  ø1.6)
+<br>443:N04100 X119.702 Y1=299.894 Z1=V.P.ZR24
+<br>444:N04110 Z1=V.P.ZR22
+<br>445:N04120 G01 Z1=V.P.ZR23 F20000
+<br>446:N04130 Y1=293.595 F1600
+<br>447:N04140 G00 Z1=V.P.ZR24
+<br>448:N04150 (PATH ROUGH CUTTING  ø1.6)
+<br>449:N04160 X119.702 Y1=258.625 Z1=V.P.ZR24
+<br>450:N04170 Z1=V.P.ZR22
+<br>451:N04180 G01 Z1=V.P.ZR23 F20000
+<br>452:N04190 Y1=252.245 F1600
+<br>453:N04200 G00 Z1=V.P.ZR24
+<br>454:N04210 (PATH ROUGH CUTTING  ø1.6)
+<br>455:N04220 X181.752 Y1=236.195 Z1=V.P.ZR24
+<br>456:N04230 Z1=V.P.ZR22
+<br>457:N04240 G01 Z1=V.P.ZR23 F20000
+<br>458:N04250 X175.452 F1600
+<br>459:N04260 G00 Z1=V.P.ZR24
+<br>460:N04270 (PATH ROUGH CUTTING  ø1.6)
+<br>461:N04280 X128.102 Y1=252.795 Z1=V.P.ZR24
+<br>462:N04290 Z1=V.P.ZR22
+<br>463:N04300 G01 Z1=V.P.ZR23 F20000
+<br>464:N04310 Y1=258.545 F1600
+<br>465:N04320 G00 Z1=V.P.ZR24
+<br>466:N04330 (PATH ROUGH CUTTING  ø1.6)
+<br>467:N04340 X128.102 Y1=293.595 Z1=V.P.ZR24
+<br>468:N04350 Z1=V.P.ZR22
+<br>469:N04360 G01 Z1=V.P.ZR23 F20000
+<br>470:N04370 Y1=299.894 F1600
+<br>471:N04380 G00 Z1=V.P.ZR24
+<br>472:N04390 (PATH ROUGH CUTTING  ø1.6)
+<br>473:N04400 X175.452 Y1=302.495 Z1=V.P.ZR24
+<br>474:N04410 Z1=V.P.ZR22
+<br>475:N04420 G01 Z1=V.P.ZR23 F20000
+<br>476:N04430 X181.752 F1600
+<br>477:N04440 G00 Z1=V.P.ZR24
+<br>478:N04450 (PATH ROUGH CUTTING  ø1.6)
+<br>479:N04460 X221.902 Y1=299.894 Z1=V.P.ZR24
+<br>480:N04470 Z1=V.P.ZR22
+<br>481:N04480 G01 Z1=V.P.ZR23 F20000
+<br>482:N04490 Y1=293.595 F1600
+<br>483:N04500 G00 Z1=V.P.ZR24
+<br>484:N04510 (PATH ROUGH CUTTING  ø1.6)
+<br>485:N04520 X221.902 Y1=258.625 Z1=V.P.ZR24
+<br>486:N04530 Z1=V.P.ZR22
+<br>487:N04540 G01 Z1=V.P.ZR23 F20000
+<br>488:N04550 Y1=252.245 F1600
+<br>489:N04560 G00 Z1=V.P.ZR24
+<br>490:N04570 (PATH ROUGH CUTTING  ø1.6)
+<br>491:N04580 X283.952 Y1=236.195 Z1=V.P.ZR24
+<br>492:N04590 Z1=V.P.ZR22
+<br>493:N04600 G01 Z1=V.P.ZR23 F20000
+<br>494:N04610 X277.652 F1600
+<br>495:N04620 G00 Z1=V.P.ZR24
+<br>496:N04630 (PATH ROUGH CUTTING  ø1.6)
+<br>497:N04640 X230.302 Y1=252.795 Z1=V.P.ZR24
+<br>498:N04650 Z1=V.P.ZR22
+<br>499:N04660 G01 Z1=V.P.ZR23 F20000
+<br>500:N04670 Y1=258.545 F1600
+<br>501:N04680 G00 Z1=V.P.ZR24
+<br>502:N04690 (PATH ROUGH CUTTING  ø1.6)
+<br>503:N04700 X230.302 Y1=293.595 Z1=V.P.ZR24
+<br>504:N04710 Z1=V.P.ZR22
+<br>505:N04720 G01 Z1=V.P.ZR23 F20000
+<br>506:N04730 Y1=299.894 F1600
+<br>507:N04740 G00 Z1=V.P.ZR24
+<br>508:N04750 (PATH ROUGH CUTTING  ø1.6)
+<br>509:N04760 X277.652 Y1=302.495 Z1=V.P.ZR24
+<br>510:N04770 Z1=V.P.ZR22
+<br>511:N04780 G01 Z1=V.P.ZR23 F20000
+<br>512:N04790 X283.952 F1600
+<br>513:N04800 G00 Z1=V.P.ZR24
+<br>514:N04810 (PATH ROUGH CUTTING  ø1.6)
+<br>515:N04820 X324.102 Y1=299.894 Z1=V.P.ZR24
+<br>516:N04830 Z1=V.P.ZR22
+<br>517:N04840 G01 Z1=V.P.ZR23 F20000
+<br>518:N04850 Y1=293.595 F1600
+<br>519:N04860 G00 Z1=V.P.ZR24
+<br>520:N04870 (PATH ROUGH CUTTING  ø1.6)
+<br>521:N04880 X324.102 Y1=258.625 Z1=V.P.ZR24
+<br>522:N04890 Z1=V.P.ZR22
+<br>523:N04900 G01 Z1=V.P.ZR23 F20000
+<br>524:N04910 Y1=252.245 F1600
+<br>525:N04920 G00 Z1=V.P.ZR24
+<br>526:N04930 [Homing]
+<br>527:N04940 M109
+<br>528:N04950 #ROTATION OFF
+<br>529:N04960 G00 Z1=V.P.ZR20
+<br>530:N04970 L _M100.nc
+<br>531:N04980 M30
 </td>
 </tr>:
 </table>

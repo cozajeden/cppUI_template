@@ -16,6 +16,7 @@
 #include <malloc.h>
 #include <memory.h>
 #include <winver.h>
+#include <fstream>
 using namespace std;
 #include "Dialogs.h"
 #include "include/configuration.h"

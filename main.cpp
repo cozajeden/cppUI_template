@@ -292,6 +292,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                 if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
                                     try{
                                         bDirectory.fContainer[i].saveFile(conf.scanDir + backupPath, backupName);
+                                        backupPath = GetTimeFromFormat(GetFormatedTime()) + " :Przywrocono: " + conf.scanDir + backupPath + "\\" + backupName;
+                                        backupName = conf.instancePath + "log.txt";
+                                        addLog(backupPath, backupName);
                                     }catch(exception& e){
                                         MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
                                     }
@@ -320,6 +323,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                 if(selectedFile == backupFileforCompare && GetFormatedTimeFromFileName(bDirectory.fContainer[i].fName) == selectedDate)
                                     try{
                                         bDirectory.fContainer[i].saveFile(conf.scanDir + backupPath, backupName);
+                                        backupPath = GetTimeFromFormat(GetFormatedTime()) + " :Przywrocono: " + conf.scanDir + backupPath + "\\" + backupName;
+                                        backupName = conf.instancePath + "log.txt";
+                                        addLog(backupPath, backupName);
                                     }catch(exception& e){
                                         MessageBox(hwnd, "Sprawdz czy plik nie jest \n uzywany przez inny program", "Niepowodzenie", MB_OKCANCEL);
                                     }
@@ -620,6 +626,9 @@ LRESULT CALLBACK WindowProcedure (HWND hwnd, UINT message, WPARAM wParam, LPARAM
                                                 string resultBackupPath = conf.backupDir + tempScanPath;
                                                 string resultBackupFile = GetFormatedTime() + tempScanFile;
                                                 sDirectory.fContainer[i].saveFile(resultBackupPath, resultBackupFile);
+                                                resultBackupPath = GetTimeFromName(resultBackupFile) + " :Utworzono kopie: " + conf.scanDir + tempScanPath + "\\" + tempScanFile;
+                                                resultBackupFile = conf.instancePath + "log.txt";
+                                                addLog(resultBackupPath, resultBackupFile);
                                             }
                                         }
                                 }else

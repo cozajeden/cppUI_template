@@ -1,0 +1,12 @@
+2019-Jul-02 20:14:44 :Przywrocono: Y:\projekty\test\bin\Release\Bearbeitungsprg\PINY\AcrGen2\ACRGEN2_PINY.NC
+2019-Jul-02 20:15:55 :Przywrocono: Y:\projekty\test\bin\Release\Bearbeitungsprg\PINY\BROSE\Brose_piny_A.NC
+2019-Jul-02 20:22:53 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\Fikstura\Phillips26.NC
+2019-Jul-02 20:22:54 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\Fikstura\Phillips26_ciecie.NC
+2019-Jul-02 20:22:55 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\Nowy program\PHILIPS26_CALY.NC
+2019-Jul-02 20:22:57 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\Nowy program\PHILIPS26_CALY_CIECIE.NC
+2019-Jul-02 20:22:58 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\Nowy program\PHILIPS26_CALY_PINY.NC
+2019-Jul-02 20:23:01 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\Philips26.NC
+2019-Jul-02 20:23:01 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\PHILIPS26_ciecie_1z2.NC
+2019-Jul-02 20:23:02 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\PHILIPS26_ciecie_2z2.NC
+2019-Jul-02 20:23:03 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\PHILIPS26_piny_1z2.NC
+2019-Jul-02 20:23:05 :Utworzono kopie: Y:\projekty\test\bin\Release\Bearbeitungsprg\ROZCINANIE\26\PHILIPS26_piny_2z2.NC
