@@ -6,29 +6,1082 @@
 <table border="2">
 <tr>
 <td colspan="2">Podglad pluku:</td>
-<td colspan="2">awantura.nc</td>
+<td colspan="2">UPM_RIGHT-CIECIE.NC</td>
 </tr>
 <tr>
 <td>Data pliku1:</td>
-<td>2019-Jun-21 13:01:26</td>
+<td>2019-Jun-30 20:54:08</td>
 <td>Data pliku2:</td>
-<td>2019-Jun-22 09:21:15</td>
+<td>2019-Jun-30 20:56:56</td>
 </tr>
 <tr>
 <td colspan ="4"><p style="text-align:center" ><font color="red"><b>Roznice pomiedzy plikami uwydatniono czerwonym kolorem</b></font></p>
 </tr>
 <tr>
 <p>
-<td colspan="2"><br><font color="black">1:tratatata</font>
-<br><font color="black">2:tom</font>
-<br><font color="red"><b>3:tata</b></font>
-<br> 
-<br> 
+<td colspan="2"><br><font color="black">1:</font>
+<br><font color="black">2:N00010 M169</font>
+<br><font color="black">3:N00020 M153</font>
+<br><font color="black">4:N00030 #SET AX [X,1,0] [Y1,2,1] [Z1,3,2]</font>
+<br><font color="black">5:N00040 (Programm: UPM-CIECIE)</font>
+<br><font color="black">6:N00050 (Maschine: GAS)</font>
+<br><font color="black">7:N00060 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">8:N00070 V.P.RequestedTool=16</font>
+<br><font color="black">9:N00080 V.P.ZR20=68.3			(Z-Achse Transporthöhe)</font>
+<br><font color="black">10:N00090 V.P.ZR21=10	 		(Vorposition)</font>
+<br><font color="black">11:N00100 V.P.ZR24=10	 		(Ausgangsebene = Springhöhe von Steg zu Steg)</font>
+<br><font color="black">12:N00110 V.P.ZR22=5			(Sicherheitsebene Fräsbeginn oberhalb Werkstück )</font>
+<br><font color="black">13:N00120 V.P.ZR23=-11.5		        (Fräsebene)</font>
+<br><font color="black">14:N00130 V.P.Zstep=1.6		( Step Fräserlängenabarbeitung ) </font>
+<br><font color="black">15:N00140 V.S.lrBitCutDepth_Ch1 = V.S.lrBitCutDepth_Ch1 + V.P.Zstep </font>
+<br><font color="black">16:N00150 $IF V.S.lrBitCutDepth_Ch1 > V.E.lrBitUsableLength OR V.P.Zstep == 0 </font>
+<br><font color="black">17:N00160 V.S.lrBitCutDepth_Ch1 = 0 </font>
+<br><font color="black">18:N00170 $ENDIF </font>
+<br><font color="black">19:N00180 V.P.ZR23 = V.P.ZR23 - V.S.lrBitCutDepth_Ch1</font>
+<br><font color="black">20:N00190 V.S.R100=V.S.R100+1</font>
+<br><font color="black">21:N00200 G00</font>
+<br><font color="black">22:N00210</font>
+<br><font color="black">23:N00220 (Database part)</font>
+<br><font color="black">24:N00230 $IF [V.E.bDB_On == TRUE]					(Database enabled)</font>
+<br><font color="black">25:N00240 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">26:N00250 	G00 X=545.957 Y1=275.09							(Position to read pcb code)</font>
+<br><font color="black">27:N00260 	M191									(Read PCB code)</font>
+<br><font color="black">28:N00270 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)</font>
+<br><font color="black">29:N00280 		M179								(Read database)	</font>
+<br><font color="black">30:N00290 	$ENDIF</font>
+<br><font color="black">31:N00300 $ENDIF</font>
+<br><font color="black">32:N00310</font>
+<br><font color="black">33:N00320 (Check release part)</font>
+<br><font color="black">34:N00330 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)</font>
+<br><font color="black">35:N00340 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">36:N00350 	G00 X=470 Y1=1031</font>
+<br><font color="black">37:N00360 	$GOTO [Homing]</font>
+<br><font color="black">38:N00370 $ENDIF</font>
+<br><font color="black">39:N00380</font>
+<br><font color="black">40:N00390 G55</font>
+<br><font color="black">41:N00400 G00 Z1=V.P.ZR20</font>
+<br><font color="red"><b>42:N00410 G92 X=0.25 Y1=-0.15  (OFSSET PANELU DOLNEGO)</b></font>
+<br><font color="black">43:N00420 #FLUSH WAIT</font>
+<br><font color="black">44:N00430 TV.P.RequestedTool</font>
+<br><font color="black">45:N00440 $IF V.S.R100>=50</font>
+<br><font color="black">46:N00450  V.S.R100=0</font>
+<br><font color="black">47:N00460  L _brushcontrol.nc</font>
+<br><font color="black">48:N00470 $ENDIF</font>
+<br><font color="black">49:N00480 L _toolchange_K1.nc</font>
+<br><font color="black">50:N00490 #FLUSH WAIT</font>
+<br><font color="black">51:N00500 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
+<br><font color="black">52:N00510 L _Bitbreakcontrol_K1.nc</font>
+<br><font color="black">53:N00520 Z1=V.P.ZR20</font>
+<br><font color="black">54:N00530 #FLUSH WAIT</font>
+<br><font color="black">55:N00540 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
+<br><font color="black">56:N00550 S1 [M03 REV=V.E.lrSpindleRPM]</font>
+<br><font color="black">57:N00560 $IF V.P.ToolChangeDone==1</font>
+<br><font color="black">58:N00570  L _CheckBitTipLevel_K1.nc</font>
+<br><font color="black">59:N00580 $ENDIF</font>
+<br><font color="black">60:N00590 G00 X283.95 Y1=7.6 Z1=V.P.ZR20</font>
+<br><font color="black">61:N00600 Z1=V.P.ZR21 </font>
+<br><font color="black">62:N00610 M108</font>
+<br><font color="black">63:N00620</font>
+<br><font color="black">64:N00630 G00 Z1=V.P.ZR22</font>
+<br><font color="black">65:N00640 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">66:N00650 X277.65 F1600</font>
+<br><font color="black">67:N00660 G00 Z1=V.P.ZR24</font>
+<br><font color="black">68:N00670 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">69:N00680 X230.3 Y1=24.2 Z1=V.P.ZR24</font>
+<br><font color="black">70:N00690 Z1=V.P.ZR22</font>
+<br><font color="black">71:N00700 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">72:N00710 Y1=29.95 F1600</font>
+<br><font color="black">73:N00720 G00 Z1=V.P.ZR24</font>
+<br><font color="black">74:N00730 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">75:N00740 X230.3 Y1=65 Z1=V.P.ZR24</font>
+<br><font color="black">76:N00750 Z1=V.P.ZR22</font>
+<br><font color="black">77:N00760 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">78:N00770 Y1=71.3 F1600</font>
+<br><font color="black">79:N00780 G00 Z1=V.P.ZR24</font>
+<br><font color="black">80:N00790 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">81:N00800 X277.65 Y1=73.9 Z1=V.P.ZR24</font>
+<br><font color="black">82:N00810 Z1=V.P.ZR22</font>
+<br><font color="black">83:N00820 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">84:N00830 X283.95 F1600</font>
+<br><font color="black">85:N00840 G00 Z1=V.P.ZR24</font>
+<br><font color="black">86:N00850 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">87:N00860 X324.1 Y1=71.3 Z1=V.P.ZR24</font>
+<br><font color="black">88:N00870 Z1=V.P.ZR22</font>
+<br><font color="black">89:N00880 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">90:N00890 Y1=65 F1600</font>
+<br><font color="black">91:N00900 G00 Z1=V.P.ZR24</font>
+<br><font color="black">92:N00910 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">93:N00920 X324.1 Y1=30.03 Z1=V.P.ZR24</font>
+<br><font color="black">94:N00930 Z1=V.P.ZR22</font>
+<br><font color="black">95:N00940 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">96:N00950 Y1=23.65 F1600</font>
+<br><font color="black">97:N00960 G00 Z1=V.P.ZR24</font>
+<br><font color="black">98:N00970 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">99:N00980 X181.752 Y1=7.595 Z1=V.P.ZR24</font>
+<br><font color="black">100:N00990 Z1=V.P.ZR22</font>
+<br><font color="black">101:N01000 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">102:N01010 X175.452 F1600</font>
+<br><font color="black">103:N01020 G00 Z1=V.P.ZR24</font>
+<br><font color="black">104:N01030 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">105:N01040 X128.102 Y1=24.195 Z1=V.P.ZR24</font>
+<br><font color="black">106:N01050 Z1=V.P.ZR22</font>
+<br><font color="black">107:N01060 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">108:N01070 Y1=29.945 F1600</font>
+<br><font color="black">109:N01080 G00 Z1=V.P.ZR24</font>
+<br><font color="black">110:N01090 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">111:N01100 X128.102 Y1=64.995 Z1=V.P.ZR24</font>
+<br><font color="black">112:N01110 Z1=V.P.ZR22</font>
+<br><font color="black">113:N01120 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">114:N01130 Y1=71.294 F1600</font>
+<br><font color="black">115:N01140 G00 Z1=V.P.ZR24</font>
+<br><font color="black">116:N01150 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">117:N01160 X175.452 Y1=73.895 Z1=V.P.ZR24</font>
+<br><font color="black">118:N01170 Z1=V.P.ZR22</font>
+<br><font color="black">119:N01180 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">120:N01190 X181.752 F1600</font>
+<br><font color="black">121:N01200 G00 Z1=V.P.ZR24</font>
+<br><font color="black">122:N01210 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">123:N01220 X221.902 Y1=71.294 Z1=V.P.ZR24</font>
+<br><font color="black">124:N01230 Z1=V.P.ZR22</font>
+<br><font color="black">125:N01240 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">126:N01250 Y1=64.995 F1600</font>
+<br><font color="black">127:N01260 G00 Z1=V.P.ZR24</font>
+<br><font color="black">128:N01270 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">129:N01280 X221.902 Y1=30.025 Z1=V.P.ZR24</font>
+<br><font color="black">130:N01290 Z1=V.P.ZR22</font>
+<br><font color="black">131:N01300 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">132:N01310 Y1=23.645 F1600</font>
+<br><font color="black">133:N01320 G00 Z1=V.P.ZR24</font>
+<br><font color="black">134:N01330 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">135:N01340 X79.55 Y1=7.6 Z1=V.P.ZR24</font>
+<br><font color="black">136:N01350 Z1=V.P.ZR22</font>
+<br><font color="black">137:N01360 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">138:N01370 X73.25 F1600</font>
+<br><font color="black">139:N01380 G00 Z1=V.P.ZR24</font>
+<br><font color="black">140:N01390 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">141:N01400 X25.9 Y1=24.2 Z1=V.P.ZR24</font>
+<br><font color="black">142:N01410 Z1=V.P.ZR22</font>
+<br><font color="black">143:N01420 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">144:N01430 Y1=29.95 F1600</font>
+<br><font color="black">145:N01440 G00 Z1=V.P.ZR24</font>
+<br><font color="black">146:N01450 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">147:N01460 X25.9 Y1=65 Z1=V.P.ZR24</font>
+<br><font color="black">148:N01470 Z1=V.P.ZR22</font>
+<br><font color="black">149:N01480 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">150:N01490 Y1=71.3 F1600</font>
+<br><font color="black">151:N01500 G00 Z1=V.P.ZR24</font>
+<br><font color="black">152:N01510 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">153:N01520 X73.25 Y1=73.9 Z1=V.P.ZR24</font>
+<br><font color="black">154:N01530 Z1=V.P.ZR22</font>
+<br><font color="black">155:N01540 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">156:N01550 X79.55 F1600</font>
+<br><font color="black">157:N01560 G00 Z1=V.P.ZR24</font>
+<br><font color="black">158:N01570 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">159:N01580 X119.7 Y1=71.3 Z1=V.P.ZR24</font>
+<br><font color="black">160:N01590 Z1=V.P.ZR22</font>
+<br><font color="black">161:N01600 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">162:N01610 Y1=65 F1600</font>
+<br><font color="black">163:N01620 G00 Z1=V.P.ZR24</font>
+<br><font color="black">164:N01630 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">165:N01640 X119.7 Y1=30.03 Z1=V.P.ZR24</font>
+<br><font color="black">166:N01650 Z1=V.P.ZR22</font>
+<br><font color="black">167:N01660 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">168:N01670 Y1=23.65 F1600</font>
+<br><font color="black">169:N01680 G00 Z1=V.P.ZR24</font>
+<br><font color="black">170:N01690 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">171:N01700 X79.552 Y1=74.695 Z1=V.P.ZR24</font>
+<br><font color="black">172:N01710 Z1=V.P.ZR22</font>
+<br><font color="black">173:N01720 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">174:N01730 X73.252 F1600</font>
+<br><font color="black">175:N01740 G00 Z1=V.P.ZR24</font>
+<br><font color="black">176:N01750 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">177:N01760 X25.902 Y1=91.294 Z1=V.P.ZR24</font>
+<br><font color="black">178:N01770 Z1=V.P.ZR22</font>
+<br><font color="black">179:N01780 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">180:N01790 Y1=97.044 F1600</font>
+<br><font color="black">181:N01800 G00 Z1=V.P.ZR24</font>
+<br><font color="black">182:N01810 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">183:N01820 X25.902 Y1=132.095 Z1=V.P.ZR24</font>
+<br><font color="black">184:N01830 Z1=V.P.ZR22</font>
+<br><font color="black">185:N01840 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">186:N01850 Y1=138.394 F1600</font>
+<br><font color="black">187:N01860 G00 Z1=V.P.ZR24</font>
+<br><font color="black">188:N01870 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">189:N01880 X73.252 Y1=140.995 Z1=V.P.ZR24</font>
+<br><font color="black">190:N01890 Z1=V.P.ZR22</font>
+<br><font color="black">191:N01900 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">192:N01910 X79.552 F1600</font>
+<br><font color="black">193:N01920 G00 Z1=V.P.ZR24</font>
+<br><font color="black">194:N01930 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">195:N01940 X119.702 Y1=138.394 Z1=V.P.ZR24</font>
+<br><font color="black">196:N01950 Z1=V.P.ZR22</font>
+<br><font color="black">197:N01960 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">198:N01970 Y1=132.095 F1600</font>
+<br><font color="black">199:N01980 G00 Z1=V.P.ZR24</font>
+<br><font color="black">200:N01990 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">201:N02000 X119.702 Y1=97.124 Z1=V.P.ZR24</font>
+<br><font color="black">202:N02010 Z1=V.P.ZR22</font>
+<br><font color="black">203:N02020 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">204:N02030 Y1=90.745 F1600</font>
+<br><font color="black">205:N02040 G00 Z1=V.P.ZR24</font>
+<br><font color="black">206:N02050 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">207:N02060 X181.752 Y1=74.695 Z1=V.P.ZR24</font>
+<br><font color="black">208:N02070 Z1=V.P.ZR22</font>
+<br><font color="black">209:N02080 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">210:N02090 X175.452 F1600</font>
+<br><font color="black">211:N02100 G00 Z1=V.P.ZR24</font>
+<br><font color="black">212:N02110 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">213:N02120 X128.102 Y1=91.294 Z1=V.P.ZR24</font>
+<br><font color="black">214:N02130 Z1=V.P.ZR22</font>
+<br><font color="black">215:N02140 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">216:N02150 Y1=97.044 F1600</font>
+<br><font color="black">217:N02160 G00 Z1=V.P.ZR24</font>
+<br><font color="black">218:N02170 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">219:N02180 X128.102 Y1=132.095 Z1=V.P.ZR24</font>
+<br><font color="black">220:N02190 Z1=V.P.ZR22</font>
+<br><font color="black">221:N02200 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">222:N02210 Y1=138.394 F1600</font>
+<br><font color="black">223:N02220 G00 Z1=V.P.ZR24</font>
+<br><font color="black">224:N02230 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">225:N02240 X175.452 Y1=140.995 Z1=V.P.ZR24</font>
+<br><font color="black">226:N02250 Z1=V.P.ZR22</font>
+<br><font color="black">227:N02260 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">228:N02270 X181.752 F1600</font>
+<br><font color="black">229:N02280 G00 Z1=V.P.ZR24</font>
+<br><font color="black">230:N02290 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">231:N02300 X221.902 Y1=138.394 Z1=V.P.ZR24</font>
+<br><font color="black">232:N02310 Z1=V.P.ZR22</font>
+<br><font color="black">233:N02320 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">234:N02330 Y1=132.095 F1600</font>
+<br><font color="black">235:N02340 G00 Z1=V.P.ZR24</font>
+<br><font color="black">236:N02350 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">237:N02360 X221.902 Y1=97.124 Z1=V.P.ZR24</font>
+<br><font color="black">238:N02370 Z1=V.P.ZR22</font>
+<br><font color="black">239:N02380 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">240:N02390 Y1=90.745 F1600</font>
+<br><font color="black">241:N02400 G00 Z1=V.P.ZR24</font>
+<br><font color="black">242:N02410 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">243:N02420 X283.952 Y1=74.695 Z1=V.P.ZR24</font>
+<br><font color="black">244:N02430 Z1=V.P.ZR22</font>
+<br><font color="black">245:N02440 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">246:N02450 X277.652 F1600</font>
+<br><font color="black">247:N02460 G00 Z1=V.P.ZR24</font>
+<br><font color="black">248:N02470 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">249:N02480 X230.302 Y1=91.294 Z1=V.P.ZR24</font>
+<br><font color="black">250:N02490 Z1=V.P.ZR22</font>
+<br><font color="black">251:N02500 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">252:N02510 Y1=97.044 F1600</font>
+<br><font color="black">253:N02520 G00 Z1=V.P.ZR24</font>
+<br><font color="black">254:N02530 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">255:N02540 X230.302 Y1=132.095 Z1=V.P.ZR24</font>
+<br><font color="black">256:N02550 Z1=V.P.ZR22</font>
+<br><font color="black">257:N02560 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">258:N02570 Y1=138.394 F1600</font>
+<br><font color="black">259:N02580 G00 Z1=V.P.ZR24</font>
+<br><font color="black">260:N02590 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">261:N02600 X277.652 Y1=140.995 Z1=V.P.ZR24</font>
+<br><font color="black">262:N02610 Z1=V.P.ZR22</font>
+<br><font color="black">263:N02620 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">264:N02630 X283.952 F1600</font>
+<br><font color="black">265:N02640 G00 Z1=V.P.ZR24</font>
+<br><font color="black">266:N02650 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">267:N02660 X324.102 Y1=138.394 Z1=V.P.ZR24</font>
+<br><font color="black">268:N02670 Z1=V.P.ZR22</font>
+<br><font color="black">269:N02680 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">270:N02690 Y1=132.095 F1600</font>
+<br><font color="black">271:N02700 G00 Z1=V.P.ZR24</font>
+<br><font color="black">272:N02710 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">273:N02720 X324.102 Y1=97.124 Z1=V.P.ZR24</font>
+<br><font color="black">274:N02730 Z1=V.P.ZR22</font>
+<br><font color="black">275:N02740 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">276:N02750 Y1=90.745 F1600</font>
+<br><font color="black">277:N02760 G00 Z1=V.P.ZR24</font>
+<br><font color="black">278:</font>
+<br><font color="black">279:</font>
+<br><font color="black">280:N02761 (drugi panel)</font>
+<br><font color="black">281:N02762 (ZMIEN WYJEDZ POZA OBSZAR PCB)</font>
+<br><font color="black">282:N02763 X310.00 Y1=169.095 Z1=V.P.ZR22</font>
+<br><font color="black">283:N02764 G00 Z1=V.P.ZR22</font>
+<br><font color="black">284:</font>
+<br><font color="black">285:N02765 M109 (szczotka do gory)</font>
+<br><font color="black">286:N02766 G53</font>
+<br><font color="black">287:</font>
+<br><font color="black">288:N02767 (Database part)</font>
+<br><font color="black">289:N02768 $IF [V.E.bDB_On == TRUE]					(Database enabled)</font>
+<br><font color="black">290:N02769 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">291:N02770 	G00 X=545.957 Y1=425.407						(Position to read pcb code)</font>
+<br><font color="black">292:N02771 	M191									(Read PCB code)</font>
+<br><font color="black">293:N02772 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)</font>
+<br><font color="black">294:N02773 		M179								(Read database)	</font>
+<br><font color="black">295:N02774 	$ENDIF</font>
+<br><font color="black">296:N02775 $ENDIF</font>
+<br><font color="black">297:N02776</font>
+<br><font color="black">298:N02777 (Check release part)</font>
+<br><font color="black">299:N02778 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)</font>
+<br><font color="black">300:N02779 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">301:N02780 	G00 X=470 Y1=1031</font>
+<br><font color="black">302:N02781 	$GOTO [Homing]</font>
+<br><font color="black">303:N02782 $ENDIF</font>
+<br><font color="black">304:</font>
+<br><font color="black">305:N02783 G55</font>
+<br><font color="black">306:N02784 G00 Z1=V.P.ZR20 (offset</font>
+<br><font color="black">307:N02785 G92 Y1=-0.15 X=0.25 (offset PANELU GORNEGO)</font>
+<br><font color="black">308:N02786 M108 (szczotka w do³)</font>
+<br><font color="black">309:N02787 G00</font>
+<br><font color="black">310:(PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">311:N02788 X283.952 Y1=169.095 Z1=V.P.ZR24</font>
+<br><font color="black">312:N02789 Z1=V.P.ZR22</font>
+<br><font color="black">313:N02790 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">314:N02800 X277.652 F1600</font>
+<br><font color="black">315:N02820 G00 Z1=V.P.ZR24</font>
+<br><font color="black">316:N02830 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">317:N02840 X230.302 Y1=185.695 Z1=V.P.ZR24</font>
+<br><font color="black">318:N02850 Z1=V.P.ZR22</font>
+<br><font color="black">319:N02860 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">320:N02870 Y1=191.445 F1600</font>
+<br><font color="black">321:N02880 G00 Z1=V.P.ZR24</font>
+<br><font color="black">322:N02890 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">323:N02900 X230.302 Y1=226.495 Z1=V.P.ZR24</font>
+<br><font color="black">324:N02910 Z1=V.P.ZR22</font>
+<br><font color="black">325:N02920 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">326:N02930 Y1=232.795 F1600</font>
+<br><font color="black">327:N02940 G00 Z1=V.P.ZR24</font>
+<br><font color="black">328:N02950 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">329:N02960 X277.652 Y1=235.395 Z1=V.P.ZR24</font>
+<br><font color="black">330:N02970 Z1=V.P.ZR22</font>
+<br><font color="black">331:N02980 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">332:N02990 X283.952 F1600</font>
+<br><font color="black">333:N03000 G00 Z1=V.P.ZR24</font>
+<br><font color="black">334:N03010 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">335:N03020 X324.102 Y1=232.795 Z1=V.P.ZR24</font>
+<br><font color="black">336:N03030 Z1=V.P.ZR22</font>
+<br><font color="black">337:N03040 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">338:N03050 Y1=226.495 F1600</font>
+<br><font color="black">339:N03060 G00 Z1=V.P.ZR24</font>
+<br><font color="black">340:N03070 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">341:N03080 X324.102 Y1=191.525 Z1=V.P.ZR24</font>
+<br><font color="black">342:N03090 Z1=V.P.ZR22</font>
+<br><font color="black">343:N03100 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">344:N03110 Y1=185.145 F1600</font>
+<br><font color="black">345:N03120 G00 Z1=V.P.ZR24</font>
+<br><font color="black">346:N03130 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">347:N03140 X181.752 Y1=169.095 Z1=V.P.ZR24</font>
+<br><font color="black">348:N03150 Z1=V.P.ZR22</font>
+<br><font color="black">349:N03160 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">350:N03170 X175.452 F1600</font>
+<br><font color="black">351:N03180 G00 Z1=V.P.ZR24</font>
+<br><font color="black">352:N03190 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">353:N03200 X128.102 Y1=185.695 Z1=V.P.ZR24</font>
+<br><font color="black">354:N03210 Z1=V.P.ZR22</font>
+<br><font color="black">355:N03220 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">356:N03230 Y1=191.445 F1600</font>
+<br><font color="black">357:N03240 G00 Z1=V.P.ZR24</font>
+<br><font color="black">358:N03250 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">359:N03260 X128.102 Y1=226.495 Z1=V.P.ZR24</font>
+<br><font color="black">360:N03270 Z1=V.P.ZR22</font>
+<br><font color="black">361:N03280 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">362:N03290 Y1=232.795 F1600</font>
+<br><font color="black">363:N03300 G00 Z1=V.P.ZR24</font>
+<br><font color="black">364:N03310 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">365:N03320 X175.452 Y1=235.395 Z1=V.P.ZR24</font>
+<br><font color="black">366:N03330 Z1=V.P.ZR22</font>
+<br><font color="black">367:N03340 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">368:N03350 X181.752 F1600</font>
+<br><font color="black">369:N03360 G00 Z1=V.P.ZR24</font>
+<br><font color="black">370:N03370 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">371:N03380 X221.902 Y1=232.795 Z1=V.P.ZR24</font>
+<br><font color="black">372:N03390 Z1=V.P.ZR22</font>
+<br><font color="black">373:N03400 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">374:N03410 Y1=226.495 F1600</font>
+<br><font color="black">375:N03420 G00 Z1=V.P.ZR24</font>
+<br><font color="black">376:N03430 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">377:N03440 X221.902 Y1=191.525 Z1=V.P.ZR24</font>
+<br><font color="black">378:N03450 Z1=V.P.ZR22</font>
+<br><font color="black">379:N03460 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">380:N03470 Y1=185.145 F1600</font>
+<br><font color="black">381:N03480 G00 Z1=V.P.ZR24</font>
+<br><font color="black">382:N03490 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">383:N03500 X79.552 Y1=169.095 Z1=V.P.ZR24</font>
+<br><font color="black">384:N03510 Z1=V.P.ZR22</font>
+<br><font color="black">385:N03520 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">386:N03530 X73.252 F1600</font>
+<br><font color="black">387:N03540 G00 Z1=V.P.ZR24</font>
+<br><font color="black">388:N03550 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">389:N03560 X25.902 Y1=185.695 Z1=V.P.ZR24</font>
+<br><font color="black">390:N03570 Z1=V.P.ZR22</font>
+<br><font color="black">391:N03580 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">392:N03590 Y1=191.445 F1600</font>
+<br><font color="black">393:N03600 G00 Z1=V.P.ZR24</font>
+<br><font color="black">394:N03610 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">395:N03620 X25.902 Y1=226.495 Z1=V.P.ZR24</font>
+<br><font color="black">396:N03630 Z1=V.P.ZR22</font>
+<br><font color="black">397:N03640 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">398:N03650 Y1=232.795 F1600</font>
+<br><font color="black">399:N03660 G00 Z1=V.P.ZR24</font>
+<br><font color="black">400:N03670 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">401:N03680 X73.252 Y1=235.395 Z1=V.P.ZR24</font>
+<br><font color="black">402:N03690 Z1=V.P.ZR22</font>
+<br><font color="black">403:N03700 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">404:N03710 X79.552 F1600</font>
+<br><font color="black">405:N03720 G00 Z1=V.P.ZR24</font>
+<br><font color="black">406:N03730 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">407:N03740 X119.702 Y1=232.795 Z1=V.P.ZR24</font>
+<br><font color="black">408:N03750 Z1=V.P.ZR22</font>
+<br><font color="black">409:N03760 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">410:N03770 Y1=226.495 F1600</font>
+<br><font color="black">411:N03780 G00 Z1=V.P.ZR24</font>
+<br><font color="black">412:N03790 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">413:N03800 X119.702 Y1=191.525 Z1=V.P.ZR24</font>
+<br><font color="black">414:N03810 Z1=V.P.ZR22</font>
+<br><font color="black">415:N03820 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">416:N03830 Y1=185.145 F1600</font>
+<br><font color="black">417:N03840 G00 Z1=V.P.ZR24</font>
+<br><font color="black">418:N03850 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">419:N03860 X79.552 Y1=236.195 Z1=V.P.ZR24</font>
+<br><font color="black">420:N03870 Z1=V.P.ZR22</font>
+<br><font color="black">421:N03880 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">422:N03890 X73.252 F1600</font>
+<br><font color="black">423:N03900 G00 Z1=V.P.ZR24</font>
+<br><font color="black">424:N03910 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">425:N03920 X25.902 Y1=252.795 Z1=V.P.ZR24</font>
+<br><font color="black">426:N03930 Z1=V.P.ZR22</font>
+<br><font color="black">427:N03940 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">428:N03950 Y1=258.545 F1600</font>
+<br><font color="black">429:N03960 G00 Z1=V.P.ZR24</font>
+<br><font color="black">430:N03970 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">431:N03980 X25.902 Y1=293.595 Z1=V.P.ZR24</font>
+<br><font color="black">432:N03990 Z1=V.P.ZR22</font>
+<br><font color="black">433:N04000 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">434:N04010 Y1=299.894 F1600</font>
+<br><font color="black">435:N04020 G00 Z1=V.P.ZR24</font>
+<br><font color="black">436:N04030 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">437:N04040 X73.252 Y1=302.495 Z1=V.P.ZR24</font>
+<br><font color="black">438:N04050 Z1=V.P.ZR22</font>
+<br><font color="black">439:N04060 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">440:N04070 X79.552 F1600</font>
+<br><font color="black">441:N04080 G00 Z1=V.P.ZR24</font>
+<br><font color="black">442:N04090 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">443:N04100 X119.702 Y1=299.894 Z1=V.P.ZR24</font>
+<br><font color="black">444:N04110 Z1=V.P.ZR22</font>
+<br><font color="black">445:N04120 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">446:N04130 Y1=293.595 F1600</font>
+<br><font color="black">447:N04140 G00 Z1=V.P.ZR24</font>
+<br><font color="black">448:N04150 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">449:N04160 X119.702 Y1=258.625 Z1=V.P.ZR24</font>
+<br><font color="black">450:N04170 Z1=V.P.ZR22</font>
+<br><font color="black">451:N04180 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">452:N04190 Y1=252.245 F1600</font>
+<br><font color="black">453:N04200 G00 Z1=V.P.ZR24</font>
+<br><font color="black">454:N04210 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">455:N04220 X181.752 Y1=236.195 Z1=V.P.ZR24</font>
+<br><font color="black">456:N04230 Z1=V.P.ZR22</font>
+<br><font color="black">457:N04240 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">458:N04250 X175.452 F1600</font>
+<br><font color="black">459:N04260 G00 Z1=V.P.ZR24</font>
+<br><font color="black">460:N04270 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">461:N04280 X128.102 Y1=252.795 Z1=V.P.ZR24</font>
+<br><font color="black">462:N04290 Z1=V.P.ZR22</font>
+<br><font color="black">463:N04300 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">464:N04310 Y1=258.545 F1600</font>
+<br><font color="black">465:N04320 G00 Z1=V.P.ZR24</font>
+<br><font color="black">466:N04330 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">467:N04340 X128.102 Y1=293.595 Z1=V.P.ZR24</font>
+<br><font color="black">468:N04350 Z1=V.P.ZR22</font>
+<br><font color="black">469:N04360 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">470:N04370 Y1=299.894 F1600</font>
+<br><font color="black">471:N04380 G00 Z1=V.P.ZR24</font>
+<br><font color="black">472:N04390 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">473:N04400 X175.452 Y1=302.495 Z1=V.P.ZR24</font>
+<br><font color="black">474:N04410 Z1=V.P.ZR22</font>
+<br><font color="black">475:N04420 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">476:N04430 X181.752 F1600</font>
+<br><font color="black">477:N04440 G00 Z1=V.P.ZR24</font>
+<br><font color="black">478:N04450 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">479:N04460 X221.902 Y1=299.894 Z1=V.P.ZR24</font>
+<br><font color="black">480:N04470 Z1=V.P.ZR22</font>
+<br><font color="black">481:N04480 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">482:N04490 Y1=293.595 F1600</font>
+<br><font color="black">483:N04500 G00 Z1=V.P.ZR24</font>
+<br><font color="black">484:N04510 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">485:N04520 X221.902 Y1=258.625 Z1=V.P.ZR24</font>
+<br><font color="black">486:N04530 Z1=V.P.ZR22</font>
+<br><font color="black">487:N04540 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">488:N04550 Y1=252.245 F1600</font>
+<br><font color="black">489:N04560 G00 Z1=V.P.ZR24</font>
+<br><font color="black">490:N04570 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">491:N04580 X283.952 Y1=236.195 Z1=V.P.ZR24</font>
+<br><font color="black">492:N04590 Z1=V.P.ZR22</font>
+<br><font color="black">493:N04600 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">494:N04610 X277.652 F1600</font>
+<br><font color="black">495:N04620 G00 Z1=V.P.ZR24</font>
+<br><font color="black">496:N04630 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">497:N04640 X230.302 Y1=252.795 Z1=V.P.ZR24</font>
+<br><font color="black">498:N04650 Z1=V.P.ZR22</font>
+<br><font color="black">499:N04660 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">500:N04670 Y1=258.545 F1600</font>
+<br><font color="black">501:N04680 G00 Z1=V.P.ZR24</font>
+<br><font color="black">502:N04690 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">503:N04700 X230.302 Y1=293.595 Z1=V.P.ZR24</font>
+<br><font color="black">504:N04710 Z1=V.P.ZR22</font>
+<br><font color="black">505:N04720 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">506:N04730 Y1=299.894 F1600</font>
+<br><font color="black">507:N04740 G00 Z1=V.P.ZR24</font>
+<br><font color="black">508:N04750 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">509:N04760 X277.652 Y1=302.495 Z1=V.P.ZR24</font>
+<br><font color="black">510:N04770 Z1=V.P.ZR22</font>
+<br><font color="black">511:N04780 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">512:N04790 X283.952 F1600</font>
+<br><font color="black">513:N04800 G00 Z1=V.P.ZR24</font>
+<br><font color="black">514:N04810 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">515:N04820 X324.102 Y1=299.894 Z1=V.P.ZR24</font>
+<br><font color="black">516:N04830 Z1=V.P.ZR22</font>
+<br><font color="black">517:N04840 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">518:N04850 Y1=293.595 F1600</font>
+<br><font color="black">519:N04860 G00 Z1=V.P.ZR24</font>
+<br><font color="black">520:N04870 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">521:N04880 X324.102 Y1=258.625 Z1=V.P.ZR24</font>
+<br><font color="black">522:N04890 Z1=V.P.ZR22</font>
+<br><font color="black">523:N04900 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">524:N04910 Y1=252.245 F1600</font>
+<br><font color="black">525:N04920 G00 Z1=V.P.ZR24</font>
+<br><font color="black">526:N04930 [Homing]</font>
+<br><font color="black">527:N04940 M109</font>
+<br><font color="black">528:N04950 #ROTATION OFF</font>
+<br><font color="black">529:N04960 G00 Z1=V.P.ZR20</font>
+<br><font color="black">530:N04970 L _M100.nc</font>
+<br><font color="black">531:N04980 M30</font>
 </td>
-<td colspan="2"><br><font color="black">1:tratatata</font>
-<br><font color="black">2:tom</font>
-<br><font color="red"><b>3:mama</b></font>
-<br><font color="black">4:oni</font>
+<td colspan="2"><br><font color="black">1:</font>
+<br><font color="black">2:N00010 M169</font>
+<br><font color="black">3:N00020 M153</font>
+<br><font color="black">4:N00030 #SET AX [X,1,0] [Y1,2,1] [Z1,3,2]</font>
+<br><font color="black">5:N00040 (Programm: UPM-CIECIE)</font>
+<br><font color="black">6:N00050 (Maschine: GAS)</font>
+<br><font color="black">7:N00060 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">8:N00070 V.P.RequestedTool=16</font>
+<br><font color="black">9:N00080 V.P.ZR20=68.3			(Z-Achse Transporthöhe)</font>
+<br><font color="black">10:N00090 V.P.ZR21=10	 		(Vorposition)</font>
+<br><font color="black">11:N00100 V.P.ZR24=10	 		(Ausgangsebene = Springhöhe von Steg zu Steg)</font>
+<br><font color="black">12:N00110 V.P.ZR22=5			(Sicherheitsebene Fräsbeginn oberhalb Werkstück )</font>
+<br><font color="black">13:N00120 V.P.ZR23=-11.5		        (Fräsebene)</font>
+<br><font color="black">14:N00130 V.P.Zstep=1.6		( Step Fräserlängenabarbeitung ) </font>
+<br><font color="black">15:N00140 V.S.lrBitCutDepth_Ch1 = V.S.lrBitCutDepth_Ch1 + V.P.Zstep </font>
+<br><font color="black">16:N00150 $IF V.S.lrBitCutDepth_Ch1 > V.E.lrBitUsableLength OR V.P.Zstep == 0 </font>
+<br><font color="black">17:N00160 V.S.lrBitCutDepth_Ch1 = 0 </font>
+<br><font color="black">18:N00170 $ENDIF </font>
+<br><font color="black">19:N00180 V.P.ZR23 = V.P.ZR23 - V.S.lrBitCutDepth_Ch1</font>
+<br><font color="black">20:N00190 V.S.R100=V.S.R100+1</font>
+<br><font color="black">21:N00200 G00</font>
+<br><font color="black">22:N00210</font>
+<br><font color="black">23:N00220 (Database part)</font>
+<br><font color="black">24:N00230 $IF [V.E.bDB_On == TRUE]					(Database enabled)</font>
+<br><font color="black">25:N00240 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">26:N00250 	G00 X=545.957 Y1=275.09							(Position to read pcb code)</font>
+<br><font color="black">27:N00260 	M191									(Read PCB code)</font>
+<br><font color="black">28:N00270 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)</font>
+<br><font color="black">29:N00280 		M179								(Read database)	</font>
+<br><font color="black">30:N00290 	$ENDIF</font>
+<br><font color="black">31:N00300 $ENDIF</font>
+<br><font color="black">32:N00310</font>
+<br><font color="black">33:N00320 (Check release part)</font>
+<br><font color="black">34:N00330 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)</font>
+<br><font color="black">35:N00340 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">36:N00350 	G00 X=470 Y1=1031</font>
+<br><font color="black">37:N00360 	$GOTO [Homing]</font>
+<br><font color="black">38:N00370 $ENDIF</font>
+<br><font color="black">39:N00380</font>
+<br><font color="black">40:N00390 G55</font>
+<br><font color="black">41:N00400 G00 Z1=V.P.ZR20</font>
+<br><font color="red"><b>42:N00410 G92 X=0.25 Y1=-0.05  (OFSSET PANELU DOLNEGO)</b></font>
+<br><font color="black">43:N00420 #FLUSH WAIT</font>
+<br><font color="black">44:N00430 TV.P.RequestedTool</font>
+<br><font color="black">45:N00440 $IF V.S.R100>=50</font>
+<br><font color="black">46:N00450  V.S.R100=0</font>
+<br><font color="black">47:N00460  L _brushcontrol.nc</font>
+<br><font color="black">48:N00470 $ENDIF</font>
+<br><font color="black">49:N00480 L _toolchange_K1.nc</font>
+<br><font color="black">50:N00490 #FLUSH WAIT</font>
+<br><font color="black">51:N00500 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
+<br><font color="black">52:N00510 L _Bitbreakcontrol_K1.nc</font>
+<br><font color="black">53:N00520 Z1=V.P.ZR20</font>
+<br><font color="black">54:N00530 #FLUSH WAIT</font>
+<br><font color="black">55:N00540 $IF V.E.bToolNotFound==TRUE $GOTO [Homing]</font>
+<br><font color="black">56:N00550 S1 [M03 REV=V.E.lrSpindleRPM]</font>
+<br><font color="black">57:N00560 $IF V.P.ToolChangeDone==1</font>
+<br><font color="black">58:N00570  L _CheckBitTipLevel_K1.nc</font>
+<br><font color="black">59:N00580 $ENDIF</font>
+<br><font color="black">60:N00590 G00 X283.95 Y1=7.6 Z1=V.P.ZR20</font>
+<br><font color="black">61:N00600 Z1=V.P.ZR21 </font>
+<br><font color="black">62:N00610 M108</font>
+<br><font color="black">63:N00620</font>
+<br><font color="black">64:N00630 G00 Z1=V.P.ZR22</font>
+<br><font color="black">65:N00640 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">66:N00650 X277.65 F1600</font>
+<br><font color="black">67:N00660 G00 Z1=V.P.ZR24</font>
+<br><font color="black">68:N00670 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">69:N00680 X230.3 Y1=24.2 Z1=V.P.ZR24</font>
+<br><font color="black">70:N00690 Z1=V.P.ZR22</font>
+<br><font color="black">71:N00700 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">72:N00710 Y1=29.95 F1600</font>
+<br><font color="black">73:N00720 G00 Z1=V.P.ZR24</font>
+<br><font color="black">74:N00730 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">75:N00740 X230.3 Y1=65 Z1=V.P.ZR24</font>
+<br><font color="black">76:N00750 Z1=V.P.ZR22</font>
+<br><font color="black">77:N00760 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">78:N00770 Y1=71.3 F1600</font>
+<br><font color="black">79:N00780 G00 Z1=V.P.ZR24</font>
+<br><font color="black">80:N00790 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">81:N00800 X277.65 Y1=73.9 Z1=V.P.ZR24</font>
+<br><font color="black">82:N00810 Z1=V.P.ZR22</font>
+<br><font color="black">83:N00820 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">84:N00830 X283.95 F1600</font>
+<br><font color="black">85:N00840 G00 Z1=V.P.ZR24</font>
+<br><font color="black">86:N00850 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">87:N00860 X324.1 Y1=71.3 Z1=V.P.ZR24</font>
+<br><font color="black">88:N00870 Z1=V.P.ZR22</font>
+<br><font color="black">89:N00880 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">90:N00890 Y1=65 F1600</font>
+<br><font color="black">91:N00900 G00 Z1=V.P.ZR24</font>
+<br><font color="black">92:N00910 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">93:N00920 X324.1 Y1=30.03 Z1=V.P.ZR24</font>
+<br><font color="black">94:N00930 Z1=V.P.ZR22</font>
+<br><font color="black">95:N00940 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">96:N00950 Y1=23.65 F1600</font>
+<br><font color="black">97:N00960 G00 Z1=V.P.ZR24</font>
+<br><font color="black">98:N00970 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">99:N00980 X181.752 Y1=7.595 Z1=V.P.ZR24</font>
+<br><font color="black">100:N00990 Z1=V.P.ZR22</font>
+<br><font color="black">101:N01000 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">102:N01010 X175.452 F1600</font>
+<br><font color="black">103:N01020 G00 Z1=V.P.ZR24</font>
+<br><font color="black">104:N01030 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">105:N01040 X128.102 Y1=24.195 Z1=V.P.ZR24</font>
+<br><font color="black">106:N01050 Z1=V.P.ZR22</font>
+<br><font color="black">107:N01060 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">108:N01070 Y1=29.945 F1600</font>
+<br><font color="black">109:N01080 G00 Z1=V.P.ZR24</font>
+<br><font color="black">110:N01090 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">111:N01100 X128.102 Y1=64.995 Z1=V.P.ZR24</font>
+<br><font color="black">112:N01110 Z1=V.P.ZR22</font>
+<br><font color="black">113:N01120 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">114:N01130 Y1=71.294 F1600</font>
+<br><font color="black">115:N01140 G00 Z1=V.P.ZR24</font>
+<br><font color="black">116:N01150 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">117:N01160 X175.452 Y1=73.895 Z1=V.P.ZR24</font>
+<br><font color="black">118:N01170 Z1=V.P.ZR22</font>
+<br><font color="black">119:N01180 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">120:N01190 X181.752 F1600</font>
+<br><font color="black">121:N01200 G00 Z1=V.P.ZR24</font>
+<br><font color="black">122:N01210 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">123:N01220 X221.902 Y1=71.294 Z1=V.P.ZR24</font>
+<br><font color="black">124:N01230 Z1=V.P.ZR22</font>
+<br><font color="black">125:N01240 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">126:N01250 Y1=64.995 F1600</font>
+<br><font color="black">127:N01260 G00 Z1=V.P.ZR24</font>
+<br><font color="black">128:N01270 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">129:N01280 X221.902 Y1=30.025 Z1=V.P.ZR24</font>
+<br><font color="black">130:N01290 Z1=V.P.ZR22</font>
+<br><font color="black">131:N01300 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">132:N01310 Y1=23.645 F1600</font>
+<br><font color="black">133:N01320 G00 Z1=V.P.ZR24</font>
+<br><font color="black">134:N01330 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">135:N01340 X79.55 Y1=7.6 Z1=V.P.ZR24</font>
+<br><font color="black">136:N01350 Z1=V.P.ZR22</font>
+<br><font color="black">137:N01360 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">138:N01370 X73.25 F1600</font>
+<br><font color="black">139:N01380 G00 Z1=V.P.ZR24</font>
+<br><font color="black">140:N01390 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">141:N01400 X25.9 Y1=24.2 Z1=V.P.ZR24</font>
+<br><font color="black">142:N01410 Z1=V.P.ZR22</font>
+<br><font color="black">143:N01420 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">144:N01430 Y1=29.95 F1600</font>
+<br><font color="black">145:N01440 G00 Z1=V.P.ZR24</font>
+<br><font color="black">146:N01450 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">147:N01460 X25.9 Y1=65 Z1=V.P.ZR24</font>
+<br><font color="black">148:N01470 Z1=V.P.ZR22</font>
+<br><font color="black">149:N01480 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">150:N01490 Y1=71.3 F1600</font>
+<br><font color="black">151:N01500 G00 Z1=V.P.ZR24</font>
+<br><font color="black">152:N01510 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">153:N01520 X73.25 Y1=73.9 Z1=V.P.ZR24</font>
+<br><font color="black">154:N01530 Z1=V.P.ZR22</font>
+<br><font color="black">155:N01540 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">156:N01550 X79.55 F1600</font>
+<br><font color="black">157:N01560 G00 Z1=V.P.ZR24</font>
+<br><font color="black">158:N01570 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">159:N01580 X119.7 Y1=71.3 Z1=V.P.ZR24</font>
+<br><font color="black">160:N01590 Z1=V.P.ZR22</font>
+<br><font color="black">161:N01600 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">162:N01610 Y1=65 F1600</font>
+<br><font color="black">163:N01620 G00 Z1=V.P.ZR24</font>
+<br><font color="black">164:N01630 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">165:N01640 X119.7 Y1=30.03 Z1=V.P.ZR24</font>
+<br><font color="black">166:N01650 Z1=V.P.ZR22</font>
+<br><font color="black">167:N01660 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">168:N01670 Y1=23.65 F1600</font>
+<br><font color="black">169:N01680 G00 Z1=V.P.ZR24</font>
+<br><font color="black">170:N01690 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">171:N01700 X79.552 Y1=74.695 Z1=V.P.ZR24</font>
+<br><font color="black">172:N01710 Z1=V.P.ZR22</font>
+<br><font color="black">173:N01720 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">174:N01730 X73.252 F1600</font>
+<br><font color="black">175:N01740 G00 Z1=V.P.ZR24</font>
+<br><font color="black">176:N01750 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">177:N01760 X25.902 Y1=91.294 Z1=V.P.ZR24</font>
+<br><font color="black">178:N01770 Z1=V.P.ZR22</font>
+<br><font color="black">179:N01780 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">180:N01790 Y1=97.044 F1600</font>
+<br><font color="black">181:N01800 G00 Z1=V.P.ZR24</font>
+<br><font color="black">182:N01810 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">183:N01820 X25.902 Y1=132.095 Z1=V.P.ZR24</font>
+<br><font color="black">184:N01830 Z1=V.P.ZR22</font>
+<br><font color="black">185:N01840 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">186:N01850 Y1=138.394 F1600</font>
+<br><font color="black">187:N01860 G00 Z1=V.P.ZR24</font>
+<br><font color="black">188:N01870 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">189:N01880 X73.252 Y1=140.995 Z1=V.P.ZR24</font>
+<br><font color="black">190:N01890 Z1=V.P.ZR22</font>
+<br><font color="black">191:N01900 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">192:N01910 X79.552 F1600</font>
+<br><font color="black">193:N01920 G00 Z1=V.P.ZR24</font>
+<br><font color="black">194:N01930 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">195:N01940 X119.702 Y1=138.394 Z1=V.P.ZR24</font>
+<br><font color="black">196:N01950 Z1=V.P.ZR22</font>
+<br><font color="black">197:N01960 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">198:N01970 Y1=132.095 F1600</font>
+<br><font color="black">199:N01980 G00 Z1=V.P.ZR24</font>
+<br><font color="black">200:N01990 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">201:N02000 X119.702 Y1=97.124 Z1=V.P.ZR24</font>
+<br><font color="black">202:N02010 Z1=V.P.ZR22</font>
+<br><font color="black">203:N02020 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">204:N02030 Y1=90.745 F1600</font>
+<br><font color="black">205:N02040 G00 Z1=V.P.ZR24</font>
+<br><font color="black">206:N02050 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">207:N02060 X181.752 Y1=74.695 Z1=V.P.ZR24</font>
+<br><font color="black">208:N02070 Z1=V.P.ZR22</font>
+<br><font color="black">209:N02080 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">210:N02090 X175.452 F1600</font>
+<br><font color="black">211:N02100 G00 Z1=V.P.ZR24</font>
+<br><font color="black">212:N02110 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">213:N02120 X128.102 Y1=91.294 Z1=V.P.ZR24</font>
+<br><font color="black">214:N02130 Z1=V.P.ZR22</font>
+<br><font color="black">215:N02140 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">216:N02150 Y1=97.044 F1600</font>
+<br><font color="black">217:N02160 G00 Z1=V.P.ZR24</font>
+<br><font color="black">218:N02170 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">219:N02180 X128.102 Y1=132.095 Z1=V.P.ZR24</font>
+<br><font color="black">220:N02190 Z1=V.P.ZR22</font>
+<br><font color="black">221:N02200 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">222:N02210 Y1=138.394 F1600</font>
+<br><font color="black">223:N02220 G00 Z1=V.P.ZR24</font>
+<br><font color="black">224:N02230 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">225:N02240 X175.452 Y1=140.995 Z1=V.P.ZR24</font>
+<br><font color="black">226:N02250 Z1=V.P.ZR22</font>
+<br><font color="black">227:N02260 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">228:N02270 X181.752 F1600</font>
+<br><font color="black">229:N02280 G00 Z1=V.P.ZR24</font>
+<br><font color="black">230:N02290 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">231:N02300 X221.902 Y1=138.394 Z1=V.P.ZR24</font>
+<br><font color="black">232:N02310 Z1=V.P.ZR22</font>
+<br><font color="black">233:N02320 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">234:N02330 Y1=132.095 F1600</font>
+<br><font color="black">235:N02340 G00 Z1=V.P.ZR24</font>
+<br><font color="black">236:N02350 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">237:N02360 X221.902 Y1=97.124 Z1=V.P.ZR24</font>
+<br><font color="black">238:N02370 Z1=V.P.ZR22</font>
+<br><font color="black">239:N02380 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">240:N02390 Y1=90.745 F1600</font>
+<br><font color="black">241:N02400 G00 Z1=V.P.ZR24</font>
+<br><font color="black">242:N02410 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">243:N02420 X283.952 Y1=74.695 Z1=V.P.ZR24</font>
+<br><font color="black">244:N02430 Z1=V.P.ZR22</font>
+<br><font color="black">245:N02440 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">246:N02450 X277.652 F1600</font>
+<br><font color="black">247:N02460 G00 Z1=V.P.ZR24</font>
+<br><font color="black">248:N02470 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">249:N02480 X230.302 Y1=91.294 Z1=V.P.ZR24</font>
+<br><font color="black">250:N02490 Z1=V.P.ZR22</font>
+<br><font color="black">251:N02500 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">252:N02510 Y1=97.044 F1600</font>
+<br><font color="black">253:N02520 G00 Z1=V.P.ZR24</font>
+<br><font color="black">254:N02530 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">255:N02540 X230.302 Y1=132.095 Z1=V.P.ZR24</font>
+<br><font color="black">256:N02550 Z1=V.P.ZR22</font>
+<br><font color="black">257:N02560 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">258:N02570 Y1=138.394 F1600</font>
+<br><font color="black">259:N02580 G00 Z1=V.P.ZR24</font>
+<br><font color="black">260:N02590 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">261:N02600 X277.652 Y1=140.995 Z1=V.P.ZR24</font>
+<br><font color="black">262:N02610 Z1=V.P.ZR22</font>
+<br><font color="black">263:N02620 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">264:N02630 X283.952 F1600</font>
+<br><font color="black">265:N02640 G00 Z1=V.P.ZR24</font>
+<br><font color="black">266:N02650 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">267:N02660 X324.102 Y1=138.394 Z1=V.P.ZR24</font>
+<br><font color="black">268:N02670 Z1=V.P.ZR22</font>
+<br><font color="black">269:N02680 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">270:N02690 Y1=132.095 F1600</font>
+<br><font color="black">271:N02700 G00 Z1=V.P.ZR24</font>
+<br><font color="black">272:N02710 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">273:N02720 X324.102 Y1=97.124 Z1=V.P.ZR24</font>
+<br><font color="black">274:N02730 Z1=V.P.ZR22</font>
+<br><font color="black">275:N02740 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">276:N02750 Y1=90.745 F1600</font>
+<br><font color="black">277:N02760 G00 Z1=V.P.ZR24</font>
+<br><font color="black">278:</font>
+<br><font color="black">279:</font>
+<br><font color="black">280:N02761 (drugi panel)</font>
+<br><font color="black">281:N02762 (ZMIEN WYJEDZ POZA OBSZAR PCB)</font>
+<br><font color="black">282:N02763 X310.00 Y1=169.095 Z1=V.P.ZR22</font>
+<br><font color="black">283:N02764 G00 Z1=V.P.ZR22</font>
+<br><font color="black">284:</font>
+<br><font color="black">285:N02765 M109 (szczotka do gory)</font>
+<br><font color="black">286:N02766 G53</font>
+<br><font color="black">287:</font>
+<br><font color="black">288:N02767 (Database part)</font>
+<br><font color="black">289:N02768 $IF [V.E.bDB_On == TRUE]					(Database enabled)</font>
+<br><font color="black">290:N02769 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">291:N02770 	G00 X=545.957 Y1=425.407						(Position to read pcb code)</font>
+<br><font color="black">292:N02771 	M191									(Read PCB code)</font>
+<br><font color="black">293:N02772 	$IF V.E.bDMXScannerReadError == FALSE	(PCB not read)</font>
+<br><font color="black">294:N02773 		M179								(Read database)	</font>
+<br><font color="black">295:N02774 	$ENDIF</font>
+<br><font color="black">296:N02775 $ENDIF</font>
+<br><font color="black">297:N02776</font>
+<br><font color="black">298:N02777 (Check release part)</font>
+<br><font color="black">299:N02778 $IF [V.E.bPCBNok == TRUE] OR [V.E.bDMXScannerReadError == TRUE]		(Go to end when PCB nok, Go to end when PCB not read)</font>
+<br><font color="black">300:N02779 	G00 Z1=V.P.ZR20							(Top position of Z1 axis)</font>
+<br><font color="black">301:N02780 	G00 X=470 Y1=1031</font>
+<br><font color="black">302:N02781 	$GOTO [Homing]</font>
+<br><font color="black">303:N02782 $ENDIF</font>
+<br><font color="black">304:</font>
+<br><font color="black">305:N02783 G55</font>
+<br><font color="black">306:N02784 G00 Z1=V.P.ZR20 (offset</font>
+<br><font color="black">307:N02785 G92 Y1=-0.15 X=0.25 (offset PANELU GORNEGO)</font>
+<br><font color="black">308:N02786 M108 (szczotka w do³)</font>
+<br><font color="black">309:N02787 G00</font>
+<br><font color="black">310:(PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">311:N02788 X283.952 Y1=169.095 Z1=V.P.ZR24</font>
+<br><font color="black">312:N02789 Z1=V.P.ZR22</font>
+<br><font color="black">313:N02790 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">314:N02800 X277.652 F1600</font>
+<br><font color="black">315:N02820 G00 Z1=V.P.ZR24</font>
+<br><font color="black">316:N02830 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">317:N02840 X230.302 Y1=185.695 Z1=V.P.ZR24</font>
+<br><font color="black">318:N02850 Z1=V.P.ZR22</font>
+<br><font color="black">319:N02860 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">320:N02870 Y1=191.445 F1600</font>
+<br><font color="black">321:N02880 G00 Z1=V.P.ZR24</font>
+<br><font color="black">322:N02890 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">323:N02900 X230.302 Y1=226.495 Z1=V.P.ZR24</font>
+<br><font color="black">324:N02910 Z1=V.P.ZR22</font>
+<br><font color="black">325:N02920 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">326:N02930 Y1=232.795 F1600</font>
+<br><font color="black">327:N02940 G00 Z1=V.P.ZR24</font>
+<br><font color="black">328:N02950 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">329:N02960 X277.652 Y1=235.395 Z1=V.P.ZR24</font>
+<br><font color="black">330:N02970 Z1=V.P.ZR22</font>
+<br><font color="black">331:N02980 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">332:N02990 X283.952 F1600</font>
+<br><font color="black">333:N03000 G00 Z1=V.P.ZR24</font>
+<br><font color="black">334:N03010 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">335:N03020 X324.102 Y1=232.795 Z1=V.P.ZR24</font>
+<br><font color="black">336:N03030 Z1=V.P.ZR22</font>
+<br><font color="black">337:N03040 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">338:N03050 Y1=226.495 F1600</font>
+<br><font color="black">339:N03060 G00 Z1=V.P.ZR24</font>
+<br><font color="black">340:N03070 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">341:N03080 X324.102 Y1=191.525 Z1=V.P.ZR24</font>
+<br><font color="black">342:N03090 Z1=V.P.ZR22</font>
+<br><font color="black">343:N03100 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">344:N03110 Y1=185.145 F1600</font>
+<br><font color="black">345:N03120 G00 Z1=V.P.ZR24</font>
+<br><font color="black">346:N03130 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">347:N03140 X181.752 Y1=169.095 Z1=V.P.ZR24</font>
+<br><font color="black">348:N03150 Z1=V.P.ZR22</font>
+<br><font color="black">349:N03160 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">350:N03170 X175.452 F1600</font>
+<br><font color="black">351:N03180 G00 Z1=V.P.ZR24</font>
+<br><font color="black">352:N03190 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">353:N03200 X128.102 Y1=185.695 Z1=V.P.ZR24</font>
+<br><font color="black">354:N03210 Z1=V.P.ZR22</font>
+<br><font color="black">355:N03220 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">356:N03230 Y1=191.445 F1600</font>
+<br><font color="black">357:N03240 G00 Z1=V.P.ZR24</font>
+<br><font color="black">358:N03250 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">359:N03260 X128.102 Y1=226.495 Z1=V.P.ZR24</font>
+<br><font color="black">360:N03270 Z1=V.P.ZR22</font>
+<br><font color="black">361:N03280 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">362:N03290 Y1=232.795 F1600</font>
+<br><font color="black">363:N03300 G00 Z1=V.P.ZR24</font>
+<br><font color="black">364:N03310 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">365:N03320 X175.452 Y1=235.395 Z1=V.P.ZR24</font>
+<br><font color="black">366:N03330 Z1=V.P.ZR22</font>
+<br><font color="black">367:N03340 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">368:N03350 X181.752 F1600</font>
+<br><font color="black">369:N03360 G00 Z1=V.P.ZR24</font>
+<br><font color="black">370:N03370 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">371:N03380 X221.902 Y1=232.795 Z1=V.P.ZR24</font>
+<br><font color="black">372:N03390 Z1=V.P.ZR22</font>
+<br><font color="black">373:N03400 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">374:N03410 Y1=226.495 F1600</font>
+<br><font color="black">375:N03420 G00 Z1=V.P.ZR24</font>
+<br><font color="black">376:N03430 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">377:N03440 X221.902 Y1=191.525 Z1=V.P.ZR24</font>
+<br><font color="black">378:N03450 Z1=V.P.ZR22</font>
+<br><font color="black">379:N03460 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">380:N03470 Y1=185.145 F1600</font>
+<br><font color="black">381:N03480 G00 Z1=V.P.ZR24</font>
+<br><font color="black">382:N03490 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">383:N03500 X79.552 Y1=169.095 Z1=V.P.ZR24</font>
+<br><font color="black">384:N03510 Z1=V.P.ZR22</font>
+<br><font color="black">385:N03520 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">386:N03530 X73.252 F1600</font>
+<br><font color="black">387:N03540 G00 Z1=V.P.ZR24</font>
+<br><font color="black">388:N03550 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">389:N03560 X25.902 Y1=185.695 Z1=V.P.ZR24</font>
+<br><font color="black">390:N03570 Z1=V.P.ZR22</font>
+<br><font color="black">391:N03580 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">392:N03590 Y1=191.445 F1600</font>
+<br><font color="black">393:N03600 G00 Z1=V.P.ZR24</font>
+<br><font color="black">394:N03610 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">395:N03620 X25.902 Y1=226.495 Z1=V.P.ZR24</font>
+<br><font color="black">396:N03630 Z1=V.P.ZR22</font>
+<br><font color="black">397:N03640 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">398:N03650 Y1=232.795 F1600</font>
+<br><font color="black">399:N03660 G00 Z1=V.P.ZR24</font>
+<br><font color="black">400:N03670 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">401:N03680 X73.252 Y1=235.395 Z1=V.P.ZR24</font>
+<br><font color="black">402:N03690 Z1=V.P.ZR22</font>
+<br><font color="black">403:N03700 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">404:N03710 X79.552 F1600</font>
+<br><font color="black">405:N03720 G00 Z1=V.P.ZR24</font>
+<br><font color="black">406:N03730 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">407:N03740 X119.702 Y1=232.795 Z1=V.P.ZR24</font>
+<br><font color="black">408:N03750 Z1=V.P.ZR22</font>
+<br><font color="black">409:N03760 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">410:N03770 Y1=226.495 F1600</font>
+<br><font color="black">411:N03780 G00 Z1=V.P.ZR24</font>
+<br><font color="black">412:N03790 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">413:N03800 X119.702 Y1=191.525 Z1=V.P.ZR24</font>
+<br><font color="black">414:N03810 Z1=V.P.ZR22</font>
+<br><font color="black">415:N03820 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">416:N03830 Y1=185.145 F1600</font>
+<br><font color="black">417:N03840 G00 Z1=V.P.ZR24</font>
+<br><font color="black">418:N03850 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">419:N03860 X79.552 Y1=236.195 Z1=V.P.ZR24</font>
+<br><font color="black">420:N03870 Z1=V.P.ZR22</font>
+<br><font color="black">421:N03880 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">422:N03890 X73.252 F1600</font>
+<br><font color="black">423:N03900 G00 Z1=V.P.ZR24</font>
+<br><font color="black">424:N03910 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">425:N03920 X25.902 Y1=252.795 Z1=V.P.ZR24</font>
+<br><font color="black">426:N03930 Z1=V.P.ZR22</font>
+<br><font color="black">427:N03940 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">428:N03950 Y1=258.545 F1600</font>
+<br><font color="black">429:N03960 G00 Z1=V.P.ZR24</font>
+<br><font color="black">430:N03970 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">431:N03980 X25.902 Y1=293.595 Z1=V.P.ZR24</font>
+<br><font color="black">432:N03990 Z1=V.P.ZR22</font>
+<br><font color="black">433:N04000 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">434:N04010 Y1=299.894 F1600</font>
+<br><font color="black">435:N04020 G00 Z1=V.P.ZR24</font>
+<br><font color="black">436:N04030 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">437:N04040 X73.252 Y1=302.495 Z1=V.P.ZR24</font>
+<br><font color="black">438:N04050 Z1=V.P.ZR22</font>
+<br><font color="black">439:N04060 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">440:N04070 X79.552 F1600</font>
+<br><font color="black">441:N04080 G00 Z1=V.P.ZR24</font>
+<br><font color="black">442:N04090 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">443:N04100 X119.702 Y1=299.894 Z1=V.P.ZR24</font>
+<br><font color="black">444:N04110 Z1=V.P.ZR22</font>
+<br><font color="black">445:N04120 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">446:N04130 Y1=293.595 F1600</font>
+<br><font color="black">447:N04140 G00 Z1=V.P.ZR24</font>
+<br><font color="black">448:N04150 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">449:N04160 X119.702 Y1=258.625 Z1=V.P.ZR24</font>
+<br><font color="black">450:N04170 Z1=V.P.ZR22</font>
+<br><font color="black">451:N04180 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">452:N04190 Y1=252.245 F1600</font>
+<br><font color="black">453:N04200 G00 Z1=V.P.ZR24</font>
+<br><font color="black">454:N04210 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">455:N04220 X181.752 Y1=236.195 Z1=V.P.ZR24</font>
+<br><font color="black">456:N04230 Z1=V.P.ZR22</font>
+<br><font color="black">457:N04240 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">458:N04250 X175.452 F1600</font>
+<br><font color="black">459:N04260 G00 Z1=V.P.ZR24</font>
+<br><font color="black">460:N04270 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">461:N04280 X128.102 Y1=252.795 Z1=V.P.ZR24</font>
+<br><font color="black">462:N04290 Z1=V.P.ZR22</font>
+<br><font color="black">463:N04300 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">464:N04310 Y1=258.545 F1600</font>
+<br><font color="black">465:N04320 G00 Z1=V.P.ZR24</font>
+<br><font color="black">466:N04330 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">467:N04340 X128.102 Y1=293.595 Z1=V.P.ZR24</font>
+<br><font color="black">468:N04350 Z1=V.P.ZR22</font>
+<br><font color="black">469:N04360 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">470:N04370 Y1=299.894 F1600</font>
+<br><font color="black">471:N04380 G00 Z1=V.P.ZR24</font>
+<br><font color="black">472:N04390 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">473:N04400 X175.452 Y1=302.495 Z1=V.P.ZR24</font>
+<br><font color="black">474:N04410 Z1=V.P.ZR22</font>
+<br><font color="black">475:N04420 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">476:N04430 X181.752 F1600</font>
+<br><font color="black">477:N04440 G00 Z1=V.P.ZR24</font>
+<br><font color="black">478:N04450 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">479:N04460 X221.902 Y1=299.894 Z1=V.P.ZR24</font>
+<br><font color="black">480:N04470 Z1=V.P.ZR22</font>
+<br><font color="black">481:N04480 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">482:N04490 Y1=293.595 F1600</font>
+<br><font color="black">483:N04500 G00 Z1=V.P.ZR24</font>
+<br><font color="black">484:N04510 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">485:N04520 X221.902 Y1=258.625 Z1=V.P.ZR24</font>
+<br><font color="black">486:N04530 Z1=V.P.ZR22</font>
+<br><font color="black">487:N04540 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">488:N04550 Y1=252.245 F1600</font>
+<br><font color="black">489:N04560 G00 Z1=V.P.ZR24</font>
+<br><font color="black">490:N04570 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">491:N04580 X283.952 Y1=236.195 Z1=V.P.ZR24</font>
+<br><font color="black">492:N04590 Z1=V.P.ZR22</font>
+<br><font color="black">493:N04600 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">494:N04610 X277.652 F1600</font>
+<br><font color="black">495:N04620 G00 Z1=V.P.ZR24</font>
+<br><font color="black">496:N04630 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">497:N04640 X230.302 Y1=252.795 Z1=V.P.ZR24</font>
+<br><font color="black">498:N04650 Z1=V.P.ZR22</font>
+<br><font color="black">499:N04660 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">500:N04670 Y1=258.545 F1600</font>
+<br><font color="black">501:N04680 G00 Z1=V.P.ZR24</font>
+<br><font color="black">502:N04690 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">503:N04700 X230.302 Y1=293.595 Z1=V.P.ZR24</font>
+<br><font color="black">504:N04710 Z1=V.P.ZR22</font>
+<br><font color="black">505:N04720 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">506:N04730 Y1=299.894 F1600</font>
+<br><font color="black">507:N04740 G00 Z1=V.P.ZR24</font>
+<br><font color="black">508:N04750 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">509:N04760 X277.652 Y1=302.495 Z1=V.P.ZR24</font>
+<br><font color="black">510:N04770 Z1=V.P.ZR22</font>
+<br><font color="black">511:N04780 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">512:N04790 X283.952 F1600</font>
+<br><font color="black">513:N04800 G00 Z1=V.P.ZR24</font>
+<br><font color="black">514:N04810 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">515:N04820 X324.102 Y1=299.894 Z1=V.P.ZR24</font>
+<br><font color="black">516:N04830 Z1=V.P.ZR22</font>
+<br><font color="black">517:N04840 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">518:N04850 Y1=293.595 F1600</font>
+<br><font color="black">519:N04860 G00 Z1=V.P.ZR24</font>
+<br><font color="black">520:N04870 (PATH ROUGH CUTTING  ø1.6)</font>
+<br><font color="black">521:N04880 X324.102 Y1=258.625 Z1=V.P.ZR24</font>
+<br><font color="black">522:N04890 Z1=V.P.ZR22</font>
+<br><font color="black">523:N04900 G01 Z1=V.P.ZR23 F20000</font>
+<br><font color="black">524:N04910 Y1=252.245 F1600</font>
+<br><font color="black">525:N04920 G00 Z1=V.P.ZR24</font>
+<br><font color="black">526:N04930 [Homing]</font>
+<br><font color="black">527:N04940 M109</font>
+<br><font color="black">528:N04950 #ROTATION OFF</font>
+<br><font color="black">529:N04960 G00 Z1=V.P.ZR20</font>
+<br><font color="black">530:N04970 L _M100.nc</font>
+<br><font color="black">531:N04980 M30</font>
 </td>
 </p>
 </tr>
